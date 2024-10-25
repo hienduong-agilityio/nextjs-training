@@ -11,9 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      // Add the font by className
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }
-
