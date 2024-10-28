@@ -18,7 +18,7 @@ export default async function Page() {
     totalPaidInvoices,
   } = await fetchCardData();
 
-  console.log(await fetchCardData());
+  console.log(latestInvoices);
 
   return (
     <main>
