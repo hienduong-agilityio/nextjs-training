@@ -12,8 +12,6 @@ const CardWrapper = lazy(() => import("@/app/ui/dashboard/cards"));
 const RevenueChart = lazy(() => import("@/app/ui/dashboard/revenue-chart"));
 const LatestInvoices = lazy(() => import("@/app/ui/dashboard/latest-invoices"));
 
-export const dynamic = "force-dynamic";
-
 export default async function Page() {
   return (
     <main>
