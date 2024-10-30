@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import { lusitana } from "@/app/ui/fonts";
-import { fetchCardData } from "@/app/lib/data";
 import {
   LatestInvoicesSkeleton,
   RevenueChartSkeleton,
