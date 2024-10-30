@@ -14,7 +14,6 @@ const CardWrapper = lazy(() => import("@/app/ui/dashboard/cards"));
 const RevenueChart = lazy(() => import("@/app/ui/dashboard/revenue-chart"));
 const LatestInvoices = lazy(() => import("@/app/ui/dashboard/latest-invoices"));
 
-
 export default async function Page() {
   return (
     <main>
@@ -26,7 +25,7 @@ export default async function Page() {
           <CardWrapper />
         </Suspense>
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+      <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-4 lg:grid-cols-8">
         <Suspense fallback={<RevenueChartSkeleton />}>
           <RevenueChart />
         </Suspense>
