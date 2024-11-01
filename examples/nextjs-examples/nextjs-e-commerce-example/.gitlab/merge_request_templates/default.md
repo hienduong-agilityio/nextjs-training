@@ -8,7 +8,6 @@
 
 (Provide the link to the GitLab issue associated with the completion of this feature.)
 
-
 ### Completed Tasks
 
 (Mention a detailed list of the tasks that have been completed.)
