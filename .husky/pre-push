@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd ./examples/nextjs-examples/nextjs-e-commerce-example/
+cd ./practices/practice-one
 
 pnpm test && pnpm build
