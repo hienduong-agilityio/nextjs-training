@@ -7,11 +7,11 @@
 (Provide a detailed description of the changes included in this merge request.)
 
 
-### Completed Tasks
+## Completed Tasks
 
 (Mention a detailed list of the tasks that have been completed.)
 
-### Pre-Pull Request Checklist
+## Pre-Pull Request Checklist
 
 Please ensure the following before submitting your pull request:
 
@@ -24,7 +24,7 @@ Please ensure the following before submitting your pull request:
 - [ ] Update the relevant documentations.
 - [ ] Assign the pull request to reviewers.
 
-### Relevant Logs and/or Screenshots:
+## Relevant Logs and/or Screenshots:
 
 (If your changes involve any updates to the user interface, kindly include screenshots, videos of the modifications.)
 
