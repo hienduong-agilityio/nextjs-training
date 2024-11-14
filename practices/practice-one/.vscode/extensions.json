@@ -4,6 +4,7 @@
     "EditorConfig.EditorConfig",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
-    "stivo.tailwind-fold"
+    "stivo.tailwind-fold",
+    "firsttris.vscode-jest-runner"
   ]
 }

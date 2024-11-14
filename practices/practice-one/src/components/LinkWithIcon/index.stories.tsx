@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
 import { LinkWithIcon } from './index';
-import { CubeIcon } from '@/icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -28,7 +27,6 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    icon: <CubeIcon customClass="w-5 h-5 mr-2" />,
     url: 'https://storybook.js.org',
     text: 'Link to Storybook',
   },
