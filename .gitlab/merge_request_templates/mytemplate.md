@@ -1,12 +1,11 @@
 # Merge Request
 
-### Summary
+- Closed #
+
+## Summary
 
 (Provide a detailed description of the changes included in this merge request.)
 
-### GitLab Issue Link
-
-(Provide the link to the GitLab issue associated with the completion of this feature.)
 
 ### Completed Tasks
 
