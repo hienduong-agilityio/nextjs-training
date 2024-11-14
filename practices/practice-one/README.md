@@ -14,7 +14,7 @@ This document concerns NextJS practice one E-ecommerce . This is a web applicati
 ## RELATED DOCUMENTS
 
 - React training plan ( [Document](https://docs.google.com/document/d/1s4ywrP9Ainu0f0-8y1YSVgjPGyPcv9bb9onvp-m-fMY/edit?tab=t.lo8jhxkfip6r#heading=h.1c34tn6oqvhw) )
-- Design for practice ( view via [Figma](https://www.figma.com/design/8Zpw9ByzkcLv5aFjZflbOH/E-Comm-(Copy)?node-id=3385-1577&node-type=frame&t=Lf08G1P5AZ4FvJJB-0) )
+- Design for practice ( view via [Figma](<https://www.figma.com/design/8Zpw9ByzkcLv5aFjZflbOH/E-Comm-(Copy)?node-id=3385-1577&node-type=frame&t=Lf08G1P5AZ4FvJJB-0>) )
 
 ## Technical stacks
 
