@@ -11,7 +11,7 @@
     "prettier:fix": "prettier . --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\"",
     "prepare": "cd ../.. && husky install practices/.husky",
     "test": "jest",
-    "coverage": "jest --coverage",
+    "coverage": "jest --coverage --watchAll",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
@@ -37,6 +37,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "classnames": "^2.5.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
