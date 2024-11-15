@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component renders with default props and matches snapshot 1`] = `
+<div>
+  <button
+    class="flex items-center p-2 text-black bg-gray-200 bg-opacity-100 rounded shadow-md hover:bg-gray-300 disabled:bg-gray-100"
+    type="button"
+  >
+    Test Button
+  </button>
+</div>
+`;
