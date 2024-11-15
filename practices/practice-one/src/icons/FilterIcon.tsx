@@ -1,17 +1,28 @@
 import * as React from 'react';
 import { SVGProps } from 'react';
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none">
-    <path
-      stroke="#40BFFF"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeMiterlimit={10}
-      strokeWidth={2}
-      d="M27.906 34.516V23.5L41.125 5.875H5.875L19.094 23.5v17.625"
-    />
-  </svg>
-);
-
-export default SvgComponent;
+export const FilterIcon = ({
+  size = 48,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number }) => {
+  const scale = size / 48;
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+    >
+      <path
+        stroke="#40BFFF"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        strokeWidth={2 * scale}
+        d={`M${27.906 * scale} ${34.516 * scale}V${23.5 * scale}L${41.125 * scale} ${5.875 * scale}H${5.875 * scale}L${19.094 * scale} ${23.5 * scale}v${17.625 * scale}`}
+      />
+    </svg>
+  );
+};

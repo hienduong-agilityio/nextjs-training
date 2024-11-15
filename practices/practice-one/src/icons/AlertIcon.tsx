@@ -1,24 +1,34 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none">
+export const AlertIcon = ({
+  size = 40,
+  ...props
+}: SVGProps<SVGSVGElement> & { size?: number }) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    width={size}
+    height={size}
+    viewBox="0 0 72 72"
+  >
     <g filter="url(#a)">
-      <rect width={72} height={72} x={30} y={20} fill="#FB7181" rx={36} />
+      <rect width={72} height={72} x={0} y={0} fill="#FB7181" rx={36} />
     </g>
     <path
       stroke="#fff"
       strokeLinecap="round"
-      strokeWidth={6}
-      d="M66 42v17M66 68v1"
+      strokeWidth={size / 12}
+      d="M36 26v17M36 47v1"
     />
     <defs>
       <filter
         id="a"
         width={132}
         height={132}
-        x={0}
-        y={0}
+        x={-30}
+        y={-30}
         colorInterpolationFilters="sRGB"
         filterUnits="userSpaceOnUse"
       >
@@ -31,15 +41,9 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
         <feOffset dy={10} />
         <feGaussianBlur stdDeviation={15} />
         <feColorMatrix values="0 0 0 0 0.984314 0 0 0 0 0.443137 0 0 0 0 0.505882 0 0 0 0.24 0" />
-        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_3414_18" />
-        <feBlend
-          in="SourceGraphic"
-          in2="effect1_dropShadow_3414_18"
-          result="shape"
-        />
+        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+        <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
       </filter>
     </defs>
   </svg>
 );
-
-export default SvgComponent;
