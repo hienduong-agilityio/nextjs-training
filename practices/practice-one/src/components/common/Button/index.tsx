@@ -1,7 +1,10 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+// Libraries
+import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 import classNames from 'classnames';
-import React, { memo } from 'react';
+
+// Types
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 // Enums
 import { VARIANTS, COLORS } from '@/enums';
