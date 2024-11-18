@@ -34,6 +34,7 @@ const config: Config = {
       },
     },
     colors: {
+      ...require('tailwindcss/colors'),
       black: '#222324',
       white: '#ffffff',
       warning: {
