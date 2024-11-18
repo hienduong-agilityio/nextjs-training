@@ -1,5 +1,7 @@
+'use client';
+
 // Libraries
-import React, { memo } from 'react';
+import React, { memo, useRef } from 'react';
 
 // Components
 import { Button, InputField } from '@/components';
@@ -7,22 +9,49 @@ import { Button, InputField } from '@/components';
 // Enums
 import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
 
-const SearchBox = () => {
+export interface ISearchBoxProps {
+  placeholder?: string;
+  buttonText?: string;
+  onSearch: (value: string) => void;
+  customClass?: {
+    container?: string;
+    inputContainer?: string;
+    input?: string;
+    button?: string;
+  };
+}
+
+const SearchBox: React.FC<ISearchBoxProps> = ({
+  placeholder = 'Enter your query...',
+  buttonText = 'Search',
+  onSearch,
+  customClass = {},
+}) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearch = () => {
+    if (inputRef.current && inputRef.current.value.trim() !== '') {
+      onSearch(inputRef.current.value);
+    }
+  };
+
   return (
-    <div className="flex">
+    <div className={`flex ${customClass.container ?? ''}`}>
       <InputField
-        placeholder="SearchBox query..."
+        placeholder={placeholder}
+        ref={inputRef}
         customClass={{
-          container: 'border-blue-300 rounded-r-none',
-          input: 'h-16 w-[520px] text-gray-700',
+          container: `border-blue-300 rounded-r-none ${customClass.inputContainer ?? ''}`,
+          input: `h-16 w-[520px] text-gray-700 ${customClass.input ?? ''}`,
         }}
       />
       <Button
-        customClass="px-7 rounded-l-none"
+        customClass={`px-7 rounded-l-none ${customClass.button ?? ''}`}
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}
+        onClick={handleSearch}
       >
-        SearchBox
+        {buttonText}
       </Button>
     </div>
   );
