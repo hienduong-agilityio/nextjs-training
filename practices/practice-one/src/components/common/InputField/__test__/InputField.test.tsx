@@ -27,7 +27,12 @@ describe('InputField Component', () => {
 
   it('should render with custom classes', () => {
     renderResult.rerender(
-      <InputField placeholder="Enter text" customClasses="custom-class" />,
+      <InputField
+        placeholder="Enter text"
+        customClass={{
+          container: 'custom-class ',
+        }}
+      />,
     );
 
     const inputElement = screen.getByPlaceholderText('Enter text');

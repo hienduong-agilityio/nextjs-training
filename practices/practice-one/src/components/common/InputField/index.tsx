@@ -7,14 +7,17 @@ import classNames from 'classnames';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  customClasses?: string;
+  customClass?: {
+    container?: string;
+    input?: string;
+  };
   errorMessage?: string;
   startContent?: ReactNode;
   endContent?: ReactNode;
 }
 
-const baseClass: string = 'flex-1 outline-none px-3 py-2 bg-transparent';
-const containerBaseClass: string =
+const baseInputClass: string = 'flex-1 outline-none px-3 py-2 bg-transparent';
+const baseContainerClass: string =
   'flex items-center gap-1 px-3 border rounded-md focus-within:ring-2';
 const errorContainerClass: string =
   'border-danger-200 focus-within:ring-danger-200';
@@ -30,7 +33,7 @@ const errorMessagesClasses: string = 'text-sm text-danger-200';
 const InputField = forwardRef<HTMLInputElement, IInputProps>(
   (
     {
-      customClasses = '',
+      customClass: customClassNames = {},
       errorMessage = '',
       startContent = null,
       endContent = null,
@@ -40,18 +43,19 @@ const InputField = forwardRef<HTMLInputElement, IInputProps>(
   ): JSX.Element => {
     const containerClasses = twMerge(
       classNames(
-        containerBaseClass,
+        baseContainerClass,
         errorMessage ? errorContainerClass : normalContainerClass,
+        customClassNames.container,
       ),
     );
 
-    const combinedClasses = twMerge(baseClass, customClasses);
+    const inputClass = twMerge(baseInputClass, customClassNames.input);
 
     return (
       <div>
         <div className={containerClasses}>
           {startContent && <span>{startContent}</span>}
-          <input ref={ref} className={combinedClasses} {...restProps} />
+          <input ref={ref} className={inputClass} {...restProps} />
           {endContent && <span>{endContent}</span>}
         </div>
         {errorMessage && (

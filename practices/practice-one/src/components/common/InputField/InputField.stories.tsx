@@ -28,9 +28,9 @@ const meta = {
       description: 'The type attribute of the input field.',
       control: 'text',
     },
-    customClasses: {
-      description: 'Custom CSS classes to apply to the input field.',
-      control: 'text',
+    customClass: {
+      description: 'Object to customize the container and input classes.',
+      control: 'object',
     },
     errorMessage: {
       description: 'Error message displayed below the input field.',
@@ -65,7 +65,9 @@ export const Default: Story = {
     name: 'test',
     defaultValue: '50',
     type: 'number',
-    customClasses: 'h-10 border-primary-200',
+    customClass: {
+      input: 'h-10 border-primary-200',
+    },
     onChange: (e) => {
       console.log(e.target.value);
     },
@@ -82,7 +84,9 @@ export const Default: Story = {
 export const Primary: Story = {
   args: {
     placeholder: 'Enter your text',
-    customClasses: 'text-primary placeholder-primary pl-5 h-10',
+    customClass: {
+      input: 'text-primary placeholder-primary pl-5 h-10',
+    },
     type: 'text',
     onChange: (e) => {
       console.log(e.target.value);
@@ -99,9 +103,11 @@ export const Primary: Story = {
 
 export const Disable: Story = {
   args: {
-    placeholder: 'disable',
+    placeholder: 'Disable',
     disabled: true,
-    customClasses: 'cursor-not-allowed h-10',
+    customClass: {
+      input: 'cursor-not-allowed h-10',
+    },
     onClick: () => {
       alert('Button component');
     },
@@ -138,7 +144,10 @@ export const ShowError: Story = {
 export const WithContent: Story = {
   args: {
     placeholder: 'Enter your text',
-    customClasses: 'pl-5 pr-5 h-10',
+    customClass: {
+      input: 'pl-5 pr-5 h-10',
+      container: 'border rounded-md',
+    },
     startContent: '🔍',
     endContent: '✔️',
     onChange: (e) => {

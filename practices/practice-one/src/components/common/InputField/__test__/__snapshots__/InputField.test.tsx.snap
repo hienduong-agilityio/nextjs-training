@@ -54,10 +54,10 @@ exports[`InputField Component should render with custom classes 1`] = `
 <div>
   <div>
     <div
-      class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-gray-300 focus-within:ring-primary-100"
+      class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-gray-300 focus-within:ring-primary-100 custom-class"
     >
       <input
-        class="flex-1 outline-none px-3 py-2 bg-transparent custom-class"
+        class="flex-1 outline-none px-3 py-2 bg-transparent"
         placeholder="Enter text"
       />
     </div>
