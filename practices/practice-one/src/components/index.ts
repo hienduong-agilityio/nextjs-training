@@ -1,3 +1,4 @@
+export * from './Header';
 export { default as SearchBox } from './SearchBox';
 
 // Common

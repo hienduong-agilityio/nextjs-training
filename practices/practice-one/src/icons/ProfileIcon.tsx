@@ -14,7 +14,7 @@ export const ProfileIcon = ({
       fill="none"
       width={size}
       height={size}
-      viewBox="0 0 40 40"
+      viewBox={`0 0 ${size} ${size}`}
     >
       <path
         fill="#22262A"
