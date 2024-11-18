@@ -9,7 +9,6 @@ import type { InputHTMLAttributes, ReactNode } from 'react';
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   customClasses?: string;
   errorMessage?: string;
-  fullWidth?: boolean;
   startContent?: ReactNode;
   endContent?: ReactNode;
 }
