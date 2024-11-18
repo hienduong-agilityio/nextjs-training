@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 // Enums
-import { COLORS, VARIANTS } from '@/enums';
+import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
 
 // Components
 import Button from '..';
@@ -29,20 +29,20 @@ describe('Button Component', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders with different variants', () => {
+  it('renders with different BUTTON_VARIANTS', () => {
     const { rerender } = render(
-      <Button variant={VARIANTS.SOLID}>Test Button</Button>,
+      <Button variant={BUTTON_VARIANTS.SOLID}>Test Button</Button>,
     );
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
       'shadow-md',
     );
 
-    rerender(<Button variant={VARIANTS.SHADOW}>Test Button</Button>);
+    rerender(<Button variant={BUTTON_VARIANTS.SHADOW}>Test Button</Button>);
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
       'shadow-lg',
     );
 
-    rerender(<Button variant={VARIANTS.LIGHT}>Test Button</Button>);
+    rerender(<Button variant={BUTTON_VARIANTS.LIGHT}>Test Button</Button>);
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
       'bg-gray-200 bg-opacity-50',
     );
@@ -50,18 +50,18 @@ describe('Button Component', () => {
 
   it('renders with different colors', () => {
     const { rerender } = render(
-      <Button color={COLORS.PRIMARY}>Test Button</Button>,
+      <Button color={BUTTON_COLORS.PRIMARY}>Test Button</Button>,
     );
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
       'bg-primary-300',
     );
 
-    rerender(<Button color={COLORS.SUCCESS}>Test Button</Button>);
+    rerender(<Button color={BUTTON_COLORS.SUCCESS}>Test Button</Button>);
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
       'bg-green-600',
     );
 
-    rerender(<Button color={COLORS.DANGER}>Test Button</Button>);
+    rerender(<Button color={BUTTON_COLORS.DANGER}>Test Button</Button>);
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
       'bg-rose-500',
     );

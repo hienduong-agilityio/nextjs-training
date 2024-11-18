@@ -5,7 +5,7 @@ import { fn } from '@storybook/test';
 import Button from '.';
 
 // Enums
-import { VARIANTS, COLORS } from '@/enums';
+import { BUTTON_VARIANTS, BUTTON_COLORS } from '@/enums';
 
 const meta = {
   title: 'Components/Common/Button',
@@ -22,18 +22,22 @@ const meta = {
     },
     variant: {
       control: 'inline-radio',
-      options: [VARIANTS.SOLID, VARIANTS.SHADOW, VARIANTS.LIGHT],
+      options: [
+        BUTTON_VARIANTS.SOLID,
+        BUTTON_VARIANTS.SHADOW,
+        BUTTON_VARIANTS.LIGHT,
+      ],
       description: 'Defines the visual style of the button.',
     },
     color: {
       control: 'inline-radio',
       options: [
-        COLORS.DEFAULT,
-        COLORS.PRIMARY,
-        COLORS.SECONDARY,
-        COLORS.SUCCESS,
-        COLORS.WARNING,
-        COLORS.DANGER,
+        BUTTON_COLORS.DEFAULT,
+        BUTTON_COLORS.PRIMARY,
+        BUTTON_COLORS.SECONDARY,
+        BUTTON_COLORS.SUCCESS,
+        BUTTON_COLORS.WARNING,
+        BUTTON_COLORS.DANGER,
       ],
       description: 'Defines the color of the button.',
     },
@@ -74,8 +78,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: 'Default Button',
-    variant: VARIANTS.SOLID,
-    color: COLORS.DEFAULT,
+    variant: BUTTON_VARIANTS.SOLID,
+    color: BUTTON_COLORS.DEFAULT,
   },
   parameters: {
     docs: {
@@ -90,21 +94,21 @@ export const Default: Story = {
 export const Icon: Story = {
   args: {
     children: '🔍',
-    variant: VARIANTS.SOLID,
+    variant: BUTTON_VARIANTS.SOLID,
     customClass: 'p-2',
   },
   render: () => (
     <div className="flex gap-5">
-      <Button startIcon="🔍" variant={VARIANTS.SOLID} customClass="p-2">
+      <Button startIcon="🔍" variant={BUTTON_VARIANTS.SOLID} customClass="p-2">
         Search
       </Button>
-      <Button endIcon="🚀" variant={VARIANTS.SOLID} customClass="p-2">
+      <Button endIcon="🚀" variant={BUTTON_VARIANTS.SOLID} customClass="p-2">
         Launch
       </Button>
       <Button
         startIcon="✔️"
         endIcon="➡️"
-        variant={VARIANTS.SOLID}
+        variant={BUTTON_VARIANTS.SOLID}
         customClass="p-2"
       >
         Confirm
@@ -124,8 +128,8 @@ export const Sizes: Story = {
   args: {
     children: 'Large Button',
     customClass: 'text-lg p-4',
-    variant: VARIANTS.SOLID,
-    color: COLORS.DANGER,
+    variant: BUTTON_VARIANTS.SOLID,
+    color: BUTTON_COLORS.DANGER,
   },
   render: () => (
     <div className="flex flex-col gap-3">
@@ -146,16 +150,16 @@ export const Sizes: Story = {
 export const SolidVariantColors: Story = {
   args: {
     children: '',
-    variant: VARIANTS.SOLID,
+    variant: BUTTON_VARIANTS.SOLID,
   },
 
   render: () => (
     <div className="flex gap-5">
-      <Button color={COLORS.PRIMARY}>Primary</Button>
-      <Button color={COLORS.SECONDARY}>Secondary</Button>
-      <Button color={COLORS.SUCCESS}>Success</Button>
-      <Button color={COLORS.WARNING}>Warning</Button>
-      <Button color={COLORS.DANGER}>Danger</Button>
+      <Button color={BUTTON_COLORS.PRIMARY}>Primary</Button>
+      <Button color={BUTTON_COLORS.SECONDARY}>Secondary</Button>
+      <Button color={BUTTON_COLORS.SUCCESS}>Success</Button>
+      <Button color={BUTTON_COLORS.WARNING}>Warning</Button>
+      <Button color={BUTTON_COLORS.DANGER}>Danger</Button>
     </div>
   ),
   parameters: {
@@ -170,23 +174,23 @@ export const SolidVariantColors: Story = {
 export const ShadowVariantColors: Story = {
   args: {
     children: '',
-    variant: VARIANTS.SHADOW,
+    variant: BUTTON_VARIANTS.SHADOW,
   },
   render: (args) => (
     <div className="flex gap-5">
-      <Button {...args} color={COLORS.PRIMARY}>
+      <Button {...args} color={BUTTON_COLORS.PRIMARY}>
         Primary
       </Button>
-      <Button {...args} color={COLORS.SECONDARY}>
+      <Button {...args} color={BUTTON_COLORS.SECONDARY}>
         Secondary
       </Button>
-      <Button {...args} color={COLORS.SUCCESS}>
+      <Button {...args} color={BUTTON_COLORS.SUCCESS}>
         Success
       </Button>
-      <Button {...args} color={COLORS.WARNING}>
+      <Button {...args} color={BUTTON_COLORS.WARNING}>
         Warning
       </Button>
-      <Button {...args} color={COLORS.DANGER}>
+      <Button {...args} color={BUTTON_COLORS.DANGER}>
         Danger
       </Button>
     </div>
@@ -203,23 +207,23 @@ export const ShadowVariantColors: Story = {
 export const LightVariantColors: Story = {
   args: {
     children: '',
-    variant: VARIANTS.LIGHT,
+    variant: BUTTON_VARIANTS.LIGHT,
   },
   render: (args) => (
     <div className="flex gap-5">
-      <Button {...args} color={COLORS.PRIMARY}>
+      <Button {...args} color={BUTTON_COLORS.PRIMARY}>
         Primary
       </Button>
-      <Button {...args} color={COLORS.SECONDARY}>
+      <Button {...args} color={BUTTON_COLORS.SECONDARY}>
         Secondary
       </Button>
-      <Button {...args} color={COLORS.SUCCESS}>
+      <Button {...args} color={BUTTON_COLORS.SUCCESS}>
         Success
       </Button>
-      <Button {...args} color={COLORS.WARNING}>
+      <Button {...args} color={BUTTON_COLORS.WARNING}>
         Warning
       </Button>
-      <Button {...args} color={COLORS.DANGER}>
+      <Button {...args} color={BUTTON_COLORS.DANGER}>
         Danger
       </Button>
     </div>
