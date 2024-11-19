@@ -12,6 +12,7 @@ import '@testing-library/jest-dom';
 import { SearchBox, ISearchBoxProps } from '@/components';
 
 const mockOnSearch = jest.fn();
+const mockOnChange = jest.fn();
 
 let defaultProps: ISearchBoxProps;
 let customClasses: Required<ISearchBoxProps>['customClass'];
@@ -23,6 +24,7 @@ describe('SearchBox Component', () => {
 
     defaultProps = {
       onSearch: mockOnSearch,
+      onChange: mockOnChange,
       placeholder: 'Enter your query...',
       customClass: {},
     };
@@ -66,24 +68,7 @@ describe('SearchBox Component', () => {
     const input = screen.getByPlaceholderText('Enter your query...');
     fireEvent.change(input, { target: { value: 'Test query' } });
     expect(input).toHaveValue('Test query');
-  });
-
-  it('calls onSearch with the correct value when the button is clicked', () => {
-    const input = screen.getByPlaceholderText('Enter your query...');
-    fireEvent.change(input, { target: { value: 'Test query' } });
-
-    const button = screen.getByRole('button', { name: /Search/i });
-    fireEvent.click(button);
-
-    expect(mockOnSearch).toHaveBeenCalledTimes(1);
-    expect(mockOnSearch).toHaveBeenCalledWith('Test query');
-  });
-
-  it('does not call onSearch if the input is empty', () => {
-    const button = screen.getByRole('button', { name: /Search/i });
-    fireEvent.click(button);
-
-    expect(mockOnSearch).not.toHaveBeenCalled();
+    expect(mockOnChange).toHaveBeenCalledWith(expect.anything());
   });
 
   it('matches snapshot', () => {

@@ -24,6 +24,15 @@ const meta = {
     buttonText: {
       description: 'The text displayed inside the button.',
       control: 'text',
+      defaultValue: 'Search',
+    },
+    value: {
+      description: 'The current value of the input field.',
+      control: 'text',
+    },
+    onChange: {
+      description: 'Callback function triggered when the input value changes.',
+      action: 'onChange',
     },
     onSearch: {
       description:
@@ -50,9 +59,6 @@ export const Default: Story = {
       input: 'h-10 border-primary-200',
       button: 'bg-primary-300 text-white',
     },
-    onSearch: (value: string) => {
-      console.log('Search query:', value);
-    },
   },
   parameters: {
     docs: {
@@ -72,9 +78,6 @@ export const WithCustomStyles: Story = {
       input: 'text-green-700',
       button: 'bg-green-500 text-white',
     },
-    onSearch: (value: string) => {
-      console.log('Custom search query:', value);
-    },
   },
   parameters: {
     docs: {
@@ -92,10 +95,7 @@ export const Disabled: Story = {
     customClass: {
       inputContainer: 'border-gray-400',
       input: 'h-10 border-primary-300 cursor-not-allowed',
-      button: 'bg-primary-300 text-white cursor-not-allowed disable',
-    },
-    onSearch: () => {
-      console.log('This should not trigger.');
+      button: 'bg-primary-300 text-white cursor-not-allowed',
     },
   },
   parameters: {

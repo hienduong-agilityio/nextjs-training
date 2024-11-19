@@ -9,6 +9,7 @@ exports[`InputField Component should handle user input 1`] = `
       <input
         class="flex-1 outline-none px-3 py-2 bg-transparent"
         placeholder="Enter text"
+        value=""
       />
     </div>
   </div>
@@ -24,6 +25,7 @@ exports[`InputField Component should render an error message 1`] = `
       <input
         class="flex-1 outline-none px-3 py-2 bg-transparent"
         placeholder="Enter text"
+        value=""
       />
     </div>
     <span
@@ -44,6 +46,7 @@ exports[`InputField Component should render correctly without error 1`] = `
       <input
         class="flex-1 outline-none px-3 py-2 bg-transparent"
         placeholder="Enter text"
+        value=""
       />
     </div>
   </div>
@@ -59,6 +62,7 @@ exports[`InputField Component should render with custom classes 1`] = `
       <input
         class="flex-1 outline-none px-3 py-2 bg-transparent"
         placeholder="Enter text"
+        value=""
       />
     </div>
   </div>
@@ -79,6 +83,7 @@ exports[`InputField Component should render with startContent and endContent 1`]
       <input
         class="flex-1 outline-none px-3 py-2 bg-transparent"
         placeholder="Enter text"
+        value=""
       />
       <span>
         <span>

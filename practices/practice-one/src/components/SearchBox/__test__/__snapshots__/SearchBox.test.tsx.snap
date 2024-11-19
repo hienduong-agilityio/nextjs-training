@@ -12,6 +12,7 @@ exports[`SearchBox Component matches snapshot 1`] = `
         <input
           class="flex-1 outline-none px-3 py-2 bg-transparent h-16 w-[520px] text-gray-700"
           placeholder="Enter your query..."
+          value=""
         />
       </div>
     </div>

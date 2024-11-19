@@ -1,5 +1,5 @@
 // Libraries
-import { memo, forwardRef } from 'react';
+import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 import classNames from 'classnames';
 
@@ -26,46 +26,46 @@ const normalContainerClass: string =
 const errorMessagesClasses: string = 'text-sm text-danger-200';
 
 /**
- * InputField uncontrolled component
+ * InputField component
  *
  * @returns {JSX.Element} - InputField element.
  */
-const InputField = forwardRef<HTMLInputElement, IInputProps>(
-  (
-    {
-      customClass: customClassNames = {},
-      errorMessage = '',
-      startContent = null,
-      endContent = null,
-      ...restProps
-    },
-    ref,
-  ): JSX.Element => {
-    const containerClasses = twMerge(
-      classNames(
-        baseContainerClass,
-        errorMessage ? errorContainerClass : normalContainerClass,
-        customClassNames.container,
-      ),
-    );
+const InputField = ({
+  customClass: customClassNames = {},
+  errorMessage = '',
+  startContent = null,
+  endContent = null,
+  value,
+  onChange,
+  ...restProps
+}: IInputProps): JSX.Element => {
+  const containerClasses = twMerge(
+    classNames(
+      baseContainerClass,
+      errorMessage ? errorContainerClass : normalContainerClass,
+      customClassNames.container,
+    ),
+  );
 
-    const inputClass = twMerge(baseInputClass, customClassNames.input);
+  const inputClass = twMerge(baseInputClass, customClassNames.input);
 
-    return (
-      <div>
-        <div className={containerClasses}>
-          {startContent && <span>{startContent}</span>}
-          <input ref={ref} className={inputClass} {...restProps} />
-          {endContent && <span>{endContent}</span>}
-        </div>
-        {errorMessage && (
-          <span className={errorMessagesClasses}>{errorMessage}</span>
-        )}
+  return (
+    <div>
+      <div className={containerClasses}>
+        {startContent && <span>{startContent}</span>}
+        <input
+          className={inputClass}
+          value={value}
+          onChange={onChange}
+          {...restProps}
+        />
+        {endContent && <span>{endContent}</span>}
       </div>
-    );
-  },
-);
-
-InputField.displayName = 'InputField';
+      {errorMessage && (
+        <span className={errorMessagesClasses}>{errorMessage}</span>
+      )}
+    </div>
+  );
+};
 
 export default memo(InputField);

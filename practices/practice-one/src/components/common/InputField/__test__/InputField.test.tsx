@@ -81,11 +81,4 @@ describe('InputField Component', () => {
     expect(inputElement).toHaveValue('Hello');
     expect(renderResult.container).toMatchSnapshot();
   });
-
-  it('should forward ref correctly', () => {
-    const ref = jest.fn();
-    renderResult.rerender(<InputField ref={ref} placeholder="Enter text" />);
-
-    expect(ref).toHaveBeenCalled();
-  });
 });
