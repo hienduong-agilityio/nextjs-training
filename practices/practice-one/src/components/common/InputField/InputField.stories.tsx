@@ -145,7 +145,7 @@ export const WithContent: Story = {
   args: {
     placeholder: 'Enter your text',
     customClass: {
-      input: 'pl-5 pr-5 h-10',
+      input: 'px-5 h-10',
       container: 'border rounded-md',
     },
     startContent: '🔍',
