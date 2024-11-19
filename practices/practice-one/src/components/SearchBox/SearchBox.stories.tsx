@@ -15,6 +15,7 @@ const meta = {
       },
     },
   },
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       description: 'The placeholder text displayed inside the input field.',
