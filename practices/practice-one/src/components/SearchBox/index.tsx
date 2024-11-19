@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import React, { memo, useRef } from 'react';
+import { memo, useRef } from 'react';
 
 // Components
 import { Button, InputField } from '@/components';
@@ -21,12 +21,12 @@ export interface ISearchBoxProps {
   };
 }
 
-const SearchBox: React.FC<ISearchBoxProps> = ({
+const SearchBox = ({
   placeholder = 'Enter your query...',
   buttonText = 'Search',
   onSearch,
   customClass = {},
-}) => {
+}: ISearchBoxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
