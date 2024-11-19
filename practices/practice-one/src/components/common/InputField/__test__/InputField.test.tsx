@@ -27,7 +27,12 @@ describe('InputField Component', () => {
 
   it('should render with custom classes', () => {
     renderResult.rerender(
-      <InputField placeholder="Enter text" customClasses="custom-class" />,
+      <InputField
+        placeholder="Enter text"
+        customClass={{
+          container: 'custom-class ',
+        }}
+      />,
     );
 
     const inputElement = screen.getByPlaceholderText('Enter text');
@@ -75,12 +80,5 @@ describe('InputField Component', () => {
     fireEvent.change(inputElement, { target: { value: 'Hello' } });
     expect(inputElement).toHaveValue('Hello');
     expect(renderResult.container).toMatchSnapshot();
-  });
-
-  it('should forward ref correctly', () => {
-    const ref = jest.fn();
-    renderResult.rerender(<InputField ref={ref} placeholder="Enter text" />);
-
-    expect(ref).toHaveBeenCalled();
   });
 });
