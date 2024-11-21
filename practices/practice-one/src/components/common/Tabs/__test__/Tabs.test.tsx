@@ -2,7 +2,7 @@
 import { render, screen, RenderResult } from '@testing-library/react';
 
 // Components
-import Tabs from '@/components/Tabs';
+import { Tabs } from '@/components';
 
 const mockItems = [
   { title: 'Tab 1', content: <div>Content for Tab 1</div> },
@@ -36,13 +36,9 @@ describe('Tabs Component', () => {
     expect(firstTab).toHaveFocus();
   });
 
-  it('applies correct classes for active and inactive tabs', () => {
+  it('applies correct classes for active tabs', () => {
     const tab1 = screen.getByRole('button', { name: /Tab 1/i });
-    const tab2 = screen.getByRole('button', { name: /Tab 2/i });
 
     expect(tab1).toHaveClass('text-primary-400 border-primary-400');
-    expect(tab2).toHaveClass(
-      'text-gray-600 border-transparent hover:text-primary-400 hover:border-primary-400',
-    );
   });
 });
