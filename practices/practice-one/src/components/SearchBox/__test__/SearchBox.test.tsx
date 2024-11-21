@@ -37,10 +37,15 @@ describe('SearchBox Component', () => {
     renderResult = render(<SearchBox {...defaultProps} />);
   });
 
+  it('matches snapshot', () => {
+    const { asFragment } = renderResult;
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('renders the SearchBox component with default props', () => {
     const input = screen.getByPlaceholderText('Enter your query...');
     expect(input).toBeInTheDocument();
-    expect(input).toHaveClass('h-16 w-[520px] text-gray-700');
+    expect(input).toHaveClass('h-16 text-gray-700');
 
     const button = screen.getByRole('button', { name: /Search/i });
     expect(button).toBeInTheDocument();
@@ -69,10 +74,5 @@ describe('SearchBox Component', () => {
     fireEvent.change(input, { target: { value: 'Test query' } });
     expect(input).toHaveValue('Test query');
     expect(mockOnChange).toHaveBeenCalledWith(expect.anything());
-  });
-
-  it('matches snapshot', () => {
-    const { asFragment } = renderResult;
-    expect(asFragment()).toMatchSnapshot();
   });
 });

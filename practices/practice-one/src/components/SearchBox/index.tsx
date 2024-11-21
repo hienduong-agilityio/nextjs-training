@@ -37,7 +37,7 @@ const SearchBox = ({
         onChange={onChange}
         customClass={{
           container: `border-blue-300 rounded-r-none ${customClass.inputContainer ?? ''}`,
-          input: `h-16 w-[520px] text-gray-700 ${customClass.input ?? ''}`,
+          input: `h-16 text-gray-700 ${customClass.input ?? ''}`,
         }}
       />
       <Button
