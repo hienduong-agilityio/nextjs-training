@@ -5,13 +5,16 @@ import { CATEGORIES, PRODUCTS_DATA } from '@/mocks';
 import { Tabs } from '@/components';
 import Image from 'next/image';
 
-export const ProductTabs = async () => {
+// TODO: Update unit test and component when fetching product data
+export const ProductTabs = () => {
+  // Mock data to check responsive and UI
   const items = CATEGORIES.map((category) => ({
     title: category,
     content: (category === 'All'
       ? PRODUCTS_DATA
       : PRODUCTS_DATA.filter((product) => product.category === category)
     ).map((product) => (
+      // Product Card components
       <div
         key={product.id}
         className="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow"
