@@ -18,7 +18,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     price: '$99',
     originalPrice: '$129',
     discount: '23%',
-    rating: 4.6,
+    rating: 5,
     category: 'Sneakers',
   },
   {
@@ -28,7 +28,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     price: '$299.43',
     originalPrice: '$534.33',
     discount: '44%',
-    rating: 4.5,
+    rating: 5,
     category: 'Bags',
   },
   {
@@ -38,7 +38,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     price: '$299.43',
     originalPrice: '$534.33',
     discount: '44%',
-    rating: 4.7,
+    rating: 5,
     category: 'Sneakers',
     label: 'HOT',
   },
@@ -49,7 +49,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     price: '$199.99',
     originalPrice: '$249.99',
     discount: '20%',
-    rating: 4.2,
+    rating: 4,
     category: 'Belt',
   },
   {
@@ -59,7 +59,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     price: '$159.99',
     originalPrice: '$199.99',
     discount: '20%',
-    rating: 4.3,
+    rating: 4,
     category: 'Sunglasses',
   },
   {
@@ -69,7 +69,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     price: '$139.99',
     originalPrice: '$179.99',
     discount: '22%',
-    rating: 4.1,
+    rating: 4,
     category: 'Sunglasses',
   },
 ];
