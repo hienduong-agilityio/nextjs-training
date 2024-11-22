@@ -9,3 +9,6 @@ export * from './ProfileIcon';
 export * from './StartIcon';
 export * from './StartRating';
 export * from './AddToCartIcon';
+export * from './ShippingIcon';
+export * from './RefundIcon';
+export * from './SupportIcon';

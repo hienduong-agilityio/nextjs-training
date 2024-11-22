@@ -10,6 +10,9 @@ import {
   LogoIcon,
   Start,
   AddToCartIcon,
+  ShippingIcon,
+  RefundIcon,
+  SupportIcon,
 } from '@/icons/index';
 
 const icons = [
@@ -23,6 +26,9 @@ const icons = [
   { component: ProfileIcon, label: 'ProfileIcon' },
   { component: Start, label: 'StartIcon' },
   { component: AddToCartIcon, label: 'AddToCartIcon' },
+  { component: ShippingIcon, label: 'ShippingIcon' },
+  { component: RefundIcon, label: 'RefundIcon' },
+  { component: SupportIcon, label: 'SupportIcon' },
 ];
 
 const meta: Meta = {
@@ -41,12 +47,16 @@ const meta: Meta = {
     customClass: {
       control: { type: 'text' },
       description:
-        'Custom CSS class for additional styles (e.g., color, margin).',
+        'Custom CSS class for additional styles (e.g., margin, animations).',
+    },
+    color: {
+      control: { type: 'color' },
+      description: 'Set the icon color using a valid CSS color value.',
     },
     isStarred: {
       control: { type: 'boolean' },
       description:
-        'Determines if the Start icon is starred (true) or unscarred (false).',
+        'Determines if the Start icon is starred (true) or unstarred (false).',
       defaultValue: false,
     },
   },
@@ -57,16 +67,19 @@ export default meta;
 type Story = StoryObj<{
   size: number;
   customClass: string;
+  color: string;
   isStarred: boolean;
 }>;
 
 const IconGallery = ({
   size,
   customClass,
+  color,
   isStarred,
 }: {
   size?: number;
   customClass?: string;
+  color?: string;
   isStarred?: boolean;
 }) => (
   <div className="grid grid-cols-6 gap-6 place-items-center">
@@ -79,11 +92,13 @@ const IconGallery = ({
           <IconComponent
             isStarred={isStarred}
             size={size}
+            color={color}
             className={`w-[${size}px] h-[${size}px] ${customClass}`}
           />
         ) : (
           <IconComponent
             size={size}
+            color={color}
             className={`w-[${size}px] h-[${size}px] ${customClass}`}
           />
         )}
@@ -103,6 +118,7 @@ export const Default: Story = {
     <IconGallery
       size={args.size}
       customClass={args.customClass}
+      color={args.color}
       isStarred={args.isStarred}
     />
   ),
