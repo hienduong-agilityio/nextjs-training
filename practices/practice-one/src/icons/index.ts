@@ -8,3 +8,4 @@ export * from './MessageIcon';
 export * from './ProfileIcon';
 export * from './StartIcon';
 export * from './StartRating';
+export * from './AddToCartIcon';

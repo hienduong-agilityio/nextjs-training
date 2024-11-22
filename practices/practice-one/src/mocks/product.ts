@@ -14,7 +14,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   {
     id: '1',
     name: 'Sneakers',
-    image: '/images/sneakers.jpg',
+    image: '/images/product-mock.png',
     price: '$99',
     originalPrice: '$129',
     discount: '23%',
@@ -24,7 +24,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   {
     id: '2',
     name: 'Leather Shoulder Bag',
-    image: '/images/bag.jpg',
+    image: '/images/product-mock.png',
     price: '$299.43',
     originalPrice: '$534.33',
     discount: '44%',
@@ -34,7 +34,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   {
     id: '3',
     name: 'Nike Air Max 270 React',
-    image: '/images/nike_air_max.jpg',
+    image: '/images/product-mock.png',
     price: '$299.43',
     originalPrice: '$534.33',
     discount: '44%',
@@ -45,7 +45,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   {
     id: '4',
     name: 'Classic Leather Belt',
-    image: '/images/leather_belt.jpg',
+    image: '/images/product-mock.png',
     price: '$199.99',
     originalPrice: '$249.99',
     discount: '20%',
@@ -55,7 +55,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   {
     id: '5',
     name: 'Aviator Sunglasses',
-    image: '/images/aviator_sunglasses.jpg',
+    image: '/images/product-mock.png',
     price: '$159.99',
     originalPrice: '$199.99',
     discount: '20%',
@@ -65,7 +65,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   {
     id: '6',
     name: 'Round Frame Sunglasses',
-    image: '/images/round_sunglasses.jpg',
+    image: '/images/product-mock.png',
     price: '$139.99',
     originalPrice: '$179.99',
     discount: '22%',

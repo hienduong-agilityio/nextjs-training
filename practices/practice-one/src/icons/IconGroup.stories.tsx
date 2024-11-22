@@ -9,6 +9,7 @@ import {
   ProfileIcon,
   LogoIcon,
   Start,
+  AddToCartIcon,
 } from '@/icons/index';
 
 const icons = [
@@ -21,6 +22,7 @@ const icons = [
   { component: LogoIcon, label: 'LogoIcon' },
   { component: ProfileIcon, label: 'ProfileIcon' },
   { component: Start, label: 'StartIcon' },
+  { component: AddToCartIcon, label: 'AddToCartIcon' },
 ];
 
 const meta: Meta = {
@@ -44,7 +46,7 @@ const meta: Meta = {
     isStarred: {
       control: { type: 'boolean' },
       description:
-        'Determines if the Start icon is starred (true) or unstarred (false).',
+        'Determines if the Start icon is starred (true) or unscarred (false).',
       defaultValue: false,
     },
   },

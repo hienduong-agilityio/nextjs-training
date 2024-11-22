@@ -1,6 +1,8 @@
-import { ProductCard } from '@/components/ProductCard';
+// Mock
 import { CATEGORIES, PRODUCTS_DATA } from '@/mocks';
-import { Tabs } from '@/components';
+
+// Components
+import { Tabs, ProductCard } from '@/components';
 
 export const ProductTabs = () => {
   const items = CATEGORIES.map((category) => ({
