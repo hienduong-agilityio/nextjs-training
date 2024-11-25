@@ -4,9 +4,7 @@ import { CATEGORIES, PRODUCTS_DATA } from '@/mocks';
 // Components
 import { Tabs, ProductCard } from '@/components';
 
-// TODO: Update unit test and component when fetching product data
 export const ProductTabs = () => {
-  // Mock data to check responsive and UI
   const items = CATEGORIES.map((category) => ({
     title: category,
     content: (category === 'All'
