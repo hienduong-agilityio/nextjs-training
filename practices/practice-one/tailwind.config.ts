@@ -37,6 +37,7 @@ const config: Config = {
       ...require('tailwindcss/colors'),
       black: '#222324',
       white: '#ffffff',
+      indigo: '#223263',
       warning: {
         50: '#FFC600',
         100: '#ECD345',
@@ -44,9 +45,10 @@ const config: Config = {
         300: '#FFC000',
       },
       danger: {
-        50: '#FF6875',
-        100: '#FF4858',
-        200: '#E63737',
+        50: '#FB7181',
+        100: '#FF6875',
+        200: '#FF4858',
+        300: '#E63737',
       },
       secondary: {
         50: '#FAFAFB',
