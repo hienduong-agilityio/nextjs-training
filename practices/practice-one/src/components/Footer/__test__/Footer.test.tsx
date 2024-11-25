@@ -27,9 +27,12 @@ describe('Footer', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders the follow us section with social media links', () => {
+  it('renders the follow us and contact us', () => {
     const followUsHeading = screen.getByText('Follow Us');
     expect(followUsHeading).toBeInTheDocument();
+
+    const contactUsHeading = screen.getByText('Contact Us');
+    expect(contactUsHeading).toBeInTheDocument();
 
     const facebookLink = screen.getByLabelText('Facebook');
     const twitterLink = screen.getByLabelText('Twitter');
@@ -38,11 +41,6 @@ describe('Footer', () => {
     expect(facebookLink).toHaveAttribute('href', 'https://www.facebook.com/');
     expect(twitterLink).toBeInTheDocument();
     expect(twitterLink).toHaveAttribute('href', 'https://www.twitter.com/');
-  });
-
-  it('renders the contact us section', () => {
-    const contactUsHeading = screen.getByText('Contact Us');
-    expect(contactUsHeading).toBeInTheDocument();
 
     expect(
       screen.getByText('E-Comm, 4578 Marmora Road, Glasgow D04 89GR'),
