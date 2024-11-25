@@ -9,5 +9,5 @@ export interface IProductProps {
   discount?: string;
   rating?: number;
   label?: string;
-  category: Category;
+  category?: Category;
 }

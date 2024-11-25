@@ -8,6 +8,8 @@ import {
   MessageIcon,
   ProfileIcon,
   LogoIcon,
+  Start,
+  AddToCartIcon,
 } from '@/icons/index';
 
 const icons = [
@@ -19,6 +21,8 @@ const icons = [
   { component: MessageIcon, label: 'MessageIcon' },
   { component: LogoIcon, label: 'LogoIcon' },
   { component: ProfileIcon, label: 'ProfileIcon' },
+  { component: Start, label: 'StartIcon' },
+  { component: AddToCartIcon, label: 'AddToCartIcon' },
 ];
 
 const meta: Meta = {
@@ -39,19 +43,31 @@ const meta: Meta = {
       description:
         'Custom CSS class for additional styles (e.g., color, margin).',
     },
+    isStarred: {
+      control: { type: 'boolean' },
+      description:
+        'Determines if the Start icon is starred (true) or unscarred (false).',
+      defaultValue: false,
+    },
   },
 };
 
 export default meta;
 
-type Story = StoryObj<{ size: number; customClass: string }>;
+type Story = StoryObj<{
+  size: number;
+  customClass: string;
+  isStarred: boolean;
+}>;
 
 const IconGallery = ({
   size,
   customClass,
+  isStarred,
 }: {
   size?: number;
   customClass?: string;
+  isStarred?: boolean;
 }) => (
   <div className="grid grid-cols-6 gap-6 place-items-center">
     {icons.map(({ component: IconComponent, label }, index) => (
@@ -59,10 +75,18 @@ const IconGallery = ({
         key={index}
         className="flex flex-col items-center gap-2 cursor-pointer"
       >
-        <IconComponent
-          size={size}
-          className={`w-[${size}px] h-[${size}px] ${customClass}`}
-        />
+        {label === 'StartIcon' ? (
+          <IconComponent
+            isStarred={isStarred}
+            size={size}
+            className={`w-[${size}px] h-[${size}px] ${customClass}`}
+          />
+        ) : (
+          <IconComponent
+            size={size}
+            className={`w-[${size}px] h-[${size}px] ${customClass}`}
+          />
+        )}
         <span className="text-sm text-center">{label}</span>
       </div>
     ))}
@@ -73,8 +97,13 @@ export const Default: Story = {
   args: {
     size: 44,
     customClass: '',
+    isStarred: false,
   },
   render: (args) => (
-    <IconGallery size={args.size} customClass={args.customClass} />
+    <IconGallery
+      size={args.size}
+      customClass={args.customClass}
+      isStarred={args.isStarred}
+    />
   ),
 };
