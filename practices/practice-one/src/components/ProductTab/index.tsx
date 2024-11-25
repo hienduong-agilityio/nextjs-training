@@ -26,7 +26,7 @@ export const ProductTabs = () => {
 
   return (
     <section className="flex flex-col items-center gap-4">
-      <h2 className="uppercase text-3xl font-semibold">Best seller</h2>
+      <h2 className="text-3xl font-semibold uppercase">Best seller</h2>
       <Tabs
         items={items}
         customClass={{

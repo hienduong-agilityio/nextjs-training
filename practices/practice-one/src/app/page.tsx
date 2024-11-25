@@ -1,7 +1,12 @@
-import { ProductTabs } from '@/components';
+import { ProductTabs, Service } from '@/components';
 
 const Homepage = () => {
-  return <ProductTabs />;
+  return (
+    <div>
+      <ProductTabs />
+      <Service />
+    </div>
+  );
 };
 
 export default Homepage;

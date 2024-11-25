@@ -51,17 +51,17 @@ const ProductCard = ({
           style={{ width: '100%', height: 'auto' }}
         />
         {/* Hover Buttons */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 transition-opacity duration-300 bg-white bg-opacity-95 opacity-0 mx-3 my-5 group-hover:opacity-100">
+        <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100">
           <Button
             aria-label="Favorite product"
-            className="text-sm font-medium text-primary-100 border-2 flex  border-primary-100 bg-indigo-600 rounded-full"
+            className="flex text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
             onClick={onFavorite}
           >
             <HeartIcon size={35} />
           </Button>
           <Button
             aria-label="Add to Cart"
-            className="text-sm font-medium text-primary-100 border-2 border-primary-100 bg-indigo-600 rounded-full"
+            className="text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
             onClick={onAddToCart}
           >
             <AddToCartIcon size={35} />

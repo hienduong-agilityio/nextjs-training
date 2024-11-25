@@ -27,11 +27,11 @@ exports[`ProductCard Component matches snapshot 1`] = `
         width="0"
       />
       <div
-        class="absolute inset-0 z-10 flex items-center justify-center gap-4 transition-opacity duration-300 bg-white bg-opacity-95 opacity-0 mx-3 my-5 group-hover:opacity-100"
+        class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100"
       >
         <button
           aria-label="Favorite product"
-          class="text-sm font-medium text-primary-100 border-2 flex  border-primary-100 bg-indigo-600 rounded-full"
+          class="flex text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
           type="button"
         >
           <svg
@@ -55,7 +55,7 @@ exports[`ProductCard Component matches snapshot 1`] = `
         </button>
         <button
           aria-label="Add to Cart"
-          class="text-sm font-medium text-primary-100 border-2 border-primary-100 bg-indigo-600 rounded-full"
+          class="text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
           type="button"
         >
           <svg
