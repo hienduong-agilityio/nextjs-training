@@ -1,16 +1,11 @@
+import type { IIconProps } from '@/interfaces';
 import * as React from 'react';
-import type { SVGProps } from 'react';
-
-interface CartIconProps extends SVGProps<SVGSVGElement> {
-  size?: number;
-  itemCount?: number;
-}
 
 export const CartIcon = ({
   size = 24,
   itemCount = 0,
   ...props
-}: CartIconProps) => {
+}: IIconProps) => {
   const showBadge = itemCount > 0;
   return (
     <svg

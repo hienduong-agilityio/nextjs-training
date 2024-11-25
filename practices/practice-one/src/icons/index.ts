@@ -1,6 +1,7 @@
 export * from './CartIcon';
 export * from './AlertIcon';
 export * from './FacebookIcon';
+export * from './TwitterIcon';
 export * from './FilterIcon';
 export * from './HeartIcon';
 export * from './LogoIcon';
@@ -12,3 +13,7 @@ export * from './AddToCartIcon';
 export * from './ShippingIcon';
 export * from './RefundIcon';
 export * from './SupportIcon';
+export * from './WesternIcon';
+export * from './MasterCardIcon';
+export * from './PaypalIcon';
+export * from './VisaIcon';
