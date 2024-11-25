@@ -6,3 +6,6 @@ export * from './HeartIcon';
 export * from './LogoIcon';
 export * from './MessageIcon';
 export * from './ProfileIcon';
+export * from './StartIcon';
+export * from './StartRating';
+export * from './AddToCartIcon';
