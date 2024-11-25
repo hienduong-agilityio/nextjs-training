@@ -10,7 +10,7 @@ interface IHeaderProps {
 
 export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
   return (
-    <header className="flex flex-wrap md:gap-8 items-center md:justify-center xl:justify-between w-full pb-6 lg:pb-12">
+    <header className="container flex flex-wrap items-center w-full px-4 py-4 pb-6 mx-auto md:gap-8 md:justify-center xl:justify-between lg:pb-12 sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:py-6 md:py-8 lg:py-10 xl:py-12">
       <div className="flex flex-wrap gap-5 xl:justify-between lg:w-auto">
         <a href="/" className="flex items-center gap-2">
           {/* Logo */}
