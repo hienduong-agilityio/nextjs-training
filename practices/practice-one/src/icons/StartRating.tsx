@@ -1,11 +1,7 @@
+import type { IIconProps } from '@/interfaces';
 import { Start } from './StartIcon';
 
-interface StarRatingProps {
-  size?: number;
-  rating: number;
-}
-
-export const StarRating = ({ size = 44, rating = 3 }: StarRatingProps) => {
+export const StarRating = ({ size = 44, rating = 3 }: IIconProps) => {
   const validatedRating = Math.max(0, Math.min(rating, 5));
 
   return (

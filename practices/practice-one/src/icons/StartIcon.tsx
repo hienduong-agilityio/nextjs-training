@@ -1,11 +1,11 @@
+import type { IIconProps } from '@/interfaces';
 import * as React from 'react';
-import { SVGProps } from 'react';
 
 export const Start = ({
   size = 44,
   isStarred = false,
   ...props
-}: SVGProps<SVGSVGElement> & { size?: number; isStarred?: boolean }) => {
+}: IIconProps) => {
   const fillColor = isStarred ? '#FFC600' : '#C1C8CE';
 
   return (
