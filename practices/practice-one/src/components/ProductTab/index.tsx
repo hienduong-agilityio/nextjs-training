@@ -1,17 +1,25 @@
 // Mock
-import { CATEGORIES, PRODUCTS_DATA } from '@/mocks';
+import { CATEGORIES } from '@/mocks';
 
 // Components
 import { Tabs, ProductCard } from '@/components';
 
+// Service
+import { getProjects } from '@/services';
+
+// Type
+import type { IProductProps } from '@/interfaces';
+
 // TODO: Update unit test and component when fetching product data
-export const ProductTabs = () => {
+export const ProductTabs = async () => {
+  const productData: IProductProps[] = await getProjects();
+
   // Mock data to check responsive and UI
   const items = CATEGORIES.map((category) => ({
     title: category,
     content: (category === 'All'
-      ? PRODUCTS_DATA
-      : PRODUCTS_DATA.filter((product) => product.category === category)
+      ? productData
+      : productData.filter((product) => product.category === category)
     ).map((product) => (
       <ProductCard
         key={product.id}
