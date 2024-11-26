@@ -10,24 +10,24 @@ exports[`Tabs Component matches snapshot 1`] = `
     >
       <li>
         <button
-          class="p-3 text-sm font-medium outline-none transition-colors text-primary-400 border-primary-400"
-          id="tab-Tab 1"
+          class="p-3 text-sm font-medium outline-none text-primary-400 border-primary-400 border-b-2"
+          type="button"
         >
           Tab 1
         </button>
       </li>
       <li>
         <button
-          class="p-3 text-sm font-medium outline-none transition-colors  border-transparent hover:text-primary-400 hover:border-primary-400"
-          id="tab-Tab 2"
+          class="p-3 text-sm font-medium outline-none border-b-0"
+          type="button"
         >
           Tab 2
         </button>
       </li>
       <li>
         <button
-          class="p-3 text-sm font-medium outline-none transition-colors  border-transparent hover:text-primary-400 hover:border-primary-400"
-          id="tab-Tab 3"
+          class="p-3 text-sm font-medium outline-none border-b-0"
+          type="button"
         >
           Tab 3
         </button>
@@ -38,8 +38,6 @@ exports[`Tabs Component matches snapshot 1`] = `
     >
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        id="tab-panel-Tab 1"
-        role="tabpanel"
       >
         <div>
           Content for Tab 1
@@ -47,8 +45,6 @@ exports[`Tabs Component matches snapshot 1`] = `
       </div>
       <div
         class="hidden"
-        id="tab-panel-Tab 2"
-        role="tabpanel"
       >
         <div>
           Content for Tab 2
@@ -56,8 +52,6 @@ exports[`Tabs Component matches snapshot 1`] = `
       </div>
       <div
         class="hidden"
-        id="tab-panel-Tab 3"
-        role="tabpanel"
       >
         <div>
           Content for Tab 3

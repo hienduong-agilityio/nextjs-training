@@ -1,7 +1,11 @@
 'use client';
 
 // Libraries
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
+
+// Components
+import { Button } from '@/components';
 
 interface ITabItem {
   title: string;
@@ -19,6 +23,8 @@ interface ITabsProps {
     activeContent?: string;
     inactiveContent?: string;
   };
+  selectedTab: string;
+  onTabChange: (selectedTab: string) => void;
 }
 
 /**
@@ -37,28 +43,27 @@ interface ITabsProps {
  */
 const Tabs = ({
   items,
+  selectedTab,
+  onTabChange,
   customClass = {
     wrapper: 'flex flex-col gap-y-6 w-full',
     header: 'flex justify-center gap-7 border-b-2 pb-2',
-    button: 'p-3 text-sm font-medium outline-none transition-colors',
-    activeButton: 'text-primary-400 border-primary-400',
+    button: 'p-3 text-sm font-medium outline-none',
+    activeButton: 'text-primary-400 border-primary-400 border-b-2',
     content: 'mt-4',
     activeContent:
       'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
     inactiveContent: 'hidden',
   },
 }: ITabsProps): JSX.Element => {
-  const [selectedTab, setSelectedTab] = useState<string>(items[0]?.title || '');
-  const firstBtnRef = useRef<HTMLButtonElement | null>(null);
+  const [activeTab, setActiveTab] = useState<string>(selectedTab);
 
   useEffect(() => {
-    if (firstBtnRef.current) {
-      firstBtnRef.current.focus();
-    }
-  }, []);
+    setActiveTab(selectedTab);
+  }, [selectedTab]);
 
   const handleClick = (title: string) => {
-    setSelectedTab(title);
+    onTabChange(title);
   };
 
   return (
@@ -66,18 +71,17 @@ const Tabs = ({
       <ul className={customClass.header}>
         {items.map((item) => (
           <li key={item.title}>
-            <button
-              id={`tab-${item.title}`}
-              ref={item.title === items[0]?.title ? firstBtnRef : null}
+            <Button
               onClick={() => handleClick(item.title)}
-              className={`${customClass.button} ${
-                selectedTab === item.title
+              className={twMerge(
+                customClass.button,
+                activeTab === item.title
                   ? customClass.activeButton
-                  : ' border-transparent hover:text-primary-400 hover:border-primary-400'
-              }`}
+                  : 'border-b-0',
+              )}
             >
               {item.title}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
@@ -85,13 +89,11 @@ const Tabs = ({
         {items.map((item) => (
           <div
             key={item.title}
-            id={`tab-panel-${item.title}`}
-            role="tabpanel"
-            className={`${
-              selectedTab === item.title
+            className={twMerge(
+              activeTab === item.title
                 ? customClass.activeContent
-                : customClass.inactiveContent ?? 'hidden'
-            }`}
+                : customClass.inactiveContent,
+            )}
           >
             {item.content}
           </div>
