@@ -7,10 +7,12 @@ import { API_URL, HTTP_METHODS } from '@/constants';
 // Type
 import type { IProductProps } from '@/interfaces';
 
-export const getProducts = async (): Promise<IProductProps[]> => {
+export const getProducts = async (
+  category?: string,
+): Promise<IProductProps[]> => {
   try {
     return await apiRequest<IProductProps[]>({
-      url: `${API_URL.PRODUCT}`,
+      url: category ? `${API_URL.PRODUCT}?${category}` : API_URL.PRODUCT,
       method: HTTP_METHODS.GET,
     });
   } catch (error: unknown) {

@@ -2,12 +2,12 @@ import { IProductProps } from '@/interfaces/product';
 
 import { Category } from '@/types/category';
 
-export const CATEGORIES: (Category | 'All')[] = [
-  'All',
-  'Bags',
-  'Sneakers',
-  'Belt',
-  'Sunglasses',
+export const CATEGORIES: (Category | 'all')[] = [
+  'all',
+  'bags',
+  'sneakers',
+  'belt',
+  'sunglasses',
 ];
 
 export const PRODUCTS_DATA: IProductProps[] = [
@@ -19,7 +19,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     originalPrice: '$129',
     discount: '23%',
     rating: 5,
-    category: 'Sneakers',
+    category: 'sneakers',
   },
   {
     id: '2',
@@ -29,7 +29,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     originalPrice: '$534.33',
     discount: '44%',
     rating: 5,
-    category: 'Bags',
+    category: 'bags',
   },
   {
     id: '3',
@@ -39,7 +39,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     originalPrice: '$534.33',
     discount: '44%',
     rating: 5,
-    category: 'Sneakers',
+    category: 'sneakers',
     label: 'HOT',
   },
   {
@@ -50,7 +50,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     originalPrice: '$249.99',
     discount: '20%',
     rating: 4,
-    category: 'Belt',
+    category: 'belt',
   },
   {
     id: '5',
@@ -60,7 +60,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
     originalPrice: '$199.99',
     discount: '20%',
     rating: 4,
-    category: 'Sunglasses',
+    category: 'sunglasses',
   },
   {
     id: '6',
@@ -70,6 +70,6 @@ export const PRODUCTS_DATA: IProductProps[] = [
     originalPrice: '$179.99',
     discount: '22%',
     rating: 4,
-    category: 'Sunglasses',
+    category: 'sunglasses',
   },
 ];
