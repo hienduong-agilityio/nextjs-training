@@ -1,26 +1,22 @@
+import type { IIconProps } from '@/interfaces';
 import * as React from 'react';
-import { SVGProps } from 'react';
 
 export const FacebookIcon = ({
-  size = 72,
+  size = 24,
+  color = '#03A9F4',
   ...props
-}: SVGProps<SVGSVGElement> & { size?: number }) => {
-  const scale = size / 72;
-
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      width={size}
-      height={size}
-      viewBox="0 0 48 88"
-    >
-      <path
-        fill="#4092FF"
-        d="M48 0H34.91A21.727 21.727 0 0 0 19.48 6.444 22.093 22.093 0 0 0 13.091 22v13.2H0v17.6h13.09V88h17.456V52.8h13.09L48 35.2H30.546V22c0-1.167.46-2.286 1.277-3.111A4.346 4.346 0 0 1 34.91 17.6H48V0Z"
-        transform={`scale(${scale})`}
-      />
-    </svg>
-  );
-};
+}: IIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 20 20"
+    fill="none"
+    {...props}
+  >
+    <path
+      fill={color}
+      d="M9.197 16v-6.77h2.273l.34-2.646H9.197V5.437c0-.765.213-1.286 1.311-1.286h1.398V1.814A18.844 18.844 0 0 0 9.896 1.6c-1.738 0-2.93 1.06-2.93 3.006v1.678H4.723v2.646h2.243V16h2.231Z"
+    />
+  </svg>
+);
