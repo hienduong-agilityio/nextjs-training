@@ -1,10 +1,7 @@
+import type { IIconProps } from '@/interfaces';
 import * as React from 'react';
-import { SVGProps } from 'react';
 
-export const ProfileIcon = ({
-  size = 40,
-  ...props
-}: SVGProps<SVGSVGElement> & { size?: number }) => {
+export const ProfileIcon = ({ size = 40, ...props }: IIconProps) => {
   const scale = size / 40;
 
   return (
