@@ -1,12 +1,5 @@
-import { ProductTabs, Service } from '@/components';
+import { redirect } from 'next/navigation';
 
-const Homepage = () => {
-  return (
-    <div>
-      <ProductTabs />
-      <Service />
-    </div>
-  );
-};
-
-export default Homepage;
+export default function Homepage() {
+  redirect('/products');
+}
