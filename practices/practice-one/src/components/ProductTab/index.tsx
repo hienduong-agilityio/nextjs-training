@@ -5,14 +5,14 @@ import { CATEGORIES } from '@/mocks';
 import { Tabs, ProductCard } from '@/components';
 
 // Service
-import { getProjects } from '@/services';
+import { getProducts } from '@/services';
 
 // Type
 import type { IProductProps } from '@/interfaces';
 
 // TODO: Update unit test and component when fetching product data
 export const ProductTabs = async () => {
-  const productData: IProductProps[] = await getProjects();
+  const productData: IProductProps[] = await getProducts();
 
   // Mock data to check responsive and UI
   const items = CATEGORIES.map((category) => ({
