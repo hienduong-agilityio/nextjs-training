@@ -15,15 +15,15 @@ exports[`ProductCard Component matches snapshot 1`] = `
     >
       <img
         alt="Test Product"
-        class="mix-blend-multiply"
+        class="mix-blend-multiply object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"
         data-nimg="1"
         decoding="async"
         height="0"
         loading="lazy"
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         src="/_next/image?url=%2Ftest-image.jpg&w=3840&q=75"
-        srcset="/_next/image?url=%2Ftest-image.jpg&w=640&q=75 640w, /_next/image?url=%2Ftest-image.jpg&w=750&q=75 750w, /_next/image?url=%2Ftest-image.jpg&w=828&q=75 828w, /_next/image?url=%2Ftest-image.jpg&w=1080&q=75 1080w, /_next/image?url=%2Ftest-image.jpg&w=1200&q=75 1200w, /_next/image?url=%2Ftest-image.jpg&w=1920&q=75 1920w, /_next/image?url=%2Ftest-image.jpg&w=2048&q=75 2048w, /_next/image?url=%2Ftest-image.jpg&w=3840&q=75 3840w"
-        style="color: transparent; width: 300px; height: 273px;"
+        srcset="/_next/image?url=%2Ftest-image.jpg&w=256&q=75 256w, /_next/image?url=%2Ftest-image.jpg&w=384&q=75 384w, /_next/image?url=%2Ftest-image.jpg&w=640&q=75 640w, /_next/image?url=%2Ftest-image.jpg&w=750&q=75 750w, /_next/image?url=%2Ftest-image.jpg&w=828&q=75 828w, /_next/image?url=%2Ftest-image.jpg&w=1080&q=75 1080w, /_next/image?url=%2Ftest-image.jpg&w=1200&q=75 1200w, /_next/image?url=%2Ftest-image.jpg&w=1920&q=75 1920w, /_next/image?url=%2Ftest-image.jpg&w=2048&q=75 2048w, /_next/image?url=%2Ftest-image.jpg&w=3840&q=75 3840w"
+        style="color: transparent;"
         width="0"
       />
       <div
