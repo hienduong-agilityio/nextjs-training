@@ -46,9 +46,8 @@ const ProductCard = ({
           alt={name}
           width={0}
           height={0}
-          className="mix-blend-multiply"
-          sizes="100vw"
-          style={{ width: '300px', height: '273px' }}
+          className="mix-blend-multiply object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Hover Buttons */}
         <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100">
