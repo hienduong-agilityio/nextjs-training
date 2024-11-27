@@ -20,7 +20,7 @@ export default function CollectionLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="grid grid-cols-12 gap-8 mb-10 md:mb-20 lg:mb-32">
+    <section className="sm:grid sm:grid-cols-12 gap-8 mb-10 md:mb-20 lg:mb-32">
       {/* Filter sidebar */}
       <aside className="flex flex-col gap-2 col-span-12 md:col-span-4 lg:col-span-2 w-full">
         <div className="md:sticky z-0 top-0">
