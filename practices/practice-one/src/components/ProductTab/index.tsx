@@ -27,16 +27,16 @@ export const ProductTabs = ({
 
   useEffect(() => {
     if (category && !CATEGORIES.includes(category.toLowerCase() as Category)) {
-      router.replace('/products/all');
+      router.replace('/products');
     }
   }, [category, router]);
 
   const handleTabChange = (selectedCategory: string) => {
-    if (selectedCategory.toLowerCase() === 'all') {
-      router.push('/products');
-    } else {
-      router.push(`/products/${selectedCategory}`);
-    }
+    router.push(
+      selectedCategory.toLowerCase() === 'all'
+        ? '/products'
+        : `/products/${selectedCategory}`,
+    );
   };
 
   // Map categories to tabs

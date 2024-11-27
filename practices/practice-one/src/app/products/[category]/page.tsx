@@ -1,8 +1,8 @@
 // Services
 import { getProducts } from '@/services';
 
-// Component
-import { ProductTabs, Service } from '@/components';
+// Components
+import { ProductTabs } from '@/components';
 
 // Types
 import type { Metadata } from 'next';
@@ -20,15 +20,12 @@ export async function generateMetadata({
 
 export default async function ProductCategoryPage({
   params,
-}: {
+}: Readonly<{
   params: { category: string };
-}) {
-  const productData = await getProducts(params.category);
+}>) {
+  const { category } = params;
 
-  return (
-    <div>
-      <ProductTabs category={params.category} productData={productData} />
-      <Service />
-    </div>
-  );
+  const productData = await getProducts(category);
+
+  return <ProductTabs category={category} productData={productData} />;
 }
