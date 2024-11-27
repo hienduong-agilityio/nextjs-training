@@ -2,7 +2,7 @@
 import { getProducts } from '@/services';
 
 // Components
-import { ProductTabs, Service } from '@/components';
+import { ProductTabs } from '@/components';
 
 // Types
 import type { Metadata } from 'next';
@@ -20,7 +20,6 @@ export default async function ProductPage() {
   return (
     <div>
       <ProductTabs productData={productData} />
-      <Service />
     </div>
   );
 }
