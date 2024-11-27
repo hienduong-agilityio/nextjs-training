@@ -1,7 +1,17 @@
 // Components
 import { Service } from '@/components';
 
-export default function ProductsLayout({
+// Types
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Products',
+    description: `The Products landing page`,
+  };
+}
+
+export default async function ProductsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
