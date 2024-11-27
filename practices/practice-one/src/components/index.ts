@@ -6,5 +6,8 @@ export { default as ProductCard } from './ProductCard';
 export * from './Service';
 export * from './Service/ServiceCard';
 export * from './Footer';
+export * from './FilterGroup';
+export * from './FilterSortBar';
+
 // Common
 export * from './common';
