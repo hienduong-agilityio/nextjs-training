@@ -53,6 +53,7 @@ export const ProductTabs = ({
         id={product.id}
         name={product.name}
         image={product.image}
+        label={product.label}
         price={product.price}
         originalPrice={product.originalPrice}
         discount={product.discount}

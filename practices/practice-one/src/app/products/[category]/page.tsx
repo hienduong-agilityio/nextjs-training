@@ -25,7 +25,7 @@ export default async function ProductCategoryPage({
 }>) {
   const { category } = params;
 
-  const productData = await getProducts(category);
+  const productData = await getProducts({ filter: { category: category } });
 
   return <ProductTabs category={category} productData={productData} />;
 }

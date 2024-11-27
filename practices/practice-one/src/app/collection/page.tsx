@@ -1,10 +1,15 @@
+// Components
 import { ProductCard } from '@/components';
-import { PRODUCTS_DATA } from '@/mocks';
 
-export default function ProductPage() {
+// Services
+import { getProducts } from '@/services';
+
+export default async function CollectionPage() {
+  const productData = await getProducts({ page: 1, limit: 6 });
+
   return (
     <>
-      {PRODUCTS_DATA.map((product) => (
+      {productData.map((product) => (
         <ProductCard
           key={product.id}
           id={product.id}
