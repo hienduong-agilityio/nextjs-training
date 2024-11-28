@@ -9,28 +9,38 @@ import type { IProductProps } from '@/interfaces';
 
 export const getProducts = async ({
   page = 0,
-  limit = 10,
+  limit = 6,
   filter = {},
+  sortBy = '',
 }: {
   page?: number;
   limit?: number;
   filter?: { [key: string]: string };
+  sortBy?: string;
 }): Promise<IProductProps[]> => {
   const queryParams: string[] = [];
 
-  for (const [key, value] of Object.entries(filter)) {
+  // Add filters to queryParams
+  Object.entries(filter).forEach(([key, value]) => {
     if (value) {
       queryParams.push(
         `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
       );
     }
-  }
+  });
 
+  // Add pagination params if page > 0
   if (page > 0) {
     queryParams.push(`page=${page}`);
     queryParams.push(`limit=${limit}`);
   }
 
+  // Add sortBy if provided
+  if (sortBy) {
+    queryParams.push(`sortBy=${encodeURIComponent(sortBy)}`);
+  }
+
+  // Construct query string
   const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
 
   const apiUrl = `${API_URL.PRODUCT}${queryString}`;
@@ -46,7 +56,7 @@ export const getProducts = async ({
     if (error instanceof Error) {
       throw new Error(error.message || 'Failed to fetch products');
     } else {
-      throw new Error('An unknown error while fetching products');
+      throw new Error('An unknown error occurred while fetching products');
     }
   }
 };

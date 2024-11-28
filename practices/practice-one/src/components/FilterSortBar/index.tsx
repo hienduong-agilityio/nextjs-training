@@ -1,37 +1,52 @@
 'use client';
 
+// Hooks
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+// Components
 import { Select } from '@/components';
 
 interface FilterSortBarProps {
   itemCount: number;
   sortOptions: string[];
   showOptions: string[];
-  viewMode: 'grid' | 'list';
-  onSortChange?: (value: string) => void;
-  onShowChange?: (value: string) => void;
 }
 
 export const FilterSortBar = ({
   itemCount,
   sortOptions,
   showOptions,
-  onShowChange,
-  onSortChange,
 }: FilterSortBarProps) => {
-  const handleSortChange = (value: string) => {
-    if (!onSortChange) {
-      return;
-    }
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-    onSortChange(value);
-  };
+  const [selectedLimit, setSelectedLimit] = useState<string>(showOptions[0]);
+  const [selectedSort, setSelectedSort] = useState<string>(sortOptions[0]);
+
+  useEffect(() => {
+    // Get query parameters from the URL
+    const limitParam = searchParams.get('limit') ?? showOptions[0];
+    const sortParam = searchParams.get('sortBy') ?? sortOptions[0];
+
+    setSelectedLimit(limitParam);
+    setSelectedSort(sortParam);
+  }, [searchParams, showOptions, sortOptions]);
 
   const handleShowChange = (value: string) => {
-    if (!onShowChange) {
-      return;
-    }
+    setSelectedLimit(value);
+    const currentParams = new URLSearchParams(searchParams.toString());
 
-    onShowChange(value);
+    currentParams.set('limit', value);
+    router.push(`?${currentParams.toString()}`);
+  };
+
+  const handleSortChange = (value: string) => {
+    setSelectedSort(value);
+    const currentParams = new URLSearchParams(searchParams.toString());
+
+    currentParams.set('sortBy', value);
+    router.push(`?${currentParams.toString()}`);
   };
 
   return (
@@ -42,18 +57,24 @@ export const FilterSortBar = ({
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
-          <Select
-            options={sortOptions}
-            defaultValue={sortOptions[0]}
-            customClass="md:w-40 bg-secondary-100"
-            onChange={(e) => handleSortChange(e.target.value)}
-          />
-          <Select
-            options={showOptions}
-            defaultValue={showOptions[0]}
-            customClass="md:w-40 bg-secondary-100"
-            onChange={(e) => handleShowChange(e.target.value)}
-          />
+          <div className="flex gap-2 items-center">
+            <span>Sort</span>
+            <Select
+              options={sortOptions}
+              value={selectedSort}
+              customClass="md:w-40 bg-secondary-100"
+              onChange={(e) => handleSortChange(e.target.value)}
+            />
+          </div>
+          <div className="flex gap-2 items-center">
+            <span>Show</span>
+            <Select
+              options={showOptions}
+              value={selectedLimit}
+              customClass="md:w-40 bg-secondary-100"
+              onChange={(e) => handleShowChange(e.target.value)}
+            />
+          </div>
         </div>
       </div>
     </div>
