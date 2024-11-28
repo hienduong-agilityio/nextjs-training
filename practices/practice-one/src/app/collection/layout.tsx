@@ -38,15 +38,11 @@ export default function CollectionLayout({
       <div className="col-span-12 md:col-span-8 lg:col-span-10 w-full">
         <FilterSortBar
           itemCount={PRODUCTS_DATA.length}
-          sortOptions={['Sort by Name', 'Sort by Price']}
-          showOptions={['Show 12', 'Show 24']}
-          viewMode="list"
+          sortOptions={['name', 'price']}
+          showOptions={['6', '9', '12']}
         />
-
         {/* List Products */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6 w-full">
-          {children}
-        </div>
+        {children}
       </div>
     </section>
   );
