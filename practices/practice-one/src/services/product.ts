@@ -61,6 +61,21 @@ export const getProducts = async ({
   }
 };
 
+/**
+ * Get a product by Id.
+ * @param id - The product ID.
+ */
+export const getProductById = async (id: string): Promise<IProductProps> => {
+  try {
+    return await apiRequest<IProductProps>({
+      url: `${API_URL.PRODUCT}/${id}`,
+      method: HTTP_METHODS.GET,
+    });
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
 export const createProduct = async (productData: IProductProps) => {
   try {
     return await apiRequest({
