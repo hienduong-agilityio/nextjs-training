@@ -38,6 +38,8 @@ export const FilterSortBar = ({
     const currentParams = new URLSearchParams(searchParams.toString());
 
     currentParams.set('limit', value);
+    currentParams.delete('page');
+
     router.push(`?${currentParams.toString()}`);
   };
 
