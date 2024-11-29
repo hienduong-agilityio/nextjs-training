@@ -36,12 +36,12 @@ export const getProducts = async ({
   const apiUrl = `${API_URL.PRODUCT}${queryString}`;
 
   try {
-    const projects = await apiRequest<IProductProps[]>({
+    const products = await apiRequest<IProductProps[]>({
       url: apiUrl,
       method: HTTP_METHODS.GET,
     });
 
-    return projects;
+    return products;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message || 'Failed to fetch products');
