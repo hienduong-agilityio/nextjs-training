@@ -1,5 +1,8 @@
+'use client';
+
 // Libraries
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
 import { Button, InputField } from '@/components';
@@ -10,9 +13,6 @@ import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
 export interface ISearchBoxProps {
   placeholder?: string;
   buttonText?: string;
-  value?: string;
-  onChange?: () => void;
-  onSearch?: () => void;
   customClass?: {
     container?: string;
     inputContainer?: string;
@@ -24,17 +24,32 @@ export interface ISearchBoxProps {
 const SearchBox = ({
   placeholder = 'Enter your query...',
   buttonText = 'Search',
-  value,
-  onChange,
-  onSearch,
   customClass = {},
 }: ISearchBoxProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    if (inputValue.trim()) {
+      const currentParams = new URLSearchParams(searchParams.toString());
+
+      currentParams.set('name', inputValue.trim());
+      router.push(`/collection?${currentParams.toString()}`);
+    }
+  };
+
   return (
     <div className={`flex ${customClass.container ?? ''}`}>
       <InputField
         placeholder={placeholder}
-        value={value}
-        onChange={onChange}
+        value={inputValue}
+        onChange={handleInputChange}
         customClass={{
           container: `border-blue-300 rounded-r-none ${customClass.inputContainer ?? ''}`,
           input: `h-16 text-gray-700 ${customClass.input ?? ''}`,
@@ -44,7 +59,7 @@ const SearchBox = ({
         customClass={`px-7 rounded-l-none ${customClass.button ?? ''}`}
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}
-        onClick={onSearch}
+        onClick={handleSearch}
       >
         {buttonText}
       </Button>
