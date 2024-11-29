@@ -25,7 +25,7 @@ const meta = {
       description: 'Name of the product.',
       control: 'text',
     },
-    image: {
+    images: {
       description: 'URL of the product image.',
       control: 'text',
     },
@@ -62,7 +62,7 @@ export const Default: Story = {
   args: {
     id: '1',
     name: 'Sample Product',
-    image: '/images/product-mock.png',
+    images: ['/images/product-mock.png'],
     price: '$29.99',
     originalPrice: '$39.99',
     discount: '25% OFF',
@@ -83,7 +83,7 @@ export const WithCustomLabel: Story = {
   args: {
     id: '2',
     name: 'Special Edition Product',
-    image: '/images/product-mock.png',
+    images: ['/images/product-mock.png'],
     price: '$49.99',
     originalPrice: '$59.99',
     discount: '20% OFF',
@@ -103,7 +103,7 @@ export const WithoutDiscount: Story = {
   args: {
     id: '3',
     name: 'Basic Product',
-    image: '/images/product-mock.png',
+    images: ['/images/product-mock.png'],
     price: '$19.99',
     rating: 3.5,
   },
@@ -120,7 +120,7 @@ export const Minimal: Story = {
   args: {
     id: '4',
     name: 'Minimal Product',
-    image: '/images/product-mock.png',
+    images: ['/images/product-mock.png'],
     price: '$10.00',
     rating: 0,
   },
