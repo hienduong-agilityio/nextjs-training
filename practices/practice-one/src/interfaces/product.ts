@@ -10,6 +10,7 @@ export interface IProductProps {
   rating?: number;
   label?: string;
   description?: string;
+  availabilityStatus?: string;
   reviews?: [];
   category?: Category;
 }

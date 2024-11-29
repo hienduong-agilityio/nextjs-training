@@ -1,6 +1,15 @@
-import { StarRating } from '@/icons';
+import { Button } from '@/components';
+import { BUTTON_VARIANTS } from '@/enums';
+import {
+  AddToCartIcon,
+  FacebookIcon,
+  HeartIcon,
+  StarRating,
+  TwitterIcon,
+} from '@/icons';
 import { getProductById } from '@/services';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function ProductDetailsPage({
   params,
@@ -11,116 +20,128 @@ export default async function ProductDetailsPage({
   const productData = await getProductById(id);
 
   return (
-    <div className="bg-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            {/* Main Image */}
-            <Image
-              src={productData.images[0]}
-              alt={productData.name}
-              width={0}
-              height={0}
-              className="mix-blend-multiply object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            {/* Thumbnails */}
+    <div className="bg-gray-50">
+      <div className="container px-4 py-8 mx-auto">
+        <div className="flex flex-wrap ">
+          {/* Left Section - Images */}
+          <div className="flex flex-col items-center w-full lg:w-1/2">
+            <div className="mb-4">
+              <Image
+                src={productData.images[0]}
+                alt={productData.name}
+                width={150}
+                height={150}
+                className="object-cover mx-auto rounded-lg"
+              />
+            </div>
             {productData.images.length > 1 && (
-              <div className="flex gap-4 py-4 justify-center overflow-x-auto">
+              <div className="flex justify-center gap-4">
                 {productData.images.map((image, index) => (
                   <Image
                     key={index}
                     src={image}
                     alt={`Thumbnail ${index + 1}`}
-                    width={100}
+                    width={80}
                     height={80}
-                    className="w-16 sm:w-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                    className="w-16 h-16 transition-shadow duration-300 border border-gray-300 rounded-md cursor-pointer hover:shadow-lg"
                   />
                 ))}
               </div>
             )}
           </div>
 
-          <div className="w-full md:w-1/2 px-4">
-            <h2 className="text-3xl font-bold mb-2">{productData.name}</h2>
-            <div className="mb-4">
-              <span className="text-2xl font-bold mr-2">
+          {/* Right Section - Details */}
+          <div className="w-full lg:w-1/2">
+            <h2 className="mb-4 text-2xl font-semibold text-gray-800 md:text-3xl">
+              {productData.name}
+            </h2>
+
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-bold text-primary-600">
                 ${productData.price}
               </span>
-              <span className="text-gray-500 line-through">
+              <span className="text-lg text-gray-500 line-through">
                 ${productData.originalPrice}
               </span>
+              <span className="text-lg font-semibold text-red-500">% Off</span>
             </div>
-            <div className="flex items-center mb-4">
-              <StarRating size={14} rating={productData.rating} />
-              <span className="ml-2 text-gray-600">
-                {productData.reviews?.length} review
+
+            <div className="flex items-center gap-2 mb-6">
+              <StarRating size={16} rating={productData.rating} />
+              <span className="text-gray-600">
+                {productData.reviews?.length || 0} reviews
               </span>
+              <Link href="#" className="text-sm text-blue-500 hover:underline">
+                Submit a review
+              </Link>
             </div>
-            <p className="text-gray-700 mb-6">{productData.description}</p>
 
-            <div className="mb-6">
-              <label
-                htmlFor="quantity"
-                className="block text-sm font-medium text-gray-700 mb-1"
+            <p className="mb-6 text-gray-700">{productData.description}</p>
+
+            <div className="flex flex-col justify-between gap-4 mb-6 md:flex-row">
+              <div className="flex items-center gap-4 mb-6">
+                <label htmlFor="quantity" className="text-sm text-gray-600">
+                  Quantity:
+                </label>
+                <div className="flex items-center border border-gray-300 rounded-lg">
+                  <button className="px-3 py-1 text-gray-500 hover:text-gray-800">
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    min="1"
+                    defaultValue="1"
+                    className="w-12 text-center border-0 bg-gray-50 focus:ring-0"
+                  />
+                  <button className="px-3 py-1 text-gray-500 hover:text-gray-800">
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="flex gap-5">
+                <Button
+                  startIcon={<AddToCartIcon size={20} />}
+                  variant={BUTTON_VARIANTS.SOLID}
+                  customClass="shadow-none bg-primary-50 text-primary-100 hover:text-white"
+                >
+                  Add To Cart
+                </Button>
+                <Button
+                  variant={BUTTON_VARIANTS.SOLID}
+                  customClass="shadow-none p-4 bg-primary-50"
+                >
+                  <HeartIcon size={24} />
+                </Button>
+              </div>
+            </div>
+
+            <div className="space-y-2 text-sm text-gray-600">
+              <p>
+                <span className="font-medium">Availability:</span>
+                {productData.availabilityStatus}
+              </p>
+              <p>
+                <span className="font-medium">Category:</span>
+                {productData.category}
+              </p>
+              <p className="font-medium text-green-600">Free Shipping</p>
+            </div>
+
+            <div className="flex flex-col gap-4 mt-8 md:flex-row">
+              <Button
+                startIcon={<FacebookIcon color="#fff" />}
+                customClass="flex-1 py-3 px-6 bg-lightBlue-800 text-white hover:bg-primary-200"
               >
-                Quantity:
-              </label>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                value="1"
-                className="w-12 text-center rounded-md border-gray-300  shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-            </div>
-
-            <div className="flex space-x-4 mb-6">
-              <button className="bg-indigo-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                  />
-                </svg>
-                Add to Cart
-              </button>
-              <button className="bg-gray-200 flex gap-2 items-center  text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                  />
-                </svg>
-                Wishlist
-              </button>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Key Features:</h3>
-              <ul className="list-disc list-inside text-gray-700">
-                <li>Industry-leading noise cancellation</li>
-                <li>30-hour battery life</li>
-                <li>Touch sensor controls</li>
-                <li>Speak-to-chat technology</li>
-              </ul>
+                Share on Facebook
+              </Button>
+              <Button
+                startIcon={<TwitterIcon color="#fff" />}
+                customClass="flex-1 py-3 px-6 bg-sky-400 text-white hover:bg-sky-500"
+              >
+                Share on Twitter
+              </Button>
             </div>
           </div>
         </div>
