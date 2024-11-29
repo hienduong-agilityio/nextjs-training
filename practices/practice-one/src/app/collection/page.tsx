@@ -5,7 +5,7 @@ import {
   FilterSortBar,
   FilterGroup,
 } from '@/components';
-import { FILTER_GROUP, PRODUCTS_DATA } from '@/mocks';
+import { FILTER_GROUP } from '@/mocks';
 
 // Services
 import { getProducts } from '@/services';
@@ -25,6 +25,7 @@ export default async function CollectionPage(
       limit?: string;
       page?: string;
       sortBy?: string;
+      category?: string;
     }>;
   }>,
 ) {
@@ -32,12 +33,16 @@ export default async function CollectionPage(
   const query = Number(searchParams?.limit) || 6;
   const currentPage = Number(searchParams?.page) || 1;
   const sortByParam = searchParams?.sortBy ?? '';
+  const collectionQuery = searchParams?.category ?? '';
 
-  const allProducts = await getProducts({});
+  const allProducts = await getProducts({
+    filter: { category: collectionQuery },
+  });
   const productData = await getProducts({
     page: currentPage,
     limit: query,
     sortBy: sortByParam,
+    filter: { category: collectionQuery },
   });
 
   const totalPages = Math.ceil(allProducts.length / query);
@@ -51,6 +56,7 @@ export default async function CollectionPage(
               key={group.title}
               title={group.title}
               items={group.items}
+              currentCategory={collectionQuery}
             />
           ))}
         </div>
@@ -59,7 +65,7 @@ export default async function CollectionPage(
       {/* Filter sort */}
       <div className="col-span-12 md:col-span-8 lg:col-span-10 w-full">
         <FilterSortBar
-          itemCount={PRODUCTS_DATA.length}
+          itemCount={productData.length}
           sortOptions={['name', 'price']}
           showOptions={['6', '9', '12']}
         />
@@ -71,7 +77,7 @@ export default async function CollectionPage(
                   key={product.id}
                   id={product.id}
                   name={product.name}
-                  image={product.image}
+                  images={product.images}
                   price={product.price}
                   originalPrice={product.originalPrice}
                   discount={product.discount}

@@ -7,8 +7,8 @@ import { ProductTabs } from '@/components';
 export default async function ProductPage() {
   const productData = await getProducts({
     page: 1,
-    limit: 5,
-    filter: { label: 'New' },
+    limit: 8,
+    filter: { label: 'Hot' },
   });
 
   return (

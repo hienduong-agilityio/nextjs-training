@@ -25,7 +25,7 @@ describe('ProductCard Component', () => {
     defaultProps = {
       id: '1',
       name: 'Test Product',
-      image: '/test-image.jpg',
+      images: ['/test-image.jpg'],
       price: '$50',
       originalPrice: '$70',
       discount: '28% OFF',
@@ -94,7 +94,7 @@ describe('ProductCard Component', () => {
       <ProductCard
         id="2"
         name="Minimal Product"
-        image="/minimal-image.jpg"
+        images={['/minimal-image.jpg']}
         price="$30"
       />,
     );
