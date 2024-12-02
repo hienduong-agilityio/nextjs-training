@@ -1,48 +1,35 @@
 // Libraries
 import React from 'react';
-import {
-  render,
-  screen,
-  fireEvent,
-  RenderResult,
-} from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
-import { SearchBox, ISearchBoxProps } from '@/components';
+import SearchBox from '@/components/SearchBox';
 
-const mockOnSearch = jest.fn();
-const mockOnChange = jest.fn();
-
-let defaultProps: ISearchBoxProps;
-let customClasses: Required<ISearchBoxProps>['customClass'];
-let renderResult: RenderResult;
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+  useSearchParams: jest.fn(),
+}));
 
 describe('SearchBox Component', () => {
+  const mockPush = jest.fn();
+  const mockSearchParams = new URLSearchParams();
+
   beforeEach(() => {
     jest.clearAllMocks();
 
-    defaultProps = {
-      onSearch: mockOnSearch,
-      onChange: mockOnChange,
-      placeholder: 'Enter your query...',
-      customClass: {},
-    };
-    customClasses = {
-      container: 'custom-container',
-      inputContainer: 'custom-input-container',
-      input: 'custom-input',
-      button: 'custom-button',
-    };
-    renderResult = render(<SearchBox {...defaultProps} />);
+    (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+    (useSearchParams as jest.Mock).mockReturnValue(mockSearchParams);
   });
 
   it('matches snapshot', () => {
-    const { asFragment } = renderResult;
+    const { asFragment } = render(<SearchBox />);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders the SearchBox component with default props', () => {
+    render(<SearchBox />);
     const input = screen.getByPlaceholderText('Enter your query...');
     expect(input).toBeInTheDocument();
     expect(input).toHaveClass('h-16 text-gray-700');
@@ -53,14 +40,19 @@ describe('SearchBox Component', () => {
   });
 
   it('renders with custom classes', () => {
-    renderResult.rerender(
-      <SearchBox {...defaultProps} customClass={customClasses} />,
-    );
+    const customClasses = {
+      container: 'custom-container',
+      inputContainer: 'custom-input-container',
+      input: 'custom-input',
+      button: 'custom-button',
+    };
+
+    render(<SearchBox customClass={customClasses} />);
 
     const container = screen
       .getByPlaceholderText('Enter your query...')
       .closest('div');
-    expect(container).toHaveClass('flex');
+    expect(container).toHaveClass('flex items-center gap-1');
 
     const input = screen.getByPlaceholderText('Enter your query...');
     expect(input).toHaveClass('custom-input');
@@ -70,9 +62,37 @@ describe('SearchBox Component', () => {
   });
 
   it('handles user input in the InputField', () => {
+    render(<SearchBox />);
     const input = screen.getByPlaceholderText('Enter your query...');
     fireEvent.change(input, { target: { value: 'Test query' } });
     expect(input).toHaveValue('Test query');
-    expect(mockOnChange).toHaveBeenCalledWith(expect.anything());
+  });
+
+  it('performs search on button click', () => {
+    render(<SearchBox />);
+    const input = screen.getByPlaceholderText('Enter your query...');
+    const button = screen.getByRole('button', { name: /Search/i });
+
+    fireEvent.change(input, { target: { value: 'Test query' } });
+    fireEvent.click(button);
+
+    expect(mockPush).toHaveBeenCalledWith('/collection?name=Test+query');
+  });
+
+  it('appends search query to existing parameters', () => {
+    (useSearchParams as jest.Mock).mockReturnValue(
+      new URLSearchParams('category=bags'),
+    );
+
+    render(<SearchBox />);
+    const input = screen.getByPlaceholderText('Enter your query...');
+    const button = screen.getByRole('button', { name: /Search/i });
+
+    fireEvent.change(input, { target: { value: 'Test query' } });
+    fireEvent.click(button);
+
+    expect(mockPush).toHaveBeenCalledWith(
+      '/collection?category=bags&name=Test+query',
+    );
   });
 });

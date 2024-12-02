@@ -3,6 +3,7 @@ import { CartIcon, LogoIcon, ProfileIcon } from '@/icons';
 
 // Components
 import { SearchBox } from '@/components';
+import { Suspense } from 'react';
 
 interface IHeaderProps {
   cartItemCount?: number;
@@ -21,14 +22,16 @@ export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
         </a>
 
         {/* Search Box */}
-        <SearchBox
-          customClass={{
-            container: 'md:justify-end',
-            input: 'w-full md:w-[400px] lg:w-[520px]',
-            inputContainer: 'border-primary-300',
-            button: 'bg-primary-300 text-white',
-          }}
-        />
+        <Suspense fallback={<p>Loading....</p>}>
+          <SearchBox
+            customClass={{
+              container: 'md:justify-end',
+              input: 'w-full md:w-[400px] lg:w-[520px]',
+              inputContainer: 'border-primary-300',
+              button: 'bg-primary-300 text-white',
+            }}
+          />
+        </Suspense>
       </div>
 
       <div className="flex items-center gap-4 mt-5 sm:gap-6 lg:mt-0">

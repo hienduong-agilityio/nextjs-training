@@ -26,6 +26,7 @@ export default async function CollectionPage(
       page?: string;
       sortBy?: string;
       category?: string;
+      name?: string;
     }>;
   }>,
 ) {
@@ -33,16 +34,18 @@ export default async function CollectionPage(
   const query = Number(searchParams?.limit) || 6;
   const currentPage = Number(searchParams?.page) || 1;
   const sortByParam = searchParams?.sortBy ?? '';
+  const filterByNameParam = searchParams?.name ?? '';
+
   const collectionQuery = searchParams?.category ?? '';
 
   const allProducts = await getProducts({
-    filter: { category: collectionQuery },
+    filter: { category: collectionQuery, name: filterByNameParam },
   });
   const productData = await getProducts({
     page: currentPage,
     limit: query,
     sortBy: sortByParam,
-    filter: { category: collectionQuery },
+    filter: { category: collectionQuery, name: filterByNameParam },
   });
 
   const totalPages = Math.ceil(allProducts.length / query);
