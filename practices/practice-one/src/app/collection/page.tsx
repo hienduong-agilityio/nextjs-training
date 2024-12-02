@@ -39,7 +39,7 @@ export default async function CollectionPage(
   const collectionQuery = searchParams?.category ?? '';
 
   const allProducts = await getProducts({
-    filter: { category: collectionQuery },
+    filter: { category: collectionQuery, name: filterByNameParam },
   });
   const productData = await getProducts({
     page: currentPage,

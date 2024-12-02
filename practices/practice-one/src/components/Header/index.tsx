@@ -22,7 +22,7 @@ export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
         </a>
 
         {/* Search Box */}
-        <Suspense>
+        <Suspense fallback={<p>Loading....</p>}>
           <SearchBox
             customClass={{
               container: 'md:justify-end',
