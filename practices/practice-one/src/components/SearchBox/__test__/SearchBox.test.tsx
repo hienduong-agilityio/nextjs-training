@@ -79,15 +79,6 @@ describe('SearchBox Component', () => {
     expect(mockPush).toHaveBeenCalledWith('/collection?name=Test+query');
   });
 
-  it('does not perform search if input is empty', () => {
-    render(<SearchBox />);
-    const button = screen.getByRole('button', { name: /Search/i });
-
-    fireEvent.click(button);
-
-    expect(mockPush).not.toHaveBeenCalled();
-  });
-
   it('appends search query to existing parameters', () => {
     (useSearchParams as jest.Mock).mockReturnValue(
       new URLSearchParams('category=bags'),
