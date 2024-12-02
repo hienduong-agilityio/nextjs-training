@@ -13,7 +13,8 @@ import { HeartIcon, StarRating, AddToCartIcon } from '@/icons';
 import Image from 'next/image';
 import { Button } from '@/components';
 
-interface IProductCardProps extends IProductProps {
+interface IProductCardProps extends Omit<IProductProps, 'images'> {
+  images: string[];
   onFavorite?: () => void;
   onAddToCart?: () => void;
 }
@@ -21,7 +22,7 @@ interface IProductCardProps extends IProductProps {
 const ProductCard = ({
   id,
   name,
-  image,
+  images,
   price,
   originalPrice,
   discount,
@@ -30,6 +31,8 @@ const ProductCard = ({
   onFavorite = () => {},
   onAddToCart = () => {},
 }: IProductCardProps) => {
+  const image = images[0];
+
   return (
     <div
       key={id}
@@ -67,7 +70,6 @@ const ProductCard = ({
           </Button>
         </div>
       </div>
-      {/* Product Details */}
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
         <h3 className="text-lg font-semibold text-center text-indigo">
           {name}
