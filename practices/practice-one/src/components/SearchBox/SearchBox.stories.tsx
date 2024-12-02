@@ -26,19 +26,6 @@ const meta = {
       control: 'text',
       defaultValue: 'Search',
     },
-    value: {
-      description: 'The current value of the input field.',
-      control: 'text',
-    },
-    onChange: {
-      description: 'Callback function triggered when the input value changes.',
-      action: 'onChange',
-    },
-    onSearch: {
-      description:
-        'Callback function triggered when the search button is clicked. Receives the input value as an argument.',
-      action: 'onSearch',
-    },
     customClass: {
       description: 'Custom classes for styling the SearchBox component.',
       control: 'object',
