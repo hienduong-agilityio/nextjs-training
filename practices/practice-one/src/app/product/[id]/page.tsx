@@ -27,7 +27,7 @@ export async function generateMetadata({
   const product = await getProductById(params.id);
 
   return {
-    title: `${product.name} - My Store`,
+    title: `E-comm - ${product.name}`,
     description: product.description?.slice(0, 160),
     openGraph: {
       title: product.name,

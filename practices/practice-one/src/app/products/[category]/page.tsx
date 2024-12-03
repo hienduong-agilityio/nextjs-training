@@ -13,7 +13,7 @@ export async function generateMetadata({
   params: { category: string };
 }): Promise<Metadata> {
   return {
-    title: `Products - ${params.category}`,
+    title: `E-comm - Products ${params.category}`,
     description: `Discover the best products in the ${params.category} category.`,
   };
 }

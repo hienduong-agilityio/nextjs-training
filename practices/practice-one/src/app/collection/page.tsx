@@ -15,7 +15,7 @@ import type { Metadata } from 'next';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Products Collection',
+    title: 'E-comm Products Collection',
     description: `The Products collection page`,
   };
 }
