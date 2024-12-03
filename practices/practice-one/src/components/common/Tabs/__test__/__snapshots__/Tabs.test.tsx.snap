@@ -9,28 +9,28 @@ exports[`Tabs Component matches snapshot 1`] = `
       class="flex justify-center gap-7 border-b-2 pb-2"
     >
       <li>
-        <button
+        <a
           class="p-3 text-sm font-medium outline-none text-primary-400 border-primary-400 border-b-2"
-          type="button"
+          href="/tab1"
         >
           Tab 1
-        </button>
+        </a>
       </li>
       <li>
-        <button
+        <a
           class="p-3 text-sm font-medium outline-none border-b-0"
-          type="button"
+          href="/tab2"
         >
           Tab 2
-        </button>
+        </a>
       </li>
       <li>
-        <button
+        <a
           class="p-3 text-sm font-medium outline-none border-b-0"
-          type="button"
+          href="/tab3"
         >
           Tab 3
-        </button>
+        </a>
       </li>
     </ul>
     <div
