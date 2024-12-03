@@ -4,5 +4,7 @@ export * from './ProductInfo';
 export * from './QuantityControl';
 export * from './SocialShare';
 export * from './RelatedProducts';
-export * from './LoadingRelatedProducts';
 export * from './ProductDetailsTabs';
+export * from './LoadingRelatedProducts';
+export * from './LoadingProductCard';
+export * from './LoadingProductTabs';

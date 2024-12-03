@@ -1,4 +1,5 @@
 // Libraries
+import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 // Components
@@ -11,7 +12,40 @@ import {
   RelatedProducts,
   LoadingRelatedProducts,
   ProductDetailsTabs,
+  LoadingProductTabs,
 } from '@/ui';
+
+// Services
+import { getProductById } from '@/services';
+
+// Metadata generation
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const product = await getProductById(params.id);
+
+  return {
+    title: `${product.name} - My Store`,
+    description: product.description?.slice(0, 160),
+    openGraph: {
+      title: product.name,
+      description: product.description,
+      url: `https://my-store.com/product/${product.id}`,
+      images: product.images.map((img) => ({
+        url: img,
+        alt: product.name,
+      })),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.name,
+      description: product.description,
+      images: product.images[0],
+    },
+  };
+}
 
 export default async function ProductDetailsPage({
   params,
@@ -41,7 +75,9 @@ export default async function ProductDetailsPage({
         </div>
       </section>
 
-      <ProductDetailsTabs productId={id} />
+      <Suspense fallback={<LoadingProductTabs />}>
+        <ProductDetailsTabs productId={id} />
+      </Suspense>
 
       <Suspense fallback={<LoadingRelatedProducts />}>
         <RelatedProducts currentProductId={id} />
