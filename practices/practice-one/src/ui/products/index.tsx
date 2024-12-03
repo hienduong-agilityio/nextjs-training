@@ -8,3 +8,5 @@ export * from './ProductDetailsTabs';
 export * from './LoadingRelatedProducts';
 export * from './LoadingProductCard';
 export * from './LoadingProductTabs';
+export * from './ProductDescription';
+export * from './ProductReview';

@@ -12,7 +12,6 @@ import {
   RelatedProducts,
   LoadingRelatedProducts,
   ProductDetailsTabs,
-  LoadingProductTabs,
 } from '@/ui';
 
 // Services
@@ -53,6 +52,7 @@ export default async function ProductDetailsPage({
   params: { id: string };
 }) {
   const { id } = params;
+  const productData = await getProductById(id);
 
   return (
     <div>
@@ -75,9 +75,10 @@ export default async function ProductDetailsPage({
         </div>
       </section>
 
-      <Suspense fallback={<LoadingProductTabs />}>
-        <ProductDetailsTabs productId={id} />
-      </Suspense>
+      <ProductDetailsTabs
+        description={productData.description}
+        reviews={productData.reviews}
+      />
 
       <Suspense fallback={<LoadingRelatedProducts />}>
         <RelatedProducts currentProductId={id} />

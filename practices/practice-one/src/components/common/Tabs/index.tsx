@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 // Components
-import { Button } from '@/components';
+import Link from 'next/link';
 
 interface ITabItem {
   title: string;
   content: React.ReactNode;
+  href: string;
 }
 
 interface ITabsProps {
@@ -18,8 +19,9 @@ interface ITabsProps {
     wrapper?: string;
     header?: string;
     button?: string;
+    link?: string;
+    activeLink?: string;
     content?: string;
-    activeButton?: string;
     activeContent?: string;
     inactiveContent?: string;
   };
@@ -33,8 +35,8 @@ interface ITabsProps {
  * @param customClass - Optional custom class names to customize the component's appearance.
  * @param customClass.wrapper - Custom class for the wrapper container.
  * @param customClass.header - Custom class for the tab header container.
- * @param customClass.button - Custom class for the tab buttons.
- * @param customClass.activeButton - Custom class for the active tab button.
+ * @param customClass.link - Custom class for the tab links.
+ * @param customClass.activeLink - Custom class for the active tab link.
  * @param customClass.content - Custom class for the tab content container.
  * @param customClass.activeContent - Custom class for the active tab content.
  * @param customClass.inactiveContent - Custom class for the inactive tab content.
@@ -48,8 +50,8 @@ const Tabs = ({
   customClass = {
     wrapper: 'flex flex-col gap-y-6 w-full',
     header: 'flex justify-center gap-7 border-b-2 pb-2',
-    button: 'p-3 text-sm font-medium outline-none',
-    activeButton: 'text-primary-400 border-primary-400 border-b-2',
+    link: 'p-3 text-sm font-medium outline-none',
+    activeLink: 'text-primary-400 border-primary-400 border-b-2',
     content: 'mt-4',
     activeContent:
       'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
@@ -71,17 +73,18 @@ const Tabs = ({
       <ul className={customClass.header}>
         {items.map((item) => (
           <li key={item.title}>
-            <Button
+            <Link
+              href={item.href}
               onClick={() => handleClick(item.title)}
               className={twMerge(
-                customClass.button,
+                customClass.link ?? customClass.button,
                 activeTab === item.title
-                  ? customClass.activeButton
+                  ? customClass.activeLink
                   : 'border-b-0',
               )}
             >
               {item.title}
-            </Button>
+            </Link>
           </li>
         ))}
       </ul>

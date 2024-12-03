@@ -10,9 +10,6 @@ import Link from 'next/link';
 export async function ProductInfo({ productId }: { productId: string }) {
   const productData = await getProductById(productId);
 
-  // Simplified rounding of rating
-  const roundedRating = Math.round(productData.rating as number);
-
   return (
     <>
       <h2 className="mb-4 text-2xl font-semibold text-gray-800 md:text-3xl">
@@ -21,7 +18,7 @@ export async function ProductInfo({ productId }: { productId: string }) {
 
       <div className="flex items-center gap-4 pb-3 border-b-2 border-secondary-1000">
         {/* Use roundedRating for the StarRating component */}
-        <StarRating size={16} rating={roundedRating} />
+        <StarRating size={16} rating={productData.rating} />
         <span className="text-secondary-500">
           {productData.reviews?.length ?? 0} reviews
         </span>

@@ -1,5 +1,12 @@
 import { Category } from '@/types/category';
 
+export interface IProductReview {
+  rating: number;
+  comment: string;
+  date: string;
+  reviewerName: string;
+  reviewerEmail: string;
+}
 export interface IProductProps {
   id: string;
   name: string;
@@ -12,6 +19,6 @@ export interface IProductProps {
   label?: string;
   description?: string;
   availabilityStatus?: string;
-  reviews?: [];
+  reviews?: IProductReview[];
   category?: Category;
 }
