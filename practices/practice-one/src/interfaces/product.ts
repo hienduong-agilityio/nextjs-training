@@ -7,6 +7,7 @@ export interface IProductProps {
   price: string;
   originalPrice?: string;
   discount?: string;
+  shippingInformation?: string;
   rating?: number;
   label?: string;
   description?: string;
