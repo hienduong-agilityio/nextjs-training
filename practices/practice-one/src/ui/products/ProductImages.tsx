@@ -9,7 +9,7 @@ export async function ProductImages({ productId }: { productId: string }) {
 
   return (
     <div className="grid gap-6">
-      <div className="w-full h-[300px] sm:h-[400px] bg-secondary-50 flex items-center justify-center">
+      <div className="w-full h-[300px] sm:h-[350px] bg-secondary-50 flex items-center justify-center">
         <Image
           src={productData.images[0]}
           alt={productData.name}

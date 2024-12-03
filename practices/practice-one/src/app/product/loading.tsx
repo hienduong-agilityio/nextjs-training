@@ -7,7 +7,7 @@ export default function LoadingProductDetailsPage() {
         <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
           {/* Left Section - Images */}
           <div className="grid gap-6">
-            <div className="w-full h-[300px] sm:h-[400px] bg-gray-200 animate-pulse rounded-md" />
+            <div className="w-full h-[300px] sm:h-[350px] bg-gray-200 animate-pulse rounded-md" />
             <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
               <div className="w-full h-[100px] sm:h-[120px] bg-gray-200 animate-pulse rounded-md" />
               <div className="w-full h-[100px] sm:h-[120px] bg-gray-200 animate-pulse rounded-md" />
