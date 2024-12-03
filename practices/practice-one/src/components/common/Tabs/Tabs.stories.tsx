@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'The `Tabs` component provides a user-friendly way to navigate through multiple sections of content. Each tab displays a title, and its corresponding content is displayed when the tab is active. Highly customizable via class names.',
+          'The `Tabs` component provides a user-friendly way to navigate through multiple sections of content. Each tab displays a title linked to an `href`, and its corresponding content is displayed when the tab is active. Highly customizable via class names.',
       },
     },
   },
@@ -19,25 +19,29 @@ const meta = {
   argTypes: {
     items: {
       description:
-        'An array of tab items, each containing a `title` and `content`.',
+        'An array of tab items, each containing a `title`, `href`, and `content`.',
       control: { type: 'object' },
       defaultValue: [
         {
           title: 'Tab 1',
+          href: '/tab1',
           content: <div>Content for Tab 1</div>,
         },
         {
           title: 'Tab 2',
+          href: '/tab2',
           content: <div>Content for Tab 2</div>,
         },
         {
           title: 'Tab 3',
+          href: '/tab3',
           content: <div>Content for Tab 3</div>,
         },
       ],
       table: {
         type: {
-          summary: 'Array<{ title: string; content: React.ReactNode }>',
+          summary:
+            'Array<{ title: string; href: string; content: React.ReactNode }>',
         },
       },
     },
@@ -48,8 +52,8 @@ const meta = {
       defaultValue: {
         wrapper: 'flex flex-col gap-y-6 w-full',
         header: 'flex justify-center gap-7 border-b-2 pb-2',
-        button: 'p-3 text-sm font-medium outline-none',
-        activeButton: 'text-primary-400 border-primary-400',
+        link: 'p-3 text-sm font-medium outline-none',
+        activeLink: 'text-primary-400 border-primary-400 border-b-2',
         content: 'mt-4',
         activeContent:
           'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
@@ -61,8 +65,8 @@ const meta = {
           detail: `{
           wrapper?: string;
           header?: string;
-          button?: string;
-          activeButton?: string;
+          link?: string;
+          activeLink?: string;
           content?: string;
           activeContent?: string;
           inactiveContent?: string;
@@ -97,14 +101,17 @@ export const Default: Story = {
     items: [
       {
         title: 'Tab 1',
+        href: '/tab1',
         content: <div>Content for Tab 1</div>,
       },
       {
         title: 'Tab 2',
+        href: '/tab2',
         content: <div>Content for Tab 2</div>,
       },
       {
         title: 'Tab 3',
+        href: '/tab3',
         content: <div>Content for Tab 3</div>,
       },
     ],
@@ -112,8 +119,8 @@ export const Default: Story = {
     customClass: {
       wrapper: 'flex flex-col gap-y-6 w-full',
       header: 'flex justify-center gap-7 border-b-2 pb-2',
-      button: 'p-3 text-sm font-medium outline-none transition-colors',
-      activeButton: 'text-primary-400 border-primary-400 border-b-2',
+      link: 'p-3 text-sm font-medium outline-none transition-colors',
+      activeLink: 'text-primary-400 border-primary-400 border-b-2',
       content: 'mt-4',
       activeContent:
         'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
@@ -121,7 +128,7 @@ export const Default: Story = {
     },
     onTabChange: (selectedTab: string) => {
       console.log(`Tab changed to: ${selectedTab}`);
-    }, // Example function
+    },
   },
   parameters: {
     docs: {
@@ -138,10 +145,12 @@ export const WithCustomClasses: Story = {
     items: [
       {
         title: 'Tab A',
+        href: '/tabA',
         content: <div className="p-4">Customized Content for Tab A</div>,
       },
       {
         title: 'Tab B',
+        href: '/tabB',
         content: <div className="p-4">Customized Content for Tab B</div>,
       },
     ],
@@ -149,15 +158,15 @@ export const WithCustomClasses: Story = {
     customClass: {
       wrapper: 'flex flex-col gap-y-8 w-3/4 mx-auto',
       header: 'flex justify-start gap-4 border-b-4 pb-2',
-      button: 'p-2 text-base font-semibold transition-colors',
-      activeButton: 'text-primary-400 border-primary-400 border-b-2',
+      link: 'p-2 text-base font-semibold transition-colors',
+      activeLink: 'text-primary-400 border-primary-400 border-b-2',
       content: 'mt-6',
       activeContent: 'p-4 bg-gray-100 rounded shadow-md',
       inactiveContent: 'hidden',
     },
     onTabChange: (selectedTab: string) => {
       console.log(`Tab changed to: ${selectedTab}`);
-    }, // Example function
+    },
   },
   parameters: {
     docs: {
@@ -173,21 +182,22 @@ export const WithDynamicContent: Story = {
   args: {
     items: Array.from({ length: 5 }, (_, i) => ({
       title: `Dynamic Tab ${i + 1}`,
+      href: `/dynamicTab${i + 1}`,
       content: <div>Content for Dynamic Tab {i + 1}</div>,
     })),
     selectedTab: 'Dynamic Tab 1',
     customClass: {
       wrapper: 'flex flex-col gap-y-6 w-full',
       header: 'flex justify-center gap-4 border-b-2 pb-2',
-      button: 'p-3 text-sm font-medium outline-none',
-      activeButton: 'text-blue-500 border-blue-500',
+      link: 'p-3 text-sm font-medium outline-none',
+      activeLink: 'text-blue-500 border-blue-500',
       content: 'mt-4',
       activeContent: 'p-4 bg-gray-50 rounded shadow-sm',
       inactiveContent: 'hidden',
     },
     onTabChange: (selectedTab: string) => {
       console.log(`Tab changed to: ${selectedTab}`);
-    }, // Example function
+    },
   },
   parameters: {
     docs: {
