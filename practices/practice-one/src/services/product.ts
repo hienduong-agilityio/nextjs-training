@@ -6,6 +6,7 @@ import { API_URL, HTTP_METHODS } from '@/constants';
 
 // Type
 import type { IProductProps } from '@/interfaces';
+import type { Category } from '@/types/category';
 
 export const getProducts = async ({
   page = 0,
@@ -71,8 +72,15 @@ export const getProductById = async (id: string): Promise<IProductProps> => {
       url: `${API_URL.PRODUCT}/${id}`,
       method: HTTP_METHODS.GET,
     });
-  } catch (error) {
-    throw new Error((error as Error).message);
+  } catch {
+    return {
+      id: '',
+      name: '',
+      images: [''],
+      price: '',
+      originalPrice: '',
+      category: '' as Category,
+    };
   }
 };
 

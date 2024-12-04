@@ -1,6 +1,7 @@
 // Libraries
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
 // Components
 import {
@@ -52,7 +53,12 @@ export default async function ProductDetailsPage({
   params: { id: string };
 }) {
   const { id } = params;
+
   const productData = await getProductById(id);
+
+  if (!productData.id) {
+    notFound();
+  }
 
   return (
     <div>

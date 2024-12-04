@@ -12,7 +12,7 @@ export interface IProductProps {
   name: string;
   images: string[];
   price: string;
-  originalPrice?: string;
+  originalPrice: string;
   discount?: string;
   shippingInformation?: string;
   rating?: number;

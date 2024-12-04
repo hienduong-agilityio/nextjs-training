@@ -31,14 +31,6 @@ export const ProductTabs = ({
     }
   }, [category, router]);
 
-  const handleTabChange = (selectedCategory: string) => {
-    router.push(
-      selectedCategory.toLowerCase() === 'all'
-        ? '/products'
-        : `/products/${selectedCategory}`,
-    );
-  };
-
   // Map categories to tabs
   const items = CATEGORIES.map((cat) => ({
     title: cat,
@@ -69,7 +61,6 @@ export const ProductTabs = ({
       <Tabs
         items={items}
         selectedTab={category.toLowerCase()}
-        onTabChange={handleTabChange}
         customClass={{
           wrapper: 'max-w-6xl flex flex-col gap-y-6 w-full',
           header: 'flex justify-center gap-7 w-auto',

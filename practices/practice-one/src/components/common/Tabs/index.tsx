@@ -1,7 +1,4 @@
-'use client';
-
 // Libraries
-import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 // Components
@@ -15,18 +12,16 @@ interface ITabItem {
 
 interface ITabsProps {
   items: ITabItem[];
+  selectedTab: string;
   customClass?: {
     wrapper?: string;
     header?: string;
-    button?: string;
     link?: string;
     activeLink?: string;
     content?: string;
     activeContent?: string;
     inactiveContent?: string;
   };
-  selectedTab: string;
-  onTabChange: (selectedTab: string) => void;
 }
 
 /**
@@ -46,7 +41,6 @@ interface ITabsProps {
 const Tabs = ({
   items,
   selectedTab,
-  onTabChange,
   customClass = {
     wrapper: 'flex flex-col gap-y-6 w-full',
     header: 'flex justify-center gap-7 border-b-2 pb-2',
@@ -58,30 +52,24 @@ const Tabs = ({
     inactiveContent: 'hidden',
   },
 }: ITabsProps): JSX.Element => {
-  const [activeTab, setActiveTab] = useState<string>(selectedTab);
-
-  useEffect(() => {
-    setActiveTab(selectedTab);
-  }, [selectedTab]);
-
-  const handleClick = (title: string) => {
-    onTabChange(title);
-  };
-
   return (
-    <div className={customClass.wrapper}>
+    <div className={customClass.wrapper} role="tablist">
       <ul className={customClass.header}>
         {items.map((item) => (
           <li key={item.title}>
             <Link
               href={item.href}
-              onClick={() => handleClick(item.title)}
+              replace
               className={twMerge(
-                customClass.link ?? customClass.button,
-                activeTab === item.title
+                customClass.link,
+                selectedTab === item.title
                   ? customClass.activeLink
                   : 'border-b-0',
               )}
+              role="tab"
+              tabIndex={selectedTab === item.title ? 0 : -1}
+              aria-selected={selectedTab === item.title}
+              scroll={false}
             >
               {item.title}
             </Link>
@@ -93,10 +81,12 @@ const Tabs = ({
           <div
             key={item.title}
             className={twMerge(
-              activeTab === item.title
+              selectedTab === item.title
                 ? customClass.activeContent
                 : customClass.inactiveContent,
             )}
+            role="tabpanel"
+            hidden={selectedTab !== item.title}
           >
             {item.content}
           </div>
