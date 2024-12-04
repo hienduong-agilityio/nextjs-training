@@ -6,7 +6,7 @@ import { Button } from '@/components';
 
 export const CartAndFavoriteActions = () => {
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-3 xl:gap-5">
       {/* Add to Cart Button */}
       <Button
         startIcon={
@@ -16,7 +16,7 @@ export const CartAndFavoriteActions = () => {
             className="text-primary-100 group-hover:text-white transition-colors duration-200"
           />
         }
-        customClass="group flex items-center justify-center shadow-none bg-primary-50 text-primary-100 hover:bg-primary-100 hover:text-white transition-all duration-200"
+        customClass="group flex items-center justify-center shadow-none bg-primary-50 text-primary-100 hover:bg-primary-100 hover:text-white transition-all duration-200 whitespace-nowrap"
       >
         Add To Cart
       </Button>

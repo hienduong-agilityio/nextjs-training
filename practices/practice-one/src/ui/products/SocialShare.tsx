@@ -15,7 +15,7 @@ export const SocialShare = () => {
       </Button>
       <Button
         startIcon={<TwitterIcon color="#fff" />}
-        customClass="flex-1 justify-center py-3 gap-1 xl:gap-3 xl:px-6 bg-sky-400 text-white hover:bg-sky-500"
+        customClass="flex-1 justify-center py-3 gap-1 xl:gap-3 xl:px-6 bg-sky-400 text-white hover:bg-sky-500 whitespace-nowrap"
       >
         Share on Twitter
       </Button>
