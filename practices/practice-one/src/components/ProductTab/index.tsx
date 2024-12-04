@@ -62,9 +62,10 @@ export const ProductTabs = ({
         items={items}
         selectedTab={category.toLowerCase()}
         customClass={{
-          wrapper: 'max-w-6xl flex flex-col gap-y-6 w-full',
-          header: 'flex justify-center gap-7 w-auto',
-          link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100',
+          wrapper: 'max-w-6xl flex flex-col w-full',
+          header:
+            'flex md:justify-center gap-7 w-full overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide pb-4',
+          link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 border-transparent capitalize hover:text-primary-100',
           activeLink: 'text-primary-400 border-primary-400',
           content: 'mt-4',
           activeContent:
