@@ -1,5 +1,6 @@
 // Libraries
 import { twMerge } from 'tailwind-merge';
+import { memo } from 'react';
 
 // Components
 import Link from 'next/link';
@@ -96,4 +97,4 @@ const Tabs = ({
   );
 };
 
-export default Tabs;
+export default memo(Tabs);

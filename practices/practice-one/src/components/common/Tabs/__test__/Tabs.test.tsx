@@ -1,6 +1,11 @@
 // Libraries
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Tabs } from '@/components';
+import { useRouter } from 'next/router';
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
 
 const mockItems = [
   { title: 'Tab 1', href: '/tab1', content: <div>Content for Tab 1</div> },
@@ -9,32 +14,30 @@ const mockItems = [
 ];
 
 describe('Tabs Component', () => {
-  let mockOnTabChange: jest.Mock;
+  const mockPush = jest.fn();
+  const mockReplace = jest.fn();
 
   beforeEach(() => {
-    mockOnTabChange = jest.fn();
-    render(
-      <Tabs
-        items={mockItems}
-        selectedTab="Tab 1"
-        onTabChange={mockOnTabChange}
-      />,
-    );
+    jest.resetAllMocks();
+    (useRouter as jest.Mock).mockReturnValue({
+      pathname: '/tab1',
+      query: {},
+      push: mockPush,
+      replace: mockReplace,
+    });
   });
 
+  const renderTabs = (selectedTab: string) =>
+    render(<Tabs items={mockItems} selectedTab={selectedTab} />);
+
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <Tabs
-        items={mockItems}
-        selectedTab="Tab 1"
-        onTabChange={mockOnTabChange}
-      />,
-    );
+    const { asFragment } = renderTabs('Tab 1');
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders the correct number of tabs', () => {
-    const tabs = screen.getAllByRole('link');
+    renderTabs('Tab 1');
+    const tabs = screen.getAllByRole('tab');
     expect(tabs).toHaveLength(mockItems.length);
 
     tabs.forEach((tab, index) => {
@@ -43,37 +46,24 @@ describe('Tabs Component', () => {
   });
 
   it('displays the correct content for the active tab', () => {
+    renderTabs('Tab 1');
     const activeContent = screen.getByText('Content for Tab 1');
     expect(activeContent).toBeVisible();
   });
 
-  it('applies correct classes for active tabs', () => {
-    const activeTab = screen.getByRole('link', { name: /Tab 1/i });
+  it('applies correct classes for the active tab', () => {
+    renderTabs('Tab 1');
+    const activeTab = screen.getByRole('tab', { name: /Tab 1/i });
     expect(activeTab).toHaveClass(
       'text-primary-400 border-primary-400 border-b-2',
     );
   });
 
   it('applies correct classes for inactive tabs', () => {
-    const inactiveTab = screen.getByRole('link', { name: /Tab 2/i });
+    renderTabs('Tab 1');
+    const inactiveTab = screen.getByRole('tab', { name: /Tab 2/i });
     expect(inactiveTab).toHaveClass(
       'p-3 text-sm font-medium outline-none border-b-0',
     );
-  });
-
-  it('calls onTabChange when a tab is clicked', () => {
-    const tab2 = screen.getByRole('link', { name: /Tab 2/i });
-    fireEvent.click(tab2);
-
-    expect(mockOnTabChange).toHaveBeenCalledTimes(1);
-    expect(mockOnTabChange).toHaveBeenCalledWith('Tab 2');
-  });
-
-  it('updates content when a new tab is selected', () => {
-    const tab2 = screen.getByRole('link', { name: /Tab 2/i });
-    fireEvent.click(tab2);
-
-    const newActiveContent = screen.getByText('Content for Tab 2');
-    expect(newActiveContent).toBeVisible();
   });
 });

@@ -27,7 +27,7 @@ exports[`ProductCard Component matches snapshot 1`] = `
         width="0"
       />
       <div
-        class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100"
+        class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
       >
         <button
           aria-label="Favorite product"
