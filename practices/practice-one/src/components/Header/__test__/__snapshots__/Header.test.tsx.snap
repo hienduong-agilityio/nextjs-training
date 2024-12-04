@@ -3,7 +3,7 @@
 exports[`Header component renders the cart section with item count 1`] = `
 <DocumentFragment>
   <header
-    class="container flex gap-2 items-center justify-between w-full px-4 py-4 mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16"
+    class="container flex gap-6 items-center justify-between w-full px-4 md:mt-10 py-4 mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16"
   >
     <a
       class="flex items-center gap-2"
@@ -38,10 +38,10 @@ exports[`Header component renders the cart section with item count 1`] = `
       </span>
     </a>
     <div
-      class="w-3/4 flex items-center justify-end md:justify-between gap-4"
+      class="w-full flex items-center justify-end lg:justify-between gap-4"
     >
       <div
-        class="hidden md:block"
+        class="hidden lg:block"
       >
         <div
           class="flex md:justify-end"
@@ -51,7 +51,7 @@ exports[`Header component renders the cart section with item count 1`] = `
               class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 rounded-r-none border-primary-300"
             >
               <input
-                class="flex-1 outline-none px-3 py-2 bg-transparent h-16 text-gray-700 w-full lg:w-[220px] xl:w-[520px]"
+                class="flex-1 outline-none px-3 py-2 bg-transparent h-16 text-gray-700 w-full lg:w-[400px]"
                 placeholder="Enter your query..."
                 value=""
               />
@@ -66,7 +66,7 @@ exports[`Header component renders the cart section with item count 1`] = `
         </div>
       </div>
       <div
-        class="block md:hidden"
+        class="block lg:hidden"
       >
         <svg
           fill="none"
@@ -94,7 +94,7 @@ exports[`Header component renders the cart section with item count 1`] = `
         class="flex items-center gap-2"
       >
         <div
-          class="hidden md:flex items-center gap-2"
+          class="flex items-center gap-2"
         >
           <svg
             aria-label="profile"
@@ -112,7 +112,7 @@ exports[`Header component renders the cart section with item count 1`] = `
             />
           </svg>
           <span
-            class="hidden text-sm md:text-base lg:text-lg md:block"
+            class="hidden text-sm w-max md:text-base lg:text-lg lg:block"
           >
             My account
           </span>
@@ -169,39 +169,6 @@ exports[`Header component renders the cart section with item count 1`] = `
             </svg>
           </div>
         </div>
-        <div
-          class="md:hidden"
-        >
-          <svg
-            fill="none"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-              stroke="#9098B1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-            <path
-              d="M11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19Z"
-              stroke="#9098B1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-            <path
-              d="M11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5Z"
-              stroke="#9098B1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-          </svg>
-        </div>
       </div>
     </div>
   </header>
@@ -211,7 +178,7 @@ exports[`Header component renders the cart section with item count 1`] = `
 exports[`Header component renders the icon components 1`] = `
 <DocumentFragment>
   <header
-    class="container flex gap-2 items-center justify-between w-full px-4 py-4 mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16"
+    class="container flex gap-6 items-center justify-between w-full px-4 md:mt-10 py-4 mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16"
   >
     <a
       class="flex items-center gap-2"
@@ -246,10 +213,10 @@ exports[`Header component renders the icon components 1`] = `
       </span>
     </a>
     <div
-      class="w-3/4 flex items-center justify-end md:justify-between gap-4"
+      class="w-full flex items-center justify-end lg:justify-between gap-4"
     >
       <div
-        class="hidden md:block"
+        class="hidden lg:block"
       >
         <div
           class="flex md:justify-end"
@@ -259,7 +226,7 @@ exports[`Header component renders the icon components 1`] = `
               class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 rounded-r-none border-primary-300"
             >
               <input
-                class="flex-1 outline-none px-3 py-2 bg-transparent h-16 text-gray-700 w-full lg:w-[220px] xl:w-[520px]"
+                class="flex-1 outline-none px-3 py-2 bg-transparent h-16 text-gray-700 w-full lg:w-[400px]"
                 placeholder="Enter your query..."
                 value=""
               />
@@ -274,7 +241,7 @@ exports[`Header component renders the icon components 1`] = `
         </div>
       </div>
       <div
-        class="block md:hidden"
+        class="block lg:hidden"
       >
         <svg
           fill="none"
@@ -302,7 +269,7 @@ exports[`Header component renders the icon components 1`] = `
         class="flex items-center gap-2"
       >
         <div
-          class="hidden md:flex items-center gap-2"
+          class="flex items-center gap-2"
         >
           <svg
             aria-label="profile"
@@ -320,7 +287,7 @@ exports[`Header component renders the icon components 1`] = `
             />
           </svg>
           <span
-            class="hidden text-sm md:text-base lg:text-lg md:block"
+            class="hidden text-sm w-max md:text-base lg:text-lg lg:block"
           >
             My account
           </span>
@@ -353,39 +320,6 @@ exports[`Header component renders the icon components 1`] = `
               />
             </svg>
           </div>
-        </div>
-        <div
-          class="md:hidden"
-        >
-          <svg
-            fill="none"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z"
-              stroke="#9098B1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-            <path
-              d="M11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19Z"
-              stroke="#9098B1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-            <path
-              d="M11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5Z"
-              stroke="#9098B1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-          </svg>
         </div>
       </div>
     </div>
