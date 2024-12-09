@@ -52,7 +52,7 @@ export function ProductDetailsTabs({
         customClass={{
           wrapper: 'flex flex-col gap-y-6 w-full',
           header: 'flex justify-start gap-7 w-auto pb-3 border-b-2',
-          link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100',
+          link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100 hover:text-primary-100 focus:outline-none focus:ring-2 focus:ring-black',
           activeLink: 'text-primary-400 border-primary-400',
           content: 'text-secondary-500',
           activeContent: 'text-sm leading-6',
