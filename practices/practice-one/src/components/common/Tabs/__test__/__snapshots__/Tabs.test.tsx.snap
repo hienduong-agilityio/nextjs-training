@@ -11,9 +11,11 @@ exports[`Tabs Component matches snapshot 1`] = `
     >
       <li>
         <a
+          aria-controls="tabpanel-0"
           aria-selected="true"
           class="p-3 text-sm font-medium outline-none text-primary-400 border-primary-400 border-b-2"
           href="/tab1"
+          id="tab-0"
           role="tab"
           tabindex="0"
         >
@@ -22,22 +24,26 @@ exports[`Tabs Component matches snapshot 1`] = `
       </li>
       <li>
         <a
+          aria-controls="tabpanel-1"
           aria-selected="false"
           class="p-3 text-sm font-medium outline-none border-b-0"
           href="/tab2"
+          id="tab-1"
           role="tab"
-          tabindex="-1"
+          tabindex="0"
         >
           Tab 2
         </a>
       </li>
       <li>
         <a
+          aria-controls="tabpanel-2"
           aria-selected="false"
           class="p-3 text-sm font-medium outline-none border-b-0"
           href="/tab3"
+          id="tab-2"
           role="tab"
-          tabindex="-1"
+          tabindex="0"
         >
           Tab 3
         </a>
