@@ -19,7 +19,7 @@ export function ProductInfo({
   shippingInformation,
 }: IProductProps) {
   return (
-    <div>
+    <>
       <h2 className="mb-4 text-2xl font-semibold text-gray-800 md:text-3xl break-words">
         {name}
       </h2>
@@ -58,6 +58,6 @@ export function ProductInfo({
         </div>
         <p className="font-medium">{shippingInformation}</p>
       </div>
-    </div>
+    </>
   );
 }
