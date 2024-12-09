@@ -17,9 +17,9 @@ export default async function ProductsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <>
       {children}
       <Service />
-    </div>
+    </>
   );
 }

@@ -57,7 +57,7 @@ export default async function ProductDetailsPage({
   }
 
   return (
-    <div>
+    <>
       <section className="px-4 py-8">
         <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
           {/* Left Section - Images */}
@@ -85,6 +85,6 @@ export default async function ProductDetailsPage({
       <Suspense fallback={<LoadingRelatedProducts />}>
         <RelatedProducts currentProductId={id} />
       </Suspense>
-    </div>
+    </>
   );
 }

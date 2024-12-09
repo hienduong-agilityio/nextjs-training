@@ -11,7 +11,7 @@ export async function ProductInfo({ productId }: { productId: string }) {
   const productData = await getProductById(productId);
 
   return (
-    <div>
+    <>
       <h2 className="mb-4 text-2xl font-semibold text-gray-800 md:text-3xl break-words">
         {productData.name}
       </h2>
@@ -53,6 +53,6 @@ export async function ProductInfo({ productId }: { productId: string }) {
         </div>
         <p className="font-medium">{productData.shippingInformation}</p>
       </div>
-    </div>
+    </>
   );
 }

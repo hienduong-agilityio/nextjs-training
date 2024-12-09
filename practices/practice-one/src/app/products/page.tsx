@@ -11,9 +11,5 @@ export default async function ProductPage() {
     filter: { label: 'Hot' },
   });
 
-  return (
-    <div>
-      <ProductTabs productData={productData} />
-    </div>
-  );
+  return <ProductTabs productData={productData} />;
 }
