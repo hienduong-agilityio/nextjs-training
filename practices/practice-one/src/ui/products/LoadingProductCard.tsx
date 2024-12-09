@@ -6,7 +6,7 @@ export function LoadingProductCard() {
 
       {/* Image Placeholder */}
       <div className="relative bg-gray-200 h-[273px] w-full flex items-center justify-center rounded-sm">
-        <div className="w-[200px] sm:w-[300px] h-[200px] sm:h-[273px] bg-gray-300 rounded-md" />
+        <div className="w-full h-[200px] sm:h-[273px] bg-gray-300 rounded-md" />
       </div>
 
       {/* Hover Buttons Placeholder */}

@@ -35,7 +35,7 @@ export async function RelatedProducts({
   return (
     <section className="flex flex-col items-center gap-4 mt-8 md:mt-16 lg:mt-32">
       <h2 className="text-3xl font-semibold uppercase">Related products</h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {relatedProducts.length !== 0 ? (
           relatedProducts.map((product) => (
             <ProductCard
