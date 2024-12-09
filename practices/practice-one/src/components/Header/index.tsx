@@ -10,7 +10,7 @@ interface IHeaderProps {
 
 export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
   return (
-    <header className="container flex gap-6 items-center justify-between w-full px-4 md:mt-10 py-4 mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16">
+    <header className="flex items-center justify-between w-full gap-6 px-4 py-4 md:container md:mt-10 md:mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16">
       {/* Logo */}
       <a href="/" className="flex items-center gap-2">
         <LogoIcon aria-label="logo" />

@@ -58,7 +58,7 @@ export default async function ProductDetailsPage({
 
   return (
     <div>
-      <section className="container px-4 py-8 mx-auto">
+      <section className="px-4 py-8">
         <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
           {/* Left Section - Images */}
           <ProductImages productId={id} />
