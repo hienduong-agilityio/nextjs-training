@@ -50,12 +50,13 @@ export function ProductDetailsTabs({
         items={tabItems}
         selectedTab={activeTab}
         customClass={{
-          wrapper: 'flex flex-col gap-y-6 w-full',
-          header: 'flex justify-start gap-7 w-auto pb-3 border-b-2',
+          wrapper: 'flex flex-col w-full',
+          header:
+            'flex justify-start gap-7 overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide w-auto p-3',
           link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black',
           activeLink: 'text-primary-400 border-primary-400',
-          content: 'text-secondary-500',
-          activeContent: 'text-sm leading-6',
+          content: 'text-secondary-500 px-3',
+          activeContent: 'text-sm leading-6 pt-7 border-t-2',
           inactiveContent: 'hidden',
         }}
       />
