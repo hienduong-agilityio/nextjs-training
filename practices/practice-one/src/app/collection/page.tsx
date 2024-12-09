@@ -13,12 +13,43 @@ import { getProducts } from '@/services';
 // Types
 import type { Metadata } from 'next';
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: {
+    category?: string;
+    sortBy?: string;
+    limit?: string;
+    page?: string;
+  };
+}): Promise<Metadata> {
+  const category = searchParams?.category ?? 'All Products';
+  const formattedCategory =
+    category.charAt(0).toUpperCase() + category.slice(1);
+  const sortBy = searchParams?.sortBy
+    ? `, sorted by ${searchParams.sortBy}`
+    : '';
+  const limit = searchParams?.limit
+    ? `, showing ${searchParams.limit} per page`
+    : '';
+
   return {
-    title: 'E-comm Products Collection',
-    description: `The Products collection page`,
+    title: `E-Comm - ${formattedCategory} Collection`,
+    description: `Browse our ${category} collection${sortBy}${limit}. Find the best deals and top-rated products at E-Comm.`,
+    openGraph: {
+      title: `E-Comm - ${formattedCategory} Collection`,
+      description: `Explore our ${formattedCategory} collection${sortBy}${limit} at E-Comm. Shop now for the best deals and highest-rated items.`,
+      url: `https://nextjs-training-practice-one-app.vercel.app/collection?category=${category}&sortBy=${searchParams?.sortBy ?? ''}&limit=${searchParams?.limit ?? ''}&page=${searchParams?.page ?? ''}`,
+      images: [
+        {
+          url: '/images/product-mock.png',
+          alt: `${formattedCategory} Collection`,
+        },
+      ],
+    },
   };
 }
+
 export default async function CollectionPage(
   props: Readonly<{
     searchParams?: Promise<{
@@ -88,7 +119,7 @@ export default async function CollectionPage(
               <p>No products found.</p>
             )}
           </div>
-          <div className="w-full bg-secondary-300 flex flex-col items-center ">
+          <div className="w-full bg-secondary-300 flex flex-col items-center">
             <Pagination totalPages={totalPages} />
           </div>
         </div>

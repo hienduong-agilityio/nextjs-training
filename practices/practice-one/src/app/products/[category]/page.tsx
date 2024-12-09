@@ -12,9 +12,28 @@ export async function generateMetadata({
 }: {
   params: { category: string };
 }): Promise<Metadata> {
+  const { category } = params;
+  const capitalizedCategory =
+    category.charAt(0).toUpperCase() + category.slice(1);
+
   return {
-    title: `E-comm - Products ${params.category}`,
-    description: `Discover the best products in the ${params.category} category.`,
+    title: `E-Comm - Products in ${capitalizedCategory}`,
+    description: `Explore the best deals and latest arrivals in the ${capitalizedCategory} category.`,
+    openGraph: {
+      title: `E-Comm - ${capitalizedCategory} Products`,
+      description: `Find top-quality products in the ${capitalizedCategory} category.`,
+      url: `https://nextjs-training-practice-one-app.vercel.app/products/${category}`,
+      siteName: 'E-Comm',
+      type: 'website',
+      images: [
+        {
+          url: '/images/product-mock.png',
+          width: 1200,
+          height: 630,
+          alt: 'E-Comm Banner',
+        },
+      ],
+    },
   };
 }
 

@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'E-comm - Products',
-    description: `The Products landing page`,
+    description: `E-Comm Let's buy and share 🤑.`,
   };
 }
 

@@ -32,17 +32,13 @@ export async function generateMetadata({
     openGraph: {
       title: product.name,
       description: product.description,
-      url: `https://my-store.com/product/${product.id}`,
-      images: product.images.map((img) => ({
-        url: img,
-        alt: product.name,
-      })),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: product.name,
-      description: product.description,
-      images: product.images[0],
+      url: `https://nextjs-training-practice-one-app.vercel.app/product/${product.id}`,
+      images: [
+        {
+          url: product.images[0],
+          alt: product.name,
+        },
+      ],
     },
   };
 }
