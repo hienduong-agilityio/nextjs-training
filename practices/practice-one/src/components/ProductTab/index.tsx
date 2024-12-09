@@ -64,8 +64,8 @@ export const ProductTabs = ({
         customClass={{
           wrapper: 'max-w-6xl flex flex-col w-full',
           header:
-            'flex md:justify-center gap-7 w-full overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide pb-4',
-          link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 border-transparent capitalize hover:text-primary-100',
+            'flex md:justify-center gap-7 w-full overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide pb-4 pt-2',
+          link: 'p-3 pt-2 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 border-transparent capitalize hover:text-primary-100 focus:outline-none focus:ring-2 focus:ring-black',
           activeLink: 'text-primary-400 border-primary-400',
           content: 'mt-4',
           activeContent:

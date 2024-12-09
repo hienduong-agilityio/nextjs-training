@@ -56,7 +56,7 @@ const Tabs = ({
   return (
     <div className={customClass.wrapper} role="tablist">
       <ul className={customClass.header}>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li key={item.title}>
             <Link
               href={item.href}
@@ -68,8 +68,10 @@ const Tabs = ({
                   : 'border-b-0',
               )}
               role="tab"
-              tabIndex={selectedTab === item.title ? 0 : -1}
+              tabIndex={0}
               aria-selected={selectedTab === item.title}
+              aria-controls={`tabpanel-${index}`}
+              id={`tab-${index}`}
               scroll={false}
             >
               {item.title}
