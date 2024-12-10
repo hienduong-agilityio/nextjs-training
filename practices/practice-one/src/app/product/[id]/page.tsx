@@ -1,6 +1,5 @@
 // Libraries
 import { Metadata } from 'next';
-import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 // Components
@@ -10,8 +9,6 @@ import {
   ProductInfo,
   CartAndFavoriteActions,
   ProductImages,
-  RelatedProducts,
-  LoadingRelatedProducts,
   ProductDetailsTabs,
 } from '@/ui';
 
@@ -57,34 +54,40 @@ export default async function ProductDetailsPage({
   }
 
   return (
-    <>
-      <section className="px-4 py-8">
-        <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
-          {/* Left Section - Images */}
-          <ProductImages productId={id} />
+    <section className="px-4 py-8">
+      <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
+        {/* Product Images */}
+        <ProductImages images={productData.images} name={productData.name} />
 
-          {/* Right Section - Details */}
-          <div>
-            <ProductInfo productId={id} />
+        {/* Product Details */}
+        <div>
+          <ProductInfo
+            id={productData.id}
+            name={productData.name}
+            rating={productData.rating}
+            images={productData.images}
+            reviews={productData.reviews}
+            price={productData.price}
+            originalPrice={productData.originalPrice}
+            discount={productData.discount}
+            availabilityStatus={productData.availabilityStatus}
+            category={productData.category}
+            shippingInformation={productData.shippingInformation}
+          />
 
-            <div className="flex flex-col items-center justify-between gap-4 mt-4 md:flex-row py-6 border-y-2 border-secondary-1000">
-              <QuantityControl />
-              <CartAndFavoriteActions />
-            </div>
-
-            <SocialShare />
+          <div className="flex flex-col items-center justify-between gap-4 mt-4 md:flex-row py-6 border-y-2 border-secondary-1000">
+            <QuantityControl />
+            <CartAndFavoriteActions />
           </div>
+
+          <SocialShare />
         </div>
-      </section>
+      </div>
 
       <ProductDetailsTabs
         description={productData.description}
         reviews={productData.reviews}
       />
-
-      <Suspense fallback={<LoadingRelatedProducts />}>
-        <RelatedProducts currentProductId={id} />
-      </Suspense>
-    </>
+    </section>
   );
 }
