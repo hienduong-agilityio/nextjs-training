@@ -51,6 +51,9 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  const initialQuantity = 1;
+  const maxQuantity = productData.minimumOrderQuantity || Infinity;
+
   return (
     <section className="px-4 py-8">
       <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
@@ -62,7 +65,10 @@ export default async function ProductDetailPage({
           <ProductInfo {...productData} />
 
           <div className="flex flex-col items-center justify-between gap-4 mt-4 md:flex-row py-6 border-y-2 border-secondary-1000">
-            <QuantityControl productId={params.id} userId={134} />
+            <QuantityControl
+              initialQuantity={initialQuantity}
+              maxQuantity={maxQuantity}
+            />
             <CartAndFavoriteActions />
           </div>
 

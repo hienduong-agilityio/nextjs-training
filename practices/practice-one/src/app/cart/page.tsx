@@ -1,7 +1,13 @@
-import { ICartItem } from '@/interfaces';
-import { getCartByUserId } from '@/services/cart';
+// Types
+import type { ICartItem } from '@/interfaces';
+
+// Services
+import { getCartByUserId } from '@/services';
+
+// Components
 import { QuantityControl } from '@/ui';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CartPage = async () => {
   const userId = 134;
@@ -33,11 +39,19 @@ const CartPage = async () => {
                     height={60}
                     className="rounded border"
                   />
-                  <span className="ml-4">{product.title}</span>
+                  <Link
+                    href={`/product/${product.id}`}
+                    className="ml-4 hover:underline"
+                  >
+                    {product.title}
+                  </Link>
                 </td>
                 <td className="px-4 py-4 text-right">${product.price}</td>
                 <td className="px-4 py-4 text-right flex justify-end items-center space-x-2">
-                  <QuantityControl productId={product.id} userId={userId} />
+                  <QuantityControl
+                    initialQuantity={product.quantity}
+                    maxQuantity={product.quantity + 10}
+                  />
                 </td>
                 <td className="px-4 py-4 text-right">${product.total}</td>
               </tr>
