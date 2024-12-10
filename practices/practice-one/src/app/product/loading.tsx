@@ -1,4 +1,4 @@
-import { LoadingProductTabs, LoadingRelatedProducts } from '@/ui';
+import { LoadingProductTabs } from '@/ui';
 
 export default function LoadingProductDetailsPage() {
   return (
@@ -62,8 +62,6 @@ export default function LoadingProductDetailsPage() {
       </section>
 
       <LoadingProductTabs />
-
-      <LoadingRelatedProducts />
     </div>
   );
 }
