@@ -62,7 +62,7 @@ export default async function ProductDetailPage({
           <ProductInfo {...productData} />
 
           <div className="flex flex-col items-center justify-between gap-4 mt-4 md:flex-row py-6 border-y-2 border-secondary-1000">
-            <QuantityControl />
+            <QuantityControl productId={params.id} userId={134} />
             <CartAndFavoriteActions />
           </div>
 

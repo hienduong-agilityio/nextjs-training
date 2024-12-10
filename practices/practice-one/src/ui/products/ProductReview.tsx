@@ -25,9 +25,12 @@ export function ProductReviews({
             <h4 className="text-lg font-semibold text-gray-800">
               {review.reviewerName}
             </h4>
-            <span className="text-sm text-gray-500 mt-1 sm:mt-0">
+            <time
+              suppressHydrationWarning
+              className="text-sm text-gray-500 mt-1 sm:mt-0"
+            >
               {new Date(review.date).toLocaleDateString()}
-            </span>
+            </time>
           </div>
           <p className="text-sm text-gray-500 mt-1">{review.reviewerEmail}</p>
           <div className="mt-3 flex items-center">

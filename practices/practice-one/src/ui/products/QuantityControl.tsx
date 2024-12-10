@@ -1,16 +1,23 @@
 'use client';
 
-// Libraries
-import { useState } from 'react';
-
-// Components
 import { Button } from '@/components';
+import { useQuantityControl } from '@/hooks/useQuantityControl';
 
-export const QuantityControl = () => {
-  const [quantity, setQuantity] = useState(1);
+export interface IQuantityControlProps {
+  productId: string;
+  userId: number;
+}
 
-  const increment = () => setQuantity((prev) => prev + 1);
-  const decrement = () => setQuantity((prev) => Math.max(1, prev - 1));
+export default function QuantityControl({
+  productId,
+  userId,
+}: IQuantityControlProps) {
+  const { quantity, isLoading, increment, decrement, handleInputChange } =
+    useQuantityControl({ productId, userId });
+
+  if (isLoading) {
+    return <div className="text-gray-500">Loading...</div>;
+  }
 
   return (
     <div className="flex items-center gap-4 bg-secondary-50">
@@ -24,7 +31,7 @@ export const QuantityControl = () => {
         <input
           type="number"
           value={quantity}
-          onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+          onChange={(e) => handleInputChange(e.target.value)}
           className="w-12 text-center border-0 bg-gray-50 focus:ring-0"
         />
         <Button
@@ -36,4 +43,4 @@ export const QuantityControl = () => {
       </div>
     </div>
   );
-};
+}

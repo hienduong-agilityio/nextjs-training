@@ -1,7 +1,7 @@
 export * from './CartAndFavoriteActions';
 export * from './ProductImages';
 export * from './ProductInfo';
-export * from './QuantityControl';
+export { default as QuantityControl } from './QuantityControl';
 export * from './SocialShare';
 export * from './RelatedProducts';
 export * from './ProductDetailTabs';
