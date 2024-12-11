@@ -18,7 +18,7 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <footer className="w-full bg-primary-50">
-      <div className="container px-4 pt-6 mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
+      <div className="md:container px-4 pt-6 md:mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
         <div className="py-8">
           {/* Main Footer Content */}
           <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">

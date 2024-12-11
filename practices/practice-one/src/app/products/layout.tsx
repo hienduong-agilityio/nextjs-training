@@ -6,8 +6,8 @@ import type { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Products',
-    description: `The Products landing page`,
+    title: 'E-comm - Products',
+    description: `E-Comm Let's buy and share 🤑.`,
   };
 }
 
@@ -17,9 +17,9 @@ export default async function ProductsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <>
       {children}
       <Service />
-    </div>
+    </>
   );
 }
