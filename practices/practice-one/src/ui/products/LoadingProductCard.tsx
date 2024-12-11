@@ -10,7 +10,7 @@ export function LoadingProductCard() {
       </div>
 
       {/* Hover Buttons Placeholder */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100">
+      <div className="absolute inset-0 z-10 flex items-center justify-center gap-2 mx-3 my-5 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100">
         <div className="w-12 h-12 bg-gray-300 rounded-full" />
         <div className="w-12 h-12 bg-gray-300 rounded-full" />
       </div>
@@ -18,10 +18,10 @@ export function LoadingProductCard() {
       {/* Content Placeholder */}
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
         {/* Product Name Placeholder */}
-        <div className="w-full h-6 bg-gray-300 rounded-md mb-3" />
+        <div className="w-full h-6 bg-gray-300 rounded-md mb-1" />
 
         {/* Star Rating Placeholder */}
-        <div className="w-1/3 h-4 bg-gray-300 rounded-md mb-4" />
+        <div className="w-1/3 h-4 bg-gray-300 rounded-md mb-2" />
 
         {/* Price Details Placeholder */}
         <div className="flex items-center gap-2 w-full justify-center">
