@@ -12,8 +12,10 @@ import { HeartIcon, StarRating, AddToCartIcon } from '@/icons';
 // Components
 import Image from 'next/image';
 import { Button } from '@/components';
+import Link from 'next/link';
 
-interface IProductCardProps extends IProductProps {
+interface IProductCardProps extends Omit<IProductProps, 'images'> {
+  images: string[];
   onFavorite?: () => void;
   onAddToCart?: () => void;
 }
@@ -21,7 +23,7 @@ interface IProductCardProps extends IProductProps {
 const ProductCard = ({
   id,
   name,
-  image,
+  images,
   price,
   originalPrice,
   discount,
@@ -30,6 +32,8 @@ const ProductCard = ({
   onFavorite = () => {},
   onAddToCart = () => {},
 }: IProductCardProps) => {
+  const image = images[0];
+
   return (
     <div
       key={id}
@@ -50,39 +54,41 @@ const ProductCard = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Hover Buttons */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 bg-opacity-95 group-hover:opacity-100">
+        <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
           <Button
             aria-label="Favorite product"
-            className="flex text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
+            className="flex p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
             onClick={onFavorite}
           >
-            <HeartIcon size={35} />
+            <HeartIcon size={24} />
           </Button>
           <Button
             aria-label="Add to Cart"
-            className="text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
+            className="p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
             onClick={onAddToCart}
           >
-            <AddToCartIcon size={35} />
+            <AddToCartIcon size={24} />
           </Button>
         </div>
       </div>
-      {/* Product Details */}
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
-        <h3 className="text-lg font-semibold text-center text-indigo">
+        <Link
+          href={`/product/${id}`}
+          className="text-lg font-semibold text-center text-indigo hover:underline"
+        >
           {name}
-        </h3>
+        </Link>
         <StarRating size={14} rating={rating} />
         <div className="flex items-center space-x-2">
-          <span className="text-lg font-medium text-primary-200">{price}</span>
+          <span className="text-lg font-medium text-primary-200">${price}</span>
           {originalPrice && (
             <span className="text-sm text-gray-400 line-through">
-              {originalPrice}
+              ${originalPrice}
             </span>
           )}
           {discount && (
             <span className="text-sm font-semibold text-danger-50">
-              {discount}
+              ${discount}
             </span>
           )}
         </div>

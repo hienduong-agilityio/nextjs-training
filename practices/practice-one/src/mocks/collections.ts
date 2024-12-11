@@ -1,9 +1,15 @@
-export const HOT_DEALS = [
-  { name: 'Nike', count: 2 },
-  { name: 'Airmax', count: 48 },
-  { name: 'Adidas', count: 95 },
-  { name: 'Vans', count: 23 },
-  { name: 'All Stars', count: 1 },
+import { Category } from '@/types/category';
+
+type HotDeal = {
+  name: Category;
+  count: number;
+};
+
+export const HOT_DEALS: HotDeal[] = [
+  { name: 'beauty', count: 2 },
+  { name: 'fragrances', count: 48 },
+  { name: 'furniture', count: 95 },
+  { name: 'groceries', count: 23 },
 ];
 
 export const BRANDS = [
@@ -12,7 +18,4 @@ export const BRANDS = [
   { name: 'Siemens', count: 99 },
 ];
 
-export const FILTER_GROUP = [
-  { title: 'Hot Deals', items: HOT_DEALS },
-  { title: 'BRAND', items: BRANDS },
-];
+export const FILTER_GROUP = [{ title: 'Hot Deals', items: HOT_DEALS }];
