@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { memo, useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
@@ -31,17 +31,26 @@ const SearchBox = ({
 
   const [inputValue, setInputValue] = useState('');
 
+  // Sync input value with URL `name` parameter on mount or when URL updates
+  useEffect(() => {
+    const nameParam = searchParams.get('name') ?? '';
+    setInputValue(nameParam);
+  }, [searchParams]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
   const handleSearch = () => {
-    if (inputValue.trim()) {
-      const currentParams = new URLSearchParams(searchParams.toString());
+    const currentParams = new URLSearchParams(searchParams.toString());
 
+    if (inputValue.trim()) {
       currentParams.set('name', inputValue.trim());
-      router.push(`/collection?${currentParams.toString()}`);
+    } else {
+      currentParams.delete('name');
     }
+
+    router.push(`/collection?${currentParams.toString()}`);
   };
 
   return (
