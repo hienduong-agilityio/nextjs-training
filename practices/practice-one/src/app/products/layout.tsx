@@ -22,7 +22,7 @@ export default async function ProductsLayout({
       {children}
       <Link
         href={'/collection'}
-        className="text-lg mt-8 underline uppercase text-primary-100"
+        className="flex justify-center text-lg  mt-8 underline uppercase text-primary-100"
       >
         load more
       </Link>
