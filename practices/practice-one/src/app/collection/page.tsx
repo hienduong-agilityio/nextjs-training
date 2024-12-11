@@ -7,18 +7,45 @@ import {
 } from '@/components';
 import { FILTER_GROUP } from '@/mocks';
 
+// Helpers
+import { capitalizeCategory } from '@/helpers';
+
 // Services
 import { getProducts } from '@/services';
 
 // Types
 import type { Metadata } from 'next';
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: {
+    category?: string;
+    sortBy?: string;
+    limit?: string;
+    page?: string;
+  };
+}): Promise<Metadata> {
+  const category = searchParams?.category ?? 'All Products';
+  const formattedCategory = capitalizeCategory(category);
+
   return {
-    title: 'Products Collection',
-    description: `The Products collection page`,
+    title: `E-Comm - ${formattedCategory} Collection`,
+    description: `Browse our ${category} collection. Find the best deals and top-rated products at E-Comm.`,
+    openGraph: {
+      title: `E-Comm - ${formattedCategory} Collection`,
+      description: `Explore our ${formattedCategory} collection at E-Comm. Shop now for the best deals and highest-rated items.`,
+      url: `https://nextjs-training-practice-one-app.vercel.app/collection?category=${category}&sortBy=${searchParams?.sortBy ?? ''}&limit=${searchParams?.limit ?? ''}&page=${searchParams?.page ?? ''}`,
+      images: [
+        {
+          url: '/images/product-mock.png',
+          alt: `${formattedCategory} Collection`,
+        },
+      ],
+    },
   };
 }
+
 export default async function CollectionPage(
   props: Readonly<{
     searchParams?: Promise<{
@@ -73,22 +100,13 @@ export default async function CollectionPage(
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6 w-full">
             {productData?.length > 0 ? (
               productData.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  name={product.name}
-                  images={product.images}
-                  price={product.price}
-                  originalPrice={product.originalPrice}
-                  discount={product.discount}
-                  rating={product.rating}
-                />
+                <ProductCard key={product.id} {...product} />
               ))
             ) : (
               <p>No products found.</p>
             )}
           </div>
-          <div className="w-full bg-secondary-300 flex flex-col items-center ">
+          <div className="w-full bg-secondary-300 flex flex-col items-center">
             <Pagination totalPages={totalPages} />
           </div>
         </div>

@@ -64,7 +64,7 @@ export const FilterSortBar = ({
             <Select
               options={sortOptions}
               value={selectedSort}
-              customClass="md:w-40 bg-secondary-100"
+              customClass="w-auto bg-secondary-100"
               onChange={(e) => handleSortChange(e.target.value)}
             />
           </div>

@@ -6,6 +6,7 @@ import { API_URL, HTTP_METHODS } from '@/constants';
 
 // Type
 import type { IProductProps } from '@/interfaces';
+import type { Category } from '@/types/category';
 
 export const getProducts = async ({
   page = 0,
@@ -58,6 +59,29 @@ export const getProducts = async ({
     } else {
       throw new Error('An unknown error occurred while fetching products');
     }
+  }
+};
+
+/**
+ * Get a product by Id.
+ * @param id - The product ID.
+ */
+export const getProductById = async (id: string): Promise<IProductProps> => {
+  try {
+    return await apiRequest<IProductProps>({
+      url: `${API_URL.PRODUCT}/${id}`,
+      method: HTTP_METHODS.GET,
+    });
+    // TODO: handle exception
+  } catch {
+    return {
+      id: '',
+      name: '',
+      images: [''],
+      price: '',
+      originalPrice: '',
+      category: '' as Category,
+    };
   }
 };
 
