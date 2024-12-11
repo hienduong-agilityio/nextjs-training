@@ -8,6 +8,7 @@ export * from './Service/ServiceCard';
 export * from './Footer';
 export * from './FilterGroup';
 export * from './FilterSortBar';
+export * from './Pagination';
 
 // Common
 export * from './common';

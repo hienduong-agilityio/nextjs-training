@@ -31,17 +31,10 @@ export const ProductTabs = ({
     }
   }, [category, router]);
 
-  const handleTabChange = (selectedCategory: string) => {
-    router.push(
-      selectedCategory.toLowerCase() === 'all'
-        ? '/products'
-        : `/products/${selectedCategory}`,
-    );
-  };
-
   // Map categories to tabs
   const items = CATEGORIES.map((cat) => ({
     title: cat,
+    href: cat.toLowerCase() === 'all' ? '/products' : `/products/${cat}`,
     content: (cat.toLowerCase() === 'all'
       ? productData
       : productData.filter(
@@ -52,7 +45,7 @@ export const ProductTabs = ({
         key={product.id}
         id={product.id}
         name={product.name}
-        image={product.image}
+        images={product.images}
         label={product.label}
         price={product.price}
         originalPrice={product.originalPrice}
@@ -68,13 +61,12 @@ export const ProductTabs = ({
       <Tabs
         items={items}
         selectedTab={category.toLowerCase()}
-        onTabChange={handleTabChange}
         customClass={{
-          wrapper: 'max-w-6xl flex flex-col gap-y-6 w-full',
-          header: 'flex justify-center gap-7 overflow-auto w-auto',
-          button:
-            'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100',
-          activeButton: 'text-primary-400 border-primary-400',
+          wrapper: 'flex flex-col w-full',
+          header:
+            'flex md:justify-center gap-7 w-full overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide pb-4 pt-2',
+          link: 'p-3 pt-2 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 border-transparent capitalize hover:text-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black',
+          activeLink: 'text-primary-400 border-primary-400',
           content: 'mt-4',
           activeContent:
             'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6',
