@@ -9,7 +9,7 @@ import {
   ProductInfo,
   CartAndFavoriteActions,
   ProductImages,
-  ProductDetailsTabs,
+  ProductDetailTabs,
 } from '@/ui';
 
 // Services
@@ -40,7 +40,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductDetailsPage({
+export default async function ProductDetailPage({
   params,
 }: {
   params: { id: string };
@@ -61,19 +61,7 @@ export default async function ProductDetailsPage({
 
         {/* Product Details */}
         <div>
-          <ProductInfo
-            id={productData.id}
-            name={productData.name}
-            rating={productData.rating}
-            images={productData.images}
-            reviews={productData.reviews}
-            price={productData.price}
-            originalPrice={productData.originalPrice}
-            discount={productData.discount}
-            availabilityStatus={productData.availabilityStatus}
-            category={productData.category}
-            shippingInformation={productData.shippingInformation}
-          />
+          <ProductInfo {...productData} />
 
           <div className="flex flex-col items-center justify-between gap-4 mt-4 md:flex-row py-6 border-y-2 border-secondary-1000">
             <QuantityControl />
@@ -84,7 +72,7 @@ export default async function ProductDetailsPage({
         </div>
       </div>
 
-      <ProductDetailsTabs
+      <ProductDetailTabs
         description={productData.description}
         reviews={productData.reviews}
       />

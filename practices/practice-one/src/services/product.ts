@@ -72,6 +72,7 @@ export const getProductById = async (id: string): Promise<IProductProps> => {
       url: `${API_URL.PRODUCT}/${id}`,
       method: HTTP_METHODS.GET,
     });
+    // TODO: handle exception
   } catch {
     return {
       id: '',

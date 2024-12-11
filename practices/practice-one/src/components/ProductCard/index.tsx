@@ -80,15 +80,15 @@ const ProductCard = ({
         </Link>
         <StarRating size={14} rating={rating} />
         <div className="flex items-center space-x-2">
-          <span className="text-lg font-medium text-primary-200">{price}</span>
+          <span className="text-lg font-medium text-primary-200">${price}</span>
           {originalPrice && (
             <span className="text-sm text-gray-400 line-through">
-              {originalPrice}
+              ${originalPrice}
             </span>
           )}
           {discount && (
             <span className="text-sm font-semibold text-danger-50">
-              {discount}
+              ${discount}
             </span>
           )}
         </div>

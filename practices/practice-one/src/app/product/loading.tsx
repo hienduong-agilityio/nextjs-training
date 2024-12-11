@@ -1,6 +1,6 @@
 import { LoadingProductTabs } from '@/ui';
 
-export default function LoadingProductDetailsPage() {
+export default function LoadingProductDetailPage() {
   return (
     <div>
       <section className="py-8">

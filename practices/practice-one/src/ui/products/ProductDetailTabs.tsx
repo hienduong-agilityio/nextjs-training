@@ -6,17 +6,17 @@ import { useEffect, useMemo, useState } from 'react';
 
 // Components
 import { Tabs } from '@/components';
-import { ProductDescription, ProductReviews } from '@/ui';
+import { ProductReviews } from '@/ui';
 
 // Types
 import type { IProductProps } from '@/interfaces';
 
-type ProductDetailsTabsProps = Pick<IProductProps, 'description' | 'reviews'>;
+type ProductDetailTabsProps = Pick<IProductProps, 'description' | 'reviews'>;
 
-export function ProductDetailsTabs({
+export function ProductDetailTabs({
   description,
   reviews = [],
-}: ProductDetailsTabsProps) {
+}: ProductDetailTabsProps) {
   const searchParams = useSearchParams();
   const queryTab = searchParams.get('activeTab') ?? 'Product Information';
 
@@ -33,7 +33,7 @@ export function ProductDetailsTabs({
       {
         title: 'Product Information',
         href: `?activeTab=Product Information`,
-        content: <ProductDescription description={description ?? ''} />,
+        content: <p>{description}</p>,
       },
       {
         title: 'Reviews',

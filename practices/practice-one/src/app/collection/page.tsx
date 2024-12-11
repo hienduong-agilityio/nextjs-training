@@ -7,6 +7,9 @@ import {
 } from '@/components';
 import { FILTER_GROUP } from '@/mocks';
 
+// Helpers
+import { capitalizeCategory } from '@/helpers';
+
 // Services
 import { getProducts } from '@/services';
 
@@ -24,21 +27,14 @@ export async function generateMetadata({
   };
 }): Promise<Metadata> {
   const category = searchParams?.category ?? 'All Products';
-  const formattedCategory =
-    category.charAt(0).toUpperCase() + category.slice(1);
-  const sortBy = searchParams?.sortBy
-    ? `, sorted by ${searchParams.sortBy}`
-    : '';
-  const limit = searchParams?.limit
-    ? `, showing ${searchParams.limit} per page`
-    : '';
+  const formattedCategory = capitalizeCategory(category);
 
   return {
     title: `E-Comm - ${formattedCategory} Collection`,
-    description: `Browse our ${category} collection${sortBy}${limit}. Find the best deals and top-rated products at E-Comm.`,
+    description: `Browse our ${category} collection. Find the best deals and top-rated products at E-Comm.`,
     openGraph: {
       title: `E-Comm - ${formattedCategory} Collection`,
-      description: `Explore our ${formattedCategory} collection${sortBy}${limit} at E-Comm. Shop now for the best deals and highest-rated items.`,
+      description: `Explore our ${formattedCategory} collection at E-Comm. Shop now for the best deals and highest-rated items.`,
       url: `https://nextjs-training-practice-one-app.vercel.app/collection?category=${category}&sortBy=${searchParams?.sortBy ?? ''}&limit=${searchParams?.limit ?? ''}&page=${searchParams?.page ?? ''}`,
       images: [
         {
@@ -104,16 +100,7 @@ export default async function CollectionPage(
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6 w-full">
             {productData?.length > 0 ? (
               productData.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  name={product.name}
-                  images={product.images}
-                  price={product.price}
-                  originalPrice={product.originalPrice}
-                  discount={product.discount}
-                  rating={product.rating}
-                />
+                <ProductCard key={product.id} {...product} />
               ))
             ) : (
               <p>No products found.</p>
