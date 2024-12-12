@@ -52,7 +52,7 @@ export default async function ProductDetailPage({
   }
 
   const initialQuantity = 1;
-  const maxQuantity = productData.minimumOrderQuantity || Infinity;
+  const maxQuantity = productData.minimumOrderQuantity ?? Infinity;
 
   return (
     <section className="px-4 py-8">
@@ -69,7 +69,10 @@ export default async function ProductDetailPage({
               initialQuantity={initialQuantity}
               maxQuantity={maxQuantity}
             />
-            <CartAndFavoriteActions />
+            <CartAndFavoriteActions
+              productId={params.id}
+              quantity={initialQuantity}
+            />
           </div>
 
           <SocialShare />

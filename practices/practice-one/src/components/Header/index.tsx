@@ -5,24 +5,26 @@ import { CartIcon, LogoIcon, ProfileIcon } from '@/icons';
 
 // Components
 import { SearchBox, SearchModal } from '@/components';
+import Link from 'next/link';
 
-interface IHeaderProps {
-  cartItemCount?: number;
-}
+// Services
+import { getCartByUserId } from '@/services';
 
-export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
+export const Header = async () => {
+  const cart = await getCartByUserId(134);
+
   return (
     <header className="flex items-center justify-between w-full gap-6 px-4 py-4 md:container md:mt-10 md:mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16">
       {/* Logo */}
-      <a href="/" className="flex items-center gap-2">
+      <Link href="/products" className="flex items-center gap-2">
         <LogoIcon aria-label="logo" />
-        <span className="w-max text-lg font-bold sm:text-xl lg:text-2xl">
+        <span className="text-lg font-bold w-max sm:text-xl lg:text-2xl">
           E-Comm
         </span>
-      </a>
+      </Link>
 
       {/* Profile, Cart, or Menu */}
-      <div className="w-full flex items-center justify-end lg:justify-between gap-4">
+      <div className="flex items-center justify-end w-full gap-4 lg:justify-between">
         {/* Search */}
         <div className="hidden lg:block">
           <Suspense fallback={<p>...Loading</p>}>
@@ -49,7 +51,13 @@ export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
             </span>
             <div className="relative flex items-center">
               {/* Cart */}
-              <CartIcon aria-label="cart" size={25} itemCount={cartItemCount} />
+              <Link href="/cart">
+                <CartIcon
+                  aria-label="cart"
+                  size={30}
+                  itemCount={cart?.products.length ?? 0}
+                />
+              </Link>
             </div>
           </div>
         </div>

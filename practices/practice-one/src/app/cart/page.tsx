@@ -15,7 +15,7 @@ const CartPage = async () => {
   const cartData = await getCartByUserId(userId);
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="p-6">
       <h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>
       <div className="overflow-x-auto border rounded-lg">
         <table className="w-full text-left border-collapse">
