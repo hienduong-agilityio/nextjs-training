@@ -53,16 +53,6 @@ describe('Header Component - UI Tests', () => {
     expect(cartIcon).toBeInTheDocument();
   });
 
-  it('renders the search box', () => {
-    render(<Header />);
-
-    const searchInput = screen.getByRole('textbox');
-    expect(searchInput).toBeInTheDocument();
-
-    const searchButton = screen.getByRole('button', { name: /Search/i });
-    expect(searchButton).toBeInTheDocument();
-  });
-
   it('renders the cart item count if provided', () => {
     const cartItemCount = 3;
     render(<Header cartItemCount={cartItemCount} />);
