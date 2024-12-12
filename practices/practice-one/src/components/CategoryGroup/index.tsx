@@ -21,14 +21,14 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
   const handleCategoryClick = (itemName: string) => {
     const updatedParams = new URLSearchParams();
 
-    // Preserve the search query parameter
-    if (currentSearch.trim()) {
-      updatedParams.set('search', currentSearch);
-    }
-
     // Update the category query parameter
     if (itemName !== 'all') {
       updatedParams.set('category', itemName);
+    }
+
+    // Preserve the search query parameter
+    if (currentSearch.trim()) {
+      updatedParams.set('search', currentSearch);
     }
 
     return `/collection?${updatedParams.toString()}`;
