@@ -18,6 +18,7 @@ export async function generateMetadata({
     sortBy?: string;
     limit?: string;
     page?: string;
+    search?: string;
   };
 }): Promise<Metadata> {
   const category = searchParams?.category ?? 'All Products';
@@ -48,13 +49,13 @@ export default async function CollectionPage({
     page?: string;
     sortBy?: string;
     category?: string;
-    name?: string;
+    search?: string;
   };
 }) {
   const query = Number(searchParams?.limit) || 6;
   const currentPage = Number(searchParams?.page) || 1;
   const sortByParam = searchParams?.sortBy ?? '';
-  const filterByNameParam = searchParams?.name ?? '';
+  const filterByNameParam = searchParams?.search ?? '';
   const collectionQuery = searchParams?.category ?? '';
 
   const allProducts = await getProducts({

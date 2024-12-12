@@ -1,8 +1,11 @@
 'use client';
 
-import Link from 'next/link';
+// Libraries
 import { useSearchParams } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+
+// Components
+import Link from 'next/link';
 
 interface ICategoryGroupProps {
   title: string;
@@ -12,14 +15,23 @@ interface ICategoryGroupProps {
 export function CategoryGroup({ title, items }: ICategoryGroupProps) {
   const searchParams = useSearchParams();
 
-  const currentCategory = searchParams.get('category') || 'all';
+  const currentCategory = searchParams.get('category') ?? 'all';
+  const currentSearch = searchParams.get('search') ?? '';
 
   const handleCategoryClick = (itemName: string) => {
-    if (itemName === 'all') {
-      return '/collection';
+    const updatedParams = new URLSearchParams();
+
+    // Preserve the search query parameter
+    if (currentSearch.trim()) {
+      updatedParams.set('search', currentSearch);
     }
 
-    return itemName === currentCategory ? '?' : `?category=${itemName}`;
+    // Update the category query parameter
+    if (itemName !== 'all') {
+      updatedParams.set('category', itemName);
+    }
+
+    return `/collection?${updatedParams.toString()}`;
   };
 
   return (

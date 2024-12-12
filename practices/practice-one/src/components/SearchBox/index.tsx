@@ -34,12 +34,13 @@ const SearchBox = ({
 
   // Check if input value is the same as the current search param
   const isButtonDisabled =
-    isLoading || inputValue.trim() === (searchParams.get('name') ?? '').trim();
+    isLoading ||
+    inputValue.trim() === (searchParams.get('search') ?? '').trim();
 
-  // Sync input value with URL `name` parameter on mount or when URL updates
+  // Sync input value with URL `search` parameter on mount or when URL updates
   useEffect(() => {
-    const nameParam = searchParams.get('name') ?? '';
-    setInputValue(nameParam);
+    const searchParam = searchParams.get('search') ?? '';
+    setInputValue(searchParam);
   }, [searchParams]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,12 +50,15 @@ const SearchBox = ({
   const handleSearch = () => {
     setIsLoading(true);
 
-    const currentParams = new URLSearchParams(searchParams.toString());
+    const currentParams = new URLSearchParams();
+    const categoryParam = searchParams.get('category');
+
+    if (categoryParam) {
+      currentParams.set('category', categoryParam);
+    }
 
     if (inputValue.trim()) {
-      currentParams.set('name', inputValue.trim());
-    } else {
-      currentParams.delete('name');
+      currentParams.set('search', inputValue.trim());
     }
 
     router.push(`/collection?${currentParams.toString()}`);
