@@ -55,7 +55,7 @@ export const getProducts = async ({
     return products;
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(error.message || 'Failed to fetch products');
+      return [];
     } else {
       throw new Error('An unknown error occurred while fetching products');
     }

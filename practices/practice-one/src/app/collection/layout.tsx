@@ -1,7 +1,7 @@
 import { ReactNode, Suspense } from 'react';
 import { CategoryGroup, FilterSortBar } from '@/components';
 import { HOT_DEALS } from '@/mocks';
-import { LoadingCategoryGroup } from '@/ui';
+import { LoadingCategoryGroup, LoadingFilterSortBar } from '@/ui';
 
 export default function CollectionLayout({
   children,
@@ -20,9 +20,9 @@ export default function CollectionLayout({
 
       {/* Filter sort */}
       <div className="col-span-12 md:col-span-8 lg:col-span-10 w-full">
-        <Suspense>
+        <Suspense fallback={<LoadingFilterSortBar />}>
           <FilterSortBar
-            itemCount={0} // Default value; overridden in page.tsx
+            itemCount={0}
             sortOptions={['name', 'price']}
             showOptions={['6', '9', '12']}
           />

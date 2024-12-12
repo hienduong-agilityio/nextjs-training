@@ -14,8 +14,8 @@ export default function LoadingCollectionPage() {
       {/* Pagination Skeleton */}
       <div className="w-full bg-secondary-300 flex flex-col items-center">
         <div className="flex items-center space-x-2">
-          {[...Array(5)].map((_, index) => (
-            <div key={index} className="w-12 h-12 bg-gray-200 animate-pulse " />
+          {[...Array(5)].map((_) => (
+            <div key={_} className="w-12 h-12 bg-gray-200 animate-pulse " />
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 // Constants
 import { HTTP_METHODS } from '@/constants';
+import { notFound } from 'next/navigation';
 
 type MethodRequest = (typeof HTTP_METHODS)[keyof typeof HTTP_METHODS];
 
@@ -27,6 +28,9 @@ export const apiRequest = async <T>({
   const result = await response.json();
 
   if (!response.ok) {
+    if (response.status === 404) {
+      notFound(); // Gọi hàm notFound() khi status là 404
+    }
     throw new Error(result?.error?.message);
   }
   return result;

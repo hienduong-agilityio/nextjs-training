@@ -30,6 +30,7 @@ const SearchBox = ({
   const searchParams = useSearchParams();
 
   const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Sync input value with URL `name` parameter on mount or when URL updates
   useEffect(() => {
@@ -42,6 +43,8 @@ const SearchBox = ({
   };
 
   const handleSearch = () => {
+    setIsLoading(true);
+
     const currentParams = new URLSearchParams(searchParams.toString());
 
     if (inputValue.trim()) {
@@ -52,6 +55,15 @@ const SearchBox = ({
 
     router.push(`/collection?${currentParams.toString()}`);
   };
+
+  // Effect to update loading state on URL change
+  useEffect(() => {
+    setIsLoading(false);
+  }, [searchParams]);
+
+  // Check if input value is the same as the current search param
+  const isButtonDisabled =
+    isLoading || inputValue.trim() === (searchParams.get('name') ?? '').trim();
 
   return (
     <div className={`flex ${customClass.container ?? ''}`}>
@@ -69,8 +81,9 @@ const SearchBox = ({
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}
         onClick={handleSearch}
+        disabled={isButtonDisabled}
       >
-        {buttonText}
+        {isLoading ? 'Loading...' : buttonText}
       </Button>
     </div>
   );
