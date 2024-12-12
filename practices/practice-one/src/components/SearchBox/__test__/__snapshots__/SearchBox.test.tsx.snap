@@ -18,6 +18,7 @@ exports[`SearchBox Component matches snapshot 1`] = `
     </div>
     <button
       class="flex items-center gap-2 rounded p-2 bg-opacity-100 shadow-md bg-primary-300 text-white hover:bg-primary-400 disabled:bg-primary-100 px-7 rounded-l-none"
+      disabled=""
       type="button"
     >
       Search
