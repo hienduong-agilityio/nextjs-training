@@ -9,7 +9,7 @@ exports[`SearchBox Component matches snapshot 1`] = `
       class="w-full"
     >
       <div
-        class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 border-blue-300 lg:rounded-r-none"
+        class="flex items-center gap-1 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 border-blue-300 lg:rounded-r-none p-2"
       >
         <span>
           <svg
@@ -36,7 +36,7 @@ exports[`SearchBox Component matches snapshot 1`] = `
           </svg>
         </span>
         <input
-          class="flex-1 outline-none px-3 py-2 bg-transparent h-16 text-gray-700"
+          class="flex-1 outline-none px-3 py-2 bg-transparent h-16 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer"
           id="gsearch"
           name="gsearch"
           placeholder="Enter your query..."

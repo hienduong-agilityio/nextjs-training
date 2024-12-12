@@ -32,6 +32,10 @@ const SearchModal = () => {
     };
   }, [isOpen]);
 
+  const handleSearch = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
       <Button onClick={handleOpen} className="block lg:hidden cursor-pointer">
@@ -50,6 +54,8 @@ const SearchModal = () => {
                 input: 'w-full lg:mb-4',
                 button: 'w-full',
               }}
+              buttonText="Search"
+              onSearch={handleSearch}
             />
           </div>
         </div>
