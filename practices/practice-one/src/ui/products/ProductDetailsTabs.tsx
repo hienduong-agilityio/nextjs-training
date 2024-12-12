@@ -67,7 +67,7 @@ export function ProductDetailsTabs({
           header: 'flex justify-start gap-7 w-auto pb-3 border-b-2',
           link: 'p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100',
           activeLink: 'text-primary-400 border-primary-400',
-          content: 'max-w-6xl text-secondary-500',
+          content: 'text-secondary-500',
           activeContent: 'text-sm leading-6',
           inactiveContent: 'hidden',
         }}
