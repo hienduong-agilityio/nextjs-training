@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 
 // Icon
-import { CartIcon, LogoIcon, ProfileIcon, SearchIcon } from '@/icons';
+import { CartIcon, LogoIcon, ProfileIcon } from '@/icons';
 
 // Components
-import { SearchBox } from '@/components';
+import { SearchBox, SearchModal } from '@/components';
 
 interface IHeaderProps {
   cartItemCount?: number;
@@ -36,9 +36,9 @@ export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
             />
           </Suspense>
         </div>
-        <div className="block lg:hidden">
-          <SearchIcon size={24} />
-        </div>
+
+        {/* SearchBox */}
+        <SearchModal />
 
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">

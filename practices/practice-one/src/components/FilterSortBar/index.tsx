@@ -52,7 +52,7 @@ export const FilterSortBar = ({
   };
 
   return (
-    <div className="bg-secondary-100 p-4 shadow-md md:sticky rounded top-0 z-50 w-full">
+    <div className="bg-secondary-100 p-4 shadow-md md:sticky rounded top-0 z-30 w-full">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
         {/* Item count */}
         <div className="text-sm text-gray-600">{itemCount} Items</div>

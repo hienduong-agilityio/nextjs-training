@@ -9,6 +9,7 @@ import { Button, InputField } from '@/components';
 
 // Enums
 import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
+import { SearchIcon } from '@/icons';
 
 export interface ISearchBoxProps {
   placeholder?: string;
@@ -79,16 +80,21 @@ const SearchBox = ({
     <div className={`flex ${customClass.container ?? ''}`}>
       <InputField
         placeholder={placeholder}
+        startContent={<SearchIcon color="#40BFFF" />}
         value={inputValue}
+        type="search"
+        id="gsearch"
+        name="gsearch"
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         customClass={{
-          container: `border-blue-300 rounded-r-none ${customClass.inputContainer ?? ''}`,
+          container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
           input: `h-16 text-gray-700 ${customClass.input ?? ''}`,
         }}
       />
       <Button
-        customClass={`px-7 rounded-l-none ${customClass.button ?? ''}`}
+        customClass={`px-7 rounded-l-none hidden lg:block ${customClass.button ?? ''}`}
+        type="submit"
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}
         onClick={handleSearch}
