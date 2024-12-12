@@ -13,6 +13,7 @@ exports[`SearchBox Component matches snapshot 1`] = `
       >
         <span>
           <svg
+            class="lg:hidden block"
             fill="none"
             height="20"
             viewBox="0 0 20 20"

@@ -54,6 +54,7 @@ exports[`Header Component - UI Tests renders the header with default props and m
             >
               <span>
                 <svg
+                  class="lg:hidden block"
                   fill="none"
                   height="20"
                   viewBox="0 0 20 20"
