@@ -80,7 +80,9 @@ const SearchBox = ({
     <div className={`flex ${customClass.container ?? ''}`}>
       <InputField
         placeholder={placeholder}
-        startContent={<SearchIcon color="#40BFFF" />}
+        startContent={
+          <SearchIcon color="#40BFFF" className="lg:hidden block" />
+        }
         value={inputValue}
         type="search"
         id="gsearch"
