@@ -32,6 +32,10 @@ const SearchBox = ({
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  // Check if input value is the same as the current search param
+  const isButtonDisabled =
+    isLoading || inputValue.trim() === (searchParams.get('name') ?? '').trim();
+
   // Sync input value with URL `name` parameter on mount or when URL updates
   useEffect(() => {
     const nameParam = searchParams.get('name') ?? '';
@@ -56,14 +60,16 @@ const SearchBox = ({
     router.push(`/collection?${currentParams.toString()}`);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && !isButtonDisabled) {
+      handleSearch();
+    }
+  };
+
   // Effect to update loading state on URL change
   useEffect(() => {
     setIsLoading(false);
   }, [searchParams]);
-
-  // Check if input value is the same as the current search param
-  const isButtonDisabled =
-    isLoading || inputValue.trim() === (searchParams.get('name') ?? '').trim();
 
   return (
     <div className={`flex ${customClass.container ?? ''}`}>
@@ -71,6 +77,7 @@ const SearchBox = ({
         placeholder={placeholder}
         value={inputValue}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         customClass={{
           container: `border-blue-300 rounded-r-none ${customClass.inputContainer ?? ''}`,
           input: `h-16 text-gray-700 ${customClass.input ?? ''}`,
