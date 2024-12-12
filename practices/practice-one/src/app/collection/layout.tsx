@@ -1,6 +1,13 @@
+// Libraries
 import { ReactNode, Suspense } from 'react';
+
+// Components
 import { CategoryGroup, FilterSortBar } from '@/components';
+
+// Mocks
 import { HOT_DEALS } from '@/mocks';
+
+// UI
 import { LoadingCategoryGroup, LoadingFilterSortBar } from '@/ui';
 
 export default function CollectionLayout({
