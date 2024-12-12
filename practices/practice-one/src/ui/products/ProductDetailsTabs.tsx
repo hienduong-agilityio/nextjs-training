@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 
 // Components
@@ -17,28 +17,16 @@ export function ProductDetailsTabs({
   description,
   reviews = [],
 }: ProductDetailsTabsProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
+  const queryTab = searchParams.get('activeTab') ?? 'Product Information';
 
-  const initialTab = searchParams.get('activeTab') ?? 'Product Information';
-  const [activeTab, setActiveTab] = useState<string>(initialTab);
-
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-
-    const params = new URLSearchParams(searchParams);
-
-    params.set('activeTab', tab);
-    router.push(`?${params.toString()}`);
-  };
+  const [activeTab, setActiveTab] = useState<string>(queryTab);
 
   useEffect(() => {
-    const queryTab = searchParams.get('activeTab');
-
     if (queryTab && queryTab !== activeTab) {
       setActiveTab(queryTab);
     }
-  }, [activeTab, searchParams]);
+  }, [activeTab, queryTab]);
 
   const tabItems = useMemo(
     () => [
@@ -61,7 +49,6 @@ export function ProductDetailsTabs({
       <Tabs
         items={tabItems}
         selectedTab={activeTab}
-        onTabChange={handleTabChange}
         customClass={{
           wrapper: 'flex flex-col gap-y-6 w-full',
           header: 'flex justify-start gap-7 w-auto pb-3 border-b-2',
