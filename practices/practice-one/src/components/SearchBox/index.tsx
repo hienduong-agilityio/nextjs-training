@@ -1,7 +1,13 @@
 'use client';
 
 // Libraries
-import { memo, useState, useEffect, useOptimistic } from 'react';
+import {
+  memo,
+  useState,
+  useEffect,
+  useOptimistic,
+  startTransition,
+} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
@@ -9,6 +15,8 @@ import { Button, InputField } from '@/components';
 
 // Enums
 import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
+
+// Icons
 import { SearchIcon } from '@/icons';
 
 export interface ISearchBoxProps {
@@ -37,7 +45,9 @@ const SearchBox = ({
 
   // Sync input value with URL `search` parameter on mount or when URL updates
   useEffect(() => {
-    setIsLoading(false);
+    startTransition(() => {
+      setIsLoading(false);
+    });
 
     const searchParam = searchParams.get('search') ?? '';
 
@@ -49,7 +59,9 @@ const SearchBox = ({
   };
 
   const handleSearch = () => {
-    setIsLoading(true);
+    startTransition(() => {
+      setIsLoading(true);
+    });
 
     const currentParams = new URLSearchParams();
 
