@@ -42,8 +42,9 @@ const SearchBox = ({
 
   // Sync input value with URL `search` parameter on mount or when URL updates
   useEffect(() => {
-    const searchParam = searchParams.get('search') ?? '';
-    setInputValue(searchParam);
+    setIsLoading(false);
+
+    setInputValue('');
   }, [searchParams]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,11 +77,6 @@ const SearchBox = ({
       }
     }
   };
-
-  // Effect to update loading state on URL change
-  useEffect(() => {
-    setIsLoading(false);
-  }, [searchParams]);
 
   return (
     <div className={`flex ${customClass.container ?? ''}`}>
