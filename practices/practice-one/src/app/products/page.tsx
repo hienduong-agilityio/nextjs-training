@@ -3,6 +3,7 @@ import { getProducts } from '@/services';
 
 // Components
 import { ProductTabs } from '@/components';
+import Link from 'next/link';
 
 export default async function ProductPage() {
   const productData = await getProducts({
@@ -11,5 +12,15 @@ export default async function ProductPage() {
     filter: { label: 'Hot' },
   });
 
-  return <ProductTabs productData={productData} />;
+  return (
+    <section>
+      <ProductTabs productData={productData} />
+      <Link
+        href={`/collection`}
+        className="flex justify-center text-lg  mt-8 underline uppercase text-primary-100"
+      >
+        load more
+      </Link>
+    </section>
+  );
 }

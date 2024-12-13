@@ -6,9 +6,10 @@ export { default as ProductCard } from './ProductCard';
 export * from './Service';
 export * from './Service/ServiceCard';
 export * from './Footer';
-export * from './FilterGroup';
+export * from './CategoryGroup';
 export * from './FilterSortBar';
 export * from './Pagination';
+export { default as SearchModal } from './SearchModal';
 
 // Common
 export * from './common';

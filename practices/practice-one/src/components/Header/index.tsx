@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
+
 // Icon
-import { CartIcon, LogoIcon, ProfileIcon, SearchIcon } from '@/icons';
+import { CartIcon, LogoIcon, ProfileIcon } from '@/icons';
 
 // Components
-import { SearchBox } from '@/components';
+import { SearchBox, SearchModal } from '@/components';
 
 interface IHeaderProps {
   cartItemCount?: number;
@@ -23,18 +25,20 @@ export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
       <div className="w-full flex items-center justify-end lg:justify-between gap-4">
         {/* Search */}
         <div className="hidden lg:block">
-          <SearchBox
-            customClass={{
-              container: 'md:justify-end',
-              input: 'w-full lg:w-[400px]',
-              inputContainer: 'border-primary-300',
-              button: 'bg-primary-300 text-white',
-            }}
-          />
+          <Suspense fallback={<p>...Loading</p>}>
+            <SearchBox
+              customClass={{
+                container: 'md:justify-end',
+                input: 'w-full lg:w-[400px]',
+                inputContainer: 'border-primary-300',
+                button: 'bg-primary-300 text-white',
+              }}
+            />
+          </Suspense>
         </div>
-        <div className="block lg:hidden">
-          <SearchIcon size={24} />
-        </div>
+
+        {/* SearchBox */}
+        <SearchModal />
 
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
