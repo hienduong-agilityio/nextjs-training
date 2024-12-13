@@ -91,8 +91,6 @@ describe('SearchBox Component', () => {
     fireEvent.change(input, { target: { value: 'Test query' } });
     fireEvent.click(button);
 
-    expect(mockPush).toHaveBeenCalledWith(
-      '/collection?category=bags&search=Test+query',
-    );
+    expect(mockPush).toHaveBeenCalledWith('/collection?search=Test+query');
   });
 });

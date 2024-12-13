@@ -44,7 +44,9 @@ const SearchBox = ({
   useEffect(() => {
     setIsLoading(false);
 
-    setInputValue('');
+    const searchParam = searchParams.get('search') ?? '';
+
+    setInputValue(searchParam);
   }, [searchParams]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,11 +57,6 @@ const SearchBox = ({
     setIsLoading(true);
 
     const currentParams = new URLSearchParams();
-    const categoryParam = searchParams.get('category');
-
-    if (categoryParam) {
-      currentParams.set('category', categoryParam);
-    }
 
     if (inputValue.trim()) {
       currentParams.set('search', inputValue.trim());
