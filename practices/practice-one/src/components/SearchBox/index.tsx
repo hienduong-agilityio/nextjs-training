@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect, useOptimistic } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 // Components
@@ -33,12 +33,7 @@ const SearchBox = ({
   const searchParams = useSearchParams();
 
   const [inputValue, setInputValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Check if input value is the same as the current search param
-  const isButtonDisabled =
-    isLoading ||
-    inputValue.trim() === (searchParams.get('search') ?? '').trim();
+  const [isLoading, setIsLoading] = useOptimistic(false);
 
   // Sync input value with URL `search` parameter on mount or when URL updates
   useEffect(() => {
@@ -47,7 +42,7 @@ const SearchBox = ({
     const searchParam = searchParams.get('search') ?? '';
 
     setInputValue(searchParam);
-  }, [searchParams]);
+  }, [searchParams, setIsLoading]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -66,7 +61,7 @@ const SearchBox = ({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && !isButtonDisabled) {
+    if (event.key === 'Enter') {
       handleSearch();
 
       if (onSearch) {
@@ -99,7 +94,7 @@ const SearchBox = ({
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}
         onClick={handleSearch}
-        disabled={isButtonDisabled}
+        disabled={isLoading}
       >
         {isLoading ? 'Loading...' : buttonText}
       </Button>
