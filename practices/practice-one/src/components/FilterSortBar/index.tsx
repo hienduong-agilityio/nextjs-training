@@ -33,26 +33,34 @@ export const FilterSortBar = ({
     setSelectedSort(sortParam);
   }, [searchParams, showOptions, sortOptions]);
 
-  const handleShowChange = (value: string) => {
-    setSelectedLimit(value);
+  const updateQueryParams = (param: string, value: string) => {
     const currentParams = new URLSearchParams(searchParams.toString());
+    currentParams.set(param, value);
 
-    currentParams.set('limit', value);
-    currentParams.delete('page');
+    // Reset pagination if a filter changes
+    if (param === 'limit') {
+      currentParams.delete('page');
+    }
 
     router.push(`?${currentParams.toString()}`);
   };
 
-  const handleSortChange = (value: string) => {
-    setSelectedSort(value);
-    const currentParams = new URLSearchParams(searchParams.toString());
+  const handleShowChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
 
-    currentParams.set('sortBy', value);
-    router.push(`?${currentParams.toString()}`);
+    setSelectedLimit(value);
+    updateQueryParams('limit', value);
+  };
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+
+    setSelectedSort(value);
+    updateQueryParams('sortBy', value);
   };
 
   return (
-    <div className="bg-secondary-100 p-4 shadow-md md:sticky rounded top-0 z-50 w-full">
+    <div className="bg-secondary-100 p-4 shadow-md md:sticky rounded top-0 z-30 w-full">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
         {/* Item count */}
         <div className="text-sm text-gray-600">{itemCount} Items</div>
@@ -65,7 +73,7 @@ export const FilterSortBar = ({
               options={sortOptions}
               value={selectedSort}
               customClass="w-auto bg-secondary-100"
-              onChange={(e) => handleSortChange(e.target.value)}
+              onChange={handleSortChange}
             />
           </div>
           <div className="flex gap-2 items-center">
@@ -74,7 +82,7 @@ export const FilterSortBar = ({
               options={showOptions}
               value={selectedLimit}
               customClass="md:w-40 bg-secondary-100"
-              onChange={(e) => handleShowChange(e.target.value)}
+              onChange={handleShowChange}
             />
           </div>
         </div>

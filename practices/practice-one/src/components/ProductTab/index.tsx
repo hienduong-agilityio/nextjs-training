@@ -14,13 +14,16 @@ import { Tabs, ProductCard } from '@/components';
 import type { IProductProps } from '@/interfaces';
 import type { Category } from '@/types/category';
 
+// Constants
+import { ALL_CATEGORIES } from '@/constants';
+
 interface ProductTabsProps {
   category?: string;
   productData: IProductProps[];
 }
 
 export const ProductTabs = ({
-  category = 'all',
+  category = ALL_CATEGORIES.ALL,
   productData,
 }: ProductTabsProps) => {
   const router = useRouter();
@@ -34,8 +37,11 @@ export const ProductTabs = ({
   // Map categories to tabs
   const items = CATEGORIES.map((cat) => ({
     title: cat,
-    href: cat.toLowerCase() === 'all' ? '/products' : `/products/${cat}`,
-    content: (cat.toLowerCase() === 'all'
+    href:
+      cat.toLowerCase() === ALL_CATEGORIES.ALL
+        ? '/products'
+        : `/products/${cat}`,
+    content: (cat.toLowerCase() === ALL_CATEGORIES.ALL
       ? productData
       : productData.filter(
           (product) => product.category?.toLowerCase() === cat.toLowerCase(),
@@ -56,7 +62,7 @@ export const ProductTabs = ({
   }));
 
   return (
-    <section className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4">
       <h2 className="text-3xl font-semibold uppercase">Best seller</h2>
       <Tabs
         items={items}
@@ -73,6 +79,6 @@ export const ProductTabs = ({
           inactiveContent: 'hidden',
         }}
       />
-    </section>
+    </div>
   );
 };

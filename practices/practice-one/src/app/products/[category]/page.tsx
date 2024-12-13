@@ -3,6 +3,7 @@ import { getProducts } from '@/services';
 
 // Components
 import { ProductTabs } from '@/components';
+import Link from 'next/link';
 
 // Types
 import type { Metadata } from 'next';
@@ -52,5 +53,15 @@ export default async function ProductCategoryPage({
     filter: { category: category },
   });
 
-  return <ProductTabs category={category} productData={productData} />;
+  return (
+    <section>
+      <ProductTabs category={category} productData={productData} />
+      <Link
+        href={`/collection?category=${category}`}
+        className="flex justify-center text-lg  mt-8 underline uppercase text-primary-100"
+      >
+        load more
+      </Link>
+    </section>
+  );
 }

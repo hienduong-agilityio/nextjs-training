@@ -50,7 +50,7 @@ const InputField = ({
   const inputClass = twMerge(baseInputClass, customClassNames.input);
 
   return (
-    <div>
+    <div className="w-full">
       <div className={containerClasses}>
         {startContent && <span>{startContent}</span>}
         <input

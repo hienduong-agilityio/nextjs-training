@@ -1,11 +1,12 @@
 import { Category } from '@/types/category';
 
 type HotDeal = {
-  name: Category;
+  name: Category | 'all';
   count: number;
 };
 
 export const HOT_DEALS: HotDeal[] = [
+  { name: 'all', count: 2 },
   { name: 'beauty', count: 2 },
   { name: 'fragrances', count: 48 },
   { name: 'furniture', count: 95 },
