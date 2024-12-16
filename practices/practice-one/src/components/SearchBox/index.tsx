@@ -19,6 +19,9 @@ import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
 // Icons
 import { SearchIcon } from '@/icons';
 
+// Constants
+import { SEARCH_PARAMS } from '@/constants';
+
 export interface ISearchBoxProps {
   placeholder?: string;
   buttonText?: string;
@@ -49,7 +52,7 @@ const SearchBox = ({
       setIsLoading(false);
     });
 
-    const searchParam = searchParams.get('search') ?? '';
+    const searchParam = searchParams.get(SEARCH_PARAMS.SEARCH) ?? '';
 
     setInputValue(searchParam);
   }, [searchParams, setIsLoading]);
@@ -66,7 +69,7 @@ const SearchBox = ({
     const currentParams = new URLSearchParams();
 
     if (inputValue.trim()) {
-      currentParams.set('search', inputValue.trim());
+      currentParams.set(SEARCH_PARAMS.SEARCH, inputValue.trim());
     }
 
     router.push(`/collection?${currentParams.toString()}`);

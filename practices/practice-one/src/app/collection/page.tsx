@@ -58,7 +58,7 @@ export default async function CollectionPage({
   const filterByNameParam = searchParams?.search ?? '';
   const collectionQuery = searchParams?.category ?? '';
 
-  const allProducts = await getProducts({
+  const filteredProducts = await getProducts({
     filter: { category: collectionQuery, name: filterByNameParam },
   });
 
@@ -69,12 +69,12 @@ export default async function CollectionPage({
     filter: { category: collectionQuery, name: filterByNameParam },
   });
 
-  const totalPages = Math.ceil(allProducts.length / query);
+  const totalPages = Math.ceil(filteredProducts.length / query);
 
   return (
     <div className="flex flex-col gap-9">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6 w-full">
-        {productData?.length > 0 ? (
+        {productData.length > 0 ? (
           productData.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))

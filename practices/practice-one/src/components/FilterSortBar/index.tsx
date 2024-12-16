@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react';
 // Components
 import { Select } from '@/components';
 
+// Constants
+import { SEARCH_PARAMS } from '@/constants';
+
 interface FilterSortBarProps {
   itemCount: number;
   sortOptions: string[];
@@ -26,8 +29,8 @@ export const FilterSortBar = ({
 
   useEffect(() => {
     // Get query parameters from the URL
-    const limitParam = searchParams.get('limit') ?? showOptions[0];
-    const sortParam = searchParams.get('sortBy') ?? sortOptions[0];
+    const limitParam = searchParams.get(SEARCH_PARAMS.LIMIT) ?? showOptions[0];
+    const sortParam = searchParams.get(SEARCH_PARAMS.SORT_BY) ?? sortOptions[0];
 
     setSelectedLimit(limitParam);
     setSelectedSort(sortParam);
@@ -38,8 +41,8 @@ export const FilterSortBar = ({
     currentParams.set(param, value);
 
     // Reset pagination if a filter changes
-    if (param === 'limit') {
-      currentParams.delete('page');
+    if (param === SEARCH_PARAMS.LIMIT) {
+      currentParams.delete(SEARCH_PARAMS.PAGE);
     }
 
     router.push(`?${currentParams.toString()}`);
@@ -49,14 +52,14 @@ export const FilterSortBar = ({
     const value = event.target.value;
 
     setSelectedLimit(value);
-    updateQueryParams('limit', value);
+    updateQueryParams(SEARCH_PARAMS.LIMIT, value);
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
 
     setSelectedSort(value);
-    updateQueryParams('sortBy', value);
+    updateQueryParams(SEARCH_PARAMS.SORT_BY, value);
   };
 
   return (

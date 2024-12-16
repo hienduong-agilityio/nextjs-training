@@ -50,7 +50,7 @@ export default async function ProductDetailPage({
   const productData = await getProductById(id);
 
   if (!productData.id) {
-    notFound();
+    return notFound();
   }
 
   return (

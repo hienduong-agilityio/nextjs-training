@@ -11,6 +11,9 @@ import { ProductReviews } from '@/ui';
 // Types
 import type { IProductProps } from '@/interfaces';
 
+// Constants
+import { SEARCH_PARAMS } from '@/constants';
+
 type ProductDetailTabsProps = Pick<IProductProps, 'description' | 'reviews'>;
 
 export function ProductDetailTabs({
@@ -18,7 +21,8 @@ export function ProductDetailTabs({
   reviews = [],
 }: ProductDetailTabsProps) {
   const searchParams = useSearchParams();
-  const queryTab = searchParams.get('activeTab') ?? 'Product Information';
+  const queryTab =
+    searchParams.get(SEARCH_PARAMS.ACTIVE_TAB) ?? 'Product Information';
 
   const [activeTab, setActiveTab] = useState<string>(queryTab);
 
@@ -32,12 +36,12 @@ export function ProductDetailTabs({
     () => [
       {
         title: 'Product Information',
-        href: `?activeTab=Product Information`,
+        href: `?${SEARCH_PARAMS.ACTIVE_TAB}=Product Information`,
         content: <p>{description}</p>,
       },
       {
         title: 'Reviews',
-        href: `?activeTab=Reviews`,
+        href: `?${SEARCH_PARAMS.ACTIVE_TAB}=Reviews`,
         content: <ProductReviews reviews={reviews} />,
       },
     ],

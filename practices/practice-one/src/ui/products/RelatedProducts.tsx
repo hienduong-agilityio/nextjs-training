@@ -19,7 +19,7 @@ export async function RelatedProducts({
   const currentProduct = await getProductById(currentProductId ?? '1');
 
   if (!currentProduct) {
-    notFound();
+    return notFound();
   }
 
   const currentCategory = currentProduct.category;

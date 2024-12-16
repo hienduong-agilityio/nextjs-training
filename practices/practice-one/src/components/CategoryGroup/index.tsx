@@ -10,6 +10,9 @@ import Link from 'next/link';
 // Helpers
 import { capitalizeText } from '@/helpers';
 
+// Constants
+import { ALL_CATEGORIES, SEARCH_PARAMS } from '@/constants';
+
 interface ICategoryGroupProps {
   title: string;
   items: { name: string; count: number }[];
@@ -19,14 +22,15 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentCategory = searchParams.get('category') ?? 'all';
+  const currentCategory =
+    searchParams.get(SEARCH_PARAMS.CATEGORY) ?? ALL_CATEGORIES.ALL;
 
   const handleCategoryClick = (itemName: string) => {
     const updatedParams = new URLSearchParams();
 
     // Update the category query parameter
-    if (itemName !== 'all') {
-      updatedParams.set('category', itemName);
+    if (itemName !== ALL_CATEGORIES.ALL) {
+      updatedParams.set(SEARCH_PARAMS.CATEGORY, itemName);
     }
 
     return `${pathname}?${updatedParams.toString()}`;
@@ -38,8 +42,8 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
       <ul className="space-y-2 text-sm text-gray-700">
         {items.map((item) => {
           const isActive =
-            item.name === 'all'
-              ? currentCategory === 'all' || !currentCategory
+            item.name === ALL_CATEGORIES.ALL
+              ? currentCategory === ALL_CATEGORIES.ALL || !currentCategory
               : item.name === currentCategory;
 
           return (
