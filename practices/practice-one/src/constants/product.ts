@@ -5,3 +5,5 @@ export const ALL_CATEGORIES = {
   FURNITURE: 'furniture',
   GROCERIES: 'groceries',
 };
+
+export const SORT_PRODUCT_OPTIONS = ['name', 'price', 'rating'];

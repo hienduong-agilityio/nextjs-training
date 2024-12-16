@@ -1,4 +1,4 @@
 export * from './api';
-export * from './category';
+export * from './product';
 export * from './searchParam';
 export * from './router';

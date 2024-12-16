@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Select } from '@/components';
 
 // Constants
-import { SEARCH_PARAMS } from '@/constants';
+import { SEARCH_PARAMS, SORT_PRODUCT_OPTIONS } from '@/constants';
 
 interface FilterSortBarProps {
   itemCount: number;
@@ -18,7 +18,7 @@ interface FilterSortBarProps {
 
 export const FilterSortBar = ({
   itemCount = 0,
-  sortOptions = ['name'],
+  sortOptions = SORT_PRODUCT_OPTIONS,
   showOptions = ['6'],
 }: FilterSortBarProps) => {
   const searchParams = useSearchParams();
