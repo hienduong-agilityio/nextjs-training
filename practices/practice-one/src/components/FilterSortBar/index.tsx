@@ -17,9 +17,9 @@ interface FilterSortBarProps {
 }
 
 export const FilterSortBar = ({
-  itemCount,
-  sortOptions,
-  showOptions,
+  itemCount = 0,
+  sortOptions = ['name'],
+  showOptions = ['6'],
 }: FilterSortBarProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -27,6 +27,7 @@ export const FilterSortBar = ({
   const [selectedLimit, setSelectedLimit] = useState<string>(showOptions[0]);
   const [selectedSort, setSelectedSort] = useState<string>(sortOptions[0]);
 
+  // TODO: Remove useEffect.
   useEffect(() => {
     // Get query parameters from the URL
     const limitParam = searchParams.get(SEARCH_PARAMS.LIMIT) ?? showOptions[0];

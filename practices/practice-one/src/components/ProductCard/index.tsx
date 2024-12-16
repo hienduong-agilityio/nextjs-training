@@ -16,23 +16,23 @@ import Link from 'next/link';
 
 interface IProductCardProps extends Omit<IProductProps, 'images'> {
   images: string[];
-  onFavorite?: () => void;
-  onAddToCart?: () => void;
+  addToFavorites?: () => void;
+  addToCart?: () => void;
 }
 
 const ProductCard = ({
   id,
-  name,
-  images,
-  price,
-  originalPrice,
-  discount,
+  name = 'Product',
+  images = [],
+  price = '100',
+  originalPrice = '50',
+  discount = '50%',
   label = 'Hot',
   rating = 4,
-  onFavorite = () => {},
-  onAddToCart = () => {},
+  addToFavorites = () => {},
+  addToCart = () => {},
 }: IProductCardProps) => {
-  const image = images[0];
+  const image = images.length > 0 ? images[0] : '/images/image-placeholder.svg';
 
   return (
     <div
@@ -47,7 +47,7 @@ const ProductCard = ({
       <div className="relative bg-secondary-200 group">
         <Image
           src={image}
-          alt={name}
+          alt={name || 'Product image'}
           width={0}
           height={0}
           className="mix-blend-multiply object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"
@@ -58,14 +58,14 @@ const ProductCard = ({
           <Button
             aria-label="Favorite product"
             className="flex p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
-            onClick={onFavorite}
+            onClick={addToFavorites}
           >
             <HeartIcon size={24} />
           </Button>
           <Button
             aria-label="Add to Cart"
             className="p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
-            onClick={onAddToCart}
+            onClick={addToCart}
           >
             <AddToCartIcon size={24} />
           </Button>

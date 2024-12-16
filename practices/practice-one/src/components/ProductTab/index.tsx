@@ -46,19 +46,7 @@ export const ProductTabs = ({
       : productData.filter(
           (product) => product.category?.toLowerCase() === cat.toLowerCase(),
         )
-    ).map((product) => (
-      <ProductCard
-        key={product.id}
-        id={product.id}
-        name={product.name}
-        images={product.images}
-        label={product.label}
-        price={product.price}
-        originalPrice={product.originalPrice}
-        discount={product.discount}
-        rating={product.rating}
-      />
-    )),
+    ).map((product) => <ProductCard key={product.id} {...product} />),
   }));
 
   return (

@@ -17,6 +17,7 @@ interface PaginationProps {
   currentPage?: number;
 }
 
+// TODO: Pagination should be only pagination UI. Do not handle logic inside.
 export function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
