@@ -47,7 +47,7 @@ const ProductCard = ({
       <div className="relative bg-secondary-200 group">
         <Image
           src={image}
-          alt={name || 'Product image'}
+          alt={name}
           width={0}
           height={0}
           className="mix-blend-multiply object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"

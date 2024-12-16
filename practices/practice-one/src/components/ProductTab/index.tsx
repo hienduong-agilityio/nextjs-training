@@ -1,8 +1,7 @@
 'use client';
 
 // Libraries
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
 // Mock
 import { CATEGORIES } from '@/mocks';
@@ -26,25 +25,25 @@ export const ProductTabs = ({
   category = ALL_CATEGORIES.ALL,
   productData,
 }: ProductTabsProps) => {
-  const router = useRouter();
+  const lowerCaseCategory = category.toLowerCase() as Category;
 
-  useEffect(() => {
-    if (category && !CATEGORIES.includes(category.toLowerCase() as Category)) {
-      router.replace('/products');
-    }
-  }, [category, router]);
+  // Check category validity
+  if (category && !CATEGORIES.includes(lowerCaseCategory)) {
+    redirect('/products');
+  }
 
   // Map categories to tabs
-  const items = CATEGORIES.map((cat) => ({
-    title: cat,
+  const productsByCategory = CATEGORIES.map((category) => ({
+    title: category,
     href:
-      cat.toLowerCase() === ALL_CATEGORIES.ALL
+      category.toLowerCase() === ALL_CATEGORIES.ALL
         ? '/products'
-        : `/products/${cat}`,
-    content: (cat.toLowerCase() === ALL_CATEGORIES.ALL
+        : `/products/${category}`,
+    content: (category.toLowerCase() === ALL_CATEGORIES.ALL
       ? productData
       : productData.filter(
-          (product) => product.category?.toLowerCase() === cat.toLowerCase(),
+          (product) =>
+            product.category?.toLowerCase() === category.toLowerCase(),
         )
     ).map((product) => <ProductCard key={product.id} {...product} />),
   }));
@@ -53,7 +52,7 @@ export const ProductTabs = ({
     <div className="flex flex-col items-center gap-4">
       <h2 className="text-3xl font-semibold uppercase">Best seller</h2>
       <Tabs
-        items={items}
+        items={productsByCategory}
         selectedTab={category.toLowerCase()}
         customClass={{
           wrapper: 'flex flex-col w-full',
