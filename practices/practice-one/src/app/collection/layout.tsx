@@ -2,16 +2,13 @@
 import { ReactNode, Suspense } from 'react';
 
 // Components
-import { CategoryGroup, FilterSortBar } from '@/components';
+import { CategoryGroup } from '@/components';
 
 // Mocks
 import { HOT_DEALS } from '@/mocks';
 
 // UI
-import { LoadingCategoryGroup, LoadingFilterSortBar } from '@/ui';
-
-// Constants
-import { SORT_PRODUCT_OPTIONS } from '@/constants';
+import { LoadingCategoryGroup } from '@/ui';
 
 export default function CollectionLayout({
   children,
@@ -28,17 +25,7 @@ export default function CollectionLayout({
         </div>
       </aside>
 
-      {/* Filter sort */}
-      <div className="col-span-12 md:col-span-8 lg:col xl:col-span-9 2xl:col-span-10 w-full">
-        <Suspense fallback={<LoadingFilterSortBar />}>
-          <FilterSortBar
-            itemCount={0}
-            sortOptions={SORT_PRODUCT_OPTIONS}
-            showOptions={['6', '9', '12']}
-          />
-        </Suspense>
-        {children}
-      </div>
+      {children}
     </section>
   );
 }

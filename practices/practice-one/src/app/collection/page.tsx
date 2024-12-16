@@ -1,8 +1,8 @@
 // Components
-import { ProductCard, Pagination } from '@/components';
+import { ProductCard, Pagination, FilterSortBar } from '@/components';
 
 // Constants
-import { ROUTE } from '@/constants';
+import { ROUTE, SORT_PRODUCT_OPTIONS } from '@/constants';
 
 // Helpers
 import { capitalizeText } from '@/helpers';
@@ -75,18 +75,25 @@ export default async function CollectionPage({
   const totalPages = Math.ceil(filteredProducts.length / query);
 
   return (
-    <div className="flex flex-col gap-9">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6 w-full">
-        {productData.length > 0 ? (
-          productData.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))
-        ) : (
-          <p>No products found.</p>
-        )}
-      </div>
-      <div className="w-full bg-secondary-300 flex flex-col items-center">
-        <Pagination totalPages={totalPages} />
+    <div className="col-span-12 md:col-span-8 lg:col xl:col-span-9 2xl:col-span-10 w-full">
+      <FilterSortBar
+        itemCount={filteredProducts.length}
+        sortOptions={SORT_PRODUCT_OPTIONS}
+        showOptions={['6', '9', '12']}
+      />
+      <div className="flex flex-col gap-9">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6 w-full">
+          {productData.length > 0 ? (
+            productData.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))
+          ) : (
+            <p>No products found.</p>
+          )}
+        </div>
+        <div className="w-full bg-secondary-300 flex flex-col items-center">
+          <Pagination totalPages={totalPages} />
+        </div>
       </div>
     </div>
   );
