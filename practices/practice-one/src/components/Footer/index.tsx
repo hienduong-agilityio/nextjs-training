@@ -15,6 +15,9 @@ import { FOOTER_NAVIGATION } from '@/mocks';
 // Components
 import Link from 'next/link';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 export const Footer = () => {
   return (
     <footer className="w-full bg-primary-50">
@@ -24,7 +27,7 @@ export const Footer = () => {
           <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
             {/* Logo Section */}
             <div className="max-w-[290px] flex flex-col gap-4">
-              <Link href="#" className="flex items-center gap-2">
+              <Link href={ROUTE.PRODUCTS} className="flex items-center gap-2">
                 <LogoIcon aria-label="logo" />
                 <span className="text-lg font-bold sm:text-xl lg:text-2xl">
                   E-Comm

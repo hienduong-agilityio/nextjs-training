@@ -14,7 +14,7 @@ import type { IProductProps } from '@/interfaces';
 import type { Category } from '@/types/category';
 
 // Constants
-import { ALL_CATEGORIES } from '@/constants';
+import { ALL_CATEGORIES, ROUTE } from '@/constants';
 
 interface ProductTabsProps {
   category?: string;
@@ -29,7 +29,7 @@ export const ProductTabs = ({
 
   // Check category validity
   if (category && !CATEGORIES.includes(lowerCaseCategory)) {
-    redirect('/products');
+    redirect(ROUTE.PRODUCTS);
   }
 
   // Map categories to tabs
@@ -37,8 +37,8 @@ export const ProductTabs = ({
     title: category,
     href:
       category.toLowerCase() === ALL_CATEGORIES.ALL
-        ? '/products'
-        : `/products/${category}`,
+        ? ROUTE.PRODUCTS
+        : `${ROUTE.PRODUCTS}/${category}`,
     content: (category.toLowerCase() === ALL_CATEGORIES.ALL
       ? productData
       : productData.filter(

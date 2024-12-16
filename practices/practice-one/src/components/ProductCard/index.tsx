@@ -14,6 +14,9 @@ import Image from 'next/image';
 import { Button } from '@/components';
 import Link from 'next/link';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 interface IProductCardProps extends Omit<IProductProps, 'images'> {
   images: string[];
   addToFavorites?: () => void;
@@ -73,7 +76,7 @@ const ProductCard = ({
       </div>
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
         <Link
-          href={`/product/${id}`}
+          href={`${ROUTE.PRODUCT}/${id}`}
           className="text-lg font-semibold text-center text-indigo hover:underline"
         >
           {name}

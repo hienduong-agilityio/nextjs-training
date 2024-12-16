@@ -7,6 +7,9 @@ import type { IProductProps } from '@/interfaces';
 // Components
 import Link from 'next/link';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 export function ProductInfo({
   name,
   rating,
@@ -30,7 +33,7 @@ export function ProductInfo({
           {reviews?.length ?? 0} reviews
         </span>
         <Link
-          href="#"
+          href={ROUTE.PRODUCTS}
           className="text-sm text-primary-100 hover:underline whitespace-nowrap"
         >
           Submit a review

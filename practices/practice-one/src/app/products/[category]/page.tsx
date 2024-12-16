@@ -11,6 +11,9 @@ import type { Metadata } from 'next';
 // Helpers
 import { capitalizeText } from '@/helpers';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,7 +28,7 @@ export async function generateMetadata({
     openGraph: {
       title: `E-Comm - ${formattedCategory} Products`,
       description: `Find top-quality products in the ${formattedCategory} category.`,
-      url: `https://nextjs-training-practice-one-app.vercel.app/products/${category}`,
+      url: `https://nextjs-training-practice-one-app.vercel.app${ROUTE.PRODUCTS}/${category}`,
       siteName: 'E-Comm',
       type: 'website',
       images: [
@@ -57,7 +60,7 @@ export default async function ProductCategoryPage({
     <section>
       <ProductTabs category={category} productData={productData} />
       <Link
-        href={`/collection?category=${category}`}
+        href={`${ROUTE.COLLECTION}?category=${category}`}
         className="flex justify-center text-lg  mt-8 underline uppercase text-primary-100"
       >
         load more

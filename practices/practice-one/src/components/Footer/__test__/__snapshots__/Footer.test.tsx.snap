@@ -19,7 +19,7 @@ exports[`Footer matches the snapshot 1`] = `
           >
             <a
               class="flex items-center gap-2"
-              href="#"
+              href="/products"
             >
               <svg
                 aria-label="logo"

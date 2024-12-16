@@ -20,7 +20,7 @@ import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
 import { SearchIcon } from '@/icons';
 
 // Constants
-import { SEARCH_PARAMS } from '@/constants';
+import { ROUTE, SEARCH_PARAMS } from '@/constants';
 
 export interface ISearchBoxProps {
   placeholder?: string;
@@ -72,7 +72,7 @@ const SearchBox = ({
       currentParams.set(SEARCH_PARAMS.SEARCH, inputValue.trim());
     }
 
-    router.push(`/collection?${currentParams.toString()}`);
+    router.push(`${ROUTE.COLLECTION}?${currentParams.toString()}`);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

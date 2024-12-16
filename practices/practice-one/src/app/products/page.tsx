@@ -5,6 +5,9 @@ import { getProducts } from '@/services';
 import { ProductTabs } from '@/components';
 import Link from 'next/link';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 export default async function ProductPage() {
   const productData = await getProducts({
     page: 1,
@@ -16,7 +19,7 @@ export default async function ProductPage() {
     <section>
       <ProductTabs productData={productData} />
       <Link
-        href={`/collection`}
+        href={ROUTE.COLLECTION}
         className="flex justify-center text-lg  mt-8 underline uppercase text-primary-100"
       >
         load more

@@ -1,6 +1,9 @@
 // Components
 import { ProductCard, Pagination } from '@/components';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 // Helpers
 import { capitalizeText } from '@/helpers';
 
@@ -30,7 +33,7 @@ export async function generateMetadata({
     openGraph: {
       title: `E-Comm - ${formattedCategory} Collection`,
       description: `Explore our ${formattedCategory} collection at E-Comm. Shop now for the best deals and highest-rated items.`,
-      url: `https://nextjs-training-practice-one-app.vercel.app/collection?category=${category}&sortBy=${searchParams?.sortBy ?? ''}&limit=${searchParams?.limit ?? ''}&page=${searchParams?.page ?? ''}`,
+      url: `https://nextjs-training-practice-one-app.vercel.app${ROUTE.COLLECTION}?category=${category}&sortBy=${searchParams?.sortBy ?? ''}&limit=${searchParams?.limit ?? ''}&page=${searchParams?.page ?? ''}`,
       images: [
         {
           url: '/images/product-mock.png',

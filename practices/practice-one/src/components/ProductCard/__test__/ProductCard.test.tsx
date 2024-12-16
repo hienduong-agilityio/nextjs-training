@@ -76,7 +76,7 @@ describe('ProductCard Component', () => {
       name: /Add to Cart/i,
     });
     fireEvent.click(addToCartButton);
-    expect(mockOnAddToCart).toHaveBeenCalledTimes(0);
+    expect(mockOnAddToCart).toHaveBeenCalledTimes(1);
   });
 
   it('handles Favorite button click', () => {
@@ -85,7 +85,7 @@ describe('ProductCard Component', () => {
     });
 
     fireEvent.click(favoriteButton);
-    expect(mockOnFavorite).toHaveBeenCalledTimes(0);
+    expect(mockOnFavorite).toHaveBeenCalledTimes(1);
   });
 
   it('renders without optional props', () => {

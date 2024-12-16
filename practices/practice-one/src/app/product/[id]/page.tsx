@@ -15,6 +15,9 @@ import {
 // Services
 import { getProductById } from '@/services';
 
+// Constants
+import { ROUTE } from '@/constants';
+
 // Metadata generation
 export async function generateMetadata({
   params,
@@ -29,7 +32,7 @@ export async function generateMetadata({
     openGraph: {
       title: product.name,
       description: product.description,
-      url: `https://nextjs-training-practice-one-app.vercel.app/product/${product.id}`,
+      url: `https://nextjs-training-practice-one-app.vercel.app${ROUTE.PRODUCT}/${product.id}`,
       images: [
         {
           url: product.images[0],
