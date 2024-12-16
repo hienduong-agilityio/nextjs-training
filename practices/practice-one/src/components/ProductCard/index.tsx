@@ -11,7 +11,7 @@ import { HeartIcon, StarRating, AddToCartIcon } from '@/icons';
 
 // Components
 import Image from 'next/image';
-import { Button } from '@/components';
+import { IconButton } from '@/components';
 import Link from 'next/link';
 
 // Constants
@@ -58,20 +58,20 @@ const ProductCard = ({
         />
         {/* Hover Buttons */}
         <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
-          <Button
+          <IconButton
             aria-label="Favorite product"
-            className="flex p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
+            customClass="flex p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
             onClick={addToFavorites}
           >
             <HeartIcon size={24} />
-          </Button>
-          <Button
+          </IconButton>
+          <IconButton
             aria-label="Add to Cart"
-            className="p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
+            customClass="p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
             onClick={addToCart}
           >
             <AddToCartIcon size={24} />
-          </Button>
+          </IconButton>
         </div>
       </div>
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
