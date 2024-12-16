@@ -67,7 +67,7 @@ export const FilterSortBar = ({
     <div className="bg-secondary-100 p-4 shadow-md md:sticky rounded top-0 z-30 w-full">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
         {/* Item count */}
-        <div className="text-sm text-gray-600">{itemCount} Items</div>
+        <div className="text-sm w-max text-gray-600">{itemCount} Items</div>
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
@@ -85,7 +85,7 @@ export const FilterSortBar = ({
             <Select
               options={showOptions}
               value={selectedLimit}
-              customClass="md:w-40 bg-secondary-100"
+              customClass="w-auto bg-secondary-100"
               onChange={handleShowChange}
             />
           </div>
