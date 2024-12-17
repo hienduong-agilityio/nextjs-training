@@ -17,3 +17,5 @@ export * from './WesternIcon';
 export * from './MasterCardIcon';
 export * from './PaypalIcon';
 export * from './VisaIcon';
+export * from './SearchIcon';
+export * from './MenuGroupIcon';
