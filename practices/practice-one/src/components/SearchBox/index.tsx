@@ -99,12 +99,12 @@ const SearchBox = ({
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         customClass={{
-          container: `border-blue-300 lg:rounded-r-none p-2 ${customClass.inputContainer ?? ''}`,
-          input: `h-16 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer ${customClass.input ?? ''}`,
+          container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
+          input: `h-14 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer ${customClass.input ?? ''}`,
         }}
       />
       <Button
-        customClass={`px-7 rounded-l-none hidden lg:block ${customClass.button ?? ''}`}
+        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none ${customClass.button ?? ''}`}
         type="submit"
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}

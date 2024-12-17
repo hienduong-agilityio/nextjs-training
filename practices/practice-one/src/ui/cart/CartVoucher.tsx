@@ -17,7 +17,7 @@ const CartVoucher = ({ placeholder = 'Voucher code' }) => {
       />
       <Button
         disabled
-        customClass="px-7 rounded-l-none block cursor-not-allowed shadow-none"
+        customClass="px-7 rounded-l-none hidden lg:block cursor-not-allowed shadow-none"
         type="submit"
         color={BUTTON_COLORS.PRIMARY}
         variant={BUTTON_VARIANTS.SOLID}

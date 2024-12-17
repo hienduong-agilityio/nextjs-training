@@ -42,11 +42,11 @@ const CartItem = ({ product }: ICartItemProps) => {
           {product.title}
         </Link>
       </td>
-      <td className="px-4 py-8 text-center">${product.price}</td>
-      <td className="px-4 py-8 flex justify-center items-center space-x-2">
+      <td className="px-4 py-8 text-start">${product.price}</td>
+      <td className="px-4 py-8 flex justify-start w-1/4 items-center space-x-2">
         <QuantityControl />
       </td>
-      <td className="px-4 py-8 text-center">${product.total}</td>
+      <td className="px-4 py-8 text-start">${product.total}</td>
     </tr>
   );
 };

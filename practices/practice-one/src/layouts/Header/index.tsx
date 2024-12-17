@@ -37,8 +37,8 @@ export const Header = async () => {
                 customClass={{
                   container: 'md:justify-end',
                   input: 'w-full lg:w-[400px]',
-                  inputContainer: 'border-primary-300',
-                  button: 'bg-primary-300 text-white',
+                  inputContainer: 'border-primary-200',
+                  button: 'bg-primary-200 text-white',
                 }}
               />
             </Suspense>

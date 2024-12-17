@@ -10,22 +10,22 @@ interface ICartTableProps {
 }
 
 const cartTableHeaders = [
-  { label: 'Product', className: '' },
-  { label: 'Price', className: 'text-center' },
-  { label: 'Qty', className: 'text-center' },
-  { label: 'Unit Price', className: 'text-center' },
+  { label: 'Product', className: 'px-16 py-3' },
+  { label: 'Price', className: 'text-start px-4' },
+  { label: 'Qty', className: 'text-start px-4' },
+  { label: 'Unit Price', className: 'text-start px-4' },
 ];
 
 const CartTable = ({ products, isEmpty }: ICartTableProps) => {
   return (
     <section className="overflow-x-auto">
-      <table className="w-full text-left border-collapse">
+      <table className="w-full text-left border-collapse table-auto">
         <thead className="text-sm uppercase border-b-2 border-secondary-100">
           <tr>
             {cartTableHeaders.map((header) => (
               <th
                 key={header.label}
-                className={`px-4 py-3 font-medium ${header.className || ''}`}
+                className={`text-xl font-medium ${header.className || ''}`}
               >
                 {header.label}
               </th>
