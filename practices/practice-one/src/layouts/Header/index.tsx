@@ -10,11 +10,13 @@ import Link from 'next/link';
 // Constants
 import { ROUTE } from '@/constants';
 
-interface IHeaderProps {
-  cartItemCount?: number;
-}
+// Services
+import { getCartByUserId } from '@/services';
 
-export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
+export const Header = async () => {
+  const userId = 134;
+  const cart = await getCartByUserId(userId);
+
   return (
     <header className="w-full md:container px-4 pt-6 md:mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
       <div className="flex items-center justify-between gap-6">
@@ -45,21 +47,27 @@ export const Header = ({ cartItemCount = 0 }: IHeaderProps) => {
           {/* SearchBox */}
           <SearchModal />
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2">
-              {/* Profile */}
-              <ProfileIcon aria-label="profile" size={20} />
-              <span className="hidden text-sm w-max md:text-base lg:text-lg lg:block">
+          <div className="flex items-center gap-5">
+            {/* Profile */}
+            <div className="flex items-center gap-2 cursor-not-allowed ">
+              <ProfileIcon
+                aria-label="profile"
+                size={20}
+                className="cursor-not-allowed"
+              />
+              <span className="hidden text-sm cursor-not-allowed w-max md:text-base lg:text-lg lg:block">
                 My account
               </span>
-              <div className="relative flex items-center">
-                {/* Cart */}
+            </div>
+            <div className="relative flex items-center">
+              {/* Cart */}
+              <Link href={ROUTE.CART}>
                 <CartIcon
                   aria-label="cart"
-                  size={25}
-                  itemCount={cartItemCount}
+                  size={30}
+                  itemCount={cart?.products.length ?? 0}
                 />
-              </div>
+              </Link>
             </div>
           </div>
         </div>
