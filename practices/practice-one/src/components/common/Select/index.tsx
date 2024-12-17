@@ -13,7 +13,7 @@ interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 const baseClass =
-  'border text-sm rounded px-3 py-2 transition duration-200 ease-in-out focus:ring-2 focus:outline-none';
+  'border text-sm rounded px-3 py-2 transition duration-200 ease-in-out focus:ring-2 focus:outline-none cursor-pointer';
 
 const Select = ({
   options,
