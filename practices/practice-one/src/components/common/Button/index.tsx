@@ -9,7 +9,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 // Enums
 import { BUTTON_VARIANTS, BUTTON_COLORS } from '@/enums';
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   startIcon?: ReactNode;
   endIcon?: ReactNode;

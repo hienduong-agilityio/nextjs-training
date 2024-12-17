@@ -6,19 +6,82 @@ import { API_URL, HTTP_METHODS } from '@/constants';
 
 // Type
 import type { IProductProps } from '@/interfaces';
+import type { Category } from '@/types/category';
 
-export const getProducts = async (): Promise<IProductProps[]> => {
+export const getProducts = async ({
+  page = 0,
+  limit = 6,
+  filter = {},
+  sortBy = '',
+}: {
+  page?: number;
+  limit?: number;
+  filter?: { [key: string]: string };
+  sortBy?: string;
+}): Promise<IProductProps[]> => {
+  const queryParams: string[] = [];
+
+  // Add filters to queryParams
+  Object.entries(filter).forEach(([key, value]) => {
+    if (value) {
+      queryParams.push(
+        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+      );
+    }
+  });
+
+  // Add pagination params if page > 0
+  if (page > 0) {
+    queryParams.push(`page=${page}`);
+    queryParams.push(`limit=${limit}`);
+  }
+
+  // Add sortBy if provided
+  if (sortBy) {
+    queryParams.push(`sortBy=${encodeURIComponent(sortBy)}`);
+  }
+
+  // Construct query string
+  const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
+
+  const apiUrl = `${API_URL.PRODUCT}${queryString}`;
+
   try {
-    return await apiRequest<IProductProps[]>({
-      url: `${API_URL.PRODUCT}`,
+    const products = await apiRequest<IProductProps[]>({
+      url: apiUrl,
       method: HTTP_METHODS.GET,
     });
-  } catch (error: unknown) {
+
+    return products;
+  } catch (error) {
     if (error instanceof Error) {
-      throw new Error(error.message || 'Failed to fetch products');
+      return [];
     } else {
-      throw new Error('An unknown error while fetching products');
+      throw new Error('An unknown error occurred while fetching products');
     }
+  }
+};
+
+/**
+ * Get a product by Id.
+ * @param id - The product ID.
+ */
+export const getProductById = async (id: string): Promise<IProductProps> => {
+  try {
+    return await apiRequest<IProductProps>({
+      url: `${API_URL.PRODUCT}/${id}`,
+      method: HTTP_METHODS.GET,
+    });
+    // TODO: handle exception
+  } catch {
+    return {
+      id: '',
+      name: '',
+      images: [''],
+      price: '',
+      originalPrice: '',
+      category: '' as Category,
+    };
   }
 };
 
@@ -29,7 +92,7 @@ export const createProduct = async (productData: IProductProps) => {
       method: HTTP_METHODS.POST,
       data: productData,
     });
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message || 'Failed to create product');
     } else {
@@ -45,7 +108,7 @@ export const updateProduct = async (id: string, productData: IProductProps) => {
       method: HTTP_METHODS.PUT,
       data: productData,
     });
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       throw new Error(
         error.message || `Failed to update product with ID ${id}`,
@@ -62,7 +125,7 @@ export const deleteProduct = async (id: string) => {
       url: `${API_URL.PRODUCT}/${id}`,
       method: HTTP_METHODS.DELETE,
     });
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       throw new Error(
         error.message || `Failed to delete product with ID ${id}`,

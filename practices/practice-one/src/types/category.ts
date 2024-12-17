@@ -1,1 +1,1 @@
-export type Category = 'Bags' | 'Sneakers' | 'Belt' | 'Sunglasses';
+export type Category = 'beauty' | 'fragrances' | 'furniture' | 'groceries';

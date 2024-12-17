@@ -1,12 +1,8 @@
-import { ProductTabs, Service } from '@/components';
+import { redirect } from 'next/navigation';
 
-const Homepage = () => {
-  return (
-    <div>
-      <ProductTabs />
-      <Service />
-    </div>
-  );
-};
+// Constants
+import { ROUTE } from '@/constants';
 
-export default Homepage;
+export default function Homepage() {
+  redirect(ROUTE.PRODUCTS);
+}
