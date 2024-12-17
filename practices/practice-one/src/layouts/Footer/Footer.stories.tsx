@@ -1,11 +1,11 @@
 // Libraries
 import type { Meta, StoryObj } from '@storybook/react';
 
-// Components
-import { Footer } from '@/components';
+// Layouts
+import { Footer } from '@/layouts';
 
 const meta: Meta<typeof Footer> = {
-  title: 'Components/Footer',
+  title: 'Layouts/Footer',
   component: Footer,
   tags: ['autodocs'],
   parameters: {

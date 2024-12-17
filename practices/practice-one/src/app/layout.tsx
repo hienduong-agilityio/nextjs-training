@@ -7,8 +7,8 @@ import type { Metadata } from 'next';
 // Styles
 import './globals.css';
 
-// Components
-import { Header, Footer } from '@/components';
+// Layout
+import { Header, Footer } from '@/layouts';
 
 const poppins = Poppins({
   subsets: ['latin'],

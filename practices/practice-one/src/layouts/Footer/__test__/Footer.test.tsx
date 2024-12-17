@@ -1,8 +1,10 @@
 // Libraries
 import { render, screen, within } from '@testing-library/react';
 
-// Components
-import { Footer } from '@/components';
+// Layouts
+import { Footer } from '@/layouts';
+
+// Mocks
 import { FOOTER_NAVIGATION } from '@/mocks';
 
 describe('Footer', () => {

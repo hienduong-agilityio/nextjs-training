@@ -76,7 +76,7 @@ export const FilterSortBar = ({
             <Select
               options={sortOptions}
               value={selectedSort}
-              customClass="w-auto bg-secondary-100"
+              customClass="w-auto bg-secondary-100 capitalize "
               onChange={handleSortChange}
             />
           </div>
