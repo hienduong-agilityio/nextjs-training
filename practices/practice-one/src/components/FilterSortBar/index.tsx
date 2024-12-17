@@ -73,6 +73,7 @@ export const FilterSortBar = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
           <div className="flex gap-2 items-center">
             <span>Sort</span>
+            {/* TODO: Custom style for select arrow by tailwinds classes*/}
             <Select
               options={sortOptions}
               value={selectedSort}
