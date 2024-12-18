@@ -11,9 +11,9 @@ interface ICartTableProps {
 
 const cartTableHeaders = [
   { label: 'Product', className: 'px-16 py-3' },
-  { label: 'Price', className: 'text-start px-4' },
-  { label: 'Qty', className: 'text-start px-4' },
-  { label: 'Unit Price', className: 'text-start px-4' },
+  { label: 'Price', className: 'px-4' },
+  { label: 'Qty', className: 'px-4' },
+  { label: 'Unit Price', className: 'px-4' },
 ];
 
 const CartTable = ({ products, isEmpty }: ICartTableProps) => {
@@ -25,7 +25,7 @@ const CartTable = ({ products, isEmpty }: ICartTableProps) => {
             {cartTableHeaders.map((header) => (
               <th
                 key={header.label}
-                className={`text-xl font-medium ${header.className || ''}`}
+                className={`text-xl font-medium whitespace-nowrap ${header.className || ''}`}
               >
                 {header.label}
               </th>
