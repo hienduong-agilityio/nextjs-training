@@ -31,7 +31,7 @@ const CartSummary = ({
   ];
 
   return (
-    <div className="w-full lg:w-1/3 space-y-4 p-4">
+    <div className="w-full lg:w-1/2 2xl:w-1/4 space-y-4 p-4">
       {/* Summary Section */}
       <div className="flex flex-col gap-4 border-b-2 pb-4 border-secondary-100">
         {summaryItems.map((item) => (
