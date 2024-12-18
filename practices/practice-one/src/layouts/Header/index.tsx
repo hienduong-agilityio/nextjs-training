@@ -25,12 +25,11 @@ export const Header = async () => {
         {/* Profile, Cart, or Menu */}
         <div className="flex items-center justify-end w-full gap-4 lg:justify-between">
           {/* Search */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block w-full xl:w-[648px]">
             <Suspense fallback={<p>...Loading</p>}>
               <SearchBox
                 customClass={{
                   container: 'md:justify-end',
-                  input: 'w-full xl:w-[400px]',
                   inputContainer: 'border-primary-200',
                   button: 'bg-primary-200 text-white',
                 }}
