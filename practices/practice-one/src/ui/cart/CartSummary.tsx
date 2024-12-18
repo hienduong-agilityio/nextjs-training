@@ -5,7 +5,7 @@ interface ICartSummaryProps {
   summary?: {
     subtotal: number;
     shippingFee: number;
-    couponValue: number | null; // Allow null to represent no voucher
+    couponValue: number | null;
     total: number;
   };
 }
@@ -14,7 +14,7 @@ const CartSummary = ({
   summary = {
     subtotal: 0,
     shippingFee: 0,
-    couponValue: null, // Default to null for no voucher
+    couponValue: null,
     total: 0,
   },
 }: ICartSummaryProps) => {
