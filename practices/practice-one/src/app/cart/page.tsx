@@ -1,21 +1,17 @@
-// Services
-import { getCartByUserId } from '@/services';
+// Mock
+import { CART_DATA } from '@/mocks';
 
 // Components
-import { CartSummary, CartTable, CartVoucher } from '@/ui';
+import { CartSummary, CartTable, VoucherInput } from '@/ui';
 
 const CartPage = async () => {
-  const userId = 134;
-  const cartData = await getCartByUserId(userId);
-
-  const products = cartData?.products ?? [];
-  const isEmpty = products.length === 0;
+  const products = CART_DATA ?? [];
 
   return (
     <div className="space-y-20 px-4 sm:px-6 lg:px-8">
-      <CartTable products={products} isEmpty={isEmpty} />
+      <CartTable products={products} />
       <section className="flex flex-col gap-6 lg:flex-row lg:justify-between">
-        <CartVoucher />
+        <VoucherInput />
         <CartSummary />
       </section>
     </div>

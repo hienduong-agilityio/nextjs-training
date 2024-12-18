@@ -1,40 +1,23 @@
 'use client';
 
 // Libraries
-import {
-  memo,
-  useState,
-  useEffect,
-  useOptimistic,
-  startTransition,
-} from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { startTransition, useEffect, useOptimistic, useState } from 'react';
+
+// Icon
+import { SearchIcon } from '@/icons';
 
 // Components
-import { Button, InputField } from '@/components';
-
-// Enums
-import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
-
-// Icons
-import { SearchIcon } from '@/icons';
+import { IInputGroupProps, InputGroup } from '@/components';
 
 // Constants
 import { ROUTE, SEARCH_PARAMS } from '@/constants';
 
-export interface ISearchBoxProps {
-  placeholder?: string;
-  buttonText?: string;
-  customClass?: {
-    container?: string;
-    inputContainer?: string;
-    input?: string;
-    button?: string;
-  };
+export interface ISearchBoxProps extends IInputGroupProps {
   onSearch?: () => void;
 }
 
-const SearchBox = ({
+export const SearchBox = ({
   placeholder = 'Enter your query...',
   buttonText = 'Search',
   customClass = {},
@@ -86,35 +69,16 @@ const SearchBox = ({
   };
 
   return (
-    <div className={`flex ${customClass.container ?? ''}`}>
-      <InputField
-        placeholder={placeholder}
-        startContent={
-          <SearchIcon color="#40BFFF" className="lg:hidden block" />
-        }
-        value={inputValue}
-        type="search"
-        id="gsearch"
-        name="gsearch"
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        customClass={{
-          container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
-          input: `h-14 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer ${customClass.input ?? ''}`,
-        }}
-      />
-      <Button
-        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none ${customClass.button ?? ''}`}
-        type="submit"
-        color={BUTTON_COLORS.PRIMARY}
-        variant={BUTTON_VARIANTS.SOLID}
-        onClick={handleSearch}
-        disabled={isLoading}
-      >
-        {isLoading ? 'Loading...' : buttonText}
-      </Button>
-    </div>
+    <InputGroup
+      placeholder={placeholder}
+      startContent={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
+      buttonText={isLoading ? 'Loading...' : buttonText}
+      isDisabled={isLoading}
+      customClass={customClass}
+      onInputChange={handleInputChange}
+      onButtonClick={handleSearch}
+      value={inputValue}
+      onKeyDown={handleKeyDown}
+    />
   );
 };
-
-export default memo(SearchBox);

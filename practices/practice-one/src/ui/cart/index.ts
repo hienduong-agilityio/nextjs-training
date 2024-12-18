@@ -1,5 +1,4 @@
-export { default as CartItem } from './CartItem';
+export { default as CartItemRow } from './CartItemRow';
 export { default as CartSummary } from './CartSummary';
 export { default as CartTable } from './CartTable';
-export { default as CartVoucher } from './CartVoucher';
-export * from './CartEmptyProduct';
+export * from './VoucherInput';

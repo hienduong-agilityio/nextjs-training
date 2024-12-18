@@ -1,12 +1,12 @@
 // Interfaces
-import type { ICartItem } from '@/interfaces/cart';
+import type { ICartItem } from '@/interfaces';
 
 // Components
-import { CartEmptyProduct, CartItem } from '@/ui';
+import { EmptyProducts } from '@/components';
+import { CartItemRow } from '@/ui';
 
 interface ICartTableProps {
   products: ICartItem[];
-  isEmpty: boolean;
 }
 
 const cartTableHeaders = [
@@ -16,7 +16,9 @@ const cartTableHeaders = [
   { label: 'Unit Price', className: 'px-4' },
 ];
 
-const CartTable = ({ products, isEmpty }: ICartTableProps) => {
+const CartTable = ({ products }: ICartTableProps) => {
+  const isCartEmpty = products.length === 0;
+
   return (
     <section className="overflow-x-auto">
       <table className="w-full text-left border-collapse table-auto">
@@ -33,12 +35,20 @@ const CartTable = ({ products, isEmpty }: ICartTableProps) => {
           </tr>
         </thead>
         <tbody className="divide-y-2 border-b-2 border-secondary-100 divide-secondary-100">
-          {!isEmpty ? (
+          {!isCartEmpty ? (
             products.map((product) => (
-              <CartItem key={product.id} product={product} />
+              <CartItemRow key={product.id} product={product} />
             ))
           ) : (
-            <CartEmptyProduct />
+            <tr>
+              <td colSpan={4}>
+                <EmptyProducts
+                  message="Your cart is currently empty."
+                  actionLabel="Continue Shopping"
+                  actionHref="/collection"
+                />
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

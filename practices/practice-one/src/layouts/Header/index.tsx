@@ -10,13 +10,7 @@ import Link from 'next/link';
 // Constants
 import { ROUTE } from '@/constants';
 
-// Services
-import { getCartByUserId } from '@/services';
-
 export const Header = async () => {
-  const userId = 134;
-  const cart = await getCartByUserId(userId);
-
   return (
     <header className="w-full md:container px-4 pt-6 md:mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
       <div className="flex items-center justify-between gap-6">
@@ -36,7 +30,7 @@ export const Header = async () => {
               <SearchBox
                 customClass={{
                   container: 'md:justify-end',
-                  input: 'w-full lg:w-[400px]',
+                  input: 'w-full xl:w-[400px]',
                   inputContainer: 'border-primary-200',
                   button: 'bg-primary-200 text-white',
                 }}
@@ -62,11 +56,7 @@ export const Header = async () => {
             <div className="relative flex items-center">
               {/* Cart */}
               <Link href={ROUTE.CART}>
-                <CartIcon
-                  aria-label="cart"
-                  size={30}
-                  itemCount={cart?.products.length ?? 0}
-                />
+                <CartIcon aria-label="cart" size={30} />
               </Link>
             </div>
           </div>

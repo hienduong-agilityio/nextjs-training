@@ -7,7 +7,7 @@ import { QuantityControl } from '@/ui';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface ICartItemProps {
+interface ICartItemRowProps {
   product: {
     id: string;
     title: string;
@@ -18,7 +18,7 @@ interface ICartItemProps {
   };
 }
 
-const CartItem = ({ product }: ICartItemProps) => {
+const CartItemRow = ({ product }: ICartItemRowProps) => {
   return (
     <tr>
       <td className="px-4 py-8 flex items-center">
@@ -51,4 +51,4 @@ const CartItem = ({ product }: ICartItemProps) => {
   );
 };
 
-export default memo(CartItem);
+export default memo(CartItemRow);
