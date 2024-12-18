@@ -5,7 +5,7 @@ interface ICartSummaryProps {
   summary?: {
     subtotal: number;
     shippingFee: number;
-    couponValue: number;
+    couponValue: number | null; // Allow null to represent no voucher
     total: number;
   };
 }
@@ -14,14 +14,20 @@ const CartSummary = ({
   summary = {
     subtotal: 0,
     shippingFee: 0,
-    couponValue: 0,
+    couponValue: null, // Default to null for no voucher
     total: 0,
   },
 }: ICartSummaryProps) => {
   const summaryItems = [
-    { label: 'Subtotal', value: summary.subtotal },
-    { label: 'Shipping fee', value: summary.shippingFee },
-    { label: 'Coupon', value: summary.couponValue },
+    { label: 'Subtotal', value: `$${summary.subtotal}` },
+    { label: 'Shipping fee', value: `$${summary.shippingFee}` },
+    {
+      label: 'Coupon',
+      value:
+        summary.couponValue !== null
+          ? `$${summary.couponValue.toFixed(2)}`
+          : 'No',
+    },
   ];
 
   return (
@@ -34,7 +40,7 @@ const CartSummary = ({
             className="flex justify-between text-sm md:text-base lg:text-lg"
           >
             <span>{item.label}</span>
-            <span>${item.value.toFixed(2)}</span>
+            <span>{item.value}</span>
           </div>
         ))}
       </div>
