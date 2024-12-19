@@ -51,16 +51,14 @@ export const SearchBox = ({
 
     setInputValue(newSearchValue);
 
-    if (newSearchValue) {
-      startTransition(() => {
-        setIsLoading(true);
-      });
+    startTransition(() => {
+      setIsLoading(true);
+    });
 
-      const currentParams = new URLSearchParams();
-      currentParams.set(SEARCH_PARAMS.SEARCH, newSearchValue);
+    const currentParams = new URLSearchParams();
+    currentParams.set(SEARCH_PARAMS.SEARCH, newSearchValue);
 
-      router.push(`${ROUTE.COLLECTION}?${currentParams.toString()}`);
-    }
+    router.push(`${ROUTE.COLLECTION}?${currentParams.toString()}`);
 
     onCloseModal?.();
   };
