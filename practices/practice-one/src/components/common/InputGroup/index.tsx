@@ -30,8 +30,16 @@ export const InputGroup = ({
   onInputChange,
   onButtonClick,
 }: IInputGroupProps) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onButtonClick?.();
+  };
+
   return (
-    <div className={`flex ${customClass.container ?? ''}`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`flex ${customClass.container ?? ''}`}
+    >
       <InputField
         placeholder={placeholder}
         startIcon={startIcon}
@@ -51,6 +59,6 @@ export const InputGroup = ({
       >
         {buttonText}
       </Button>
-    </div>
+    </form>
   );
 };
