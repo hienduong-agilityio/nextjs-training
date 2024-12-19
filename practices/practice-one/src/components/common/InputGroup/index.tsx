@@ -39,13 +39,11 @@ export const InputGroup = ({
         startIcon={startIcon}
         value={value}
         type="search"
-        id="gsearch"
-        name="gsearch"
         onChange={onInputChange}
         onKeyDown={onKeyDown}
         customClass={{
           container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
-          input: `h-14 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer ${customClass.input ?? ''}`,
+          input: `h-14 text-gray-700 appearance-none ${customClass.input ?? ''}`,
         }}
         disabled={isDisabled}
       />

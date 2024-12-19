@@ -17,7 +17,7 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const baseInputClass: string =
-  'flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed';
+  'flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer';
 const baseContainerClass: string =
   'flex items-center gap-1 px-3 border rounded-md focus-within:ring-2';
 const errorContainerClass: string =
@@ -36,6 +36,7 @@ const InputField = ({
   errorMessage = '',
   startIcon = null,
   endIcon = null,
+  type = 'search',
   value,
   onChange,
   ...restProps
@@ -56,6 +57,7 @@ const InputField = ({
         {startIcon && <span>{startIcon}</span>}
         <input
           className={inputClass}
+          type={type}
           value={value}
           onChange={onChange}
           {...restProps}
