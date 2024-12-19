@@ -19,6 +19,7 @@ const InputGroup = ({
   return (
     <form onSubmit={onSubmit} className={`flex ${customClass.container ?? ''}`}>
       <InputField
+        key={value === '' ? 'empty' : 'filled'}
         placeholder={placeholder}
         name="searchBox"
         defaultValue={value}

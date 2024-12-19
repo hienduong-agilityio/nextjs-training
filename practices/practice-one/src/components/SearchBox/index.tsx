@@ -2,7 +2,7 @@
 
 // Libraries
 import { useSearchParams, useRouter } from 'next/navigation';
-import { startTransition, useEffect, useOptimistic, useState } from 'react';
+import { startTransition, useOptimistic } from 'react';
 
 // Icon
 import { SearchIcon } from '@/icons';
@@ -29,27 +29,15 @@ export const SearchBox = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useOptimistic(false);
 
-  // Sync input value with URL `search` parameter on mount or when URL updates
-  useEffect(() => {
-    startTransition(() => {
-      setIsLoading(false);
-    });
-
-    const searchParam = searchParams.get(SEARCH_PARAMS.SEARCH) ?? '';
-
-    setInputValue(searchParam);
-  }, [searchParams, setIsLoading]);
+  const searchParam = searchParams.get(SEARCH_PARAMS.SEARCH) ?? '';
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
     const newSearchValue = (formData.get('searchBox') as string).trim();
-
-    setInputValue(newSearchValue);
 
     startTransition(() => {
       setIsLoading(true);
@@ -65,7 +53,7 @@ export const SearchBox = ({
 
   return (
     <InputGroup
-      value={inputValue}
+      value={searchParam}
       placeholder={placeholder}
       startIcon={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
       buttonText={isLoading ? 'Loading...' : buttonText}
