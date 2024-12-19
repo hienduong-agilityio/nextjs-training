@@ -18,7 +18,6 @@ export interface IInputGroupProps {
   };
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onButtonClick?: () => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const InputGroup = ({
@@ -30,7 +29,6 @@ export const InputGroup = ({
   customClass = {},
   onInputChange,
   onButtonClick,
-  onKeyDown,
 }: IInputGroupProps) => {
   return (
     <div className={`flex ${customClass.container ?? ''}`}>
@@ -40,7 +38,6 @@ export const InputGroup = ({
         value={value}
         type="search"
         onChange={onInputChange}
-        onKeyDown={onKeyDown}
         customClass={{
           container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
           input: `h-14 text-gray-700 appearance-none ${customClass.input ?? ''}`,

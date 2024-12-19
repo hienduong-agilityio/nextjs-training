@@ -56,15 +56,9 @@ export const SearchBox = ({
     }
 
     router.push(`${ROUTE.COLLECTION}?${currentParams.toString()}`);
-  };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-
-      if (onSearch) {
-        onSearch();
-      }
+    if (onSearch) {
+      onSearch();
     }
   };
 
@@ -78,7 +72,6 @@ export const SearchBox = ({
       onInputChange={handleInputChange}
       onButtonClick={handleSearch}
       value={inputValue}
-      onKeyDown={handleKeyDown}
     />
   );
 };
