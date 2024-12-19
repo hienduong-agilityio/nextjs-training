@@ -36,7 +36,6 @@ export const InputGroup = ({
         placeholder={placeholder}
         startIcon={startIcon}
         value={value}
-        type="search"
         onChange={onInputChange}
         customClass={{
           container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
