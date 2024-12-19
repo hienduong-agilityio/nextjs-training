@@ -2,8 +2,7 @@
 import type { ICartItem } from '@/interfaces';
 
 // Components
-import { EmptyProducts } from '@/components';
-import { CartItemRow } from '@/ui';
+import { CartItemRow, EmptyCart } from '@/ui';
 
 interface ICartTableProps {
   products: ICartItem[];
@@ -16,7 +15,7 @@ const cartTableHeaders = [
   { label: 'Unit Price', className: 'px-4' },
 ];
 
-const CartTable = ({ products }: ICartTableProps) => {
+export const CartTable = ({ products }: ICartTableProps) => {
   const isCartEmpty = products.length === 0;
 
   return (
@@ -35,25 +34,19 @@ const CartTable = ({ products }: ICartTableProps) => {
           </tr>
         </thead>
         <tbody className="divide-y-2 border-b-2 border-secondary-100 divide-secondary-100">
-          {!isCartEmpty ? (
-            products.map((product) => (
-              <CartItemRow key={product.id} product={product} />
-            ))
-          ) : (
+          {isCartEmpty ? (
             <tr>
               <td colSpan={4}>
-                <EmptyProducts
-                  message="Your cart is currently empty."
-                  actionLabel="Continue Shopping"
-                  actionHref="/collection"
-                />
+                <EmptyCart />
               </td>
             </tr>
+          ) : (
+            products.map((product) => (
+              <CartItemRow key={product.id} {...product} />
+            ))
           )}
         </tbody>
       </table>
     </section>
   );
 };
-
-export default CartTable;

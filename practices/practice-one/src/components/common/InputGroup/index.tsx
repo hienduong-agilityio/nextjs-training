@@ -2,13 +2,14 @@
 import { Button, InputField } from '@/components';
 
 // Enums
-import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
+import { BUTTON_COLORS } from '@/enums';
 
 export interface IInputGroupProps {
   placeholder?: string;
+  value?: string;
   buttonText?: string;
   isDisabled?: boolean;
-  startContent?: React.ReactNode;
+  startIcon?: React.ReactNode;
   customClass?: {
     container?: string;
     inputContainer?: string;
@@ -17,7 +18,6 @@ export interface IInputGroupProps {
   };
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onButtonClick?: () => void;
-  value?: string;
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
@@ -25,7 +25,7 @@ export const InputGroup = ({
   value,
   placeholder = 'Enter your query...',
   buttonText = 'Search',
-  startContent,
+  startIcon,
   isDisabled = false,
   customClass = {},
   onInputChange,
@@ -36,7 +36,7 @@ export const InputGroup = ({
     <div className={`flex ${customClass.container ?? ''}`}>
       <InputField
         placeholder={placeholder}
-        startContent={startContent}
+        startIcon={startIcon}
         value={value}
         type="search"
         id="gsearch"
@@ -45,18 +45,13 @@ export const InputGroup = ({
         onKeyDown={onKeyDown}
         customClass={{
           container: `border-blue-300 lg:rounded-r-none ${customClass.inputContainer ?? ''}`,
-          input: `h-14 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer
-          ${isDisabled ? 'cursor-not-allowed' : ''} ${customClass.input ?? ''}`,
+          input: `h-14 text-gray-700 appearance-none [&::-webkit-search-cancel-button]:cursor-pointer ${customClass.input ?? ''}`,
         }}
         disabled={isDisabled}
       />
       <Button
-        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none ${
-          isDisabled ? 'cursor-not-allowed' : ''
-        } ${customClass.button ?? ''}`}
-        type="button"
         color={BUTTON_COLORS.PRIMARY}
-        variant={BUTTON_VARIANTS.SOLID}
+        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none ${customClass.button ?? ''}`}
         onClick={onButtonClick}
         disabled={isDisabled}
       >

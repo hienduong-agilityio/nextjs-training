@@ -1,12 +1,12 @@
 export interface ICartItem {
   id: string;
+  thumbnail: string;
   title: string;
   price: number;
   quantity: number;
   total: number;
-  discountPercentage: number;
-  discountedTotal: number;
-  thumbnail: string;
+  discountPercentage?: number;
+  discountedTotal?: number;
 }
 
 export interface ICart {

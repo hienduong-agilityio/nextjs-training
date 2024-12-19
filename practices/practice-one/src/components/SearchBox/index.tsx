@@ -71,7 +71,7 @@ export const SearchBox = ({
   return (
     <InputGroup
       placeholder={placeholder}
-      startContent={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
+      startIcon={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
       buttonText={isLoading ? 'Loading...' : buttonText}
       isDisabled={isLoading}
       customClass={customClass}

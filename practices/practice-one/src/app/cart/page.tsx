@@ -2,7 +2,7 @@
 import { CART_DATA } from '@/mocks';
 
 // Components
-import { CartSummary, CartTable, VoucherInput } from '@/ui';
+import { OrderSummary, CartTable, VoucherInput } from '@/ui';
 
 const CartPage = async () => {
   const products = CART_DATA ?? [];
@@ -12,7 +12,7 @@ const CartPage = async () => {
       <CartTable products={products} />
       <section className="flex flex-col gap-6 lg:flex-row lg:justify-between">
         <VoucherInput />
-        <CartSummary />
+        <OrderSummary />
       </section>
     </div>
   );

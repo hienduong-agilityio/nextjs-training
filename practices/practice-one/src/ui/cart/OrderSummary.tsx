@@ -1,7 +1,7 @@
 // Components
 import { Button } from '@/components';
 
-interface ICartSummaryProps {
+interface IOrderSummaryProps {
   summary?: {
     subtotal: number;
     shippingFee: number;
@@ -10,14 +10,14 @@ interface ICartSummaryProps {
   };
 }
 
-const CartSummary = ({
+export const OrderSummary = ({
   summary = {
     subtotal: 0,
     shippingFee: 0,
     couponValue: null,
     total: 0,
   },
-}: ICartSummaryProps) => {
+}: IOrderSummaryProps) => {
   const summaryItems = [
     { label: 'Subtotal', value: `$${summary.subtotal}` },
     { label: 'Shipping fee', value: `$${summary.shippingFee}` },
@@ -61,5 +61,3 @@ const CartSummary = ({
     </div>
   );
 };
-
-export default CartSummary;

@@ -1,6 +1,6 @@
-import { IProductProps } from '@/interfaces/product';
-
-import { Category } from '@/types/category';
+// Types
+import type { Category } from '@/types';
+import type { ICartItem, IProductProps } from '@/interfaces';
 
 export const CATEGORIES: (Category | 'all')[] = [
   'all',
@@ -74,7 +74,7 @@ export const PRODUCTS_DATA: IProductProps[] = [
   },
 ];
 
-export const CART_DATA = [
+export const CART_DATA: ICartItem[] = [
   {
     id: '2',
     title: 'Eyeshadow Palette with Mirror',

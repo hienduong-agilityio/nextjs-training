@@ -12,11 +12,12 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     input?: string;
   };
   errorMessage?: string;
-  startContent?: ReactNode;
-  endContent?: ReactNode;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
 
-const baseInputClass: string = 'flex-1 outline-none px-3 py-2 bg-transparent';
+const baseInputClass: string =
+  'flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed';
 const baseContainerClass: string =
   'flex items-center gap-1 px-3 border rounded-md focus-within:ring-2';
 const errorContainerClass: string =
@@ -33,8 +34,8 @@ const errorMessagesClasses: string = 'text-sm text-danger-200';
 const InputField = ({
   customClass: customClassNames = {},
   errorMessage = '',
-  startContent = null,
-  endContent = null,
+  startIcon = null,
+  endIcon = null,
   value,
   onChange,
   ...restProps
@@ -52,14 +53,14 @@ const InputField = ({
   return (
     <div className="w-full">
       <div className={containerClasses}>
-        {startContent && <span>{startContent}</span>}
+        {startIcon && <span>{startIcon}</span>}
         <input
           className={inputClass}
           value={value}
           onChange={onChange}
           {...restProps}
         />
-        {endContent && <span>{endContent}</span>}
+        {endIcon && <span>{endIcon}</span>}
       </div>
       {errorMessage && (
         <span className={errorMessagesClasses}>{errorMessage}</span>

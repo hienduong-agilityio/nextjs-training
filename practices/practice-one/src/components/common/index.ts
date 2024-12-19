@@ -4,3 +4,4 @@ export { default as Tabs } from './Tabs';
 export { default as Select } from './Select';
 export { default as IconButton } from './IconButton';
 export * from './IconButton';
+export * from './InputGroup';
