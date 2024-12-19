@@ -44,12 +44,9 @@ export const SearchBox = ({
     setInputValue(event.target.value);
   };
 
-  const handleSearchBoxSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleSearch();
-  };
 
-  const handleSearch = () => {
     startTransition(() => {
       setIsLoading(true);
     });
@@ -76,8 +73,7 @@ export const SearchBox = ({
       isDisabled={isLoading}
       customClass={customClass}
       onInputChange={handleInputChange}
-      onInputAction={handleSearchBoxSubmit}
-      onButtonClick={handleSearch}
+      onInputAction={handleSearch}
     />
   );
 };

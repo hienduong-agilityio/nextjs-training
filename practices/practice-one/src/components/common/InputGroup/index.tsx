@@ -18,7 +18,6 @@ export interface IInputGroupProps {
   };
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onInputAction?: (event: React.FormEvent<HTMLFormElement>) => void;
-  onButtonClick?: () => void;
 }
 
 export const InputGroup = ({
@@ -30,7 +29,6 @@ export const InputGroup = ({
   customClass = {},
   onInputChange,
   onInputAction,
-  onButtonClick,
 }: IInputGroupProps) => {
   return (
     <form
@@ -50,8 +48,8 @@ export const InputGroup = ({
       />
       <Button
         color={BUTTON_COLORS.PRIMARY}
+        type="submit"
         customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none ${customClass.button ?? ''}`}
-        onClick={onButtonClick}
         disabled={isDisabled}
       >
         {buttonText}
