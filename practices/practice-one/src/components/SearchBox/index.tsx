@@ -44,6 +44,11 @@ export const SearchBox = ({
     setInputValue(event.target.value);
   };
 
+  const handleSearchBoxSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    handleSearch();
+  };
+
   const handleSearch = () => {
     startTransition(() => {
       setIsLoading(true);
@@ -64,14 +69,15 @@ export const SearchBox = ({
 
   return (
     <InputGroup
+      value={inputValue}
       placeholder={placeholder}
       startIcon={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
       buttonText={isLoading ? 'Loading...' : buttonText}
       isDisabled={isLoading}
       customClass={customClass}
       onInputChange={handleInputChange}
+      onInputAction={handleSearchBoxSubmit}
       onButtonClick={handleSearch}
-      value={inputValue}
     />
   );
 };

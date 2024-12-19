@@ -17,6 +17,7 @@ export interface IInputGroupProps {
     button?: string;
   };
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onInputAction?: (event: React.FormEvent<HTMLFormElement>) => void;
   onButtonClick?: () => void;
 }
 
@@ -28,16 +29,12 @@ export const InputGroup = ({
   isDisabled = false,
   customClass = {},
   onInputChange,
+  onInputAction,
   onButtonClick,
 }: IInputGroupProps) => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onButtonClick?.();
-  };
-
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={onInputAction}
       className={`flex ${customClass.container ?? ''}`}
     >
       <InputField
