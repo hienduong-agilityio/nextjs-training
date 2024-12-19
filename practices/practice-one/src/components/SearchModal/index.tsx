@@ -12,6 +12,7 @@ import { SearchIcon } from '@/icons';
 // Hooks
 import { useClickOutside } from '@/hooks';
 
+// TODO: SearchModal should be a layout
 const SearchModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);

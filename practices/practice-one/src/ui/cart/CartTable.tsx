@@ -15,6 +15,7 @@ const cartTableHeaders = [
   { label: 'Unit Price', className: 'px-4' },
 ];
 
+// TODO: Cart should be a layout
 export const CartTable = ({ products }: ICartTableProps) => {
   const isCartEmpty = products.length === 0;
 
