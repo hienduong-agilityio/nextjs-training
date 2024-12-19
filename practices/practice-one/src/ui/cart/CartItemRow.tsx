@@ -19,7 +19,7 @@ export const CartItemRow = ({
 }: ICartItem) => {
   return (
     <tr>
-      <td className="px-4 py-8 flex items-center">
+      <td className="px-4 py-8 flex items-center w-max">
         <Button
           aria-label="Remove product"
           className="text-danger-300  p-2 mr-4"
@@ -33,10 +33,7 @@ export const CartItemRow = ({
           height={60}
           className="rounded border w-[90px] h-[60px] object-contain bg-secondary-50"
         />
-        <Link
-          href={`${ROUTE.PRODUCT}/${id}`}
-          className="ml-4 hover:underline w-max"
-        >
+        <Link href={`${ROUTE.PRODUCT}/${id}`} className="ml-4 hover:underline">
           {title}
         </Link>
       </td>
