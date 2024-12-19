@@ -1,6 +1,9 @@
 // Components
 import { Button } from '@/components';
 
+// Enums
+import { BUTTON_COLORS } from '@/enums';
+
 interface IOrderSummaryProps {
   summary?: {
     subtotal: number;
@@ -54,7 +57,8 @@ export const OrderSummary = ({
       {/* Button Section */}
       <Button
         disabled
-        className="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg text-white bg-primary-100 rounded-sm cursor-not-allowed"
+        color={BUTTON_COLORS.PRIMARY}
+        customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
       >
         Check out
       </Button>

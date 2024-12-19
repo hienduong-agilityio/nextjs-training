@@ -19,10 +19,10 @@ export const CartItemRow = ({
 }: ICartItem) => {
   return (
     <tr>
-      <td className="px-4 py-8 flex items-center w-max">
+      <td className="flex items-center px-4 py-8 w-max">
         <Button
           aria-label="Remove product"
-          className="text-danger-300  p-2 mr-4"
+          className="p-2 mr-4 text-danger-300"
         >
           &times;
         </Button>
@@ -38,7 +38,7 @@ export const CartItemRow = ({
         </Link>
       </td>
       <td className="px-4 py-8 text-start">${price}</td>
-      <td className="px-4 py-8 flex justify-start w-1/4 items-center space-x-2">
+      <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
         <QuantityControl />
       </td>
       <td className="px-4 py-8 text-start">${total}</td>

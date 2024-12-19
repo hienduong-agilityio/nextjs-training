@@ -19,7 +19,7 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClass =
-  'flex items-center gap-2 rounded p-2 disabled:cursor-not-allowed';
+  'flex justify-center gap-2 rounded p-2 disabled:cursor-not-allowed';
 
 const variantClasses: Record<BUTTON_VARIANTS, string> = {
   [BUTTON_VARIANTS.SOLID]: 'bg-opacity-100 shadow-md',

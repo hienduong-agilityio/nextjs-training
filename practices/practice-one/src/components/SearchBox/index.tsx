@@ -8,20 +8,23 @@ import { startTransition, useEffect, useOptimistic, useState } from 'react';
 import { SearchIcon } from '@/icons';
 
 // Components
-import { IInputGroupProps, InputGroup } from '@/components';
+import { InputGroup } from '@/components';
 
 // Constants
 import { ROUTE, SEARCH_PARAMS } from '@/constants';
 
+// Types
+import type { IInputGroupProps } from '@/interfaces';
+
 export interface ISearchBoxProps extends IInputGroupProps {
-  onSearch?: () => void;
+  onCloseModal?: () => void;
 }
 
 export const SearchBox = ({
   placeholder = 'Enter your query...',
   buttonText = 'Search',
   customClass = {},
-  onSearch,
+  onCloseModal,
 }: ISearchBoxProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -40,28 +43,26 @@ export const SearchBox = ({
     setInputValue(searchParam);
   }, [searchParams, setIsLoading]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    startTransition(() => {
-      setIsLoading(true);
-    });
+    const formData = new FormData(event.currentTarget);
+    const newSearchValue = (formData.get('searchBox') as string).trim();
 
-    const currentParams = new URLSearchParams();
+    setInputValue(newSearchValue);
 
-    if (inputValue.trim()) {
-      currentParams.set(SEARCH_PARAMS.SEARCH, inputValue.trim());
+    if (newSearchValue) {
+      startTransition(() => {
+        setIsLoading(true);
+      });
+
+      const currentParams = new URLSearchParams();
+      currentParams.set(SEARCH_PARAMS.SEARCH, newSearchValue);
+
+      router.push(`${ROUTE.COLLECTION}?${currentParams.toString()}`);
     }
 
-    router.push(`${ROUTE.COLLECTION}?${currentParams.toString()}`);
-
-    if (onSearch) {
-      onSearch();
-    }
+    onCloseModal?.();
   };
 
   return (
@@ -72,8 +73,7 @@ export const SearchBox = ({
       buttonText={isLoading ? 'Loading...' : buttonText}
       isDisabled={isLoading}
       customClass={customClass}
-      onInputChange={handleInputChange}
-      onInputAction={handleSearch}
+      onSubmit={handleSearch}
     />
   );
 };
