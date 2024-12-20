@@ -27,7 +27,7 @@ const ProductCard = ({
   id,
   name = 'Product',
   images = [],
-  price = '100',
+  price = 100,
   originalPrice = '50',
   discount = '50%',
   label = 'Hot',

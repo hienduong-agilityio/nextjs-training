@@ -51,7 +51,7 @@ export const CartIcon = ({
             textAnchor="middle"
             dominantBaseline="middle"
             fill="white"
-            fontSize={size / 2}
+            fontSize={size / 3}
             fontWeight="bold"
           >
             {itemCount}
