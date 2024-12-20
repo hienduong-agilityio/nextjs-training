@@ -1,2 +1,3 @@
-export * from './products/index';
-export * from './collection/index';
+export * from './products';
+export * from './collection';
+export * from './cart';

@@ -36,11 +36,11 @@ const meta = {
       description: 'Error message displayed below the input field.',
       control: 'text',
     },
-    startContent: {
+    startIcon: {
       description: 'Content to display at the start of the input field.',
       control: 'text',
     },
-    endContent: {
+    endIcon: {
       description: 'Content to display at the end of the input field.',
       control: 'text',
     },
@@ -148,8 +148,8 @@ export const WithContent: Story = {
       input: 'px-5 h-10',
       container: 'border rounded-md',
     },
-    startContent: '🔍',
-    endContent: '✔️',
+    startIcon: '🔍',
+    endIcon: '✔️',
     onChange: (e) => {
       console.log(e.target.value);
     },

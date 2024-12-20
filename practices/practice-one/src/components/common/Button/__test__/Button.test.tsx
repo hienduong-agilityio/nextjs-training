@@ -53,7 +53,7 @@ describe('Button Component', () => {
       <Button color={BUTTON_COLORS.PRIMARY}>Test Button</Button>,
     );
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
-      'bg-primary-300',
+      'bg-primary-200',
     );
 
     rerender(<Button color={BUTTON_COLORS.SUCCESS}>Test Button</Button>);
@@ -98,7 +98,7 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button', { name: /test button/i });
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('disabled:bg-gray-100');
+    expect(button).toHaveClass('disabled:opacity-50');
   });
 
   it('supports different button types', () => {

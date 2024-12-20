@@ -12,14 +12,15 @@ import { SearchIcon } from '@/icons';
 // Hooks
 import { useClickOutside } from '@/hooks';
 
+// TODO: SearchModal should be a layout
 const SearchModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+  const handleOpenModal = () => setIsOpen(true);
+  const handleCloseModal = () => setIsOpen(false);
 
-  useClickOutside(modalRef, handleClose, isOpen);
+  useClickOutside(modalRef, handleCloseModal, isOpen);
 
   useEffect(() => {
     if (isOpen) {
@@ -32,13 +33,12 @@ const SearchModal = () => {
     };
   }, [isOpen]);
 
-  const handleSearch = () => {
-    setIsOpen(false);
-  };
-
   return (
     <div>
-      <Button onClick={handleOpen} className="block lg:hidden cursor-pointer">
+      <Button
+        onClick={handleOpenModal}
+        className="block lg:hidden cursor-pointer"
+      >
         <SearchIcon size={24} />
       </Button>
 
@@ -55,7 +55,7 @@ const SearchModal = () => {
                 button: 'w-full',
               }}
               buttonText="Search"
-              onSearch={handleSearch}
+              onCloseModal={handleCloseModal}
             />
           </div>
         </div>

@@ -3,7 +3,7 @@
 exports[`Button Component renders with default props and matches snapshot 1`] = `
 <div>
   <button
-    class="flex items-center gap-2 rounded p-2 bg-opacity-100 shadow-md bg-gray-200 text-black hover:bg-gray-300 disabled:bg-gray-100"
+    class="flex justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 shadow-md bg-gray-200 text-black"
     type="button"
   >
     Test Button
