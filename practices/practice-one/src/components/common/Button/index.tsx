@@ -19,7 +19,7 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClass =
-  'flex justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50';
+  'flex justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-95';
 
 const variantClasses: Record<BUTTON_VARIANTS, string> = {
   [BUTTON_VARIANTS.SOLID]: 'bg-opacity-100 shadow-md',
@@ -28,12 +28,12 @@ const variantClasses: Record<BUTTON_VARIANTS, string> = {
 };
 
 const colorClasses: Record<BUTTON_COLORS, string> = {
-  [BUTTON_COLORS.DEFAULT]: 'bg-gray-200 text-black hover:bg-gray-300',
-  [BUTTON_COLORS.PRIMARY]: 'bg-primary-300 text-white hover:bg-primary-400',
-  [BUTTON_COLORS.SECONDARY]: 'bg-gray-400 text-white hover:bg-gray-500',
-  [BUTTON_COLORS.SUCCESS]: 'bg-green-600 text-white hover:bg-green-700',
-  [BUTTON_COLORS.WARNING]: 'bg-amber-400 text-black hover:bg-amber-500',
-  [BUTTON_COLORS.DANGER]: 'bg-rose-500 text-white hover:bg-rose-600',
+  [BUTTON_COLORS.DEFAULT]: 'bg-gray-200 text-black',
+  [BUTTON_COLORS.PRIMARY]: 'bg-primary-300 text-white',
+  [BUTTON_COLORS.SECONDARY]: 'bg-gray-400 text-white',
+  [BUTTON_COLORS.SUCCESS]: 'bg-green-600 text-white',
+  [BUTTON_COLORS.WARNING]: 'bg-amber-400 text-black',
+  [BUTTON_COLORS.DANGER]: 'bg-rose-500 text-white',
 };
 
 /**
