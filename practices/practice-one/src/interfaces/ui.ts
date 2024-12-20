@@ -2,6 +2,7 @@ export interface IInputGroupProps {
   placeholder?: string;
   value?: string;
   buttonText?: string;
+  inputName?: string;
   isDisabled?: boolean;
   startIcon?: React.ReactNode;
   customClass?: {

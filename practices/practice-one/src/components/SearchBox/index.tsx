@@ -55,6 +55,7 @@ export const SearchBox = ({
     <InputGroup
       value={searchParam}
       placeholder={placeholder}
+      inputName="searchBox"
       startIcon={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
       buttonText={isLoading ? 'Loading...' : buttonText}
       isDisabled={isLoading}

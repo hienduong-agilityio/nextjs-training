@@ -11,8 +11,9 @@ const InputGroup = ({
   value,
   placeholder = 'Enter your query...',
   buttonText = 'Search',
-  startIcon,
+  inputName = 'inputField',
   isDisabled = false,
+  startIcon,
   customClass = {},
   onSubmit,
 }: IInputGroupProps) => {
@@ -21,7 +22,7 @@ const InputGroup = ({
       <InputField
         key={value === '' ? 'empty' : 'filled'}
         placeholder={placeholder}
-        name="searchBox"
+        name={inputName}
         defaultValue={value}
         startIcon={startIcon}
         customClass={{
