@@ -43,12 +43,8 @@ export const Header = async () => {
           <div className="flex items-center gap-5">
             {/* Profile */}
             <div className="flex items-center gap-2 cursor-not-allowed ">
-              <ProfileIcon
-                aria-label="profile"
-                size={20}
-                className="cursor-not-allowed"
-              />
-              <span className="hidden text-sm cursor-not-allowed w-max md:text-base lg:text-lg lg:block">
+              <ProfileIcon aria-label="profile" size={20} />
+              <span className="hidden text-sm w-max md:text-base lg:text-lg lg:block">
                 My account
               </span>
             </div>
