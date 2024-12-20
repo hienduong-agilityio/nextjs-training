@@ -34,7 +34,7 @@ const InputGroup = ({
       <Button
         color={BUTTON_COLORS.PRIMARY}
         type="submit"
-        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none ${customClass.button ?? ''}`}
+        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none disabled:hover:bg-primary-200 hover:bg-primary-400 ${customClass.button ?? ''}`}
         disabled={isDisabled}
       >
         {buttonText}

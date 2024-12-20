@@ -31,7 +31,6 @@ export const Header = async () => {
                 customClass={{
                   container: 'md:justify-end',
                   inputContainer: 'border-primary-200',
-                  button: 'bg-primary-200 text-white',
                 }}
               />
             </Suspense>

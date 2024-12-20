@@ -53,7 +53,7 @@ describe('Button Component', () => {
       <Button color={BUTTON_COLORS.PRIMARY}>Test Button</Button>,
     );
     expect(screen.getByRole('button', { name: /test button/i })).toHaveClass(
-      'bg-primary-300',
+      'bg-primary-200',
     );
 
     rerender(<Button color={BUTTON_COLORS.SUCCESS}>Test Button</Button>);

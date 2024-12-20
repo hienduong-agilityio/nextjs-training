@@ -19,7 +19,7 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClass =
-  'flex justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-95';
+  'flex justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50';
 
 const variantClasses: Record<BUTTON_VARIANTS, string> = {
   [BUTTON_VARIANTS.SOLID]: 'bg-opacity-100 shadow-md',
@@ -29,7 +29,7 @@ const variantClasses: Record<BUTTON_VARIANTS, string> = {
 
 const colorClasses: Record<BUTTON_COLORS, string> = {
   [BUTTON_COLORS.DEFAULT]: 'bg-gray-200 text-black',
-  [BUTTON_COLORS.PRIMARY]: 'bg-primary-300 text-white',
+  [BUTTON_COLORS.PRIMARY]: 'bg-primary-200 text-white',
   [BUTTON_COLORS.SECONDARY]: 'bg-gray-400 text-white',
   [BUTTON_COLORS.SUCCESS]: 'bg-green-600 text-white',
   [BUTTON_COLORS.WARNING]: 'bg-amber-400 text-black',
