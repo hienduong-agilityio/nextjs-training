@@ -98,7 +98,7 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button', { name: /test button/i });
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('disabled:bg-gray-100');
+    expect(button).toHaveClass('disabled:opacity-50');
   });
 
   it('supports different button types', () => {
