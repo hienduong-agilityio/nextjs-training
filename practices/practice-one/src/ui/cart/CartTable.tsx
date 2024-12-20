@@ -16,7 +16,7 @@ const cartTableHeaders = [
 ];
 
 // TODO: Cart should be a layout
-export const CartTable = ({ products }: ICartTableProps) => {
+export const CartTable = ({ products = [] }: ICartTableProps) => {
   const isCartEmpty = products.length === 0;
 
   return (

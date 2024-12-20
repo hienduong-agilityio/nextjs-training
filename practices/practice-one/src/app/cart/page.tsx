@@ -10,7 +10,7 @@ const CartPage = async () => {
 
   return (
     <div className="space-y-20 px-4 sm:px-6 lg:px-8">
-      <CartTable products={cartProduct?.products ?? []} />
+      <CartTable products={cartProduct?.products} />
       <section className="flex flex-col gap-6 lg:flex-row lg:justify-between">
         <VoucherInput />
         <OrderSummary />
