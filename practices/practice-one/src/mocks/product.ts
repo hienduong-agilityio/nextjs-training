@@ -1,6 +1,6 @@
-import { IProductProps } from '@/interfaces/product';
-
-import { Category } from '@/types/category';
+// Types
+import type { Category } from '@/types';
+import type { ICartItem, IProductProps } from '@/interfaces';
 
 export const CATEGORIES: (Category | 'all')[] = [
   'all',
@@ -71,5 +71,41 @@ export const PRODUCTS_DATA: IProductProps[] = [
     discount: '22%',
     rating: 4,
     category: 'groceries',
+  },
+];
+
+export const CART_DATA: ICartItem[] = [
+  {
+    id: '2',
+    title: 'Eyeshadow Palette with Mirror',
+    price: 19.99,
+    quantity: 3,
+    total: 59.97,
+    discountPercentage: 5.5,
+    discountedTotal: 56.67164999999999,
+    thumbnail:
+      'https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png',
+  },
+  {
+    id: '1',
+    title: 'Essence Mascara Lash Princess',
+    price: 9.99,
+    quantity: 1,
+    total: 9.99,
+    discountPercentage: 7.17,
+    discountedTotal: 9.273717,
+    thumbnail:
+      'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png',
+  },
+  {
+    id: '3',
+    title: 'Powder Canister',
+    price: 14.99,
+    quantity: 2,
+    total: 29.98,
+    discountPercentage: 18.14,
+    discountedTotal: 24.541628,
+    thumbnail:
+      'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png',
   },
 ];

@@ -22,7 +22,7 @@ export const CartAndFavoriteActions = () => {
       </Button>
 
       {/* Favorite Button */}
-      <Button customClass="group flex items-center justify-center shadow-none p-4 bg-primary-50 hover:bg-danger-50 transition-all duration-200">
+      <Button customClass="group shadow-none p-4 bg-primary-50 hover:bg-danger-50">
         <HeartIcon
           size={24}
           color="currentColor"

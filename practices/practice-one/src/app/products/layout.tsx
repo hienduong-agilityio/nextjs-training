@@ -1,17 +1,12 @@
 // Components
 import { Service } from '@/components';
 
-// Types
-import type { Metadata } from 'next';
+export const metadata = {
+  title: 'E-comm - Products',
+  description: `E-Comm Let's buy and share 🤑.`,
+};
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'E-comm - Products',
-    description: `E-Comm Let's buy and share 🤑.`,
-  };
-}
-
-export default async function ProductsLayout({
+export default function ProductsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

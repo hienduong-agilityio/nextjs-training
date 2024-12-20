@@ -13,8 +13,8 @@ export const QuantityControl = () => {
   const decrement = () => setQuantity((prev) => Math.max(1, prev - 1));
 
   return (
-    <div className="flex items-center gap-4 bg-secondary-50">
-      <div className="flex items-center border border-gray-300 rounded-lg">
+    <div className="rounded-md gap-4 bg-secondary-50">
+      <div className="flex">
         <Button
           className="px-5 py-3 text-primary-100 hover:text-gray-800"
           onClick={decrement}

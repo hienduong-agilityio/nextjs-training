@@ -55,21 +55,21 @@ describe('InputField Component', () => {
     expect(renderResult.container).toMatchSnapshot();
   });
 
-  it('should render with startContent and endContent', () => {
+  it('should render with startIcon and endIcon', () => {
     renderResult.rerender(
       <InputField
         placeholder="Enter text"
-        startContent={<span>Start</span>}
-        endContent={<span>End</span>}
+        startIcon={<span>Start</span>}
+        endIcon={<span>End</span>}
       />,
     );
 
-    const startContent = screen.getByText('Start');
-    const endContent = screen.getByText('End');
+    const startIcon = screen.getByText('Start');
+    const endIcon = screen.getByText('End');
     const inputElement = screen.getByPlaceholderText('Enter text');
 
-    expect(startContent).toBeInTheDocument();
-    expect(endContent).toBeInTheDocument();
+    expect(startIcon).toBeInTheDocument();
+    expect(endIcon).toBeInTheDocument();
     expect(inputElement).toBeInTheDocument();
     expect(renderResult.container).toMatchSnapshot();
   });
