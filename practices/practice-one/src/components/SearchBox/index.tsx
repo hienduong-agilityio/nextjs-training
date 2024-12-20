@@ -20,6 +20,7 @@ export interface ISearchBoxProps extends IInputGroupProps {
   onCloseModal?: () => void;
 }
 
+// TODO: Find common solution for change Search Box text when searching
 export const SearchBox = ({
   placeholder = 'Enter your query...',
   buttonText = 'Search',
