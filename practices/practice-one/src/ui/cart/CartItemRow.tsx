@@ -13,6 +13,7 @@ import { ICartItem } from '@/interfaces';
 export const CartItemRow = ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
+  quantity = 1,
   title = 'Product',
   price = 0,
   total = 0,
@@ -39,7 +40,7 @@ export const CartItemRow = ({
       </td>
       <td className="px-4 py-8 text-start">${price}</td>
       <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
-        <QuantityControl />
+        <QuantityControl initialQuantity={quantity} />
       </td>
       <td className="px-4 py-8 text-start">${total}</td>
     </tr>

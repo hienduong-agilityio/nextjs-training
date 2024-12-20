@@ -10,7 +10,13 @@ import Link from 'next/link';
 // Constants
 import { ROUTE } from '@/constants';
 
+// Services
+import { getCartByUserId } from '@/services';
+
 export const Header = async () => {
+  const userId = 134;
+  const cartProduct = await getCartByUserId(userId);
+
   return (
     <header className="w-full md:container px-4 pt-6 md:mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-16 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20">
       <div className="flex items-center justify-between gap-6">
@@ -50,7 +56,11 @@ export const Header = async () => {
             <div className="relative flex items-center">
               {/* Cart */}
               <Link href={ROUTE.CART}>
-                <CartIcon aria-label="cart" size={30} />
+                <CartIcon
+                  aria-label="cart"
+                  size={30}
+                  itemCount={cartProduct?.products.length ?? 0}
+                />
               </Link>
             </div>
           </div>
