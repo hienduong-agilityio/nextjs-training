@@ -30,7 +30,7 @@ export function ProductInfo({
       <div className="flex flex-wrap items-center gap-4 pb-3 border-b-2 border-secondary-1000">
         <StarRating size={16} rating={rating} />
         <span className="text-secondary-500 w-max whitespace-nowrap">
-          {reviews?.length ?? 0} reviews
+          {reviews?.length} reviews
         </span>
         <Link
           href={ROUTE.PRODUCTS}

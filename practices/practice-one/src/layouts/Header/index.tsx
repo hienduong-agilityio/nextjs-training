@@ -59,7 +59,7 @@ export const Header = async () => {
                 <CartIcon
                   aria-label="cart"
                   size={30}
-                  itemCount={cartProduct?.products.length}
+                  itemCount={cartProduct.products.length}
                 />
               </Link>
             </div>
