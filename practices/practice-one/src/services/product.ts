@@ -78,8 +78,8 @@ export const getProductById = async (id: string): Promise<IProductProps> => {
       id: '',
       name: '',
       images: [''],
-      price: '',
-      originalPrice: '',
+      price: 0,
+      originalPrice: 0,
       category: '' as Category,
     };
   }
