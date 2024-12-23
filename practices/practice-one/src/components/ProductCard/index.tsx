@@ -1,5 +1,3 @@
-'use client';
-
 // Libraries
 import { memo } from 'react';
 
@@ -7,21 +5,17 @@ import { memo } from 'react';
 import { IProductProps } from '@/interfaces';
 
 // Icons
-import { HeartIcon, StarRating, AddToCartIcon } from '@/icons';
+import { StarRating } from '@/icons';
 
 // Components
 import Image from 'next/image';
-import { IconButton } from '@/components';
 import Link from 'next/link';
 
 // Constants
 import { ROUTE } from '@/constants';
 
-interface IProductCardProps extends Omit<IProductProps, 'images'> {
-  images: string[];
-  addToFavorites?: () => void;
-  addToCart?: () => void;
-}
+// UI
+import { CartAndFavoriteActions } from '@/ui';
 
 const ProductCard = ({
   id,
@@ -32,9 +26,7 @@ const ProductCard = ({
   discount = '50%',
   label = 'Hot',
   rating = 4,
-  addToFavorites = () => {},
-  addToCart = () => {},
-}: IProductCardProps) => {
+}: IProductProps) => {
   const image = images.length > 0 ? images[0] : '/images/image-placeholder.svg';
 
   return (
@@ -57,22 +49,7 @@ const ProductCard = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Hover Buttons */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
-          <IconButton
-            aria-label="Favorite product"
-            customClass="flex p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
-            onClick={addToFavorites}
-          >
-            <HeartIcon size={24} />
-          </IconButton>
-          <IconButton
-            aria-label="Add to Cart"
-            customClass="p-2 text-sm font-medium bg-indigo-600 border-2 rounded-full text-primary-100 border-primary-100"
-            onClick={addToCart}
-          >
-            <AddToCartIcon size={24} />
-          </IconButton>
-        </div>
+        <CartAndFavoriteActions productId={id} variant="card" />
       </div>
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
         <Link
@@ -84,11 +61,9 @@ const ProductCard = ({
         <StarRating size={14} rating={rating} />
         <div className="flex items-center space-x-2">
           <span className="text-lg font-medium text-primary-200">${price}</span>
-          {originalPrice && (
-            <span className="text-sm text-gray-400 line-through">
-              ${originalPrice}
-            </span>
-          )}
+          <span className="text-sm text-gray-400 line-through">
+            ${originalPrice}
+          </span>
           {discount && (
             <span className="text-sm font-semibold text-danger-50">
               ${discount}

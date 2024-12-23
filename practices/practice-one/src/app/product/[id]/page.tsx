@@ -5,11 +5,10 @@ import { notFound } from 'next/navigation';
 // Components
 import {
   SocialShare,
-  QuantityControl,
   ProductInfo,
-  CartAndFavoriteActions,
   ProductImages,
   ProductDetailTabs,
+  ProductActions,
 } from '@/ui';
 
 // Services
@@ -56,6 +55,9 @@ export default async function ProductDetailPage({
     return notFound();
   }
 
+  const initialQuantity = 1;
+  const maxQuantity = productData.minimumOrderQuantity ?? Infinity;
+
   return (
     <section className="px-4 py-8">
       <div className="grid gap-8 md:gap-16 lg:gap-32 lg:grid-cols-2">
@@ -66,10 +68,11 @@ export default async function ProductDetailPage({
         <div>
           <ProductInfo {...productData} />
 
-          <div className="flex flex-col items-center justify-between gap-4 mt-4 md:flex-row py-6 border-y-2 border-secondary-1000">
-            <QuantityControl />
-            <CartAndFavoriteActions />
-          </div>
+          <ProductActions
+            productId={id}
+            maxQuantity={maxQuantity}
+            initialQuantity={initialQuantity}
+          />
 
           <SocialShare />
         </div>
