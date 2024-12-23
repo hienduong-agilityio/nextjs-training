@@ -8,13 +8,13 @@ import { SearchBox, SearchModal } from '@/components';
 import Link from 'next/link';
 
 // Constants
-import { ROUTE, USER_ID } from '@/constants';
+import { ROUTE } from '@/constants';
 
 // Services
 import { getCartByUserId } from '@/services';
 
 export const Header = async () => {
-  const userId = Number(USER_ID);
+  const userId = 134;
   const cartProduct = await getCartByUserId(userId);
 
   return (
