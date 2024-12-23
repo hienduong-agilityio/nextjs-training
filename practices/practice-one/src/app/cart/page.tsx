@@ -1,11 +1,14 @@
-// Mock
+// Services
 import { getCartByUserId } from '@/services';
 
 // Components
 import { OrderSummary, CartTable, VoucherInput } from '@/ui';
 
+// Constants
+import { USER_ID } from '@/constants';
+
 const CartPage = async () => {
-  const userId = 134;
+  const userId = Number(USER_ID);
   const cartProduct = await getCartByUserId(userId);
 
   return (

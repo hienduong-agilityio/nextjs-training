@@ -2,8 +2,8 @@
 import Image from 'next/image';
 
 export function ProductImages({
-  images,
-  name,
+  images = [`/images/image-placeholder.svg`],
+  name = 'image',
 }: {
   images: string[];
   name: string;

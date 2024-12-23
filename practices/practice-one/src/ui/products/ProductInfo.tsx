@@ -11,15 +11,15 @@ import Link from 'next/link';
 import { ROUTE } from '@/constants';
 
 export function ProductInfo({
-  name,
-  rating,
-  reviews,
-  price,
-  originalPrice,
-  discount,
-  availabilityStatus,
-  category,
-  shippingInformation,
+  name = 'Product Info',
+  rating = 0,
+  reviews = [],
+  price = 0,
+  originalPrice = 0,
+  discount = '0',
+  availabilityStatus = 'unknown',
+  category = 'beauty',
+  shippingInformation = 'Shipping details not available',
 }: IProductProps) {
   return (
     <div>
@@ -30,7 +30,7 @@ export function ProductInfo({
       <div className="flex flex-wrap items-center gap-4 pb-3 border-b-2 border-secondary-1000">
         <StarRating size={16} rating={rating} />
         <span className="text-secondary-500 w-max whitespace-nowrap">
-          {reviews?.length} reviews
+          {reviews.length} reviews
         </span>
         <Link
           href={ROUTE.PRODUCTS}

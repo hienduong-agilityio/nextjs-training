@@ -6,6 +6,7 @@ export const HTTP_METHODS = {
 };
 
 export const ROOT_API = process.env.NEXT_PUBLIC_SERVER_URL;
+export const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
 export const API_URL = {
   PRODUCT: `${ROOT_API}/product`,
