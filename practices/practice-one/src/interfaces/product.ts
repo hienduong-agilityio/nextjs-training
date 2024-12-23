@@ -11,8 +11,8 @@ export interface IProductProps {
   id: string;
   name: string;
   images: string[];
-  price: string;
-  originalPrice: string;
+  price: number;
+  originalPrice: number;
   discount?: string;
   shippingInformation?: string;
   rating?: number;

@@ -6,8 +6,14 @@ import { useState } from 'react';
 // Components
 import { Button } from '@/components';
 
-export const QuantityControl = () => {
-  const [quantity, setQuantity] = useState(1);
+export interface IQuantityControlProps {
+  initialQuantity?: number;
+}
+
+export const QuantityControl = ({
+  initialQuantity = 1,
+}: IQuantityControlProps) => {
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => Math.max(1, prev - 1));
