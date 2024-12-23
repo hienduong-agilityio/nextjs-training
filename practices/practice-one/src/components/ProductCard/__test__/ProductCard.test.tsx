@@ -12,9 +12,6 @@ import '@testing-library/jest-dom';
 import { ProductCard } from '@/components';
 import { IProductProps } from '@/interfaces';
 
-const mockOnAddToCart = jest.fn();
-const mockOnFavorite = jest.fn();
-
 let defaultProps: IProductProps;
 let renderResult: RenderResult;
 
@@ -26,20 +23,14 @@ describe('ProductCard Component', () => {
       id: '1',
       name: 'Test Product',
       images: ['/test-image.jpg'],
-      price: '50',
-      originalPrice: '70',
+      price: 50,
+      originalPrice: 70,
       discount: '28% OFF',
       label: 'Hot',
       rating: 4,
     };
 
-    renderResult = render(
-      <ProductCard
-        {...defaultProps}
-        addToFavorites={mockOnFavorite}
-        addToCart={mockOnAddToCart}
-      />,
-    );
+    renderResult = render(<ProductCard {...defaultProps} />);
   });
 
   it('matches snapshot', () => {
@@ -71,31 +62,14 @@ describe('ProductCard Component', () => {
     ).toBeVisible();
   });
 
-  it('handles Add to Cart button click', () => {
-    const addToCartButton = screen.getByRole('button', {
-      name: /Add to Cart/i,
-    });
-    fireEvent.click(addToCartButton);
-    expect(mockOnAddToCart).toHaveBeenCalledTimes(1);
-  });
-
-  it('handles Favorite button click', () => {
-    const favoriteButton = screen.getByRole('button', {
-      name: /Favorite product/i,
-    });
-
-    fireEvent.click(favoriteButton);
-    expect(mockOnFavorite).toHaveBeenCalledTimes(1);
-  });
-
   it('renders without optional props', () => {
     renderResult.rerender(
       <ProductCard
         id="2"
         name="Minimal Product"
         images={['/minimal-image.jpg']}
-        price="30"
-        originalPrice={''}
+        price={0}
+        originalPrice={0}
       />,
     );
 
