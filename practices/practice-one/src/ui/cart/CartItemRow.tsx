@@ -10,7 +10,7 @@ import { ROUTE } from '@/constants';
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
-export const CartItemRow = async ({
+export const CartItemRow = ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
   quantity = 1,

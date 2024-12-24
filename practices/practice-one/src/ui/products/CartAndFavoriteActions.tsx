@@ -10,7 +10,7 @@ import { AddToCartIcon, HeartIcon, Spinner } from '@/icons';
 import { Button, IconButton } from '@/components';
 
 // Services
-import { handleAddToCart } from '@/actions/cartActions';
+import { handleAddToCart } from '@/actions';
 
 interface CartAndFavoriteActionsProps {
   productId: string;
