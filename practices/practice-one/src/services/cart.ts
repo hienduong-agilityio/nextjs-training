@@ -1,11 +1,11 @@
 // Services
-import { apiRequest } from '@/services';
+import { apiRequest, getProductById } from '@/services';
 
 // Constants
 import { API_URL, HTTP_METHODS } from '@/constants';
 
 // Types
-import type { ICart } from '@/interfaces';
+import type { ICart, ICartModifyPayload } from '@/interfaces';
 
 /**
  * Fetch cart by userId
@@ -21,4 +21,77 @@ export const getCartByUserId = async (userId: number): Promise<ICart> => {
   } catch (error) {
     throw new Error(`Failed to fetch cart for user ${userId}`);
   }
+};
+
+/**
+ * Add or update a product in the cart
+ *
+ * @param userId - The ID of the user
+ * @param payload - The product details to be added (productId and quantity)
+ */
+export const addToCart = async (
+  userId: number,
+  payload: ICartModifyPayload,
+): Promise<ICart> => {
+  // Fetch cart and product data
+  const [cart, productData] = await Promise.all([
+    getCartByUserId(userId),
+    getProductById(payload.productId),
+  ]);
+
+  const discountPercentage = parseFloat(productData.discount ?? '0');
+
+  // Find existing product in the cart
+  const existingProduct = cart.products.find(
+    (product) => product.id === payload.productId,
+  );
+
+  if (existingProduct) {
+    existingProduct.quantity = Math.min(
+      existingProduct.quantity + payload.quantity,
+      99,
+    );
+    existingProduct.total = existingProduct.price * existingProduct.quantity;
+    existingProduct.discountedTotal =
+      existingProduct.total * (1 - discountPercentage / 100);
+  } else {
+    const quantity = Math.min(payload.quantity, 99);
+
+    cart.products.push({
+      id: productData.id,
+      title: productData.name,
+      price: productData.price,
+      quantity,
+      total: productData.price * quantity,
+      discountPercentage,
+      discountedTotal:
+        productData.price * quantity * (1 - discountPercentage / 100),
+      thumbnail: productData.images[0] || '',
+    });
+  }
+
+  // Recalculate cart totals
+  const { total, discountedTotal, totalQuantity } = cart.products.reduce(
+    (acc, product) => {
+      acc.total += product.total ?? 0;
+      acc.discountedTotal += product.discountedTotal ?? 0;
+      acc.totalQuantity += product.quantity;
+      return acc;
+    },
+    { total: 0, discountedTotal: 0, totalQuantity: 0 },
+  );
+
+  Object.assign(cart, {
+    total,
+    discountedTotal,
+    totalQuantity,
+    totalProducts: cart.products.length,
+  });
+
+  // Update cart via API
+  return apiRequest<ICart>({
+    url: `${API_URL.CART}/${cart.id}`,
+    method: HTTP_METHODS.PUT,
+    data: cart,
+  });
 };

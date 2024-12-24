@@ -18,3 +18,8 @@ export interface ICart {
   totalProducts?: number;
   totalQuantity?: number;
 }
+
+export interface ICartModifyPayload {
+  productId: string;
+  quantity: number;
+}
