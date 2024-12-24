@@ -9,3 +9,4 @@ export * from './LoadingRelatedProducts';
 export * from './LoadingProductCard';
 export * from './LoadingProductTabs';
 export * from './ProductReview';
+export * from './ProductActions';
