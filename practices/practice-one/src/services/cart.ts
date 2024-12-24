@@ -47,25 +47,27 @@ export const addToCart = async (
   );
 
   if (existingProduct) {
-    // Update existing product quantity and totals
-    existingProduct.quantity += payload.quantity;
+    existingProduct.quantity = Math.min(
+      existingProduct.quantity + payload.quantity,
+      99,
+    );
     existingProduct.total = existingProduct.price * existingProduct.quantity;
     existingProduct.discountedTotal =
       existingProduct.total * (1 - discountPercentage / 100);
   } else {
-    // Add new product to the cart
-    const newProduct = {
-      ...productData,
+    const quantity = Math.min(payload.quantity, 99);
+
+    cart.products.push({
+      id: productData.id,
       title: productData.name,
-      quantity: payload.quantity,
-      total: productData.price * payload.quantity,
+      price: productData.price,
+      quantity,
+      total: productData.price * quantity,
       discountPercentage,
       discountedTotal:
-        productData.price * payload.quantity * (1 - discountPercentage / 100),
+        productData.price * quantity * (1 - discountPercentage / 100),
       thumbnail: productData.images[0] || '',
-    };
-
-    cart.products.push(newProduct);
+    });
   }
 
   // Recalculate cart totals

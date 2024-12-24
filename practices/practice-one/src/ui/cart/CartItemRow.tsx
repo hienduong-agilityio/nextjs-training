@@ -10,7 +10,7 @@ import { ROUTE } from '@/constants';
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
-export const CartItemRow = ({
+export const CartItemRow = async ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
   quantity = 1,
@@ -40,10 +40,7 @@ export const CartItemRow = ({
       </td>
       <td className="px-4 py-8 text-start">${price}</td>
       <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
-        <QuantityControl
-          initialQuantity={quantity}
-          maxQuantity={quantity + 10}
-        />
+        <QuantityControl initialQuantity={quantity} maxQuantity={99} />
       </td>
       <td className="px-4 py-8 text-start">${total.toFixed(2)}</td>
     </tr>

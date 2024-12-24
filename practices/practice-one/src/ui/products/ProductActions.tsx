@@ -7,16 +7,10 @@ import { CartAndFavoriteActions, QuantityControl } from '@/ui';
 
 interface ProductActionsProps {
   productId: string;
-  maxQuantity: number;
-  initialQuantity: number;
 }
 
-export function ProductActions({
-  productId,
-  maxQuantity,
-  initialQuantity,
-}: ProductActionsProps) {
-  const [quantity, setQuantity] = useState(initialQuantity);
+export function ProductActions({ productId }: ProductActionsProps) {
+  const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (newQuantity: number) => {
     setQuantity(newQuantity);
@@ -27,7 +21,7 @@ export function ProductActions({
       {/* Quantity Control */}
       <QuantityControl
         initialQuantity={quantity}
-        maxQuantity={maxQuantity}
+        maxQuantity={99}
         onQuantityChange={handleQuantityChange}
       />
 
