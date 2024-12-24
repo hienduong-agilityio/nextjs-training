@@ -12,6 +12,9 @@ import { Button, IconButton } from '@/components';
 // Services
 import { handleAddToCart } from '@/actions';
 
+// Store
+import { ToastStore } from '@/stores';
+
 interface CartAndFavoriteActionsProps {
   productId: string;
   quantity?: number;
@@ -26,12 +29,16 @@ export const CartAndFavoriteActions = ({
   addToFavorites = () => {},
 }: CartAndFavoriteActionsProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = ToastStore();
 
   const handleAddToCartClick = async () => {
     setIsLoading(true);
 
     try {
       await handleAddToCart(134, productId, quantity);
+      showToast('Product added to cart successfully!', 'success');
+    } catch (error) {
+      showToast('Failed to add product to cart.', 'danger');
     } finally {
       setIsLoading(false);
     }

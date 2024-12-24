@@ -7,6 +7,7 @@ export * from './Service/ServiceCard';
 export * from './CategoryGroup';
 export * from './FilterSortBar';
 export * from './Pagination';
+export * from './ToastContainer';
 
 // Common
 export * from './common';
