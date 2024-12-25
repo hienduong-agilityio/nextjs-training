@@ -15,6 +15,9 @@ import { handleAddToCart } from '@/actions';
 // Store
 import { ToastStore } from '@/stores';
 
+// Constants
+import { TOAST_MESSAGES } from '@/constants';
+
 interface CartAndFavoriteActionsProps {
   productId: string;
   quantity?: number;
@@ -35,10 +38,15 @@ export const CartAndFavoriteActions = ({
     setIsLoading(true);
 
     try {
-      await handleAddToCart(134, productId, quantity);
-      showToast('Product added to cart successfully!', 'success');
+      const success = await handleAddToCart(134, productId, quantity, 99);
+
+      if (success) {
+        showToast(TOAST_MESSAGES.ADD_SUCCESS, 'success');
+      } else {
+        showToast(TOAST_MESSAGES.ADD_MAX_QUANTITY, 'danger');
+      }
     } catch (error) {
-      showToast('Failed to add product to cart.', 'danger');
+      showToast(TOAST_MESSAGES.ADD_FAILED, 'danger');
     } finally {
       setIsLoading(false);
     }

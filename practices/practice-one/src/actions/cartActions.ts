@@ -7,27 +7,36 @@ import { revalidatePath } from 'next/cache';
 import { addToCart } from '@/services';
 
 // Constants
-import { ROUTE } from '@/constants';
+import { ROUTE, TOAST_MESSAGES } from '@/constants';
 
 /**
  * Server action to add a product to the cart.
  * @param userId - The ID of the user
  * @param productId - The ID of the product
  * @param quantity - Quantity to add
+ * @param maxQuantity - Max quantity to add
+ * @returns {boolean} - Success or failure of the operation
  */
 export async function handleAddToCart(
   userId: number,
   productId: string,
   quantity: number,
-) {
+  maxQuantity: number,
+): Promise<boolean> {
   try {
-    await addToCart(userId, { productId, quantity });
+    const { success } = await addToCart(userId, {
+      productId,
+      quantity,
+      maxQuantity,
+    });
 
-    revalidatePath(ROUTE.CART);
-    revalidatePath(ROUTE.ROOT);
+    if (success) {
+      revalidatePath(ROUTE.CART);
+      revalidatePath(ROUTE.ROOT);
+    }
+
+    return success;
   } catch (error) {
-    throw new Error(
-      `Failed to add product to cart: ${(error as Error).message}`,
-    );
+    throw new Error(TOAST_MESSAGES.API_ERROR);
   }
 }
