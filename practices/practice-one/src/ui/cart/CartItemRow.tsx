@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 // Components
 import { QuantityControl } from '@/ui';
@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Actions
-import { handleRemoveFromCart } from '@/actions';
+import { handleRemoveFromCart, handleUpdateProductInCart } from '@/actions';
 
 // Store
 import { ToastStore } from '@/stores';
@@ -27,40 +27,50 @@ import {
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
-/**
- * TODO:
- * - Handle update product and show toast message
- */
 export const CartItemRow = ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
   quantity = 1,
   title = 'Product',
   price = 0,
-  total = 0,
 }: ICartItem) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [localQuantity, setLocalQuantity] = useState(quantity);
+  const [isLoading, startTransition] = useTransition();
   const { showToast } = ToastStore();
 
-  const handleRemoveClick = async () => {
-    setIsLoading(true);
+  const handleRemoveClick = () => {
+    startTransition(async () => {
+      try {
+        const success = await handleRemoveFromCart({
+          userId: DEFAULT_USER_ID,
+          productId: id,
+        });
 
-    try {
-      const success = await handleRemoveFromCart({
-        userId: DEFAULT_USER_ID,
-        productId: id,
-      });
-
-      if (success) {
-        showToast(TOAST_MESSAGES.DELETE_SUCCESS, TOAST_TYPES.SUCCESS);
-      } else {
-        showToast(TOAST_MESSAGES.DELETE_FAILED, TOAST_TYPES.ERROR);
+        if (success) {
+          showToast(TOAST_MESSAGES.DELETE_SUCCESS, TOAST_TYPES.SUCCESS);
+        } else {
+          showToast(TOAST_MESSAGES.DELETE_FAILED, TOAST_TYPES.ERROR);
+        }
+      } catch (error) {
+        showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
       }
-    } catch (error) {
-      showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
-    } finally {
-      setIsLoading(false);
-    }
+    });
+  };
+
+  const handleQuantityChange = (newQuantity: number) => {
+    setLocalQuantity(newQuantity);
+
+    startTransition(async () => {
+      try {
+        await handleUpdateProductInCart({
+          userId: DEFAULT_USER_ID,
+          productId: id,
+          newQuantity,
+        });
+      } catch (error) {
+        showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
+      }
+    });
   };
 
   return (
@@ -84,18 +94,27 @@ export const CartItemRow = ({
           height={60}
           className="rounded border w-[90px] h-[60px] object-contain bg-secondary-50"
         />
-        <Link href={`${ROUTE.PRODUCT}/${id}`} className="ml-4 hover:underline">
+        <Link
+          href={`${ROUTE.PRODUCT}/${id}`}
+          className={`ml-4 hover:underline ${
+            isLoading ? 'pointer-events-none opacity-50' : ''
+          }`}
+        >
           {title}
         </Link>
       </td>
       <td className="px-4 py-8 text-start">${price}</td>
       <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
         <QuantityControl
-          initialQuantity={quantity}
+          initialQuantity={localQuantity}
           maxQuantity={DEFAULT_MAX_QUANTITY}
+          isLoading={isLoading}
+          onQuantityChange={handleQuantityChange}
         />
       </td>
-      <td className="px-4 py-8 text-start">${total.toFixed(2)}</td>
+      <td className="px-4 py-8 text-start">
+        ${(price * localQuantity).toFixed(2)}
+      </td>
     </tr>
   );
 };

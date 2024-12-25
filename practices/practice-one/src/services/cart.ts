@@ -140,3 +140,68 @@ export const deleteFromCart = async (
     return { success: false };
   }
 };
+
+/**
+ * Update product quantity in the cart
+ *
+ * @param userId - The ID of the user
+ * @param productId - The ID of the product to delete
+ */
+export const updateProductFromCart = async (
+  userId: number,
+  productId: string,
+  newQuantity: number,
+): Promise<{ success: boolean }> => {
+  try {
+    const cart = await getCartByUserId(userId);
+
+    const existingProduct = cart.products.find(
+      (product) => product.id === productId,
+    );
+
+    if (!existingProduct) {
+      return { success: false };
+    }
+
+    // Check for valid quantity
+    if (newQuantity < 1) {
+      return { success: false };
+    }
+
+    // Update the product quantity and recalculate totals
+    existingProduct.quantity = newQuantity;
+    existingProduct.total = existingProduct.price * newQuantity;
+    existingProduct.discountedTotal =
+      existingProduct.total *
+      (1 - (existingProduct.discountPercentage ?? 0) / 100);
+
+    // Recalculate cart totals
+    const { total, discountedTotal, totalQuantity } = cart.products.reduce(
+      (acc, product) => {
+        acc.total += product.total ?? 0;
+        acc.discountedTotal += product.discountedTotal ?? 0;
+        acc.totalQuantity += product.quantity;
+        return acc;
+      },
+      { total: 0, discountedTotal: 0, totalQuantity: 0 },
+    );
+
+    Object.assign(cart, {
+      total,
+      discountedTotal,
+      totalQuantity,
+      totalProducts: cart.products.length,
+    });
+
+    // Update the cart in the database
+    await apiRequest({
+      url: `${API_URL.CART}/${cart.id}`,
+      method: HTTP_METHODS.PUT,
+      data: cart,
+    });
+
+    return { success: true };
+  } catch (error) {
+    return { success: false };
+  }
+};

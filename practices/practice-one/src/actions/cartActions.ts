@@ -4,7 +4,7 @@
 import { revalidatePath } from 'next/cache';
 
 // Services
-import { addToCart, deleteFromCart } from '@/services';
+import { addToCart, deleteFromCart, updateProductFromCart } from '@/services';
 
 // Constants
 import { ROUTE, TOAST_MESSAGES } from '@/constants';
@@ -61,6 +61,40 @@ export async function handleRemoveFromCart({
 }): Promise<boolean> {
   try {
     const { success } = await deleteFromCart(userId, productId);
+
+    if (success) {
+      revalidatePath(ROUTE.CART);
+      revalidatePath(ROUTE.ROOT);
+    }
+
+    return success;
+  } catch (error) {
+    throw new Error(TOAST_MESSAGES.API_ERROR);
+  }
+}
+
+/**
+ * Server action to update the quantity of a product in the cart.
+ * @param userId - The ID of the user
+ * @param productId - The ID of the product
+ * @param newQuantity - The new quantity of the product
+ * @returns {boolean} - Success or failure of the operation
+ */
+export async function handleUpdateProductInCart({
+  userId,
+  productId,
+  newQuantity,
+}: {
+  userId: number;
+  productId: string;
+  newQuantity: number;
+}): Promise<boolean> {
+  try {
+    const { success } = await updateProductFromCart(
+      userId,
+      productId,
+      newQuantity,
+    );
 
     if (success) {
       revalidatePath(ROUTE.CART);
