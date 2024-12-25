@@ -7,11 +7,17 @@ import classNames from 'classnames';
 // Icons
 import { WarningIcon, CheckMarkIcon } from '@/icons';
 
+// Constants
+import { TOAST_TYPES } from '@/constants';
+
+// Types
+import type { ToastType } from '@/types';
+
 export interface IToastProps {
   onClose: () => void;
   children: React.ReactNode;
   timeoutDuration?: number;
-  type?: 'success' | 'danger' | 'warning';
+  type?: ToastType;
 }
 
 /**
@@ -23,7 +29,7 @@ const Toast = ({
   onClose = () => {},
   children,
   timeoutDuration = 5000,
-  type = 'success',
+  type = TOAST_TYPES.SUCCESS,
 }: IToastProps): JSX.Element => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,12 +44,13 @@ const Toast = ({
   const containerClass = classNames(
     'flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full',
     {
-      'text-white bg-success divide-green-950': type === 'success',
-      'text-red-100 bg-red-800 divide-red-950': type === 'danger',
+      'text-white bg-success divide-green-950': type === TOAST_TYPES.SUCCESS,
+      'text-red-100 bg-red-800 divide-red-950': type === TOAST_TYPES.ERROR,
     },
   );
 
-  const toastIcon = type === 'success' ? <CheckMarkIcon /> : <WarningIcon />;
+  const toastIcon =
+    type === TOAST_TYPES.SUCCESS ? <CheckMarkIcon /> : <WarningIcon />;
 
   return (
     <div className={containerClass}>

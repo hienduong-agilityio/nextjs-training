@@ -1,14 +1,17 @@
 // Libraries
 import { create } from 'zustand';
 
+// Types
+import type { ToastType } from '@/types';
+
 interface IToastState {
   message: string;
-  type: 'success' | 'danger' | 'warning';
+  type: ToastType;
   isVisible: boolean;
   timeoutDuration?: number;
   showToast: (
     message: string,
-    type: 'success' | 'danger' | 'warning',
+    type: ToastType,
     timeoutDuration?: number,
     undoEnabled?: boolean,
   ) => void;

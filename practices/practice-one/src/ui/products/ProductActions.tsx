@@ -6,6 +6,9 @@ import { useState } from 'react';
 // UI
 import { CartAndFavoriteActions, QuantityControl } from '@/ui';
 
+// Constants
+import { DEFAULT_MAX_QUANTITY } from '@/constants';
+
 interface ProductActionsProps {
   productId: string;
 }
@@ -22,7 +25,7 @@ export function ProductActions({ productId }: ProductActionsProps) {
       {/* Quantity Control */}
       <QuantityControl
         initialQuantity={quantity}
-        maxQuantity={99}
+        maxQuantity={DEFAULT_MAX_QUANTITY}
         onQuantityChange={handleQuantityChange}
       />
 

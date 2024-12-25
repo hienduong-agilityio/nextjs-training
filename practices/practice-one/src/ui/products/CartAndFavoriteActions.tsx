@@ -16,7 +16,12 @@ import { handleAddToCart } from '@/actions';
 import { ToastStore } from '@/stores';
 
 // Constants
-import { TOAST_MESSAGES } from '@/constants';
+import {
+  DEFAULT_MAX_QUANTITY,
+  DEFAULT_USER_ID,
+  TOAST_MESSAGES,
+  TOAST_TYPES,
+} from '@/constants';
 
 interface CartAndFavoriteActionsProps {
   productId: string;
@@ -39,19 +44,19 @@ export const CartAndFavoriteActions = ({
 
     try {
       const success = await handleAddToCart({
-        userId: 134,
+        userId: DEFAULT_USER_ID,
         productId: productId,
         quantity: quantity,
-        maxQuantity: 99,
+        maxQuantity: DEFAULT_MAX_QUANTITY,
       });
 
       if (success) {
-        showToast(TOAST_MESSAGES.ADD_SUCCESS, 'success');
+        showToast(TOAST_MESSAGES.ADD_SUCCESS, TOAST_TYPES.SUCCESS);
       } else {
-        showToast(TOAST_MESSAGES.ADD_MAX_QUANTITY, 'danger');
+        showToast(TOAST_MESSAGES.ADD_MAX_QUANTITY, TOAST_TYPES.ERROR);
       }
     } catch (error) {
-      showToast(TOAST_MESSAGES.ADD_FAILED, 'danger');
+      showToast(TOAST_MESSAGES.ADD_FAILED, TOAST_TYPES.ERROR);
     } finally {
       setIsLoading(false);
     }

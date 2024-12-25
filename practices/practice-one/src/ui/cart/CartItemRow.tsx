@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Constants
-import { ROUTE } from '@/constants';
+import { DEFAULT_MAX_QUANTITY, ROUTE } from '@/constants';
 
 // Interfaces
 import { ICartItem } from '@/interfaces';
@@ -45,7 +45,10 @@ export const CartItemRow = ({
       </td>
       <td className="px-4 py-8 text-start">${price}</td>
       <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
-        <QuantityControl initialQuantity={quantity} maxQuantity={99} />
+        <QuantityControl
+          initialQuantity={quantity}
+          maxQuantity={DEFAULT_MAX_QUANTITY}
+        />
       </td>
       <td className="px-4 py-8 text-start">${total.toFixed(2)}</td>
     </tr>

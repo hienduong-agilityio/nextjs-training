@@ -7,3 +7,9 @@ export const TOAST_MESSAGES = {
   DELETE_FAILED: 'Failed to remove product from cart. Please try again!',
   API_ERROR: 'API Error. Please try again!',
 };
+
+export const TOAST_TYPES = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+};
