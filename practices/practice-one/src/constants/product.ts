@@ -7,3 +7,6 @@ export const ALL_CATEGORIES = {
 };
 
 export const SORT_PRODUCT_OPTIONS = ['name', 'price', 'rating'];
+
+export const DEFAULT_USER_ID = 134;
+export const DEFAULT_MAX_QUANTITY = 99;

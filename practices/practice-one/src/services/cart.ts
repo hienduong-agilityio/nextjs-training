@@ -31,8 +31,10 @@ export const getCartByUserId = async (userId: number): Promise<ICart> => {
  */
 export const addToCart = async (
   userId: number,
-  payload: ICartModifyPayload,
-): Promise<ICart> => {
+  payload: ICartModifyPayload & { maxQuantity: number },
+): Promise<{ success: boolean }> => {
+  const { maxQuantity } = payload;
+
   // Fetch cart and product data
   const [cart, productData] = await Promise.all([
     getCartByUserId(userId),
@@ -47,15 +49,18 @@ export const addToCart = async (
   );
 
   if (existingProduct) {
-    existingProduct.quantity = Math.min(
-      existingProduct.quantity + payload.quantity,
-      99,
-    );
+    const newQuantity = existingProduct.quantity + payload.quantity;
+
+    if (newQuantity > maxQuantity) {
+      return { success: false };
+    }
+
+    existingProduct.quantity = newQuantity;
     existingProduct.total = existingProduct.price * existingProduct.quantity;
     existingProduct.discountedTotal =
       existingProduct.total * (1 - discountPercentage / 100);
   } else {
-    const quantity = Math.min(payload.quantity, 99);
+    const quantity = Math.min(payload.quantity, maxQuantity);
 
     cart.products.push({
       id: productData.id,
@@ -89,9 +94,11 @@ export const addToCart = async (
   });
 
   // Update cart via API
-  return apiRequest<ICart>({
+  await apiRequest<ICart>({
     url: `${API_URL.CART}/${cart.id}`,
     method: HTTP_METHODS.PUT,
     data: cart,
   });
+
+  return { success: true };
 };

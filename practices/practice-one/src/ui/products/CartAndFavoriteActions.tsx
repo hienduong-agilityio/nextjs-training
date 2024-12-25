@@ -12,6 +12,17 @@ import { Button, IconButton } from '@/components';
 // Services
 import { handleAddToCart } from '@/actions';
 
+// Store
+import { ToastStore } from '@/stores';
+
+// Constants
+import {
+  DEFAULT_MAX_QUANTITY,
+  DEFAULT_USER_ID,
+  TOAST_MESSAGES,
+  TOAST_TYPES,
+} from '@/constants';
+
 interface CartAndFavoriteActionsProps {
   productId: string;
   quantity?: number;
@@ -26,12 +37,26 @@ export const CartAndFavoriteActions = ({
   addToFavorites = () => {},
 }: CartAndFavoriteActionsProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = ToastStore();
 
   const handleAddToCartClick = async () => {
     setIsLoading(true);
 
     try {
-      await handleAddToCart(134, productId, quantity);
+      const success = await handleAddToCart({
+        userId: DEFAULT_USER_ID,
+        productId: productId,
+        quantity: quantity,
+        maxQuantity: DEFAULT_MAX_QUANTITY,
+      });
+
+      if (success) {
+        showToast(TOAST_MESSAGES.ADD_SUCCESS, TOAST_TYPES.SUCCESS);
+      } else {
+        showToast(TOAST_MESSAGES.ADD_MAX_QUANTITY, TOAST_TYPES.ERROR);
+      }
+    } catch (error) {
+      showToast(TOAST_MESSAGES.ADD_FAILED, TOAST_TYPES.ERROR);
     } finally {
       setIsLoading(false);
     }

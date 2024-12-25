@@ -4,9 +4,11 @@ import { getCartByUserId } from '@/services';
 // Components
 import { OrderSummary, CartTable, VoucherInput } from '@/ui';
 
+// Constants
+import { DEFAULT_USER_ID } from '@/constants';
+
 const CartPage = async () => {
-  const userId = 134;
-  const cartProduct = await getCartByUserId(userId);
+  const cartProduct = await getCartByUserId(DEFAULT_USER_ID);
 
   return (
     <div className="space-y-20 px-4 sm:px-6 lg:px-8">
