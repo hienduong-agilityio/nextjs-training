@@ -10,6 +10,11 @@ import { ROUTE } from '@/constants';
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
+/**
+ * TODO:
+ * - Handle delete product and show toast message
+ * - Handle update product and show toast message
+ */
 export const CartItemRow = ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
