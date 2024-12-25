@@ -102,3 +102,41 @@ export const addToCart = async (
 
   return { success: true };
 };
+
+/**
+ * Delete a product from the cart
+ *
+ * @param userId - The ID of the user
+ * @param productId - The ID of the product to delete
+ */
+export const deleteFromCart = async (
+  userId: number,
+  productId: string,
+): Promise<{ success: boolean }> => {
+  try {
+    const cart = await getCartByUserId(userId);
+
+    // Find the product to be deleted
+    const existingProductIndex = cart.products.findIndex(
+      (product) => product.id === productId,
+    );
+
+    if (existingProductIndex === -1) {
+      return { success: false };
+    }
+
+    // Remove the product from the cart
+    cart.products.splice(existingProductIndex, 1);
+
+    // Update cart via API
+    await apiRequest<ICart>({
+      url: `${API_URL.CART}/${cart.id}`,
+      method: HTTP_METHODS.PUT,
+      data: cart,
+    });
+
+    return { success: true };
+  } catch (error) {
+    return { success: false };
+  }
+};

@@ -1,18 +1,34 @@
+'use client';
+
+// Libraries
+import { useState } from 'react';
+
 // Components
 import { QuantityControl } from '@/ui';
 import { Button } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// Actions
+import { handleRemoveFromCart } from '@/actions';
+
+// Store
+import { ToastStore } from '@/stores';
+
 // Constants
-import { DEFAULT_MAX_QUANTITY, ROUTE } from '@/constants';
+import {
+  DEFAULT_MAX_QUANTITY,
+  DEFAULT_USER_ID,
+  ROUTE,
+  TOAST_MESSAGES,
+  TOAST_TYPES,
+} from '@/constants';
 
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
 /**
  * TODO:
- * - Handle delete product and show toast message
  * - Handle update product and show toast message
  */
 export const CartItemRow = ({
@@ -23,12 +39,41 @@ export const CartItemRow = ({
   price = 0,
   total = 0,
 }: ICartItem) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = ToastStore();
+
+  const handleRemoveClick = async () => {
+    setIsLoading(true);
+
+    try {
+      const success = await handleRemoveFromCart({
+        userId: DEFAULT_USER_ID,
+        productId: id,
+      });
+
+      if (success) {
+        showToast(TOAST_MESSAGES.DELETE_SUCCESS, TOAST_TYPES.SUCCESS);
+      } else {
+        showToast(TOAST_MESSAGES.DELETE_FAILED, TOAST_TYPES.ERROR);
+      }
+    } catch (error) {
+      showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <tr>
       <td className="flex items-center px-4 py-8 w-max">
+        {/* Remove Button */}
         <Button
           aria-label="Remove product"
-          className="p-2 mr-4 text-danger-300"
+          className={`p-2 mr-4 text-danger-300 ${
+            isLoading ? 'opacity-50 cursor-wait' : ''
+          }`}
+          onClick={handleRemoveClick}
+          disabled={isLoading}
         >
           &times;
         </Button>
