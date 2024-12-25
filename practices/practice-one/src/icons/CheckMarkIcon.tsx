@@ -1,7 +1,7 @@
 // Types
 import type { IIconProps } from '@/interfaces';
 
-export const SuccessIcon = ({
+export const CheckMarkIcon = ({
   size = 12,
   color = '#A9EBCA',
   ...props

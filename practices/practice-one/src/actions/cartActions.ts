@@ -17,12 +17,17 @@ import { ROUTE, TOAST_MESSAGES } from '@/constants';
  * @param maxQuantity - Max quantity to add
  * @returns {boolean} - Success or failure of the operation
  */
-export async function handleAddToCart(
-  userId: number,
-  productId: string,
-  quantity: number,
-  maxQuantity: number,
-): Promise<boolean> {
+export async function handleAddToCart({
+  userId,
+  productId,
+  quantity,
+  maxQuantity,
+}: {
+  userId: number;
+  productId: string;
+  quantity: number;
+  maxQuantity: number;
+}): Promise<boolean> {
   try {
     const { success } = await addToCart(userId, {
       productId,

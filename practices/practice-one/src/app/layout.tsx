@@ -11,7 +11,7 @@ import './globals.css';
 import { Header, Footer } from '@/layouts';
 
 // Providers
-import Providers from './provider';
+import { ToastContainer } from '@/components';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -65,13 +65,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Providers>
-          <Header />
-          <main className="md:container md:mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
+        <Header />
+        <main className="md:container md:mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12">
+          {children}
+        </main>
+        <Footer />
+        <ToastContainer />
       </body>
     </html>
   );

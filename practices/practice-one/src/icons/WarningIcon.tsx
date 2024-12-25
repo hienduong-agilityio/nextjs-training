@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { IIconProps } from '@/interfaces';
 
-export const ErrorIcon = ({
+export const WarningIcon = ({
   size = 32,
   color = '#D72828',
   secondaryColor = '#E6E6E6',

@@ -38,7 +38,12 @@ export const CartAndFavoriteActions = ({
     setIsLoading(true);
 
     try {
-      const success = await handleAddToCart(134, productId, quantity, 99);
+      const success = await handleAddToCart({
+        userId: 134,
+        productId: productId,
+        quantity: quantity,
+        maxQuantity: 99,
+      });
 
       if (success) {
         showToast(TOAST_MESSAGES.ADD_SUCCESS, 'success');

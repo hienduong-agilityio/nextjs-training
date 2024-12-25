@@ -20,5 +20,5 @@ export * from './VisaIcon';
 export * from './SearchIcon';
 export * from './MenuGroupIcon';
 export * from './Spinner';
-export * from './ErrorIcon';
-export * from './SuccessIcon';
+export * from './WarningIcon';
+export * from './CheckMarkIcon';

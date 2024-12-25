@@ -1,11 +1,11 @@
 'use client';
 
 // Libraries
-import { useState, useEffect, memo } from 'react';
+import { useEffect, memo } from 'react';
 import classNames from 'classnames';
 
 // Icons
-import { ErrorIcon, SuccessIcon } from '@/icons';
+import { WarningIcon, CheckMarkIcon } from '@/icons';
 
 export interface IToastProps {
   onClose: () => void;
@@ -17,19 +17,16 @@ export interface IToastProps {
 /**
  * Toast component
  *
- * @returns {JSX.Element | null} - Toast message element or null if not visible
+ * @returns {JSX.Element} - Toast message element.
  */
 const Toast = ({
   onClose = () => {},
   children,
   timeoutDuration = 5000,
   type = 'success',
-}: IToastProps): JSX.Element | null => {
-  const [isVisible, setIsVisible] = useState(true);
-
+}: IToastProps): JSX.Element => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsVisible(false);
       onClose();
     }, timeoutDuration);
 
@@ -39,23 +36,23 @@ const Toast = ({
   }, [onClose, timeoutDuration]);
 
   const containerClass = classNames(
-    'flex items-center divide-x rtl:divide-x-reverse p-4 w-full rounded-lg shadow',
+    'flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full',
     {
       'text-white bg-success divide-green-950': type === 'success',
       'text-red-100 bg-red-800 divide-red-950': type === 'danger',
     },
   );
 
-  const toastIcon = type === 'success' ? <SuccessIcon /> : <ErrorIcon />;
+  const toastIcon = type === 'success' ? <CheckMarkIcon /> : <WarningIcon />;
 
-  return isVisible ? (
+  return (
     <div className={containerClass}>
-      <div className="text-sm font-normal inline-flex items-center gap-3 pl-1">
+      <div className="text-sm font-normal inline-flex items-center gap-3">
         {toastIcon}
         {children}
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default memo(Toast);
