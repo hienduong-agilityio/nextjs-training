@@ -22,7 +22,7 @@ export const OrderSummary = ({
   },
 }: IOrderSummaryProps) => {
   const summaryItems = [
-    { label: 'Subtotal', value: `$${summary.subtotal}` },
+    { label: 'Subtotal', value: `$${summary.subtotal.toFixed(2)}` },
     { label: 'Shipping fee', value: `$${summary.shippingFee}` },
     {
       label: 'Coupon',
@@ -56,7 +56,7 @@ export const OrderSummary = ({
 
       {/* Button Section */}
       <Button
-        disabled
+        disabled={summary.subtotal <= 0}
         color={BUTTON_COLORS.PRIMARY}
         customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
       >
