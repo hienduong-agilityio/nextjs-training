@@ -38,6 +38,7 @@ const config: Config = {
       black: '#222324',
       white: '#ffffff',
       indigo: '#223263',
+      success: '#004322',
       warning: {
         50: '#FFC600',
         100: '#ECD345',

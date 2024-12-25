@@ -10,6 +10,9 @@ import './globals.css';
 // Layout
 import { Header, Footer } from '@/layouts';
 
+// Providers
+import { ToastContainer } from '@/components';
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -67,6 +70,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   );
