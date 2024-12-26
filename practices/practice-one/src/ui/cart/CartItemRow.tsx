@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { useState, useTransition } from 'react';
+import { useTransition } from 'react';
 
 // Components
 import { QuantityControl } from '@/ui';
@@ -37,7 +37,6 @@ export const CartItemRow = ({
   title = 'Product',
   price = 0,
 }: ICartItem) => {
-  const [localQuantity, setLocalQuantity] = useState(quantity);
   const [isLoading, startTransition] = useTransition();
   const { showToast } = ToastStore();
 
@@ -63,8 +62,6 @@ export const CartItemRow = ({
   };
 
   const handleQuantityChange = (newQuantity: number) => {
-    setLocalQuantity(newQuantity);
-
     startTransition(async () => {
       try {
         await handleUpdateProductInCart({
@@ -111,15 +108,13 @@ export const CartItemRow = ({
       <td className="px-4 py-8 text-start">${price}</td>
       <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
         <QuantityControl
-          initialQuantity={localQuantity}
+          initialQuantity={quantity}
           maxQuantity={DEFAULT_MAX_QUANTITY}
           isLoading={isLoading}
           onQuantityChange={handleQuantityChange}
         />
       </td>
-      <td className="px-4 py-8 text-start">
-        ${(price * localQuantity).toFixed(2)}
-      </td>
+      <td className="px-4 py-8 text-start">${(price * quantity).toFixed(2)}</td>
     </tr>
   );
 };
