@@ -22,4 +22,5 @@ export interface ICart {
 export interface ICartModifyPayload {
   productId: string;
   quantity: number;
+  maxQuantity: number;
 }
