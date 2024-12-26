@@ -21,6 +21,8 @@ export const OrderSummary = ({
 }: {
   summary?: IOrderSummaryProps;
 }) => {
+  const isDisabled = summary.subtotal <= 0;
+
   const summaryItems = [
     { label: 'Subtotal', value: `$${summary.subtotal.toFixed(2)}` },
     { label: 'Shipping fee', value: `$${summary.shippingFee}` },
@@ -56,7 +58,7 @@ export const OrderSummary = ({
 
       {/* Button Section */}
       <Button
-        disabled
+        disabled={isDisabled}
         color={BUTTON_COLORS.PRIMARY}
         customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
       >

@@ -82,7 +82,7 @@ export const CartItemRow = ({
         <Button
           aria-label="Remove product"
           className={`p-2 mr-4 text-danger-300 ${
-            isLoading ? 'opacity-50 cursor-wait' : ''
+            isLoading ? 'cursor-wait' : ''
           }`}
           onClick={handleRemoveClick}
           disabled={isLoading}
@@ -99,7 +99,7 @@ export const CartItemRow = ({
         <Link
           href={`${ROUTE.PRODUCT}/${id}`}
           className={`ml-4 hover:underline ${
-            isLoading ? 'pointer-events-none opacity-50' : ''
+            isLoading ? 'pointer-events-none' : ''
           }`}
         >
           {title}
