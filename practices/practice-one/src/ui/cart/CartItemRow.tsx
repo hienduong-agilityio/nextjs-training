@@ -10,7 +10,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Actions
-import { handleRemoveFromCart, handleUpdateProductInCart } from '@/actions';
+import {
+  handleDeleteProductFromCart,
+  handleUpdateProductInCart,
+} from '@/actions';
 
 // Store
 import { ToastStore } from '@/stores';
@@ -41,16 +44,18 @@ export const CartItemRow = ({
   const handleRemoveClick = () => {
     startTransition(async () => {
       try {
-        const success = await handleRemoveFromCart({
+        const success = await handleDeleteProductFromCart({
           userId: DEFAULT_USER_ID,
           productId: id,
         });
 
-        if (success) {
-          showToast(TOAST_MESSAGES.DELETE_SUCCESS, TOAST_TYPES.SUCCESS);
-        } else {
-          showToast(TOAST_MESSAGES.DELETE_FAILED, TOAST_TYPES.ERROR);
-        }
+        const toastMessage = success
+          ? TOAST_MESSAGES.DELETE_SUCCESS
+          : TOAST_MESSAGES.DELETE_FAILED;
+
+        const toastType = success ? TOAST_TYPES.SUCCESS : TOAST_TYPES.ERROR;
+
+        showToast(toastMessage, toastType);
       } catch (error) {
         showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
       }

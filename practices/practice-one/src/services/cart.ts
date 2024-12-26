@@ -31,7 +31,7 @@ export const getCartByUserId = async (userId: number): Promise<ICart> => {
  */
 export const addToCart = async (
   userId: number,
-  payload: ICartModifyPayload & { maxQuantity: number },
+  payload: ICartModifyPayload,
 ): Promise<{ success: boolean }> => {
   const { maxQuantity } = payload;
 
@@ -109,7 +109,7 @@ export const addToCart = async (
  * @param userId - The ID of the user
  * @param productId - The ID of the product to delete
  */
-export const deleteFromCart = async (
+export const deleteProductFromCart = async (
   userId: number,
   productId: string,
 ): Promise<{ success: boolean }> => {

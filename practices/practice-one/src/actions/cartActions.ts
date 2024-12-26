@@ -4,36 +4,36 @@
 import { revalidatePath } from 'next/cache';
 
 // Services
-import { addToCart, deleteFromCart, updateProductFromCart } from '@/services';
+import {
+  addToCart,
+  deleteProductFromCart,
+  updateProductFromCart,
+} from '@/services';
 
 // Constants
 import { ROUTE, TOAST_MESSAGES } from '@/constants';
 
+// Types
+import type { ICartModifyPayload } from '@/interfaces';
+
 /**
- * Server action to add a product to the cart.
- * @param userId - The ID of the user
- * @param productId - The ID of the product
- * @param quantity - Quantity to add
- * @param maxQuantity - Max quantity to add
- * @returns {boolean} - Success or failure of the operation
+ * Utility function to handle cart updates with revalidation and error handling.
+ * @param action - The async function to perform the cart operation.
+ * @param args - Arguments to pass to the action.
+ *
+ * @returns {boolean} - Success or failure of the operation.
  */
-export async function handleAddToCart({
-  userId,
-  productId,
-  quantity,
-  maxQuantity,
-}: {
-  userId: number;
-  productId: string;
-  quantity: number;
-  maxQuantity: number;
-}): Promise<boolean> {
+async function handleCartOperation<
+  T extends
+    | Parameters<typeof addToCart>
+    | Parameters<typeof deleteProductFromCart>
+    | Parameters<typeof updateProductFromCart>,
+>(
+  action: (...args: T) => Promise<{ success: boolean }>,
+  args: T,
+): Promise<boolean> {
   try {
-    const { success } = await addToCart(userId, {
-      productId,
-      quantity,
-      maxQuantity,
-    });
+    const { success } = await action(...args);
 
     if (success) {
       revalidatePath(ROUTE.CART);
@@ -44,41 +44,39 @@ export async function handleAddToCart({
   } catch (error) {
     throw new Error(TOAST_MESSAGES.API_ERROR);
   }
+}
+
+/**
+ * Server action to add a product to the cart.
+ * @param payload - Product modification payload including productId, quantity, and maxQuantity
+ */
+export async function handleAddToCart({
+  userId,
+  payload,
+}: {
+  userId: number;
+  payload: ICartModifyPayload;
+}): Promise<boolean> {
+  return handleCartOperation(addToCart, [userId, payload]);
 }
 
 /**
  * Server action to remove a product from the cart.
- * @param userId - The ID of the user
- * @param productId - The ID of the product to remove
- * @returns {boolean} - Success or failure of the operation
  */
-export async function handleRemoveFromCart({
+export async function handleDeleteProductFromCart({
   userId,
   productId,
 }: {
   userId: number;
   productId: string;
 }): Promise<boolean> {
-  try {
-    const { success } = await deleteFromCart(userId, productId);
-
-    if (success) {
-      revalidatePath(ROUTE.CART);
-      revalidatePath(ROUTE.ROOT);
-    }
-
-    return success;
-  } catch (error) {
-    throw new Error(TOAST_MESSAGES.API_ERROR);
-  }
+  return handleCartOperation(deleteProductFromCart, [userId, productId]);
 }
 
 /**
  * Server action to update the quantity of a product in the cart.
- * @param userId - The ID of the user
- * @param productId - The ID of the product
+ *
  * @param newQuantity - The new quantity of the product
- * @returns {boolean} - Success or failure of the operation
  */
 export async function handleUpdateProductInCart({
   userId,
@@ -89,20 +87,9 @@ export async function handleUpdateProductInCart({
   productId: string;
   newQuantity: number;
 }): Promise<boolean> {
-  try {
-    const { success } = await updateProductFromCart(
-      userId,
-      productId,
-      newQuantity,
-    );
-
-    if (success) {
-      revalidatePath(ROUTE.CART);
-      revalidatePath(ROUTE.ROOT);
-    }
-
-    return success;
-  } catch (error) {
-    throw new Error(TOAST_MESSAGES.API_ERROR);
-  }
+  return handleCartOperation(updateProductFromCart, [
+    userId,
+    productId,
+    newQuantity,
+  ]);
 }
