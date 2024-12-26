@@ -8,12 +8,12 @@ import { OrderSummary, CartTable, VoucherInput } from '@/ui';
 import { DEFAULT_USER_ID } from '@/constants';
 
 // Helpers
-import { calculateCartSummary } from '@/helpers';
+import { calculateOrderSummary } from '@/helpers';
 
 const CartPage = async () => {
   const cartProduct = await getCartByUserId(DEFAULT_USER_ID);
 
-  const cartSummary = calculateCartSummary(cartProduct.products);
+  const cartSummary = calculateOrderSummary(cartProduct.products);
 
   return (
     <div className="space-y-20 px-4 sm:px-6 lg:px-8">
