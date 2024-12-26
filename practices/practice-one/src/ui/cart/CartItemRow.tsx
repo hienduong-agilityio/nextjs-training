@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { useTransition } from 'react';
+import { memo, useTransition } from 'react';
 
 // Components
 import { QuantityControl } from '@/ui';
@@ -30,7 +30,7 @@ import {
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
-export const CartItemRow = ({
+const CartItemRow = ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
   quantity = 1,
@@ -118,3 +118,5 @@ export const CartItemRow = ({
     </tr>
   );
 };
+
+export default memo(CartItemRow);
