@@ -45,16 +45,20 @@ export const CartAndFavoriteActions = ({
     try {
       const success = await handleAddToCart({
         userId: DEFAULT_USER_ID,
-        productId: productId,
-        quantity: quantity,
-        maxQuantity: DEFAULT_MAX_QUANTITY,
+        payload: {
+          productId: productId,
+          quantity: quantity,
+          maxQuantity: DEFAULT_MAX_QUANTITY,
+        },
       });
 
-      if (success) {
-        showToast(TOAST_MESSAGES.ADD_SUCCESS, TOAST_TYPES.SUCCESS);
-      } else {
-        showToast(TOAST_MESSAGES.ADD_MAX_QUANTITY, TOAST_TYPES.ERROR);
-      }
+      const toastMessage = success
+        ? TOAST_MESSAGES.ADD_SUCCESS
+        : TOAST_MESSAGES.ADD_MAX_QUANTITY;
+
+      const toastType = success ? TOAST_TYPES.SUCCESS : TOAST_TYPES.ERROR;
+
+      showToast(toastMessage, toastType);
     } catch (error) {
       showToast(TOAST_MESSAGES.ADD_FAILED, TOAST_TYPES.ERROR);
     } finally {

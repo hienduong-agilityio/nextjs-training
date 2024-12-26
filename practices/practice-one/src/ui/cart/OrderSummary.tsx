@@ -4,13 +4,11 @@ import { Button } from '@/components';
 // Enums
 import { BUTTON_COLORS } from '@/enums';
 
-interface IOrderSummaryProps {
-  summary?: {
-    subtotal: number;
-    shippingFee: number;
-    couponValue: number | null;
-    total: number;
-  };
+export interface IOrderSummaryProps {
+  subtotal: number;
+  shippingFee: number;
+  couponValue: number | null;
+  total: number;
 }
 
 export const OrderSummary = ({
@@ -20,9 +18,13 @@ export const OrderSummary = ({
     couponValue: null,
     total: 0,
   },
-}: IOrderSummaryProps) => {
+}: {
+  summary?: IOrderSummaryProps;
+}) => {
+  const isDisabled = summary.subtotal <= 0;
+
   const summaryItems = [
-    { label: 'Subtotal', value: `$${summary.subtotal}` },
+    { label: 'Subtotal', value: `$${summary.subtotal.toFixed(2)}` },
     { label: 'Shipping fee', value: `$${summary.shippingFee}` },
     {
       label: 'Coupon',
@@ -56,7 +58,7 @@ export const OrderSummary = ({
 
       {/* Button Section */}
       <Button
-        disabled
+        disabled={isDisabled}
         color={BUTTON_COLORS.PRIMARY}
         customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
       >
