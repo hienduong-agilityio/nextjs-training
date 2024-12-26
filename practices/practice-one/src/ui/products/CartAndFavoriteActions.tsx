@@ -20,7 +20,7 @@ import {
   DEFAULT_MAX_QUANTITY,
   DEFAULT_USER_ID,
   TOAST_MESSAGES,
-  TOAST_TYPES,
+  STATUS_TYPES,
 } from '@/constants';
 
 interface CartAndFavoriteActionsProps {
@@ -56,11 +56,11 @@ export const CartAndFavoriteActions = ({
         ? TOAST_MESSAGES.ADD_SUCCESS
         : TOAST_MESSAGES.ADD_MAX_QUANTITY;
 
-      const toastType = success ? TOAST_TYPES.SUCCESS : TOAST_TYPES.ERROR;
+      const toastType = success ? STATUS_TYPES.SUCCESS : STATUS_TYPES.ERROR;
 
       showToast(toastMessage, toastType);
     } catch (error) {
-      showToast(TOAST_MESSAGES.ADD_FAILED, TOAST_TYPES.ERROR);
+      showToast(TOAST_MESSAGES.ADD_FAILED, STATUS_TYPES.ERROR);
     } finally {
       setIsLoading(false);
     }

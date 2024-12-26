@@ -24,7 +24,7 @@ import {
   DEFAULT_USER_ID,
   ROUTE,
   TOAST_MESSAGES,
-  TOAST_TYPES,
+  STATUS_TYPES,
 } from '@/constants';
 
 // Interfaces
@@ -52,11 +52,11 @@ const CartItemRow = ({
           ? TOAST_MESSAGES.DELETE_SUCCESS
           : TOAST_MESSAGES.DELETE_FAILED;
 
-        const toastType = success ? TOAST_TYPES.SUCCESS : TOAST_TYPES.ERROR;
+        const toastType = success ? STATUS_TYPES.SUCCESS : STATUS_TYPES.ERROR;
 
         showToast(toastMessage, toastType);
       } catch (error) {
-        showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
+        showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
       }
     });
   };
@@ -70,7 +70,7 @@ const CartItemRow = ({
           newQuantity,
         });
       } catch (error) {
-        showToast(TOAST_MESSAGES.API_ERROR, TOAST_TYPES.ERROR);
+        showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
       }
     });
   };

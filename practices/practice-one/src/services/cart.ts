@@ -205,3 +205,32 @@ export const updateProductFromCart = async (
     return { success: false };
   }
 };
+
+/**
+ * Clear all products from the cart
+ */
+export const clearProductsCart = async (
+  userId: number,
+): Promise<{ success: boolean }> => {
+  try {
+    const cart = await getCartByUserId(userId);
+
+    if (!cart) {
+      return { success: false };
+    }
+
+    // Remove all products from the cart
+    cart.products = [];
+
+    // Update the cart in the database
+    await apiRequest<ICart>({
+      url: `${API_URL.CART}/${cart.id}`,
+      method: HTTP_METHODS.PUT,
+      data: cart,
+    });
+
+    return { success: true };
+  } catch (error) {
+    return { success: false };
+  }
+};
