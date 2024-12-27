@@ -40,7 +40,7 @@ async function handleCartOperation<
     if (success) {
       revalidatePath(ROUTE.CART);
       revalidatePath(ROUTE.CHECKOUT);
-      revalidatePath(ROUTE.ROOT);
+      revalidatePath(ROUTE.PRODUCTS);
     }
 
     return success;
