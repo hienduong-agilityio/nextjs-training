@@ -1,5 +1,3 @@
-'use client';
-
 // Libraries
 import { memo } from 'react';
 
@@ -7,29 +5,30 @@ import { memo } from 'react';
 import { IProductProps } from '@/interfaces';
 
 // Icons
-import { HeartIcon, StarRating, AddToCartIcon } from '@/icons';
+import { StarRating } from '@/icons';
 
 // Components
 import Image from 'next/image';
-import { Button } from '@/components';
+import Link from 'next/link';
 
-interface IProductCardProps extends IProductProps {
-  onFavorite?: () => void;
-  onAddToCart?: () => void;
-}
+// Constants
+import { ROUTE } from '@/constants';
+
+// UI
+import { CartAndFavoriteActions } from '@/ui';
 
 const ProductCard = ({
   id,
-  name,
-  image,
-  price,
-  originalPrice,
-  discount,
+  name = 'Product',
+  images = [],
+  price = 100,
+  originalPrice = 50,
+  discount = '50%',
   label = 'Hot',
   rating = 4,
-  onFavorite = () => {},
-  onAddToCart = () => {},
-}: IProductCardProps) => {
+}: IProductProps) => {
+  const image = images.length > 0 ? images[0] : '/images/image-placeholder.svg';
+
   return (
     <div
       key={id}
@@ -46,44 +45,28 @@ const ProductCard = ({
           alt={name}
           width={0}
           height={0}
-          className="mix-blend-multiply"
-          sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
+          className="mix-blend-multiply object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Hover Buttons */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 transition-opacity duration-300 bg-white bg-opacity-95 opacity-0 mx-3 my-5 group-hover:opacity-100">
-          <Button
-            aria-label="Favorite product"
-            className="text-sm font-medium text-primary-100 border-2 flex  border-primary-100 bg-indigo-600 rounded-full"
-            onClick={onFavorite}
-          >
-            <HeartIcon size={35} />
-          </Button>
-          <Button
-            aria-label="Add to Cart"
-            className="text-sm font-medium text-primary-100 border-2 border-primary-100 bg-indigo-600 rounded-full"
-            onClick={onAddToCart}
-          >
-            <AddToCartIcon size={35} />
-          </Button>
-        </div>
+        <CartAndFavoriteActions productId={id} variant="card" />
       </div>
-      {/* Product Details */}
       <div className="flex flex-col items-center justify-between h-full px-4 py-4 bg-white">
-        <h3 className="text-lg font-semibold text-center text-indigo">
+        <Link
+          href={`${ROUTE.PRODUCT}/${id}`}
+          className="text-lg font-semibold text-center text-indigo hover:underline"
+        >
           {name}
-        </h3>
+        </Link>
         <StarRating size={14} rating={rating} />
         <div className="flex items-center space-x-2">
-          <span className="text-lg font-medium text-primary-200">{price}</span>
-          {originalPrice && (
-            <span className="text-sm text-gray-400 line-through">
-              {originalPrice}
-            </span>
-          )}
+          <span className="text-lg font-medium text-primary-200">${price}</span>
+          <span className="text-sm text-gray-400 line-through">
+            ${originalPrice}
+          </span>
           {discount && (
             <span className="text-sm font-semibold text-danger-50">
-              {discount}
+              ${discount}
             </span>
           )}
         </div>

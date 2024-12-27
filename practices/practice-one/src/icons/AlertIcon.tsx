@@ -1,10 +1,7 @@
 import * as React from 'react';
-import type { SVGProps } from 'react';
+import type { IIconProps } from '@/interfaces';
 
-export const AlertIcon = ({
-  size = 40,
-  ...props
-}: SVGProps<SVGSVGElement> & { size?: number }) => (
+export const AlertIcon = ({ size = 40, ...props }: IIconProps) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"

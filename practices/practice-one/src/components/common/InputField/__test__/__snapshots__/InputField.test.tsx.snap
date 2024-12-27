@@ -2,13 +2,16 @@
 
 exports[`InputField Component should handle user input 1`] = `
 <div>
-  <div>
+  <div
+    class="w-full"
+  >
     <div
       class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-gray-300 focus-within:ring-primary-100"
     >
       <input
-        class="flex-1 outline-none px-3 py-2 bg-transparent"
+        class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer"
         placeholder="Enter text"
+        type="search"
         value=""
       />
     </div>
@@ -18,13 +21,16 @@ exports[`InputField Component should handle user input 1`] = `
 
 exports[`InputField Component should render an error message 1`] = `
 <div>
-  <div>
+  <div
+    class="w-full"
+  >
     <div
       class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-danger-200 focus-within:ring-danger-200"
     >
       <input
-        class="flex-1 outline-none px-3 py-2 bg-transparent"
+        class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer"
         placeholder="Enter text"
+        type="search"
         value=""
       />
     </div>
@@ -39,13 +45,16 @@ exports[`InputField Component should render an error message 1`] = `
 
 exports[`InputField Component should render correctly without error 1`] = `
 <div>
-  <div>
+  <div
+    class="w-full"
+  >
     <div
       class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-gray-300 focus-within:ring-primary-100"
     >
       <input
-        class="flex-1 outline-none px-3 py-2 bg-transparent"
+        class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer"
         placeholder="Enter text"
+        type="search"
         value=""
       />
     </div>
@@ -55,13 +64,16 @@ exports[`InputField Component should render correctly without error 1`] = `
 
 exports[`InputField Component should render with custom classes 1`] = `
 <div>
-  <div>
+  <div
+    class="w-full"
+  >
     <div
       class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-gray-300 focus-within:ring-primary-100 custom-class"
     >
       <input
-        class="flex-1 outline-none px-3 py-2 bg-transparent"
+        class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer"
         placeholder="Enter text"
+        type="search"
         value=""
       />
     </div>
@@ -69,9 +81,11 @@ exports[`InputField Component should render with custom classes 1`] = `
 </div>
 `;
 
-exports[`InputField Component should render with startContent and endContent 1`] = `
+exports[`InputField Component should render with startIcon and endIcon 1`] = `
 <div>
-  <div>
+  <div
+    class="w-full"
+  >
     <div
       class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 border-gray-300 focus-within:ring-primary-100"
     >
@@ -81,8 +95,9 @@ exports[`InputField Component should render with startContent and endContent 1`]
         </span>
       </span>
       <input
-        class="flex-1 outline-none px-3 py-2 bg-transparent"
+        class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer"
         placeholder="Enter text"
+        type="search"
         value=""
       />
       <span>

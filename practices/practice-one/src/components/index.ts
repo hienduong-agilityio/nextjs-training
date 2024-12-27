@@ -1,8 +1,13 @@
-export * from './Header';
-export { default as SearchBox } from './SearchBox';
+export { default as ProductCard } from './ProductCard';
+export { default as SearchModal } from './SearchModal';
 export * from './SearchBox';
 export * from './ProductTab';
-export { default as ProductCard } from './ProductCard';
+export * from './Service';
+export * from './Service/ServiceCard';
+export * from './CategoryGroup';
+export * from './FilterSortBar';
+export * from './Pagination';
+export * from './ToastContainer';
 
 // Common
 export * from './common';
