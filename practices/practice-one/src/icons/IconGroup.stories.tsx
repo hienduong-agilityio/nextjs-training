@@ -65,12 +65,6 @@ const meta: Meta = {
     color: {
       control: { type: 'color' },
       description: 'Set the icon color using a valid CSS color value.',
-    },
-    isStarred: {
-      control: { type: 'boolean' },
-      description:
-        'Determines if the Start icon is starred (true) or unstarred (false).',
-      defaultValue: false,
     }
   },
 };
