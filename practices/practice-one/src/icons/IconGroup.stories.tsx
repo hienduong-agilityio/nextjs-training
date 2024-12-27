@@ -72,6 +72,12 @@ const meta: Meta = {
         'Determines if the Start icon is starred (true) or unstarred (false).',
       defaultValue: false,
     },
+    isStarred: {
+      control: { type: 'boolean' },
+      description:
+        'Determines if the Start icon is starred (true) or unscarred (false).',
+      defaultValue: false,
+    },
   },
 };
 
