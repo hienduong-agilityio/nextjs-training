@@ -8,7 +8,7 @@ export const TOAST_MESSAGES = {
   API_ERROR: 'API Error. Please try again!',
 };
 
-export const TOAST_TYPES = {
+export const STATUS_TYPES = {
   SUCCESS: 'success',
   ERROR: 'error',
   WARNING: 'warning',

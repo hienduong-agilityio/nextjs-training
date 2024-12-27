@@ -3,7 +3,7 @@ import { create } from 'zustand';
 
 // Types
 import type { ToastType } from '@/types';
-import { TOAST_TYPES } from '@/constants';
+import { STATUS_TYPES } from '@/constants';
 
 interface IToastState {
   message: string;
@@ -21,7 +21,7 @@ interface IToastState {
 
 export const ToastStore = create<IToastState>((set) => ({
   message: '',
-  type: TOAST_TYPES.SUCCESS,
+  type: STATUS_TYPES.SUCCESS,
   isVisible: false,
   timeoutDuration: 3000,
 

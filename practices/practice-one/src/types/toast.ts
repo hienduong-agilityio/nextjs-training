@@ -1,3 +1,3 @@
-import { TOAST_TYPES } from '@/constants';
+import { STATUS_TYPES } from '@/constants';
 
-export type ToastType = (typeof TOAST_TYPES)[keyof typeof TOAST_TYPES];
+export type ToastType = (typeof STATUS_TYPES)[keyof typeof STATUS_TYPES];
