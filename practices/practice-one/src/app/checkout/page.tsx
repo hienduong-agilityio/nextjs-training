@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 // Constants
-import { ROUTE, STATUS_TYPES } from '@/constants';
+import { DEFAULT_USER_ID, ROUTE, STATUS_TYPES } from '@/constants';
 
 // Icons
 import { CheckMarkIcon, WarningIcon } from '@/icons';
+
+// Services
+import { getCartByUserId } from '@/services';
 
 const messages = {
   success: {
@@ -31,8 +35,14 @@ export default async function CheckoutPage({
     status?: string;
   };
 }) {
+  const cartProducts = await getCartByUserId(DEFAULT_USER_ID);
+
   const status = searchParams?.status;
   const isSuccess = status === STATUS_TYPES.SUCCESS;
+
+  if (cartProducts.products.length > 0) {
+    redirect(ROUTE.PRODUCTS);
+  }
 
   const { icon, title, description, link, linkText } = isSuccess
     ? messages.success
