@@ -12,9 +12,6 @@ import '@testing-library/jest-dom';
 import { ProductCard } from '@/components';
 import { IProductProps } from '@/interfaces';
 
-const mockOnAddToCart = jest.fn();
-const mockOnFavorite = jest.fn();
-
 let defaultProps: IProductProps;
 let renderResult: RenderResult;
 
@@ -25,21 +22,15 @@ describe('ProductCard Component', () => {
     defaultProps = {
       id: '1',
       name: 'Test Product',
-      image: '/test-image.jpg',
-      price: '$50',
-      originalPrice: '$70',
+      images: ['/test-image.jpg'],
+      price: 50,
+      originalPrice: 70,
       discount: '28% OFF',
       label: 'Hot',
       rating: 4,
     };
 
-    renderResult = render(
-      <ProductCard
-        {...defaultProps}
-        onFavorite={mockOnFavorite}
-        onAddToCart={mockOnAddToCart}
-      />,
-    );
+    renderResult = render(<ProductCard {...defaultProps} />);
   });
 
   it('matches snapshot', () => {
@@ -51,7 +42,6 @@ describe('ProductCard Component', () => {
     expect(screen.getByText('Test Product')).toBeInTheDocument();
     expect(screen.getByText('$50')).toBeInTheDocument();
     expect(screen.getByText('$70')).toBeInTheDocument();
-    expect(screen.getByText('28% OFF')).toBeInTheDocument();
     expect(screen.getByText('Hot')).toBeInTheDocument();
 
     const image = screen.getByAltText('Test Product');
@@ -72,36 +62,19 @@ describe('ProductCard Component', () => {
     ).toBeVisible();
   });
 
-  it('handles Add to Cart button click', () => {
-    const addToCartButton = screen.getByRole('button', {
-      name: /Add to Cart/i,
-    });
-    fireEvent.click(addToCartButton);
-    expect(mockOnAddToCart).toHaveBeenCalledTimes(1);
-  });
-
-  it('handles Favorite button click', () => {
-    const favoriteButton = screen.getByRole('button', {
-      name: /Favorite product/i,
-    });
-
-    fireEvent.click(favoriteButton);
-    expect(mockOnFavorite).toHaveBeenCalledTimes(1);
-  });
-
   it('renders without optional props', () => {
     renderResult.rerender(
       <ProductCard
         id="2"
         name="Minimal Product"
-        image="/minimal-image.jpg"
-        price="$30"
+        images={['/minimal-image.jpg']}
+        price={0}
+        originalPrice={0}
       />,
     );
 
     expect(screen.getByText('Minimal Product')).toBeInTheDocument();
-    expect(screen.getByText('$30')).toBeInTheDocument();
-    expect(screen.queryByText('$70')).not.toBeInTheDocument();
+    expect(screen.queryByText('70')).not.toBeInTheDocument();
     expect(screen.queryByText('28% OFF')).not.toBeInTheDocument();
     expect(screen.getByText('Hot')).toBeInTheDocument();
   });

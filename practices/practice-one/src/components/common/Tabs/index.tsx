@@ -1,21 +1,25 @@
-'use client';
-
 // Libraries
-import { useState, useEffect, useRef } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { memo } from 'react';
+
+// Components
+import Link from 'next/link';
 
 interface ITabItem {
   title: string;
   content: React.ReactNode;
+  href: string;
 }
 
 interface ITabsProps {
   items: ITabItem[];
+  selectedTab: string;
   customClass?: {
     wrapper?: string;
     header?: string;
-    button?: string;
+    link?: string;
+    activeLink?: string;
     content?: string;
-    activeButton?: string;
     activeContent?: string;
     inactiveContent?: string;
   };
@@ -27,8 +31,8 @@ interface ITabsProps {
  * @param customClass - Optional custom class names to customize the component's appearance.
  * @param customClass.wrapper - Custom class for the wrapper container.
  * @param customClass.header - Custom class for the tab header container.
- * @param customClass.button - Custom class for the tab buttons.
- * @param customClass.activeButton - Custom class for the active tab button.
+ * @param customClass.link - Custom class for the tab links.
+ * @param customClass.activeLink - Custom class for the active tab link.
  * @param customClass.content - Custom class for the tab content container.
  * @param customClass.activeContent - Custom class for the active tab content.
  * @param customClass.inactiveContent - Custom class for the inactive tab content.
@@ -37,47 +41,41 @@ interface ITabsProps {
  */
 const Tabs = ({
   items,
+  selectedTab,
   customClass = {
     wrapper: 'flex flex-col gap-y-6 w-full',
     header: 'flex justify-center gap-7 border-b-2 pb-2',
-    button: 'p-3 text-sm font-medium outline-none transition-colors',
-    activeButton: 'text-primary-400 border-primary-400',
+    link: 'p-3 text-sm font-medium outline-none',
+    activeLink: 'text-primary-400 border-primary-400 border-b-2',
     content: 'mt-4',
     activeContent:
       'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
     inactiveContent: 'hidden',
   },
 }: ITabsProps): JSX.Element => {
-  const [selectedTab, setSelectedTab] = useState<string>(items[0]?.title || '');
-  const firstBtnRef = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    if (firstBtnRef.current) {
-      firstBtnRef.current.focus();
-    }
-  }, []);
-
-  const handleClick = (title: string) => {
-    setSelectedTab(title);
-  };
-
   return (
-    <div className={customClass.wrapper}>
+    <div className={customClass.wrapper} role="tablist">
       <ul className={customClass.header}>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li key={item.title}>
-            <button
-              id={`tab-${item.title}`}
-              ref={item.title === items[0]?.title ? firstBtnRef : null}
-              onClick={() => handleClick(item.title)}
-              className={`${customClass.button} ${
+            <Link
+              href={item.href}
+              replace
+              className={twMerge(
+                customClass.link,
                 selectedTab === item.title
-                  ? customClass.activeButton
-                  : ' border-transparent hover:text-primary-400 hover:border-primary-400'
-              }`}
+                  ? customClass.activeLink
+                  : 'border-b-0',
+              )}
+              role="tab"
+              tabIndex={0}
+              aria-selected={selectedTab === item.title}
+              aria-controls={`tabpanel-${index}`}
+              id={`tab-${index}`}
+              scroll={false}
             >
               {item.title}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
@@ -85,13 +83,13 @@ const Tabs = ({
         {items.map((item) => (
           <div
             key={item.title}
-            id={`tab-panel-${item.title}`}
-            role="tabpanel"
-            className={`${
+            className={twMerge(
               selectedTab === item.title
                 ? customClass.activeContent
-                : customClass.inactiveContent ?? 'hidden'
-            }`}
+                : customClass.inactiveContent,
+            )}
+            role="tabpanel"
+            hidden={selectedTab !== item.title}
           >
             {item.content}
           </div>
@@ -101,4 +99,4 @@ const Tabs = ({
   );
 };
 
-export default Tabs;
+export default memo(Tabs);

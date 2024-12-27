@@ -4,33 +4,49 @@ exports[`Tabs Component matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="flex flex-col gap-y-6 w-full"
+    role="tablist"
   >
     <ul
       class="flex justify-center gap-7 border-b-2 pb-2"
     >
       <li>
-        <button
-          class="p-3 text-sm font-medium outline-none transition-colors text-primary-400 border-primary-400"
-          id="tab-Tab 1"
+        <a
+          aria-controls="tabpanel-0"
+          aria-selected="true"
+          class="p-3 text-sm font-medium outline-none text-primary-400 border-primary-400 border-b-2"
+          href="/tab1"
+          id="tab-0"
+          role="tab"
+          tabindex="0"
         >
           Tab 1
-        </button>
+        </a>
       </li>
       <li>
-        <button
-          class="p-3 text-sm font-medium outline-none transition-colors  border-transparent hover:text-primary-400 hover:border-primary-400"
-          id="tab-Tab 2"
+        <a
+          aria-controls="tabpanel-1"
+          aria-selected="false"
+          class="p-3 text-sm font-medium outline-none border-b-0"
+          href="/tab2"
+          id="tab-1"
+          role="tab"
+          tabindex="0"
         >
           Tab 2
-        </button>
+        </a>
       </li>
       <li>
-        <button
-          class="p-3 text-sm font-medium outline-none transition-colors  border-transparent hover:text-primary-400 hover:border-primary-400"
-          id="tab-Tab 3"
+        <a
+          aria-controls="tabpanel-2"
+          aria-selected="false"
+          class="p-3 text-sm font-medium outline-none border-b-0"
+          href="/tab3"
+          id="tab-2"
+          role="tab"
+          tabindex="0"
         >
           Tab 3
-        </button>
+        </a>
       </li>
     </ul>
     <div
@@ -38,7 +54,6 @@ exports[`Tabs Component matches snapshot 1`] = `
     >
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        id="tab-panel-Tab 1"
         role="tabpanel"
       >
         <div>
@@ -47,7 +62,7 @@ exports[`Tabs Component matches snapshot 1`] = `
       </div>
       <div
         class="hidden"
-        id="tab-panel-Tab 2"
+        hidden=""
         role="tabpanel"
       >
         <div>
@@ -56,7 +71,7 @@ exports[`Tabs Component matches snapshot 1`] = `
       </div>
       <div
         class="hidden"
-        id="tab-panel-Tab 3"
+        hidden=""
         role="tabpanel"
       >
         <div>

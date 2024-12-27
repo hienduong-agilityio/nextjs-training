@@ -3,14 +3,24 @@ import {
   CartIcon,
   AlertIcon,
   FacebookIcon,
+  TwitterIcon,
   FilterIcon,
   HeartIcon,
   MessageIcon,
   ProfileIcon,
   LogoIcon,
   Start,
+  StarRating,
   AddToCartIcon,
+  ShippingIcon,
+  RefundIcon,
+  SupportIcon,
+  VisaIcon,
+  WesternIcon,
+  MasterCardIcon,
+  PaypalIcon,
 } from '@/icons/index';
+import type { IIconProps } from '@/interfaces';
 
 const icons = [
   { component: CartIcon, label: 'CartIcon' },
@@ -23,6 +33,15 @@ const icons = [
   { component: ProfileIcon, label: 'ProfileIcon' },
   { component: Start, label: 'StartIcon' },
   { component: AddToCartIcon, label: 'AddToCartIcon' },
+  { component: ShippingIcon, label: 'ShippingIcon' },
+  { component: RefundIcon, label: 'RefundIcon' },
+  { component: SupportIcon, label: 'SupportIcon' },
+  { component: WesternIcon, label: 'WesternIcon' },
+  { component: MasterCardIcon, label: 'MasterCardIcon' },
+  { component: PaypalIcon, label: 'PaypalIcon' },
+  { component: VisaIcon, label: 'Visa' },
+  { component: TwitterIcon, label: 'TwitterIcon' },
+  { component: StarRating, label: 'StartRatingIcon' },
 ];
 
 const meta: Meta = {
@@ -38,15 +57,19 @@ const meta: Meta = {
       description: 'Numerical size in pixels for both width and height.',
       defaultValue: 44,
     },
-    customClass: {
+    className: {
       control: { type: 'text' },
       description:
-        'Custom CSS class for additional styles (e.g., color, margin).',
+        'Custom CSS class for additional styles (e.g., margin, animations).',
+    },
+    color: {
+      control: { type: 'color' },
+      description: 'Set the icon color using a valid CSS color value.',
     },
     isStarred: {
       control: { type: 'boolean' },
       description:
-        'Determines if the Start icon is starred (true) or unscarred (false).',
+        'Determines if the Start icon is starred (true) or unstarred (false).',
       defaultValue: false,
     },
   },
@@ -54,21 +77,9 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<{
-  size: number;
-  customClass: string;
-  isStarred: boolean;
-}>;
+type Story = StoryObj<typeof IconGallery>;
 
-const IconGallery = ({
-  size,
-  customClass,
-  isStarred,
-}: {
-  size?: number;
-  customClass?: string;
-  isStarred?: boolean;
-}) => (
+const IconGallery = ({ size, className, color, isStarred }: IIconProps) => (
   <div className="grid grid-cols-6 gap-6 place-items-center">
     {icons.map(({ component: IconComponent, label }, index) => (
       <div
@@ -79,12 +90,14 @@ const IconGallery = ({
           <IconComponent
             isStarred={isStarred}
             size={size}
-            className={`w-[${size}px] h-[${size}px] ${customClass}`}
+            color={color}
+            className={`w-[${size}px] h-[${size}px] ${className}`}
           />
         ) : (
           <IconComponent
             size={size}
-            className={`w-[${size}px] h-[${size}px] ${customClass}`}
+            color={color}
+            className={`w-[${size}px] h-[${size}px] ${className}`}
           />
         )}
         <span className="text-sm text-center">{label}</span>
@@ -96,13 +109,14 @@ const IconGallery = ({
 export const Default: Story = {
   args: {
     size: 44,
-    customClass: '',
+    className: '',
     isStarred: false,
   },
   render: (args) => (
     <IconGallery
       size={args.size}
-      customClass={args.customClass}
+      className={args.className}
+      color={args.color}
       isStarred={args.isStarred}
     />
   ),

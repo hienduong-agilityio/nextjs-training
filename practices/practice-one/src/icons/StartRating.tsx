@@ -1,12 +1,8 @@
+import type { IIconProps } from '@/interfaces';
 import { Start } from './StartIcon';
 
-interface StarRatingProps {
-  size?: number;
-  rating: number;
-}
-
-export const StarRating = ({ size = 44, rating = 3 }: StarRatingProps) => {
-  const validatedRating = Math.max(0, Math.min(rating, 5));
+export const StarRating = ({ size = 44, rating = 3 }: IIconProps) => {
+  const validatedRating = Math.round(rating);
 
   return (
     <div className="flex gap-2 space-x-2">
