@@ -1,8 +1,19 @@
+'use client';
+
+// Libraries
+import { useRouter } from 'next/navigation';
+
 // Components
 import { Button } from '@/components';
 
 // Enums
 import { BUTTON_COLORS } from '@/enums';
+
+// Constants
+import { DEFAULT_USER_ID, ROUTE, STATUS_TYPES } from '@/constants';
+
+// Service actions
+import { handleClearProductFromCart } from '@/actions';
 
 export interface IOrderSummaryProps {
   subtotal: number;
@@ -21,6 +32,7 @@ export const OrderSummary = ({
 }: {
   summary?: IOrderSummaryProps;
 }) => {
+  const router = useRouter();
   const isDisabled = summary.subtotal <= 0;
 
   const summaryItems = [
@@ -34,6 +46,16 @@ export const OrderSummary = ({
           : 'No',
     },
   ];
+
+  const handleCheckout = async () => {
+    const success = await handleClearProductFromCart(DEFAULT_USER_ID);
+
+    if (success) {
+      router.push(`${ROUTE.CHECKOUT}?status=${STATUS_TYPES.SUCCESS}`);
+    } else {
+      router.push(`${ROUTE.CHECKOUT}?status=${STATUS_TYPES.ERROR}`);
+    }
+  };
 
   return (
     <div className="w-full lg:w-1/2 2xl:w-1/4 space-y-4 p-4">
@@ -61,6 +83,7 @@ export const OrderSummary = ({
         disabled={isDisabled}
         color={BUTTON_COLORS.PRIMARY}
         customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
+        onClick={handleCheckout}
       >
         Check out
       </Button>

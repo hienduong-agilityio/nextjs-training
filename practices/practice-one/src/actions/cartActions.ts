@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache';
 // Services
 import {
   addToCart,
+  clearProductsCart,
   deleteProductFromCart,
   updateProductFromCart,
 } from '@/services';
@@ -27,7 +28,8 @@ async function handleCartOperation<
   T extends
     | Parameters<typeof addToCart>
     | Parameters<typeof deleteProductFromCart>
-    | Parameters<typeof updateProductFromCart>,
+    | Parameters<typeof updateProductFromCart>
+    | Parameters<typeof clearProductsCart>,
 >(
   action: (...args: T) => Promise<{ success: boolean }>,
   args: T,
@@ -37,7 +39,8 @@ async function handleCartOperation<
 
     if (success) {
       revalidatePath(ROUTE.CART);
-      revalidatePath(ROUTE.ROOT);
+      revalidatePath(ROUTE.CHECKOUT);
+      revalidatePath(ROUTE.PRODUCTS);
     }
 
     return success;
@@ -92,4 +95,11 @@ export async function handleUpdateProductInCart({
     productId,
     newQuantity,
   ]);
+}
+
+/**
+ * Server action to clear all products from the cart.
+ */
+export async function handleClearProductFromCart(userId: number) {
+  return handleCartOperation(clearProductsCart, [userId]);
 }
