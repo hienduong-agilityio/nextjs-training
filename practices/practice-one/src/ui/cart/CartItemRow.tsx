@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { memo, useTransition } from 'react';
+import { memo, useTransition, useOptimistic } from 'react';
 
 // Components
 import { QuantityControl } from '@/ui';
@@ -38,6 +38,8 @@ const CartItemRow = ({
   price = 0,
 }: ICartItem) => {
   const [isLoading, startTransition] = useTransition();
+  const [optimisticQuantity, setOptimisticQuantity] = useOptimistic(quantity);
+
   const { showToast } = ToastStore();
 
   const handleRemoveClick = () => {
@@ -62,6 +64,8 @@ const CartItemRow = ({
   };
 
   const handleQuantityChange = (newQuantity: number) => {
+    setOptimisticQuantity(newQuantity);
+
     startTransition(async () => {
       try {
         await handleUpdateProductInCart({
@@ -71,6 +75,7 @@ const CartItemRow = ({
         });
       } catch (error) {
         showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
+        setOptimisticQuantity(quantity);
       }
     });
   };
@@ -108,13 +113,15 @@ const CartItemRow = ({
       <td className="px-4 py-8 text-start">${price}</td>
       <td className="flex items-center justify-start w-1/4 px-4 py-8 space-x-2">
         <QuantityControl
-          initialQuantity={quantity}
+          initialQuantity={optimisticQuantity}
           maxQuantity={DEFAULT_MAX_QUANTITY}
           isLoading={isLoading}
           onQuantityChange={handleQuantityChange}
         />
       </td>
-      <td className="px-4 py-8 text-start">${(price * quantity).toFixed(2)}</td>
+      <td className="px-4 py-8 text-start">
+        ${(price * optimisticQuantity).toFixed(2)}
+      </td>
     </tr>
   );
 };
