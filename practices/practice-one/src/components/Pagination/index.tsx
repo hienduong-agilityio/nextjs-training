@@ -1,6 +1,7 @@
 'use client';
 
 // Libraries
+import { useOptimistic } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 // Hooks
@@ -22,8 +23,9 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const page =
-    (currentPage ?? Number(searchParams.get(SEARCH_PARAMS.PAGE))) || 1;
+  const [optimisticPagination, setOptimisticPagination] = useOptimistic(
+    currentPage ?? (Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1),
+  );
 
   const createPageURL = (page: number) => {
     const params = new URLSearchParams(searchParams);
@@ -36,19 +38,25 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
   // Generate all pages
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  const handlePaginationClick = (pageItem: number) => () =>
+    setOptimisticPagination(pageItem);
+
   return (
     <div className="flex items-center space-x-2" aria-label="Pagination">
       {pages.map((pageItem) => (
         <Link
           key={pageItem}
           href={createPageURL(pageItem)}
+          onClick={handlePaginationClick(pageItem)}
           className={twMerge(
-            'px-5 py-3 ',
-            page === pageItem
+            'px-5 py-3',
+            optimisticPagination === pageItem
               ? 'bg-primary-200 text-white border-primary-200'
               : 'text-gray-700 hover:bg-gray-100',
           )}
-          aria-current={page === pageItem ? SEARCH_PARAMS.PAGE : undefined}
+          aria-current={
+            optimisticPagination === pageItem ? SEARCH_PARAMS.PAGE : undefined
+          }
         >
           {pageItem}
         </Link>

@@ -1,10 +1,9 @@
 'use client';
 
 // Libraries
+import { useOptimistic } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
-
-// Components
 import Link from 'next/link';
 
 // Helpers
@@ -22,19 +21,23 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentCategory =
-    searchParams.get(SEARCH_PARAMS.CATEGORY) ?? ALL_CATEGORIES.ALL;
+  const [optimisticCategory, setOptimisticCategory] = useOptimistic(
+    searchParams.get(SEARCH_PARAMS.CATEGORY) ?? ALL_CATEGORIES.ALL,
+  );
 
-  const handleCategoryClick = (itemName: string) => {
+  const generateCategoryParams = (category: string) => {
     const updatedParams = new URLSearchParams();
 
     // Update the category query parameter
-    if (itemName !== ALL_CATEGORIES.ALL) {
-      updatedParams.set(SEARCH_PARAMS.CATEGORY, itemName);
+    if (category !== ALL_CATEGORIES.ALL) {
+      updatedParams.set(SEARCH_PARAMS.CATEGORY, category);
     }
 
     return `${pathname}?${updatedParams.toString()}`;
   };
+
+  const handleCategorySelection = (category: string) => () =>
+    setOptimisticCategory(category);
 
   return (
     <div className="mb-6 bg-secondary-100 p-4 rounded">
@@ -43,17 +46,18 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
         {items.map((item) => {
           const isActive =
             item.name === ALL_CATEGORIES.ALL
-              ? currentCategory === ALL_CATEGORIES.ALL || !currentCategory
-              : item.name === currentCategory;
+              ? optimisticCategory === ALL_CATEGORIES.ALL || !optimisticCategory
+              : item.name === optimisticCategory;
 
           return (
-            <li className="flex justify-between" key={item.name}>
+            <li key={item.name}>
               <Link
-                href={handleCategoryClick(item.name)}
+                href={generateCategoryParams(item.name)}
+                onClick={handleCategorySelection(item.name)}
                 className={twMerge(
-                  'w-full block font-semibold py-2 rounded hover:bg-secondary-200',
+                  'w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300',
                   isActive
-                    ? 'bg-primary-500 text-primary-200'
+                    ? 'text-primary-200 bg-secondary-300'
                     : 'text-gray-800',
                 )}
               >
