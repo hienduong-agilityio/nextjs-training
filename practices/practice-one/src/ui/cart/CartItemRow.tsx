@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { memo, useTransition, useState, useOptimistic } from 'react';
+import { memo, useTransition, useState } from 'react';
 
 // Components
 import { QuantityControl } from '@/ui';
@@ -38,7 +38,7 @@ const CartItemRow = ({
   price = 0,
 }: ICartItem) => {
   const [isLoading, startTransition] = useTransition();
-  const [optimisticQuantity, setOptimisticQuantity] = useOptimistic(quantity);
+  const [optimisticQuantity, setOptimisticQuantity] = useState(quantity);
   const [updateTimeout, setUpdateTimeout] = useState<NodeJS.Timeout | null>(
     null,
   );
@@ -86,7 +86,7 @@ const CartItemRow = ({
           setOptimisticQuantity(quantity);
         }
       });
-    }, 500);
+    }, 1000);
 
     setUpdateTimeout(timeout);
   };
