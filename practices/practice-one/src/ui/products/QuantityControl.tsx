@@ -46,7 +46,7 @@ export function QuantityControl({
       <div className="flex">
         <Button
           className="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
-          disabled={inputValue === 1 || isLoading}
+          disabled={inputValue === 1}
           onClick={handleDecrement}
         >
           -
@@ -61,7 +61,7 @@ export function QuantityControl({
         />
         <Button
           className="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
-          disabled={inputValue === maxQuantity || isLoading}
+          disabled={inputValue === maxQuantity}
           onClick={handleIncrement}
         >
           +

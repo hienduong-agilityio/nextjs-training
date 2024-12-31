@@ -1,7 +1,7 @@
 'use client';
 
 // Libraries
-import { memo, useTransition, useOptimistic } from 'react';
+import { memo, useTransition, useState, useOptimistic } from 'react';
 
 // Components
 import { QuantityControl } from '@/ui';
@@ -39,6 +39,9 @@ const CartItemRow = ({
 }: ICartItem) => {
   const [isLoading, startTransition] = useTransition();
   const [optimisticQuantity, setOptimisticQuantity] = useOptimistic(quantity);
+  const [updateTimeout, setUpdateTimeout] = useState<NodeJS.Timeout | null>(
+    null,
+  );
 
   const { showToast } = ToastStore();
 
@@ -66,18 +69,26 @@ const CartItemRow = ({
   const handleQuantityChange = (newQuantity: number) => {
     setOptimisticQuantity(newQuantity);
 
-    startTransition(async () => {
-      try {
-        await handleUpdateProductInCart({
-          userId: DEFAULT_USER_ID,
-          productId: id,
-          newQuantity,
-        });
-      } catch (error) {
-        showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
-        setOptimisticQuantity(quantity);
-      }
-    });
+    if (updateTimeout) {
+      clearTimeout(updateTimeout);
+    }
+
+    const timeout = setTimeout(() => {
+      startTransition(async () => {
+        try {
+          await handleUpdateProductInCart({
+            userId: DEFAULT_USER_ID,
+            productId: id,
+            newQuantity,
+          });
+        } catch (error) {
+          showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
+          setOptimisticQuantity(quantity);
+        }
+      });
+    }, 500);
+
+    setUpdateTimeout(timeout);
   };
 
   return (
@@ -115,7 +126,6 @@ const CartItemRow = ({
         <QuantityControl
           initialQuantity={optimisticQuantity}
           maxQuantity={DEFAULT_MAX_QUANTITY}
-          isLoading={isLoading}
           onQuantityChange={handleQuantityChange}
         />
       </td>
