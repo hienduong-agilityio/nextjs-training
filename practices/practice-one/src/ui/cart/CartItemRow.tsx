@@ -30,6 +30,9 @@ import {
 // Interfaces
 import { ICartItem } from '@/interfaces';
 
+// Hooks
+import { useDebouncedCallback } from '@/hooks';
+
 const CartItemRow = ({
   id,
   thumbnail = `/images/image-placeholder.svg`,
@@ -39,9 +42,6 @@ const CartItemRow = ({
 }: ICartItem) => {
   const [isLoading, startTransition] = useTransition();
   const [optimisticQuantity, setOptimisticQuantity] = useState(quantity);
-  const [updateTimeout, setUpdateTimeout] = useState<NodeJS.Timeout | null>(
-    null,
-  );
 
   const { showToast } = ToastStore();
 
@@ -66,29 +66,24 @@ const CartItemRow = ({
     });
   };
 
+  const updateQuantity = useDebouncedCallback((newQuantity: number) => {
+    startTransition(async () => {
+      try {
+        await handleUpdateProductInCart({
+          userId: DEFAULT_USER_ID,
+          productId: id,
+          newQuantity,
+        });
+      } catch (error) {
+        showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
+        setOptimisticQuantity(quantity);
+      }
+    });
+  }, 1000);
+
   const handleQuantityChange = (newQuantity: number) => {
     setOptimisticQuantity(newQuantity);
-
-    if (updateTimeout) {
-      clearTimeout(updateTimeout);
-    }
-
-    const timeout = setTimeout(() => {
-      startTransition(async () => {
-        try {
-          await handleUpdateProductInCart({
-            userId: DEFAULT_USER_ID,
-            productId: id,
-            newQuantity,
-          });
-        } catch (error) {
-          showToast(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
-          setOptimisticQuantity(quantity);
-        }
-      });
-    }, 1000);
-
-    setUpdateTimeout(timeout);
+    updateQuantity(newQuantity);
   };
 
   return (
