@@ -5,7 +5,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { ServiceCard } from '@/components';
 
 const meta = {
-  title: 'Components/Service/ServiceCard',
+  title: 'Components/ServiceCard',
   component: ServiceCard,
   parameters: {
     docs: {
