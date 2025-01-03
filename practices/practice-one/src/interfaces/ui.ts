@@ -4,6 +4,7 @@ export interface IInputGroupProps {
   buttonText?: string;
   inputName?: string;
   isDisabled?: boolean;
+  isLoading?: boolean;
   startIcon?: React.ReactNode;
   customClass?: {
     container?: string;

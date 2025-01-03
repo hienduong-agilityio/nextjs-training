@@ -16,9 +16,6 @@ import { DEFAULT_USER_ID, ROUTE, STATUS_TYPES } from '@/constants';
 // Service actions
 import { handleClearProductFromCart } from '@/actions';
 
-// Icons
-import { Spinner } from '@/icons';
-
 export interface IOrderSummaryProps {
   subtotal: number;
   shippingFee: number;
@@ -107,8 +104,9 @@ export const OrderSummary = ({
         color={BUTTON_COLORS.PRIMARY}
         customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
         onClick={handleCheckout}
+        isLoading={isLoading}
       >
-        {isLoading ? <Spinner size={28} color="currentColor" /> : 'Check out'}
+        Check out
       </Button>
     </div>
   );

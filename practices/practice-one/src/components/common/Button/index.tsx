@@ -9,6 +9,9 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 // Enums
 import { BUTTON_VARIANTS, BUTTON_COLORS } from '@/enums';
 
+// Icons
+import { Spinner } from '@/icons';
+
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   startIcon?: ReactNode;
@@ -16,6 +19,8 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: BUTTON_VARIANTS;
   color?: BUTTON_COLORS;
   customClass?: string;
+  isLoading?: boolean;
+  loadingText?: ReactNode;
 }
 
 const baseClass =
@@ -29,7 +34,8 @@ const variantClasses: Record<BUTTON_VARIANTS, string> = {
 
 const colorClasses: Record<BUTTON_COLORS, string> = {
   [BUTTON_COLORS.DEFAULT]: 'bg-gray-200 text-black',
-  [BUTTON_COLORS.PRIMARY]: 'bg-primary-200 text-white',
+  [BUTTON_COLORS.PRIMARY]:
+    'bg-primary-200 text-white disabled:hover:bg-primary-200 hover:bg-primary-400',
   [BUTTON_COLORS.SECONDARY]: 'bg-gray-400 text-white',
   [BUTTON_COLORS.SUCCESS]: 'bg-green-600 text-white',
   [BUTTON_COLORS.WARNING]: 'bg-amber-400 text-black',
@@ -43,12 +49,14 @@ const colorClasses: Record<BUTTON_COLORS, string> = {
  */
 const Button = ({
   children,
-  startIcon = '',
+  startIcon,
   endIcon = '',
   type = 'button',
   variant = BUTTON_VARIANTS.SOLID,
   color = BUTTON_COLORS.DEFAULT,
   customClass = '',
+  isLoading = false,
+  loadingText = '',
   ...rest
 }: IButtonProps): JSX.Element => {
   const combinedClasses = twMerge(
@@ -57,10 +65,24 @@ const Button = ({
   );
 
   return (
-    <button type={type} className={combinedClasses} {...rest}>
-      {startIcon && <span>{startIcon}</span>}
-      {children}
-      {endIcon && <span>{endIcon}</span>}
+    <button
+      type={type}
+      className={combinedClasses}
+      disabled={isLoading || rest.disabled}
+      {...rest}
+    >
+      {isLoading ? (
+        <>
+          <Spinner size={20} color="currentColor" />
+          {loadingText || children}
+        </>
+      ) : (
+        <>
+          {startIcon && <span>{startIcon}</span>}
+          {children}
+          {endIcon && <span>{endIcon}</span>}
+        </>
+      )}
     </button>
   );
 };

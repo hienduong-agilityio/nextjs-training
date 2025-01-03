@@ -13,6 +13,7 @@ const InputGroup = ({
   buttonText = 'Search',
   inputName = 'inputField',
   isDisabled = false,
+  isLoading = false,
   startIcon,
   customClass = {},
   onSubmit,
@@ -34,8 +35,9 @@ const InputGroup = ({
       <Button
         color={BUTTON_COLORS.PRIMARY}
         type="submit"
-        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none disabled:hover:bg-primary-200 hover:bg-primary-400 ${customClass.button ?? ''}`}
-        disabled={isDisabled}
+        isLoading={isLoading}
+        customClass="px-7 rounded-l-none hidden lg:flex font-semibold shadow-none"
+        disabled={isLoading || isDisabled}
       >
         {buttonText}
       </Button>
