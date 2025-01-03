@@ -38,29 +38,31 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
   // Generate all pages
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const handlePaginationClick = (pageItem: number) => () =>
-    setOptimisticPagination(pageItem);
-
   return (
     <div className="flex items-center space-x-2" aria-label="Pagination">
-      {pages.map((pageItem) => (
-        <Link
-          key={pageItem}
-          href={createPageURL(pageItem)}
-          onClick={handlePaginationClick(pageItem)}
-          className={twMerge(
-            'px-5 py-3',
-            optimisticPagination === pageItem
-              ? 'bg-primary-200 text-white border-primary-200'
-              : 'text-gray-700 hover:bg-gray-100',
-          )}
-          aria-current={
-            optimisticPagination === pageItem ? SEARCH_PARAMS.PAGE : undefined
-          }
-        >
-          {pageItem}
-        </Link>
-      ))}
+      {pages.map((pageItem) => {
+        const handlePaginationClick = (pageItem: number) => () =>
+          setOptimisticPagination(pageItem);
+
+        return (
+          <Link
+            key={pageItem}
+            href={createPageURL(pageItem)}
+            onClick={handlePaginationClick(pageItem)}
+            className={twMerge(
+              'px-5 py-3',
+              optimisticPagination === pageItem
+                ? 'bg-primary-200 text-white border-primary-200'
+                : 'text-gray-700 hover:bg-gray-100',
+            )}
+            aria-current={
+              optimisticPagination === pageItem ? SEARCH_PARAMS.PAGE : undefined
+            }
+          >
+            {pageItem}
+          </Link>
+        );
+      })}
     </div>
   );
 }

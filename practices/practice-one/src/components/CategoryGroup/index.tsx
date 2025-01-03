@@ -36,9 +36,6 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
     return `${pathname}?${updatedParams.toString()}`;
   };
 
-  const handleCategorySelection = (category: string) => () =>
-    setOptimisticCategory(category);
-
   return (
     <div className="mb-6 bg-secondary-100 p-4 rounded">
       <h3 className="text-lg font-bold mb-4">{title}</h3>
@@ -48,6 +45,9 @@ export function CategoryGroup({ title, items }: ICategoryGroupProps) {
             item.name === ALL_CATEGORIES.ALL
               ? optimisticCategory === ALL_CATEGORIES.ALL || !optimisticCategory
               : item.name === optimisticCategory;
+
+          const handleCategorySelection = (category: string) => () =>
+            setOptimisticCategory(category);
 
           return (
             <li key={item.name}>
