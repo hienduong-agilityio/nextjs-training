@@ -4,7 +4,7 @@
 import { useState } from 'react';
 
 // Icons
-import { AddToCartIcon, HeartIcon, Spinner } from '@/icons';
+import { AddToCartIcon, HeartIcon } from '@/icons';
 
 // Components
 import { Button, IconButton } from '@/components';
@@ -22,6 +22,9 @@ import {
   TOAST_MESSAGES,
   STATUS_TYPES,
 } from '@/constants';
+
+// Enums
+import { BUTTON_COLORS } from '@/enums';
 
 interface CartAndFavoriteActionsProps {
   productId: string;
@@ -101,19 +104,16 @@ export const CartAndFavoriteActions = ({
       {/* Add to Cart Button */}
       <Button
         startIcon={
-          isLoading ? (
-            <Spinner size={20} color="currentColor" />
-          ) : (
-            <AddToCartIcon
-              size={20}
-              color="currentColor"
-              className="text-primary-100 group-hover:text-white transition-colors duration-200"
-            />
-          )
+          <AddToCartIcon
+            size={20}
+            color="currentColor"
+            className="text-primary-100 group-hover:text-white transition-colors duration-200"
+          />
         }
+        color={BUTTON_COLORS.PRIMARY}
+        isLoading={isLoading}
         customClass="group shadow-none bg-primary-50 text-primary-100 disabled:hover:text-primary-100 disabled:hover:bg-primary-50 hover:bg-primary-100 hover:text-white transition-all duration-200 whitespace-nowrap"
         onClick={handleAddToCartClick}
-        disabled={isLoading}
       >
         Add To Cart
       </Button>

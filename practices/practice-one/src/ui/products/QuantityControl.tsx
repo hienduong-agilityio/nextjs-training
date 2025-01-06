@@ -19,15 +19,13 @@ export function QuantityControl({
   isLoading = false,
   onQuantityChange,
 }: IQuantityControlProps) {
-  const [quantity, setQuantity] = useState(initialQuantity);
   const [inputValue, setInputValue] = useState(initialQuantity);
 
   const updateQuantity = (newQuantity: number) => {
     const clampedValue = Math.min(maxQuantity, Math.max(1, newQuantity));
 
-    setQuantity(clampedValue);
-    setInputValue(clampedValue);
     onQuantityChange?.(clampedValue);
+    setInputValue(clampedValue);
   };
 
   const handleInputChange = (value: string) => {
@@ -40,15 +38,15 @@ export function QuantityControl({
     updateQuantity(numericValue);
   };
 
-  const handleDecrement = () => updateQuantity(quantity - 1);
-  const handleIncrement = () => updateQuantity(quantity + 1);
+  const handleDecrement = () => updateQuantity(inputValue - 1);
+  const handleIncrement = () => updateQuantity(inputValue + 1);
 
   return (
     <div className="rounded-md gap-4 bg-secondary-50">
       <div className="flex">
         <Button
           className="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
-          disabled={quantity === 1 || isLoading}
+          disabled={inputValue === 1}
           onClick={handleDecrement}
         >
           -
@@ -63,7 +61,7 @@ export function QuantityControl({
         />
         <Button
           className="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
-          disabled={quantity === maxQuantity || isLoading}
+          disabled={inputValue === maxQuantity}
           onClick={handleIncrement}
         >
           +

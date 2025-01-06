@@ -2,6 +2,7 @@
 
 // Libraries
 import { useRouter } from 'next/navigation';
+import { useOptimistic, useTransition } from 'react';
 
 // Components
 import { Button } from '@/components';
@@ -33,28 +34,47 @@ export const OrderSummary = ({
   summary?: IOrderSummaryProps;
 }) => {
   const router = useRouter();
-  const isDisabled = summary.subtotal <= 0;
+  const [optimisticSummary, setOptimisticSummary] = useOptimistic(
+    summary,
+    (state, newValues: Partial<IOrderSummaryProps>) => ({
+      ...state,
+      ...newValues,
+    }),
+  );
+  const [isLoading, startTransition] = useTransition();
+
+  const isDisabled = optimisticSummary.subtotal <= 0 || isLoading;
 
   const summaryItems = [
-    { label: 'Subtotal', value: `$${summary.subtotal.toFixed(2)}` },
-    { label: 'Shipping fee', value: `$${summary.shippingFee}` },
+    { label: 'Subtotal', value: `$${optimisticSummary.subtotal.toFixed(2)}` },
+    { label: 'Shipping fee', value: `$${optimisticSummary.shippingFee}` },
     {
       label: 'Coupon',
       value:
-        summary.couponValue !== null
-          ? `$${summary.couponValue.toFixed(2)}`
+        optimisticSummary.couponValue !== null
+          ? `$${optimisticSummary.couponValue.toFixed(2)}`
           : 'No',
     },
   ];
 
-  const handleCheckout = async () => {
-    const success = await handleClearProductFromCart(DEFAULT_USER_ID);
+  const handleCheckout = () => {
+    startTransition(async () => {
+      // Update the optimistic state
+      setOptimisticSummary({
+        subtotal: 0,
+        shippingFee: 0,
+        couponValue: null,
+        total: 0,
+      });
 
-    if (success) {
-      router.push(`${ROUTE.CHECKOUT}?status=${STATUS_TYPES.SUCCESS}`);
-    } else {
-      router.push(`${ROUTE.CHECKOUT}?status=${STATUS_TYPES.ERROR}`);
-    }
+      const success = await handleClearProductFromCart(DEFAULT_USER_ID);
+
+      if (success) {
+        router.push(`${ROUTE.CHECKOUT}?status=${STATUS_TYPES.SUCCESS}`);
+      } else {
+        router.push(`${ROUTE.CHECKOUT}?status=${STATUS_TYPES.ERROR}`);
+      }
+    });
   };
 
   return (
@@ -75,7 +95,7 @@ export const OrderSummary = ({
       {/* Total Section */}
       <div className="flex justify-between text-lg md:text-2xl lg:text-3xl py-4">
         <span>Total</span>
-        <span>${summary.total.toFixed(2)}</span>
+        <span>${optimisticSummary.total.toFixed(2)}</span>
       </div>
 
       {/* Button Section */}
@@ -84,6 +104,7 @@ export const OrderSummary = ({
         color={BUTTON_COLORS.PRIMARY}
         customClass="w-full py-3 md:py-4 text-sm md:text-base lg:text-lg"
         onClick={handleCheckout}
+        isLoading={isLoading}
       >
         Check out
       </Button>
