@@ -2,34 +2,40 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 // Component
-import InputField from './index';
+import { InputField } from '@/components';
 
 const meta = {
   title: 'Components/common/InputField',
   component: InputField,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'A `InputField` component supporting icons, error messages, and various styles.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
     placeholder: {
-      description: 'The placeholder text for the input field.',
+      description: 'Placeholder text displayed in the input field.',
       control: 'text',
     },
     name: {
-      description: 'The name attribute of the input field.',
+      description: 'Name attribute of the input field.',
       control: 'text',
     },
     defaultValue: {
-      description: 'The default value of the input field.',
+      description: 'Default value of the input field.',
       control: 'text',
     },
     type: {
-      description: 'The type attribute of the input field.',
+      description: 'Type attribute of the input field (e.g., text, number).',
       control: 'text',
     },
     customClass: {
-      description: 'Object to customize the container and input classes.',
+      description: 'Custom CSS classes for the container and input styles.',
       control: 'object',
     },
     errorMessage: {
@@ -37,19 +43,19 @@ const meta = {
       control: 'text',
     },
     startIcon: {
-      description: 'Content to display at the start of the input field.',
+      description: 'Icon or content displayed at the start of the input field.',
       control: 'text',
     },
     endIcon: {
-      description: 'Content to display at the end of the input field.',
+      description: 'Icon or content displayed at the end of the input field.',
       control: 'text',
     },
     disabled: {
-      description: 'Disables the input field if true.',
+      description: 'Disables the input field if set to true.',
       control: 'boolean',
     },
     onChange: {
-      description: 'Callback function triggered on input value change.',
+      description: 'Callback function triggered when the input value changes.',
       action: 'changed',
     },
   },
@@ -75,7 +81,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Default InputField with basic properties.',
+        story: 'A basic `InputField` with default settings.',
       },
     },
   },
@@ -95,7 +101,8 @@ export const Primary: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Primary style InputField with custom placeholder and styling.',
+        story:
+          'An `InputField` styled with primary colors and custom placeholders.',
       },
     },
   },
@@ -103,7 +110,7 @@ export const Primary: Story = {
 
 export const Disable: Story = {
   args: {
-    placeholder: 'Disable',
+    placeholder: 'Disabled',
     disabled: true,
     customClass: {
       input: 'cursor-not-allowed h-10',
@@ -115,7 +122,7 @@ export const Disable: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Disabled InputField that cannot be interacted with.',
+        story: 'A disabled `InputField` that cannot be interacted with.',
       },
     },
   },
@@ -135,7 +142,7 @@ export const ShowError: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'InputField with an error message displayed.',
+        story: 'An `InputField` displaying an error message for invalid input.',
       },
     },
   },
@@ -157,7 +164,7 @@ export const WithContent: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'InputField with start and end content/icons.',
+        story: 'An `InputField` featuring start and end icons.',
       },
     },
   },

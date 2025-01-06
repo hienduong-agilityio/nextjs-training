@@ -13,6 +13,12 @@ import { Header, Footer } from '@/layouts';
 // Providers
 import { ToastContainer } from '@/components';
 
+// Constants
+import { DEFAULT_USER_ID } from '@/constants';
+
+// Services
+import { getCartByUserId } from '@/services';
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -57,15 +63,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cartProduct = await getCartByUserId(DEFAULT_USER_ID);
+
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Header />
+        <Header itemCount={cartProduct.products.length} />
         <main className="md:container md:mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12">
           {children}
         </main>

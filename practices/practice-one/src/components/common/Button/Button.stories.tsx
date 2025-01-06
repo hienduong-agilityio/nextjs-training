@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
 // Components
-import Button from '.';
+import { Button } from '@/components';
 
 // Enums
 import { BUTTON_VARIANTS, BUTTON_COLORS } from '@/enums';
@@ -12,6 +12,12 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'A `Button` component with customizable styles, colors, and variants.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -85,7 +91,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          'This is the default button with solid variant and default color.',
+          'This is the default `Button` with solid variant and default color.',
       },
     },
   },
@@ -118,7 +124,7 @@ export const Icon: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'An icon button with solid style.',
+        story: 'An icon `Button` with solid style.',
       },
     },
   },
@@ -141,7 +147,7 @@ export const Sizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'A button with custom size styles and danger color.',
+        story: 'A `Button` with custom size styles and danger color.',
       },
     },
   },
@@ -165,7 +171,7 @@ export const SolidVariantColors: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Displays buttons with solid variant across different colors.',
+        story: 'Displays `Buttons` with solid variant across different colors.',
       },
     },
   },
@@ -198,7 +204,8 @@ export const ShadowVariantColors: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Displays buttons with shadow variant across different colors.',
+        story:
+          'Displays `Buttons` with shadow variant across different colors.',
       },
     },
   },
@@ -231,7 +238,7 @@ export const LightVariantColors: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Displays buttons with light variant across different colors.',
+        story: 'Displays `Buttons` with light variant across different colors.',
       },
     },
   },

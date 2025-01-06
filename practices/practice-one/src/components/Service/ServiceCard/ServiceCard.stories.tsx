@@ -2,16 +2,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 // Components
-import { ServiceCard } from '@/components';
+import { IServiceCardProps, ServiceCard } from '@/components';
 
 const meta = {
-  title: 'Components/Service/ServiceCard',
+  title: 'Components/ServiceCard',
   component: ServiceCard,
   parameters: {
     docs: {
       description: {
         component:
-          'A ServiceCard component that displays an icon, title, and detailed description for a service. Useful for highlighting features or services in a grid layout.',
+          'A `ServiceCard` component that displays an icon, title, and detailed description for a service. Useful for highlighting features or services in a grid layout.',
       },
     },
     layout: 'fullscreen',
@@ -37,7 +37,15 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+// Shared render logic for all stories
+const renderServiceCard = (args: IServiceCardProps) => (
+  <div className="w-[40svw] flex justify-center">
+    <ServiceCard {...args} />
+  </div>
+);
+
 export const Default: Story = {
+  render: renderServiceCard,
   args: {
     icon: '🔧',
     title: 'Default Service',
@@ -46,13 +54,14 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Default ServiceCard with an icon, title, and description.',
+        story: 'Default `ServiceCard` with an icon, title, and description.',
       },
     },
   },
 };
 
 export const WithCustomIcon: Story = {
+  render: renderServiceCard,
   args: {
     icon: '🚀',
     title: 'Rocket Service',
@@ -61,13 +70,14 @@ export const WithCustomIcon: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'ServiceCard with a custom rocket icon.',
+        story: '`ServiceCard` with a custom rocket icon.',
       },
     },
   },
 };
 
 export const WithoutIcon: Story = {
+  render: renderServiceCard,
   args: {
     title: 'Icon-Free Service',
     details: 'This service focuses solely on the details and title.',
@@ -75,7 +85,7 @@ export const WithoutIcon: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'ServiceCard without an icon.',
+        story: '`ServiceCard` without an icon.',
       },
     },
   },

@@ -1,5 +1,5 @@
 // Components
-import { ProductCard, Pagination, FilterSortBar } from '@/components';
+import { ProductCard, Pagination } from '@/components';
 
 // Constants
 import { ROUTE, SORT_PRODUCT_OPTIONS } from '@/constants';
@@ -12,6 +12,9 @@ import { getProducts } from '@/services';
 
 // Types
 import type { Metadata } from 'next';
+
+// UI
+import { FilterSortBar } from '@/ui';
 
 export async function generateMetadata({
   searchParams,

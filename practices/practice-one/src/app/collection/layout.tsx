@@ -1,14 +1,11 @@
 // Libraries
 import { ReactNode, Suspense } from 'react';
 
-// Components
-import { CategoryGroup } from '@/components';
-
 // Mocks
 import { HOT_DEALS } from '@/mocks';
 
 // UI
-import { LoadingCategoryGroup } from '@/ui';
+import { LoadingCategoryGroup, CategoryGroup } from '@/ui';
 
 export default function CollectionLayout({
   children,
