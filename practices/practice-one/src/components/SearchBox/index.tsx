@@ -23,7 +23,6 @@ export interface ISearchBoxProps extends IInputGroupProps {
 // TODO: Find common solution for change Search Box text when searching
 export const SearchBox = ({
   placeholder = 'Enter your query...',
-  buttonText = 'Search',
   customClass = {},
   onCloseModal,
 }: ISearchBoxProps) => {
@@ -58,8 +57,7 @@ export const SearchBox = ({
       placeholder={placeholder}
       inputName="searchBox"
       startIcon={<SearchIcon color="#40BFFF" className="lg:hidden block" />}
-      buttonText={isLoading ? 'Loading...' : buttonText}
-      isDisabled={isLoading}
+      isLoading={isLoading}
       customClass={customClass}
       onSubmit={handleSearch}
     />

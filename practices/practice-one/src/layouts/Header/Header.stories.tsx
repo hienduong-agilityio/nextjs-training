@@ -1,7 +1,5 @@
 // Libraries
 import type { Meta, StoryObj } from '@storybook/react';
-
-// Components
 import { Header } from '@/layouts';
 
 const meta: Meta<typeof Header> = {
@@ -12,14 +10,8 @@ const meta: Meta<typeof Header> = {
     docs: {
       description: {
         component:
-          'The `Header` component as the `<header/>` element for the e-comm. It includes a logo, a search box, profile, and cart icons. The `cartItemCount` prop displays the number of items in the cart.',
+          'The `Header` component serves as the `<header/>` element for the e-commerce application. It includes a logo, search functionality, profile, and cart icons.',
       },
-    },
-  },
-  argTypes: {
-    cartItemCount: {
-      description: 'Number of items in the cart.',
-      control: { type: 'number' },
     },
   },
 };
@@ -33,20 +25,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Default Header with no cart item count.',
-      },
-    },
-  },
-};
-
-export const WithCartItemCount: Story = {
-  args: {
-    cartItemCount: 2,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Header with cart item count number',
+        story: 'Default view of the Header component.',
       },
     },
   },
