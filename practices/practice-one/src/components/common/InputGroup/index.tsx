@@ -19,7 +19,11 @@ const InputGroup = ({
   onSubmit,
 }: IInputGroupProps) => {
   return (
-    <form onSubmit={onSubmit} className={`flex ${customClass.container ?? ''}`}>
+    <form
+      aria-label="Input Group"
+      onSubmit={onSubmit}
+      className={`flex ${customClass.container ?? ''}`}
+    >
       <InputField
         key={value === '' ? 'empty' : 'filled'}
         placeholder={placeholder}
@@ -35,6 +39,7 @@ const InputGroup = ({
       <Button
         color={BUTTON_COLORS.PRIMARY}
         type="submit"
+        aria-busy={isLoading}
         isLoading={isLoading}
         customClass="px-7 rounded-l-none hidden lg:flex font-semibold shadow-none"
         disabled={isLoading || isDisabled}

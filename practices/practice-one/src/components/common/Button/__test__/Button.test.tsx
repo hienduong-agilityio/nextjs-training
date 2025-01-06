@@ -1,11 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
 // Enums
 import { BUTTON_COLORS, BUTTON_VARIANTS } from '@/enums';
 
 // Components
-import Button from '..';
+import { Button } from '@/components';
 
 describe('Button Component', () => {
   let renderButton: (
