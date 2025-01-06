@@ -2,12 +2,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 // Components
-import { CategoryGroup } from '@/components';
+import { CategoryGroup } from '@/ui';
 
+// Mocks
 import { HOT_DEALS } from '@/mocks';
 
 const meta = {
-  title: 'Components/CategoryGroup',
+  title: 'UI/Collection/CategoryGroup',
   component: CategoryGroup,
   parameters: {
     docs: {

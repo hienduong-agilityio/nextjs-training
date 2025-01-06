@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 // Components
 import { InputGroup } from '@/components';
 
+// Icons
+import { SearchIcon } from '@/icons';
+
 const meta = {
   title: 'Components/Common/InputGroup',
   component: InputGroup,
@@ -117,6 +120,31 @@ export const CustomStyling: Story = {
     docs: {
       description: {
         story: 'An `InputGroup` component styled with custom CSS classes.',
+      },
+    },
+  },
+};
+
+export const VoucherInput: Story = {
+  args: {
+    value: '',
+    placeholder: 'Voucher code',
+    startIcon: <SearchIcon color="#40BFFF" className="lg:hidden block" />,
+    buttonText: 'Redeem',
+    isDisabled: true,
+    customClass: {
+      container: 'flex h-14',
+      inputContainer: 'border-2 border-secondary-100 rounded-r-none h-full',
+      input: 'text-gray-700 appearance-none',
+      button: 'px-7 rounded-l-none hidden lg:block shadow-none',
+    },
+  },
+  render: (args) => <InputGroup {...args} />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The `VoucherInput` component is built on top of the `InputGroup` component, designed for voucher code entry.',
       },
     },
   },

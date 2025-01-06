@@ -1,5 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { ICartItem } from '@/interfaces';
+
+// Interfaces
+import type { ICartItem } from '@/interfaces';
+
+// UI
 import { CartTable } from '@/ui';
 
 export default {
@@ -28,8 +32,8 @@ const Template: StoryFn<{ products: ICartItem[] }> = (args) => (
   <CartTable {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const CartTableWithData = Template.bind({});
+CartTableWithData.args = {
   products: [
     {
       id: '1',
@@ -49,7 +53,7 @@ Default.args = {
     },
   ],
 };
-Default.parameters = {
+CartTableWithData.parameters = {
   docs: {
     description: {
       story:
@@ -58,11 +62,11 @@ Default.parameters = {
   },
 };
 
-export const Empty = Template.bind({});
-Empty.args = {
+export const CartTableWithEmptyData = Template.bind({});
+CartTableWithEmptyData.args = {
   products: [],
 };
-Empty.parameters = {
+CartTableWithEmptyData.parameters = {
   docs: {
     description: {
       story:

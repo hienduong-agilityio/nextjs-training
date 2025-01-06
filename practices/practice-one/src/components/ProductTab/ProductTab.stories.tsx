@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
+// Components
 import { ProductTabs } from '@/components';
 
 const meta = {
   title: 'Components/ProductTabs',
   component: ProductTabs,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {

@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
+// Components
 import { Pagination } from '@/components';
 
 const meta = {

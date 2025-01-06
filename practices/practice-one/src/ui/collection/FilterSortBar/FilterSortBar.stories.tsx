@@ -2,13 +2,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 // Components
-import { FilterSortBar } from '@/components';
+import { FilterSortBar } from '@/ui';
 
 // Constants
 import { SORT_PRODUCT_OPTIONS } from '@/constants';
 
 const meta = {
-  title: 'Components/FilterSortBar',
+  title: 'UI/Collection/FilterSortBar',
   component: FilterSortBar,
   tags: ['autodocs'],
   parameters: {

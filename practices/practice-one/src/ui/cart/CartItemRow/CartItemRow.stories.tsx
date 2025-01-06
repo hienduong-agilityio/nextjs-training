@@ -50,15 +50,15 @@ export default {
 // Default Template
 const Template: StoryFn<ICartItem> = (args) => <CartItemRow {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const CartItemWithData = Template.bind({});
+CartItemWithData.args = {
   id: '1',
   thumbnail: '/images/product-mock.png',
   quantity: 2,
   title: 'Sample Product',
   price: 29.99,
 };
-Default.parameters = {
+CartItemWithData.parameters = {
   docs: {
     description: {
       story:
@@ -67,9 +67,9 @@ Default.parameters = {
   },
 };
 
-export const Empty = Template.bind({});
-Empty.args = {};
-Empty.parameters = {
+export const CartItemRowWithEmptyData = Template.bind({});
+CartItemRowWithEmptyData.args = {};
+CartItemRowWithEmptyData.parameters = {
   docs: {
     description: {
       story:

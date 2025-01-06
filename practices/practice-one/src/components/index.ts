@@ -4,8 +4,6 @@ export * from './SearchBox';
 export * from './ProductTab';
 export * from './Service';
 export * from './Service/ServiceCard';
-export * from './CategoryGroup';
-export * from './FilterSortBar';
 export * from './Pagination';
 export * from './ToastContainer';
 

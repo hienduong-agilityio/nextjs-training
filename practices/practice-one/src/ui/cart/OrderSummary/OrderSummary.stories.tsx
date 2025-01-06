@@ -27,14 +27,14 @@ export default {
 // Default Template
 const Template: StoryFn<{ summary: IOrderSummaryProps }> = (args) => (
   <div className="w-[50svw] space-y-20 px-4 sm:px-6 lg:px-8">
-    <section className="w-full flex justify-center gap-6 lg:flex-row lg:justify-between">
+    <section className="w-full flex justify-center gap-6 lg:flex-row ">
       <OrderSummary {...args} />
     </section>
   </div>
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const OrderSummaryWithData = Template.bind({});
+OrderSummaryWithData.args = {
   summary: {
     subtotal: 100,
     shippingFee: 0,
@@ -42,7 +42,7 @@ Default.args = {
     total: 105,
   },
 };
-Default.parameters = {
+OrderSummaryWithData.parameters = {
   docs: {
     description: {
       story:
@@ -51,8 +51,8 @@ Default.parameters = {
   },
 };
 
-export const Empty = Template.bind({});
-Empty.args = {
+export const OrderSummaryWithEmptyData = Template.bind({});
+OrderSummaryWithEmptyData.args = {
   summary: {
     subtotal: 0,
     shippingFee: 0,
@@ -60,7 +60,7 @@ Empty.args = {
     total: 0,
   },
 };
-Empty.parameters = {
+OrderSummaryWithEmptyData.parameters = {
   docs: {
     description: {
       story:
