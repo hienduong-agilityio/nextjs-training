@@ -10,16 +10,14 @@ const meta: Meta<typeof Tabs> = {
   parameters: {
     docs: {
       description: {
-        component:
-          'The `Tabs` component offers a user-friendly navigation mechanism between different content sections. Each tab links to an `href`, and its content is displayed when the tab is active. Customizable via class names for styling flexibility.',
+        component: 'A `Tab` component for navigation and content switching.',
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
     items: {
-      description:
-        'An array of tab items, each with a `title`, `href`, and corresponding `content`.',
+      description: 'An array of tabs, each with a title, link, and content.',
       control: { type: 'object' },
       table: {
         type: {
@@ -29,8 +27,7 @@ const meta: Meta<typeof Tabs> = {
       },
     },
     customClass: {
-      description:
-        'An object of class names to style different parts of the component.',
+      description: 'CSS class names for customizing component styles.',
       control: { type: 'object' },
       table: {
         type: {
@@ -84,42 +81,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          'This default example demonstrates the `Tabs` component with three tabs, each containing static content.',
-      },
-    },
-  },
-};
-
-export const WithCustomClasses: Story = {
-  args: {
-    items: [
-      {
-        title: 'Custom Tab A',
-        href: '/customA',
-        content: <div className="p-4">Customized Content for Tab A</div>,
-      },
-      {
-        title: 'Custom Tab B',
-        href: '/customB',
-        content: <div className="p-4">Customized Content for Tab B</div>,
-      },
-    ],
-    selectedTab: 'Custom Tab A',
-    customClass: {
-      wrapper: 'flex flex-col gap-y-8 w-3/4 mx-auto',
-      header: 'flex justify-start gap-4 border-b-4 pb-2',
-      link: 'p-2 text-base font-semibold transition-colors',
-      activeLink: 'text-primary-400 border-primary-400 border-b-2',
-      content: 'mt-6',
-      activeContent: 'p-4 bg-gray-100 rounded shadow-md',
-      inactiveContent: 'hidden',
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'This example demonstrates the `Tabs` component with a customized layout using unique class names.',
+          'The default `Tabs` component with static tab items and content.',
       },
     },
   },
@@ -147,7 +109,7 @@ export const WithDynamicContent: Story = {
     docs: {
       description: {
         story:
-          'This example showcases the `Tabs` component with dynamically generated tabs and corresponding content.',
+          'The `Tabs` component with dynamically generated tab items and content.',
       },
     },
   },
