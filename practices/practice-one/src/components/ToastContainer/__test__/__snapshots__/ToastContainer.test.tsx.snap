@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastContainer and ToastStore should display different Toast types correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="fixed top-9 z-40 left-1/2 transform -translate-x-1/2 w-full max-w-[calc(100%-2rem)] flex justify-center"
+  >
+    <div
+      aria-label="toast success"
+      class="flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full text-white bg-success divide-green-950"
+    >
+      <div
+        class="text-sm font-normal inline-flex items-center gap-3"
+      >
+        <svg
+          fill="none"
+          height="12"
+          viewBox="0 0 12 12"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6.0022 12C9.31591 12 12.0022 9.31371 12.0022 6C12.0022 2.68629 9.31591 0 6.0022 0C2.68849 0 0.00219727 2.68629 0.00219727 6C0.00219727 9.31371 2.68849 12 6.0022 12ZM7.94379 3.91404C8.17067 3.67328 8.59119 3.71853 8.82444 3.91404C9.08494 4.13238 9.03673 4.49289 8.82444 4.71814L5.65234 8.08426C5.44861 8.30045 4.97439 8.30998 4.77167 8.08426L3.17782 6.30949C2.95656 6.06311 2.9311 5.75078 3.17782 5.50538C3.39002 5.29432 3.85106 5.27441 4.05848 5.50538L5.22261 6.80165L7.94379 3.91404Z"
+            fill="#A9EBCA"
+            fill-rule="evenodd"
+          />
+        </svg>
+        Success
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ToastContainer and ToastStore should display different Toast types correctly 2`] = `
+<DocumentFragment>
+  <div
+    class="fixed top-9 z-40 left-1/2 transform -translate-x-1/2 w-full max-w-[calc(100%-2rem)] flex justify-center"
+  >
+    <div
+      aria-label="toast warning"
+      class="flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full"
+    >
+      <div
+        class="text-sm font-normal inline-flex items-center gap-3"
+      >
+        <svg
+          height="32"
+          style="overflow: visible;"
+          viewBox="0 0 32 32"
+          width="32"
+          xml:space="preserve"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g>
+            <circle
+              cx="16"
+              cy="16"
+              fill="#D72828"
+              r="16"
+            />
+            <path
+              d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+              fill="#E6E6E6"
+            />
+          </g>
+        </svg>
+        Warning
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ToastContainer and ToastStore should display different Toast types correctly 3`] = `
+<DocumentFragment>
+  <div
+    class="fixed top-9 z-40 left-1/2 transform -translate-x-1/2 w-full max-w-[calc(100%-2rem)] flex justify-center"
+  >
+    <div
+      aria-label="toast error"
+      class="flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full text-red-100 bg-red-800 divide-red-950"
+    >
+      <div
+        class="text-sm font-normal inline-flex items-center gap-3"
+      >
+        <svg
+          height="32"
+          style="overflow: visible;"
+          viewBox="0 0 32 32"
+          width="32"
+          xml:space="preserve"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g>
+            <circle
+              cx="16"
+              cy="16"
+              fill="#D72828"
+              r="16"
+            />
+            <path
+              d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z"
+              fill="#E6E6E6"
+            />
+          </g>
+        </svg>
+        Error
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ToastContainer and ToastStore should hide the Toast after the specified timeout duration 1`] = `
+<DocumentFragment>
+  <div
+    class="fixed top-9 z-40 left-1/2 transform -translate-x-1/2 w-full max-w-[calc(100%-2rem)] flex justify-center"
+  >
+    <div
+      aria-label="toast success"
+      class="flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full text-white bg-success divide-green-950"
+    >
+      <div
+        class="text-sm font-normal inline-flex items-center gap-3"
+      >
+        <svg
+          fill="none"
+          height="12"
+          viewBox="0 0 12 12"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6.0022 12C9.31591 12 12.0022 9.31371 12.0022 6C12.0022 2.68629 9.31591 0 6.0022 0C2.68849 0 0.00219727 2.68629 0.00219727 6C0.00219727 9.31371 2.68849 12 6.0022 12ZM7.94379 3.91404C8.17067 3.67328 8.59119 3.71853 8.82444 3.91404C9.08494 4.13238 9.03673 4.49289 8.82444 4.71814L5.65234 8.08426C5.44861 8.30045 4.97439 8.30998 4.77167 8.08426L3.17782 6.30949C2.95656 6.06311 2.9311 5.75078 3.17782 5.50538C3.39002 5.29432 3.85106 5.27441 4.05848 5.50538L5.22261 6.80165L7.94379 3.91404Z"
+            fill="#A9EBCA"
+            fill-rule="evenodd"
+          />
+        </svg>
+        This toast will disappear
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ToastContainer and ToastStore should hide the Toast after the specified timeout duration 2`] = `<DocumentFragment />`;
+
+exports[`ToastContainer and ToastStore should render the Toast when \`isVisible\` is true 1`] = `
+<DocumentFragment>
+  <div
+    class="fixed top-9 z-40 left-1/2 transform -translate-x-1/2 w-full max-w-[calc(100%-2rem)] flex justify-center"
+  >
+    <div
+      aria-label="toast success"
+      class="flex items-center divide-x rtl:divide-x-reverse px-4 py-3 rounded-lg shadow transition-transform duration-300 w-max max-w-full text-white bg-success divide-green-950"
+    >
+      <div
+        class="text-sm font-normal inline-flex items-center gap-3"
+      >
+        <svg
+          fill="none"
+          height="12"
+          viewBox="0 0 12 12"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6.0022 12C9.31591 12 12.0022 9.31371 12.0022 6C12.0022 2.68629 9.31591 0 6.0022 0C2.68849 0 0.00219727 2.68629 0.00219727 6C0.00219727 9.31371 2.68849 12 6.0022 12ZM7.94379 3.91404C8.17067 3.67328 8.59119 3.71853 8.82444 3.91404C9.08494 4.13238 9.03673 4.49289 8.82444 4.71814L5.65234 8.08426C5.44861 8.30045 4.97439 8.30998 4.77167 8.08426L3.17782 6.30949C2.95656 6.06311 2.9311 5.75078 3.17782 5.50538C3.39002 5.29432 3.85106 5.27441 4.05848 5.50538L5.22261 6.80165L7.94379 3.91404Z"
+            fill="#A9EBCA"
+            fill-rule="evenodd"
+          />
+        </svg>
+        This is a success message
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -22,6 +22,11 @@ describe('Service Component', () => {
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     );
 
+  it('matches the snapshot', () => {
+    const { container } = render(<Service />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('renders the correct number of ServiceCard components with titles', () => {
     const serviceHeadings = getServiceHeadings();
     expect(serviceHeadings).toHaveLength(serviceData.length);

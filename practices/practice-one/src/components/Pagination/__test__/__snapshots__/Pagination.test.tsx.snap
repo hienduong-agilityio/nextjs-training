@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Component applies active styles to the current page 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Pagination"
+    class="flex items-center space-x-2"
+  >
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=1"
+    >
+      1
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=2"
+    >
+      2
+    </a>
+    <a
+      aria-current="page"
+      class="px-5 py-3 bg-primary-200 text-white border-primary-200"
+      href="/collection?page=3"
+    >
+      3
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=4"
+    >
+      4
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=5"
+    >
+      5
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pagination Component constructs correct URLs for each page with query parameters 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Pagination"
+    class="flex items-center space-x-2"
+  >
+    <a
+      aria-current="page"
+      class="px-5 py-3 bg-primary-200 text-white border-primary-200"
+      href="/collection?search=query&page=1"
+    >
+      1
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?search=query&page=2"
+    >
+      2
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?search=query&page=3"
+    >
+      3
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?search=query&page=4"
+    >
+      4
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?search=query&page=5"
+    >
+      5
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pagination Component renders all pages correctly 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Pagination"
+    class="flex items-center space-x-2"
+  >
+    <a
+      aria-current="page"
+      class="px-5 py-3 bg-primary-200 text-white border-primary-200"
+      href="/collection?page=1"
+    >
+      1
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=2"
+    >
+      2
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=3"
+    >
+      3
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=4"
+    >
+      4
+    </a>
+    <a
+      class="px-5 py-3 text-gray-700 hover:bg-gray-100"
+      href="/collection?page=5"
+    >
+      5
+    </a>
+  </div>
+</DocumentFragment>
+`;
