@@ -71,7 +71,10 @@ export const CartAndFavoriteActions = ({
 
   if (variant === 'card') {
     return (
-      <div className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
+      <div
+        aria-label="Cart and Favorite Actions"
+        className="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
+      >
         {/* Favorite Button */}
         <IconButton
           aria-label="Favorite product"
@@ -100,7 +103,7 @@ export const CartAndFavoriteActions = ({
   }
 
   return (
-    <div className="flex gap-3 xl:gap-5">
+    <div aria-label="Cart and Favorite Actions" className="flex gap-3 xl:gap-5">
       {/* Add to Cart Button */}
       <Button
         startIcon={

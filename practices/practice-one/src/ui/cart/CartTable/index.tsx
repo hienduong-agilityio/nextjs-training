@@ -8,7 +8,7 @@ interface ICartTableProps {
   products: ICartItem[];
 }
 
-const cartTableHeaders = [
+export const cartTableHeaders = [
   { label: 'Product', className: 'px-16 py-3' },
   { label: 'Price', className: 'px-4' },
   { label: 'Qty', className: 'px-4' },
@@ -21,8 +21,14 @@ export const CartTable = ({ products = [] }: ICartTableProps) => {
 
   return (
     <section className="overflow-x-auto">
-      <table className="w-full text-left border-collapse table-auto">
-        <thead className="text-sm uppercase border-b-2 border-secondary-100">
+      <table
+        aria-label="Cart table"
+        className="w-full text-left border-collapse table-auto"
+      >
+        <thead
+          aria-label="Cart table headers"
+          className="text-sm uppercase border-b-2 border-secondary-100"
+        >
           <tr>
             {cartTableHeaders.map((header) => (
               <th
@@ -34,7 +40,10 @@ export const CartTable = ({ products = [] }: ICartTableProps) => {
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y-2 border-b-2 border-secondary-100 divide-secondary-100">
+        <tbody
+          aria-label="Cart table body"
+          className="divide-y-2 border-b-2 border-secondary-100 divide-secondary-100"
+        >
           {isCartEmpty ? (
             <tr>
               <td colSpan={4}>

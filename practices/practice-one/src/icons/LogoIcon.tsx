@@ -9,6 +9,7 @@ export const LogoIcon = ({ size = 44, ...props }: IIconProps) => {
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
+      aria-label="logo"
       width={size}
       height={size * (44.217 / 44)}
       viewBox="0 0 44 44.217"

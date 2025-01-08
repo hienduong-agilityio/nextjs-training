@@ -14,6 +14,7 @@ exports[`SearchBox Component - handleSearch function renders the component corre
       >
         <span>
           <svg
+            aria-label="Search"
             class="lg:hidden block"
             fill="none"
             height="20"
@@ -70,6 +71,7 @@ exports[`SearchBox Component - handleSearch function renders with onCloseModal p
       >
         <span>
           <svg
+            aria-label="Search"
             class="lg:hidden block"
             fill="none"
             height="20"

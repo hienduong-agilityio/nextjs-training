@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductReviews Component matches the snapshot when there are no reviews 1`] = `
+<DocumentFragment>
+  <p
+    class="text-center text-gray-600 text-base md:text-lg"
+  >
+    No reviews yet. Be the first to write one!
+  </p>
+</DocumentFragment>
+`;

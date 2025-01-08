@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDetailTabs Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="mt-8 px-4 rounded-md py-8 bg-secondary-50"
+  >
+    <div
+      class="flex flex-col w-full"
+      role="tablist"
+    >
+      <ul
+        class="flex justify-start gap-7 overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide w-auto p-3"
+      >
+        <li>
+          <a
+            aria-controls="tabpanel-0"
+            aria-selected="true"
+            class="p-3 text-sm font-medium transition-colors duration-200 text-center outline-none border-b-2 capitalize hover:text-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black text-primary-400 border-primary-400"
+            href="?activeTab=Product Information"
+            id="tab-0"
+            role="tab"
+            tabindex="0"
+          >
+            Product Information
+          </a>
+        </li>
+        <li>
+          <a
+            aria-controls="tabpanel-1"
+            aria-selected="false"
+            class="p-3 text-sm font-medium transition-colors duration-200 text-center outline-none capitalize hover:text-primary-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black border-b-0"
+            href="?activeTab=Reviews"
+            id="tab-1"
+            role="tab"
+            tabindex="0"
+          >
+            Reviews
+          </a>
+        </li>
+      </ul>
+      <div
+        class="text-secondary-500 px-3"
+      >
+        <div
+          class="text-sm leading-6 pt-7 border-t-2"
+          role="tabpanel"
+        >
+          <p>
+            This is a product description.
+          </p>
+        </div>
+        <div
+          class="hidden"
+          hidden=""
+          role="tabpanel"
+        >
+          <div
+            class="space-y-6"
+          >
+            <div
+              class="border-b border-gray-200 pb-6 last:border-none "
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between"
+              >
+                <h4
+                  class="text-lg font-semibold text-gray-800"
+                >
+                  Logan Lee
+                </h4>
+                <span
+                  class="text-sm text-gray-500 mt-1 sm:mt-0"
+                >
+                  5/23/2024
+                </span>
+              </div>
+              <p
+                class="text-sm text-gray-500 mt-1"
+              >
+                logan.lee@x.dummyjson.com
+              </p>
+              <div
+                class="mt-3 flex items-center"
+              >
+                <div
+                  class="flex gap-2 space-x-2"
+                >
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#C1C8CE"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="mt-4 text-gray-700 text-base leading-relaxed"
+              >
+                Great product!
+              </p>
+            </div>
+            <div
+              class="border-b border-gray-200 pb-6 last:border-none "
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between"
+              >
+                <h4
+                  class="text-lg font-semibold text-gray-800"
+                >
+                  Elena Long
+                </h4>
+                <span
+                  class="text-sm text-gray-500 mt-1 sm:mt-0"
+                >
+                  5/23/2024
+                </span>
+              </div>
+              <p
+                class="text-sm text-gray-500 mt-1"
+              >
+                elena.long@x.dummyjson.com
+              </p>
+              <div
+                class="mt-3 flex items-center"
+              >
+                <div
+                  class="flex gap-2 space-x-2"
+                >
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#FFC600"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                  <svg
+                    fill="none"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+                      fill="#C1C8CE"
+                      transform="scale(0.36363636363636365)"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p
+                class="mt-4 text-gray-700 text-base leading-relaxed"
+              >
+                Great product!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;

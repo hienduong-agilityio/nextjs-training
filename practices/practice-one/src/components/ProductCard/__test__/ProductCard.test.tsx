@@ -6,7 +6,6 @@ import {
   fireEvent,
   RenderResult,
 } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
 // Components
 import { ProductCard } from '@/components';

@@ -8,6 +8,7 @@ exports[`SearchModal Component Tests renders the search button and matches snaps
       type="button"
     >
       <svg
+        aria-label="Search"
         fill="none"
         height="24"
         viewBox="0 0 20 20"

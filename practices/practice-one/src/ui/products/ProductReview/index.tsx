@@ -1,5 +1,8 @@
+// Icons
 import { StarRating } from '@/icons';
-import { IProductReview } from '@/interfaces';
+
+// Type
+import type { IProductReview } from '@/interfaces';
 
 export function ProductReviews({
   reviews = [],

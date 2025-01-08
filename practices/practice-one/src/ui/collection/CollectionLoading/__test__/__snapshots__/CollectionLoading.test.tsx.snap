@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Components for Collection renders LoadingCategoryGroup and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Loading Category Group"
+    class="mb-6 bg-secondary-100 p-4 rounded"
+  >
+    <div
+      class="w-3/4 h-8 bg-gray-200 animate-pulse mb-4"
+    />
+    <ul
+      class="space-y-2"
+    >
+      <div
+        class="w-full h-6 bg-gray-200 animate-pulse "
+      />
+      <div
+        class="w-full h-6 bg-gray-200 animate-pulse "
+      />
+      <div
+        class="w-full h-6 bg-gray-200 animate-pulse "
+      />
+      <div
+        class="w-full h-6 bg-gray-200 animate-pulse "
+      />
+      <div
+        class="w-full h-6 bg-gray-200 animate-pulse "
+      />
+    </ul>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loading Components for Collection renders LoadingFilterSortBar and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Loading Filter Sort Bar"
+    class="bg-secondary-100 p-6 shadow-md md:sticky rounded top-0 z-50 w-full"
+  >
+    <div
+      class="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0"
+    >
+      <div
+        class="w-20 h-6 bg-gray-200 animate-pulse"
+      />
+      <ul
+        class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0"
+      >
+        <div
+          class="w-20 h-6 bg-gray-200 animate-pulse"
+        />
+        <div
+          class="w-20 h-6 bg-gray-200 animate-pulse"
+        />
+      </ul>
+    </div>
+  </div>
+</DocumentFragment>
+`;

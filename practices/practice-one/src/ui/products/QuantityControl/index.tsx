@@ -14,10 +14,10 @@ export interface IQuantityControlProps {
 }
 
 export function QuantityControl({
-  initialQuantity,
-  maxQuantity,
+  initialQuantity = 1,
+  maxQuantity = 10,
   isLoading = false,
-  onQuantityChange,
+  onQuantityChange = () => {},
 }: IQuantityControlProps) {
   const [inputValue, setInputValue] = useState(initialQuantity);
 
@@ -42,9 +42,13 @@ export function QuantityControl({
   const handleIncrement = () => updateQuantity(inputValue + 1);
 
   return (
-    <div className="rounded-md gap-4 bg-secondary-50">
+    <div
+      aria-label="Quantity Control"
+      className="rounded-md gap-4 bg-secondary-50"
+    >
       <div className="flex">
         <Button
+          aria-label="decrement"
           className="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
           disabled={inputValue === 1}
           onClick={handleDecrement}
@@ -52,6 +56,7 @@ export function QuantityControl({
           -
         </Button>
         <input
+          aria-label="Quantity input"
           type="number"
           value={inputValue}
           onChange={(e) => handleInputChange(e.target.value)}
@@ -60,6 +65,7 @@ export function QuantityControl({
           disabled={isLoading}
         />
         <Button
+          aria-label="increment"
           className="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
           disabled={inputValue === maxQuantity}
           onClick={handleIncrement}

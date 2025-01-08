@@ -9,6 +9,7 @@ export const SearchIcon = ({
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
+    aria-label="Search"
     height={size}
     viewBox="0 0 20 20"
     fill="none"

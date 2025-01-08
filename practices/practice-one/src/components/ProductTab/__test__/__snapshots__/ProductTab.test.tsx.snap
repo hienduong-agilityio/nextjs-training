@@ -115,6 +115,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -286,6 +287,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -457,6 +459,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -628,6 +631,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -799,6 +803,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -970,6 +975,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -1147,6 +1153,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -1324,6 +1331,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -1495,6 +1503,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -1672,6 +1681,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -1849,6 +1859,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button
@@ -2020,6 +2031,7 @@ exports[`ProductTabs Component should match the snapshot 1`] = `
                 width="0"
               />
               <div
+                aria-label="Cart and Favorite Actions"
                 class="absolute inset-0 z-10 flex items-center justify-center gap-4 mx-3 my-5 transition-opacity duration-300 bg-white opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto"
               >
                 <button

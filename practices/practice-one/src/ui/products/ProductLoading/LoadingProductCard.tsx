@@ -1,6 +1,9 @@
 export function LoadingProductCard() {
   return (
-    <div className="relative flex flex-col transition-shadow border-2 rounded-sm border-gray-200 animate-pulse">
+    <div
+      aria-label="Loading Product Card"
+      className="relative flex flex-col transition-shadow border-2 rounded-sm border-gray-200 animate-pulse"
+    >
       {/* Label Placeholder */}
       <div className="absolute top-2 left-2 w-24 h-6 bg-gray-300 rounded-md" />
 

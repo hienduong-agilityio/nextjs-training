@@ -3,6 +3,9 @@ import { Meta, StoryFn } from '@storybook/react';
 // UI
 import { ProductReviews } from '@/ui';
 
+// Mocks
+import { PRODUCT_REVIEW } from '@/mocks';
+
 export default {
   title: 'UI/Products/ProductReviews',
   component: ProductReviews,
@@ -37,15 +40,7 @@ const Template: StoryFn<typeof ProductReviews> = (args) => (
 
 export const SingleReview = Template.bind({});
 SingleReview.args = {
-  reviews: [
-    {
-      reviewerName: 'John Doe',
-      reviewerEmail: 'johndoe@example.com',
-      date: '2024-01-01',
-      rating: 4.5,
-      comment: 'Amazing product! Highly recommend.',
-    },
-  ],
+  reviews: [PRODUCT_REVIEW[0]],
 };
 SingleReview.parameters = {
   docs: {
@@ -58,29 +53,7 @@ SingleReview.parameters = {
 
 export const MultipleReviews = Template.bind({});
 MultipleReviews.args = {
-  reviews: [
-    {
-      reviewerName: 'Alice Johnson',
-      reviewerEmail: 'alicej@example.com',
-      date: '2024-01-02',
-      rating: 5,
-      comment: 'Absolutely fantastic product!',
-    },
-    {
-      reviewerName: 'Bob Smith',
-      reviewerEmail: 'bobsmith@example.com',
-      date: '2024-01-03',
-      rating: 4,
-      comment: 'Great product, but the shipping was slow.',
-    },
-    {
-      reviewerName: 'Charlie Brown',
-      reviewerEmail: 'charlieb@example.com',
-      date: '2024-01-04',
-      rating: 3.5,
-      comment: 'Good quality, but not worth the price.',
-    },
-  ],
+  reviews: PRODUCT_REVIEW,
 };
 MultipleReviews.parameters = {
   docs: {
