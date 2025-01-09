@@ -20,6 +20,7 @@ const config: Config = {
     '!<rootDir>/src/types/*',
     '!<rootDir>/node_modules/',
     '!<rootDir>/src/app/**/*',
+    '!<rootDir>/src/icons/*',
   ],
   coverageDirectory: 'coverage',
   preset: 'ts-jest',

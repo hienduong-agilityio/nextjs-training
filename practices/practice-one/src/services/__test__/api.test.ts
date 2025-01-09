@@ -44,4 +44,20 @@ describe('apiRequest', () => {
     });
     expect(result).toEqual(mockResponse);
   });
+
+  it('throws an error when response is not ok', async () => {
+    setupFetchMock(false, mockErrorResponse);
+
+    await expect(
+      apiRequest({
+        url: mockUrl,
+        method: HTTP_METHODS.GET,
+      }),
+    ).rejects.toThrow('Something went wrong');
+
+    expect(fetch).toHaveBeenCalledWith(mockUrl, {
+      method: HTTP_METHODS.GET,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  });
 });

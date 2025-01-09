@@ -7,7 +7,10 @@ import {
 } from '@testing-library/react';
 
 // Actions
-import { handleUpdateProductInCart } from '@/actions';
+import {
+  handleDeleteProductFromCart,
+  handleUpdateProductInCart,
+} from '@/actions';
 
 // UI
 import { CartItemRow } from '@/ui';
@@ -15,19 +18,42 @@ import { CartItemRow } from '@/ui';
 // Mocks
 import { CART_DATA } from '@/mocks';
 
+// Constants
+import { STATUS_TYPES, TOAST_MESSAGES } from '@/constants';
+
 jest.mock('@/actions', () => ({
   handleDeleteProductFromCart: jest.fn(),
   handleUpdateProductInCart: jest.fn(),
 }));
 
-jest.mock('@/stores', () => ({
-  ToastStore: jest.fn(() => ({
-    showToast: jest.fn(),
-  })),
-}));
+jest.mock('@/stores', () => {
+  const showToast = jest.fn();
+  return {
+    ToastStore: () => ({ showToast }),
+  };
+});
 
 describe('CartItemRow', () => {
   const mockProps = CART_DATA[0];
+  const { showToast } = jest.requireMock('@/stores').ToastStore();
+
+  const renderCartItemRow = () =>
+    render(
+      <table>
+        <tbody>
+          <CartItemRow {...mockProps} />
+        </tbody>
+      </table>,
+    );
+
+  const testToastMessage = async (message: string, status: string) => {
+    await waitFor(() => {
+      expect(showToast).toHaveBeenCalledWith(
+        expect.stringContaining(message),
+        expect.stringContaining(status),
+      );
+    });
+  };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -39,13 +65,7 @@ describe('CartItemRow', () => {
   });
 
   it('should match snapshot', () => {
-    const { container } = render(
-      <table>
-        <tbody>
-          <CartItemRow {...mockProps} />
-        </tbody>
-      </table>,
-    );
+    const { container } = renderCartItemRow();
     expect(container).toMatchSnapshot();
   });
 
@@ -54,13 +74,7 @@ describe('CartItemRow', () => {
       new Error('API error'),
     );
 
-    render(
-      <table>
-        <tbody>
-          <CartItemRow {...mockProps} />
-        </tbody>
-      </table>,
-    );
+    renderCartItemRow();
 
     const decrementButton = screen.getByRole('button', { name: /decrement/i });
     const quantityInput = screen.getByRole('spinbutton', {
@@ -86,5 +100,64 @@ describe('CartItemRow', () => {
     });
 
     expect(quantityInput).toHaveValue(2);
+  });
+
+  it('should show success toast when product is removed successfully', async () => {
+    (handleDeleteProductFromCart as jest.Mock).mockResolvedValue(true);
+
+    renderCartItemRow();
+
+    const removeButton = screen.getByLabelText('Remove product');
+
+    fireEvent.click(removeButton);
+
+    await waitFor(() => {
+      expect(handleDeleteProductFromCart).toHaveBeenCalledWith({
+        userId: expect.any(Number),
+        productId: mockProps.id,
+      });
+    });
+
+    await testToastMessage(TOAST_MESSAGES.DELETE_SUCCESS, STATUS_TYPES.SUCCESS);
+  });
+
+  it('should show error toast when product removal fails', async () => {
+    (handleDeleteProductFromCart as jest.Mock).mockResolvedValue(false);
+
+    renderCartItemRow();
+
+    const removeButton = screen.getByLabelText('Remove product');
+
+    fireEvent.click(removeButton);
+
+    await waitFor(() => {
+      expect(handleDeleteProductFromCart).toHaveBeenCalledWith({
+        userId: expect.any(Number),
+        productId: mockProps.id,
+      });
+    });
+
+    await testToastMessage(TOAST_MESSAGES.DELETE_FAILED, STATUS_TYPES.ERROR);
+  });
+
+  it('should show API error toast when product removal throws an error', async () => {
+    (handleDeleteProductFromCart as jest.Mock).mockRejectedValue(
+      new Error('API error'),
+    );
+
+    renderCartItemRow();
+
+    const removeButton = screen.getByLabelText('Remove product');
+
+    fireEvent.click(removeButton);
+
+    await waitFor(() => {
+      expect(handleDeleteProductFromCart).toHaveBeenCalledWith({
+        userId: expect.any(Number),
+        productId: mockProps.id,
+      });
+    });
+
+    await testToastMessage(TOAST_MESSAGES.API_ERROR, STATUS_TYPES.ERROR);
   });
 });
