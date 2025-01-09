@@ -6,8 +6,14 @@ import {
   act,
 } from '@testing-library/react';
 
+// Actions
 import { handleUpdateProductInCart } from '@/actions';
+
+// UI
 import { CartItemRow } from '@/ui';
+
+// Mocks
+import { CART_DATA } from '@/mocks';
 
 jest.mock('@/actions', () => ({
   handleDeleteProductFromCart: jest.fn(),
@@ -20,15 +26,9 @@ jest.mock('@/stores', () => ({
   })),
 }));
 
-const mockProps = {
-  id: '123',
-  thumbnail: '/images/image-placeholder.svg',
-  quantity: 2,
-  title: 'Test Product',
-  price: 50,
-};
-
 describe('CartItemRow', () => {
+  const mockProps = CART_DATA[0];
+
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers();
@@ -42,7 +42,7 @@ describe('CartItemRow', () => {
     const { container } = render(
       <table>
         <tbody>
-          <CartItemRow total={0} {...mockProps} />
+          <CartItemRow {...mockProps} />
         </tbody>
       </table>,
     );
@@ -57,7 +57,7 @@ describe('CartItemRow', () => {
     render(
       <table>
         <tbody>
-          <CartItemRow total={0} {...mockProps} />
+          <CartItemRow {...mockProps} />
         </tbody>
       </table>,
     );
@@ -67,11 +67,11 @@ describe('CartItemRow', () => {
       name: /quantity input/i,
     });
 
-    expect(quantityInput).toHaveValue(2);
+    expect(quantityInput).toHaveValue(mockProps.quantity);
 
     fireEvent.click(decrementButton);
 
-    expect(quantityInput).toHaveValue(1);
+    expect(quantityInput).toHaveValue(mockProps.quantity - 1);
 
     await act(async () => {
       jest.advanceTimersByTime(1000);
@@ -81,8 +81,10 @@ describe('CartItemRow', () => {
       expect(handleUpdateProductInCart).toHaveBeenCalledWith({
         userId: expect.any(Number),
         productId: mockProps.id,
-        newQuantity: 1,
+        newQuantity: mockProps.quantity - 1,
       });
     });
+
+    expect(quantityInput).toHaveValue(2);
   });
 });

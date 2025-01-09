@@ -106,6 +106,7 @@ export const CartAndFavoriteActions = ({
     <div aria-label="Cart and Favorite Actions" className="flex gap-3 xl:gap-5">
       {/* Add to Cart Button */}
       <Button
+        aria-label="Add to Cart"
         startIcon={
           <AddToCartIcon
             size={20}
@@ -122,7 +123,11 @@ export const CartAndFavoriteActions = ({
       </Button>
 
       {/* Favorite Button */}
-      <Button disabled customClass="group shadow-none p-4 bg-primary-50">
+      <Button
+        aria-label="Favorite product"
+        disabled
+        customClass="group shadow-none p-4 bg-primary-50"
+      >
         <HeartIcon
           size={24}
           color="currentColor"

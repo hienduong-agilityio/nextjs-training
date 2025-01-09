@@ -6,6 +6,9 @@ import type { ICartItem } from '@/interfaces';
 // UI
 import { CartTable } from '@/ui';
 
+// Mocks
+import { CART_DATA } from '@/mocks';
+
 export default {
   title: 'UI/Cart/CartTable',
   component: CartTable,
@@ -34,24 +37,7 @@ const Template: StoryFn<{ products: ICartItem[] }> = (args) => (
 
 export const CartTableWithData = Template.bind({});
 CartTableWithData.args = {
-  products: [
-    {
-      id: '1',
-      thumbnail: '/images/product-mock.png',
-      quantity: 2,
-      title: 'Sample Product',
-      price: 29.99,
-      total: 59.98,
-    },
-    {
-      id: '2',
-      thumbnail: '/images/product-mock.png',
-      quantity: 1,
-      title: 'Another Product',
-      price: 49.99,
-      total: 49.99,
-    },
-  ],
+  products: CART_DATA,
 };
 CartTableWithData.parameters = {
   docs: {

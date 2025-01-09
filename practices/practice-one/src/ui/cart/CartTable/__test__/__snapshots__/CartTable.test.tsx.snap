@@ -44,6 +44,13 @@ exports[`CartTable matches the snapshot 1`] = `
           data-testid="cart-item-row"
         >
           <td>
+            2
+          </td>
+        </tr>
+        <tr
+          data-testid="cart-item-row"
+        >
+          <td>
             1
           </td>
         </tr>
@@ -51,7 +58,7 @@ exports[`CartTable matches the snapshot 1`] = `
           data-testid="cart-item-row"
         >
           <td>
-            2
+            3
           </td>
         </tr>
       </tbody>

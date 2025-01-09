@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 // Components
 import { ProductTabs } from '@/components';
 
+// Mocks
+import { PRODUCTS_DATA } from '@/mocks';
+
 const meta = {
   title: 'Components/ProductTabs',
   component: ProductTabs,
@@ -37,24 +40,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     category: 'All',
-    productData: [
-      {
-        id: '1',
-        name: 'Product 1',
-        images: ['/images/product-mock.png'],
-        price: 100,
-        originalPrice: 120,
-        category: 'beauty',
-      },
-      {
-        id: '2',
-        name: 'Product 2',
-        images: ['/images/product-mock.png'],
-        price: 80,
-        originalPrice: 100,
-        category: 'fragrances',
-      },
-    ],
+    productData: PRODUCTS_DATA,
   },
   parameters: {
     docs: {

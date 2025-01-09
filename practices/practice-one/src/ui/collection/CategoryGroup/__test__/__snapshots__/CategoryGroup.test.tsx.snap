@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryGroup Component applies correct styles for active and inactive categories 1`] = `
+<div>
+  <div
+    class="mb-6 bg-secondary-100 p-4 rounded"
+  >
+    <h3
+      class="text-lg font-bold mb-4"
+    >
+      Categories
+    </h3>
+    <ul
+      class="space-y-2 text-sm text-gray-700"
+    >
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?"
+        >
+          All
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=beauty"
+        >
+          Beauty
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=fragrances"
+        >
+          Fragrances
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded hover:bg-secondary-300 text-primary-200 bg-secondary-300"
+          href="/products?category=furniture"
+        >
+          Furniture
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=groceries"
+        >
+          Groceries
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`CategoryGroup Component handles the ALL category properly when no category is selected 1`] = `
+<div>
+  <div
+    class="mb-6 bg-secondary-100 p-4 rounded"
+  >
+    <h3
+      class="text-lg font-bold mb-4"
+    >
+      Categories
+    </h3>
+    <ul
+      class="space-y-2 text-sm text-gray-700"
+    >
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded hover:bg-secondary-300 text-primary-200 bg-secondary-300"
+          href="/products?"
+        >
+          All
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=beauty"
+        >
+          Beauty
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=fragrances"
+        >
+          Fragrances
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=furniture"
+        >
+          Furniture
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=groceries"
+        >
+          Groceries
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`CategoryGroup Component renders correctly with an empty items array 1`] = `
+<div>
+  <div
+    class="mb-6 bg-secondary-100 p-4 rounded"
+  >
+    <h3
+      class="text-lg font-bold mb-4"
+    >
+      Categories
+    </h3>
+    <ul
+      class="space-y-2 text-sm text-gray-700"
+    />
+  </div>
+</div>
+`;
+
+exports[`CategoryGroup Component renders correctly with title and category list 1`] = `
+<div>
+  <div
+    class="mb-6 bg-secondary-100 p-4 rounded"
+  >
+    <h3
+      class="text-lg font-bold mb-4"
+    >
+      Categories
+    </h3>
+    <ul
+      class="space-y-2 text-sm text-gray-700"
+    >
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded hover:bg-secondary-300 text-primary-200 bg-secondary-300"
+          href="/products?"
+        >
+          All
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=beauty"
+        >
+          Beauty
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=fragrances"
+        >
+          Fragrances
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=furniture"
+        >
+          Furniture
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=groceries"
+        >
+          Groceries
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`CategoryGroup Component updates the URL with query parameters on category click 1`] = `
+<div>
+  <div
+    class="mb-6 bg-secondary-100 p-4 rounded"
+  >
+    <h3
+      class="text-lg font-bold mb-4"
+    >
+      Categories
+    </h3>
+    <ul
+      class="space-y-2 text-sm text-gray-700"
+    >
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded hover:bg-secondary-300 text-primary-200 bg-secondary-300"
+          href="/products?"
+        >
+          All
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=beauty"
+        >
+          Beauty
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=fragrances"
+        >
+          Fragrances
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=furniture"
+        >
+          Furniture
+        </a>
+      </li>
+      <li>
+        <a
+          class="w-full flex justify-start font-semibold py-2 rounded bg-secondary-100 hover:bg-secondary-300 text-gray-800"
+          href="/products?category=groceries"
+        >
+          Groceries
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

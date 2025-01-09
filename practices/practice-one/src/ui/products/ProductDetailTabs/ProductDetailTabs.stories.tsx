@@ -1,8 +1,10 @@
-// Libraries
 import { Meta, StoryObj } from '@storybook/react';
 
 // Components
 import { ProductDetailTabs } from '@/ui';
+
+// Mocks
+import { PRODUCT_REVIEW } from '@/mocks';
 
 // Mock Data
 const MOCK_DESCRIPTION = `This is a detailed description of the product. It provides all the necessary information a customer might need before making a purchase.`;
@@ -29,29 +31,7 @@ type Story = StoryObj<typeof ProductDetailTabs>;
 export const ProductInformationTab: Story = {
   args: {
     description: MOCK_DESCRIPTION,
-    reviews: [
-      {
-        rating: 4,
-        comment: 'Great product!',
-        date: '2024-05-23T08:56:21.620Z',
-        reviewerName: 'Logan Lee',
-        reviewerEmail: 'logan.lee@x.dummyjson.com',
-      },
-      {
-        rating: 4,
-        comment: 'Great product!',
-        date: '2024-05-23T08:56:21.620Z',
-        reviewerName: 'Elena Long',
-        reviewerEmail: 'elena.long@x.dummyjson.com',
-      },
-      {
-        rating: 1,
-        comment: 'Not as described!',
-        date: '2024-05-23T08:56:21.620Z',
-        reviewerName: 'Grayson Coleman',
-        reviewerEmail: 'grayson.coleman@x.dummyjson.com',
-      },
-    ],
+    reviews: PRODUCT_REVIEW,
   },
 
   parameters: {

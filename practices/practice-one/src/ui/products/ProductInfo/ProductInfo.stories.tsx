@@ -3,6 +3,9 @@ import { Meta, StoryFn } from '@storybook/react';
 // Components
 import { ProductInfo } from '@/ui';
 
+// Mocks
+import { PRODUCTS_DATA } from '@/mocks';
+
 export default {
   title: 'UI/Products/ProductInfo',
   component: ProductInfo,
@@ -14,8 +17,7 @@ export default {
       table: { category: 'Primary' },
     },
     rating: {
-      description:
-        'The average rating of the product (Primary). Value between 0 and 5.',
+      description: 'The average rating of the product (Primary).',
       control: { type: 'number', min: 0, max: 5, step: 0.1 },
       table: { category: 'Primary' },
     },
@@ -30,8 +32,7 @@ export default {
       table: { category: 'Primary' },
     },
     originalPrice: {
-      description:
-        'The original price of the product before discounts (Secondary).',
+      description: 'The original price of the product (Secondary).',
       control: { type: 'number' },
       table: { category: 'Primary' },
     },
@@ -62,7 +63,7 @@ export default {
     docs: {
       description: {
         component:
-          'Displays detailed information about a product, including its name, rating, reviews, pricing, availability, category, and shipping information. Key properties such as `name`, `rating`, `price`, `discount`, and `availabilityStatus` are considered primary.',
+          'Displays detailed information about a product, including its name, rating, pricing, availability, and category.',
       },
     },
   },
@@ -72,44 +73,29 @@ const Template: StoryFn<typeof ProductInfo> = (args) => (
   <ProductInfo {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  name: 'Default Product',
-  rating: 4.5,
-  reviews: [],
-  price: 49.99,
-  originalPrice: 59.99,
-  discount: '20',
-  availabilityStatus: 'In stock',
-  category: 'beauty',
-  shippingInformation: 'Ships in 1 month.',
+export const Sneakers = Template.bind({});
+Sneakers.args = {
+  ...PRODUCTS_DATA[0],
+  shippingInformation: 'Ships in 1 months.',
 };
-Default.parameters = {
+Sneakers.parameters = {
   docs: {
     description: {
       story:
-        'Displays a product with default properties, showcasing primary details such as name, rating, price, discount, and availability.',
+        'Displays information about the "Sneakers" product from `PRODUCTS_DATA`.',
     },
   },
 };
 
-export const NoReviews = Template.bind({});
-NoReviews.args = {
-  name: 'New Product',
-  rating: 0,
-  reviews: [],
-  price: 29.99,
-  originalPrice: 39.99,
-  discount: '25',
-  availabilityStatus: 'Pre-order',
-  category: 'beauty',
+export const LeatherBag = Template.bind({});
+LeatherBag.args = {
+  ...PRODUCTS_DATA[1],
   shippingInformation: 'Ships in 2 months.',
 };
-NoReviews.parameters = {
+LeatherBag.parameters = {
   docs: {
     description: {
-      story:
-        'Represents a product with no reviews and pre-order availability. Primary details such as price and availability are highlighted.',
+      story: 'Displays information about the "Leather Shoulder Bag" product.',
     },
   },
 };

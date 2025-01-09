@@ -140,3 +140,18 @@ export const CART_DATA: ICartItem[] = [
       'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png',
   },
 ];
+
+export const ORDER_SUMMARY = {
+  withData: {
+    subtotal: 100,
+    shippingFee: 10,
+    couponValue: 20,
+    total: 90,
+  },
+  emptyData: {
+    subtotal: 0,
+    shippingFee: 0,
+    couponValue: 0,
+    total: 0,
+  },
+};

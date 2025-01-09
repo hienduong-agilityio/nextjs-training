@@ -17,12 +17,12 @@ exports[`ServiceCard Component matches snapshot 1`] = `
       <h4
         class="mb-[14px] w-max text-2xl font-semibold text-dark dark:text-white"
       >
-        Test Service
+        Default Service
       </h4>
       <p
         class="text-center xl:w-1/2 w-full text-body-color dark:text-dark-6"
       >
-        This is a test description for the service.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
     </div>
   </div>

@@ -40,6 +40,7 @@ exports[`ProductActions Component matches the snapshot 1`] = `
       class="flex gap-3 xl:gap-5"
     >
       <button
+        aria-label="Add to Cart"
         class="flex items-center justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 group shadow-none bg-primary-50 text-primary-100 disabled:hover:text-primary-100 disabled:hover:bg-primary-50 hover:bg-primary-100 hover:text-white transition-all duration-200 whitespace-nowrap"
         type="button"
       >
@@ -63,6 +64,7 @@ exports[`ProductActions Component matches the snapshot 1`] = `
         Add To Cart
       </button>
       <button
+        aria-label="Favorite product"
         class="flex items-center justify-center gap-2 rounded disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 text-black group shadow-none p-4 bg-primary-50"
         disabled=""
         type="button"

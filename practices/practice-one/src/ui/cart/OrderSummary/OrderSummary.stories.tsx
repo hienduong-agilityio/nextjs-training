@@ -3,6 +3,9 @@ import type { Meta, StoryFn } from '@storybook/react';
 // UI
 import { OrderSummary, IOrderSummaryProps } from '@/ui';
 
+// Mocks
+import { ORDER_SUMMARY } from '@/mocks';
+
 export default {
   title: 'UI/Cart/OrderSummary',
   component: OrderSummary,
@@ -35,12 +38,7 @@ const Template: StoryFn<{ summary: IOrderSummaryProps }> = (args) => (
 
 export const OrderSummaryWithData = Template.bind({});
 OrderSummaryWithData.args = {
-  summary: {
-    subtotal: 100,
-    shippingFee: 0,
-    couponValue: 5,
-    total: 105,
-  },
+  summary: ORDER_SUMMARY.withData,
 };
 OrderSummaryWithData.parameters = {
   docs: {
@@ -53,12 +51,7 @@ OrderSummaryWithData.parameters = {
 
 export const OrderSummaryWithEmptyData = Template.bind({});
 OrderSummaryWithEmptyData.args = {
-  summary: {
-    subtotal: 0,
-    shippingFee: 0,
-    couponValue: null,
-    total: 0,
-  },
+  summary: ORDER_SUMMARY.emptyData,
 };
 OrderSummaryWithEmptyData.parameters = {
   docs: {

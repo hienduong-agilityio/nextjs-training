@@ -4,6 +4,9 @@ import { Meta, StoryObj } from '@storybook/react';
 // Components
 import { IServiceCardProps, ServiceCard } from '@/components';
 
+// Mocks
+import { SERVICE_CARD } from '@/mocks';
+
 const meta = {
   title: 'Components/ServiceCard',
   component: ServiceCard,
@@ -46,11 +49,7 @@ const renderServiceCard = (args: IServiceCardProps) => (
 
 export const Default: Story = {
   render: renderServiceCard,
-  args: {
-    icon: '🔧',
-    title: 'Default Service',
-    details: 'This is a brief description of the default service.',
-  },
+  args: SERVICE_CARD.default,
   parameters: {
     docs: {
       description: {
@@ -62,11 +61,7 @@ export const Default: Story = {
 
 export const WithCustomIcon: Story = {
   render: renderServiceCard,
-  args: {
-    icon: '🚀',
-    title: 'Rocket Service',
-    details: 'Providing out-of-this-world service with speed and reliability.',
-  },
+  args: SERVICE_CARD.customIcon,
   parameters: {
     docs: {
       description: {
@@ -78,10 +73,7 @@ export const WithCustomIcon: Story = {
 
 export const WithoutIcon: Story = {
   render: renderServiceCard,
-  args: {
-    title: 'Icon-Free Service',
-    details: 'This service focuses solely on the details and title.',
-  },
+  args: SERVICE_CARD.withoutIcon,
   parameters: {
     docs: {
       description: {

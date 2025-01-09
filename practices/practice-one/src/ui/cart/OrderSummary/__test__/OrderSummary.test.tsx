@@ -5,7 +5,10 @@ import { useRouter } from 'next/navigation';
 import { handleClearProductFromCart } from '@/actions';
 
 // UI
-import { OrderSummary, IOrderSummaryProps } from '@/ui';
+import { OrderSummary } from '@/ui';
+
+// Mocks
+import { ORDER_SUMMARY } from '@/mocks';
 
 // Mock dependencies
 jest.mock('next/navigation', () => ({
@@ -32,20 +35,18 @@ jest.mock('react', () => {
 
 describe('OrderSummary Component', () => {
   const mockRouterPush = jest.fn();
-  const DEFAULT_SUMMARY: IOrderSummaryProps = {
-    subtotal: 100,
-    shippingFee: 10,
-    couponValue: 20,
-    total: 90,
-  };
 
-  // Utility to render OrderSummary with default or custom summary
-  const renderOrderSummary = (summary: IOrderSummaryProps = DEFAULT_SUMMARY) =>
+  const renderOrderSummary = (summary = ORDER_SUMMARY.withData) =>
     render(<OrderSummary summary={summary} />);
 
   beforeEach(() => {
     jest.clearAllMocks();
     (useRouter as jest.Mock).mockReturnValue({ push: mockRouterPush });
+  });
+
+  it('matches snapshot', () => {
+    const { asFragment } = renderOrderSummary();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with default props', () => {
@@ -62,23 +63,16 @@ describe('OrderSummary Component', () => {
   });
 
   it('disables the "Check out" button when subtotal is zero', () => {
-    renderOrderSummary({
-      subtotal: 0,
-      shippingFee: 10,
-      couponValue: null,
-      total: 10,
-    });
+    renderOrderSummary(ORDER_SUMMARY.emptyData);
 
     const button = screen.getByRole('button', { name: /Check out/i });
     expect(button).toBeDisabled();
   });
 
-  it.each([
-    [true, 'success'],
-    [false, 'error'],
-  ])(
-    'calls handleClearProductFromCart and navigates to the correct status on checkout (success: %s)',
-    async (actionResolvedValue, expectedStatus) => {
+  it.each([true, false])(
+    'calls handleClearProductFromCart and navigates to correct status on checkout (success: %s)',
+    async (actionResolvedValue) => {
+      const expectedStatus = actionResolvedValue ? 'success' : 'error';
       (handleClearProductFromCart as jest.Mock).mockResolvedValue(
         actionResolvedValue,
       );

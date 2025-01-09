@@ -6,6 +6,9 @@ import type { ICartItem } from '@/interfaces';
 // UI
 import { CartTable } from '../index';
 
+// Mocks
+import { CART_DATA } from '@/mocks';
+
 jest.mock('@/ui', () => ({
   EmptyCart: jest.fn(() => <div data-testid="empty-cart">Empty Cart</div>),
   CartItemRow: jest.fn(({ id }) => (
@@ -14,27 +17,6 @@ jest.mock('@/ui', () => ({
     </tr>
   )),
 }));
-
-const mockProducts: ICartItem[] = [
-  {
-    id: '1',
-    thumbnail: '/images/product1.png',
-    title: 'Product 1',
-    price: 100,
-    quantity: 2,
-    total: 200,
-    discountPercentage: 10,
-    discountedTotal: 180,
-  },
-  {
-    id: '2',
-    thumbnail: '/images/product2.png',
-    title: 'Product 2',
-    price: 50,
-    quantity: 1,
-    total: 50,
-  },
-];
 
 describe('CartTable', () => {
   afterEach(() => {
@@ -53,7 +35,7 @@ describe('CartTable', () => {
   });
 
   it('renders the cart table headers correctly', () => {
-    renderCartTable(mockProducts);
+    renderCartTable(CART_DATA);
 
     cartTableHeaders.forEach((header) => {
       expect(screen.getByText(header)).toBeInTheDocument();
@@ -61,18 +43,18 @@ describe('CartTable', () => {
   });
 
   it('renders CartItemRow for each product', () => {
-    renderCartTable(mockProducts);
+    renderCartTable(CART_DATA);
 
     const cartItemRows = screen.getAllByTestId('cart-item-row');
-    expect(cartItemRows).toHaveLength(mockProducts.length);
+    expect(cartItemRows).toHaveLength(CART_DATA.length);
 
-    mockProducts.forEach((product) => {
+    CART_DATA.forEach((product) => {
       expect(screen.getByText(product.id)).toBeInTheDocument();
     });
   });
 
   it('renders the table structure correctly', () => {
-    renderCartTable(mockProducts);
+    renderCartTable(CART_DATA);
 
     expect(
       screen.getByRole('table', { name: 'Cart table' }),
@@ -93,7 +75,7 @@ describe('CartTable', () => {
   });
 
   it('matches the snapshot', () => {
-    const { asFragment } = render(<CartTable products={mockProducts} />);
+    const { asFragment } = render(<CartTable products={CART_DATA} />);
     expect(asFragment()).toMatchSnapshot();
   });
 });

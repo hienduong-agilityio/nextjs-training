@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 // Components
 import { ProductCard } from '@/components';
 
+// Mocks
+import { PRODUCTS_DATA } from '@/mocks';
+
 const meta = {
   title: 'Components/ProductCard',
   component: ProductCard,
@@ -91,11 +94,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: 'default-id',
-    name: 'Default Product',
+    ...PRODUCTS_DATA[0],
     images: [],
+    name: 'Default Product',
+    rating: 0,
     price: 0,
     originalPrice: 0,
+    discount: '0',
   },
   parameters: {
     docs: {
@@ -108,20 +113,11 @@ export const Default: Story = {
 };
 
 export const FullDetails: Story = {
-  args: {
-    id: 'product/1',
-    name: 'Complete Product',
-    images: ['/images/product-mock.png'],
-    price: 80,
-    originalPrice: 100,
-    discount: '20%',
-    rating: 4.2,
-    label: 'Hot',
-  },
+  args: PRODUCTS_DATA[2],
   parameters: {
     docs: {
       description: {
-        story: 'A `ProductCard` showcasing a product details.',
+        story: 'A `ProductCard` showcasing a product with complete details.',
       },
     },
   },

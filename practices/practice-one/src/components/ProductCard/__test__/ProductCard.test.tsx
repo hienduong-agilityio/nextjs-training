@@ -1,5 +1,3 @@
-// Libraries
-import React from 'react';
 import {
   render,
   screen,
@@ -9,50 +7,49 @@ import {
 
 // Components
 import { ProductCard } from '@/components';
-import { IProductProps } from '@/interfaces';
 
-let defaultProps: IProductProps;
+// Mocks
+import { PRODUCTS_DATA } from '@/mocks';
+
+// Types
+import type { IProductProps } from '@/interfaces';
+
 let renderResult: RenderResult;
+let mockProduct: IProductProps;
 
 describe('ProductCard Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-
-    defaultProps = {
-      id: '1',
-      name: 'Test Product',
-      images: ['/test-image.jpg'],
-      price: 50,
-      originalPrice: 70,
-      discount: '28% OFF',
-      label: 'Hot',
-      rating: 4,
-    };
-
-    renderResult = render(<ProductCard {...defaultProps} />);
+    mockProduct = { ...PRODUCTS_DATA[0] };
   });
 
+  const renderWithProps = (product = mockProduct) => {
+    renderResult = render(<ProductCard {...product} />);
+  };
+
   it('matches snapshot', () => {
+    renderWithProps();
+
     const { asFragment } = renderResult;
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders the ProductCard component with default props', () => {
-    expect(screen.getByText('Test Product')).toBeInTheDocument();
-    expect(screen.getByText('$50')).toBeInTheDocument();
-    expect(screen.getByText('$70')).toBeInTheDocument();
-    expect(screen.getByText('Hot')).toBeInTheDocument();
+  it('renders product details correctly', () => {
+    mockProduct = { ...PRODUCTS_DATA[1] };
+    renderWithProps();
 
-    const image = screen.getByAltText('Test Product');
-    expect(image).toBeInTheDocument();
-
-    const rating = screen.getAllByRole('img', { hidden: true });
-    expect(rating).toHaveLength(1);
+    expect(screen.getByText(mockProduct.name)).toBeInTheDocument();
+    expect(screen.getByText(`$${mockProduct.price}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`$${mockProduct.originalPrice}`),
+    ).toBeInTheDocument();
   });
 
-  it('renders hover buttons (Add to Cart and Favorite) on hover', () => {
-    const container = screen.getByAltText('Test Product').closest('div');
+  it('renders hover buttons on mouse over', () => {
+    mockProduct = { ...PRODUCTS_DATA[3] };
+    renderWithProps();
 
+    const container = screen.getByAltText(mockProduct.name).closest('div');
     fireEvent.mouseOver(container!);
 
     expect(screen.getByRole('button', { name: /Add to Cart/i })).toBeVisible();
@@ -61,20 +58,11 @@ describe('ProductCard Component', () => {
     ).toBeVisible();
   });
 
-  it('renders without optional props', () => {
-    renderResult.rerender(
-      <ProductCard
-        id="2"
-        name="Minimal Product"
-        images={['/minimal-image.jpg']}
-        price={0}
-        originalPrice={0}
-      />,
-    );
+  it('renders fallback image when images array is empty', () => {
+    mockProduct = { ...PRODUCTS_DATA[0], images: [] };
+    renderWithProps();
 
-    expect(screen.getByText('Minimal Product')).toBeInTheDocument();
-    expect(screen.queryByText('70')).not.toBeInTheDocument();
-    expect(screen.queryByText('28% OFF')).not.toBeInTheDocument();
-    expect(screen.getByText('Hot')).toBeInTheDocument();
+    const image = screen.getByAltText(mockProduct.name);
+    expect(image).toHaveAttribute('src', '/images/image-placeholder.svg');
   });
 });

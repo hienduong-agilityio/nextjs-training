@@ -4,6 +4,9 @@ import { useSearchParams } from 'next/navigation';
 // UI
 import { ProductDetailTabs } from '@/ui';
 
+// Mocks
+import { PRODUCT_REVIEW } from '@/mocks';
+
 // Mock useSearchParams from Next.js
 jest.mock('next/navigation', () => ({
   useSearchParams: jest.fn(),
@@ -11,22 +14,6 @@ jest.mock('next/navigation', () => ({
 
 describe('ProductDetailTabs Component', () => {
   const mockDescription = 'This is a product description.';
-  const mockReviews = [
-    {
-      rating: 4,
-      comment: 'Great product!',
-      date: '2024-05-23T08:56:21.620Z',
-      reviewerName: 'Logan Lee',
-      reviewerEmail: 'logan.lee@x.dummyjson.com',
-    },
-    {
-      rating: 4,
-      comment: 'Great product!',
-      date: '2024-05-23T08:56:21.620Z',
-      reviewerName: 'Elena Long',
-      reviewerEmail: 'elena.long@x.dummyjson.com',
-    },
-  ];
 
   const mockSearchParams = (query: string) => {
     (useSearchParams as jest.Mock).mockReturnValue(new URLSearchParams(query));
@@ -35,7 +22,10 @@ describe('ProductDetailTabs Component', () => {
   const renderProductDetailTabs = (query: string = '') => {
     mockSearchParams(query);
     return render(
-      <ProductDetailTabs description={mockDescription} reviews={mockReviews} />,
+      <ProductDetailTabs
+        description={mockDescription}
+        reviews={PRODUCT_REVIEW}
+      />,
     );
   };
 
@@ -62,14 +52,18 @@ describe('ProductDetailTabs Component', () => {
     const reviewsTab = screen.getByText('Reviews');
     fireEvent.click(reviewsTab);
 
-    expect(screen.getByText('Logan Lee')).toBeInTheDocument();
+    PRODUCT_REVIEW.forEach((review) => {
+      expect(screen.getByText(review.reviewerName)).toBeInTheDocument();
+    });
   });
 
   it('renders the reviews tab when the active tab is set to Reviews', () => {
     renderProductDetailTabs('?activeTab=Reviews');
 
     expect(screen.getByText('Reviews')).toBeInTheDocument();
-    expect(screen.getByText('Logan Lee')).toBeInTheDocument();
-    expect(screen.getByText('Elena Long')).toBeInTheDocument();
+
+    PRODUCT_REVIEW.forEach((review) => {
+      expect(screen.getByText(review.reviewerName)).toBeInTheDocument();
+    });
   });
 });

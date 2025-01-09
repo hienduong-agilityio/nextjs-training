@@ -1,6 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { usePathname, useSearchParams } from 'next/navigation';
+
+// UI
 import { CategoryGroup } from '@/ui';
+
+// Mocks
+import { HOT_DEALS } from '@/mocks';
+
+// Constant
+import { ALL_CATEGORIES } from '@/constants';
 
 // Mock React hooks
 jest.mock('react', () => ({
@@ -17,88 +25,97 @@ const mockUsePathname = usePathname as jest.Mock;
 const mockUseSearchParams = useSearchParams as jest.Mock;
 const mockUseOptimistic = jest.requireMock('react').useOptimistic;
 
-// Mock data
 const mockTitle = 'Categories';
-const mockItems = [
-  { name: 'All', count: 10 },
-  { name: 'Bags', count: 5 },
-  { name: 'Sneakers', count: 8 },
-];
 
-const setupMocks = (
+const setupMocks = ({
   pathname = '/products',
   searchParams = new URLSearchParams(),
-  optimisticCategory = 'All',
+  optimisticCategory = ALL_CATEGORIES.ALL,
   setOptimisticCategory = jest.fn(),
-) => {
+} = {}) => {
   mockUsePathname.mockReturnValue(pathname);
   mockUseSearchParams.mockReturnValue(searchParams);
   mockUseOptimistic.mockReturnValue([
     optimisticCategory,
     setOptimisticCategory,
   ]);
+
   return setOptimisticCategory;
 };
 
-const renderComponent = (items = mockItems) => {
+const renderComponent = (items = HOT_DEALS) =>
   render(<CategoryGroup title={mockTitle} items={items} />);
-};
+
+const getCategoryElement = (category: string) =>
+  screen.getByText(
+    (_, element) =>
+      element?.tagName.toLowerCase() === 'a' &&
+      element.textContent?.toLowerCase() === category.toLowerCase(),
+  );
 
 const expectCategoryStyles = (category: string, isActive: boolean) => {
-  const categoryElement = screen.getByText(category);
+  const categoryElement = getCategoryElement(category);
   const activeClass = 'text-primary-200 bg-secondary-300';
-
-  if (isActive) {
-    expect(categoryElement).toHaveClass(activeClass);
-  } else {
-    expect(categoryElement).not.toHaveClass(activeClass);
-  }
+  isActive
+    ? expect(categoryElement).toHaveClass(activeClass)
+    : expect(categoryElement).not.toHaveClass(activeClass);
 };
 
 describe('CategoryGroup Component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  beforeEach(() => jest.clearAllMocks());
 
   it('renders correctly with title and category list', () => {
     setupMocks();
-    renderComponent();
+    const { container } = renderComponent();
 
     expect(screen.getByText(mockTitle)).toBeInTheDocument();
-    mockItems.forEach(({ name }) => {
-      expect(screen.getByText(name)).toBeInTheDocument();
+    HOT_DEALS.forEach(({ name }) => {
+      expect(getCategoryElement(name)).toBeInTheDocument();
     });
+
+    expect(container).toMatchSnapshot();
   });
 
   it('applies correct styles for active and inactive categories', () => {
-    setupMocks('/products', new URLSearchParams('category=Bags'), 'Bags');
-    renderComponent();
+    setupMocks({
+      searchParams: new URLSearchParams(`category=${ALL_CATEGORIES.FURNITURE}`),
+      optimisticCategory: ALL_CATEGORIES.FURNITURE,
+    });
+    const { container } = renderComponent();
 
-    expectCategoryStyles('Bags', true);
-    expectCategoryStyles('Sneakers', false);
-    expectCategoryStyles('All', false);
+    expectCategoryStyles(ALL_CATEGORIES.FURNITURE, true);
+    expectCategoryStyles(ALL_CATEGORIES.BEAUTY, false);
+    expectCategoryStyles(ALL_CATEGORIES.ALL, false);
+
+    expect(container).toMatchSnapshot();
   });
 
   it('updates the URL with query parameters on category click', () => {
     const mockSetOptimisticCategory = setupMocks();
-    renderComponent();
+    const { container } = renderComponent();
 
-    fireEvent.click(screen.getByText('Bags'));
-    expect(mockSetOptimisticCategory).toHaveBeenCalledWith('Bags');
+    fireEvent.click(getCategoryElement(ALL_CATEGORIES.BEAUTY));
+    expect(mockSetOptimisticCategory).toHaveBeenCalledWith(
+      ALL_CATEGORIES.BEAUTY,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('handles the ALL category properly when no category is selected', () => {
     setupMocks();
-    renderComponent();
+    const { container } = renderComponent();
 
-    expectCategoryStyles('All', true);
+    expectCategoryStyles(ALL_CATEGORIES.ALL, true);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders correctly with an empty items array', () => {
     setupMocks();
-    renderComponent([]);
+    const { container } = renderComponent([]);
 
     expect(screen.getByText(mockTitle)).toBeInTheDocument();
     expect(screen.queryByRole('listitem')).not.toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

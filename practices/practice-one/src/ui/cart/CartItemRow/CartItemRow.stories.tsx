@@ -1,3 +1,4 @@
+// Libraries
 import { Meta, StoryFn } from '@storybook/react';
 
 // Types
@@ -5,6 +6,9 @@ import type { ICartItem } from '@/interfaces';
 
 // UI
 import { CartItemRow } from '@/ui';
+
+// Mocks
+import { CART_DATA } from '@/mocks';
 
 export default {
   title: 'UI/Cart/CartItemRow',
@@ -47,17 +51,10 @@ export default {
   },
 } as Meta;
 
-// Default Template
 const Template: StoryFn<ICartItem> = (args) => <CartItemRow {...args} />;
 
 export const CartItemWithData = Template.bind({});
-CartItemWithData.args = {
-  id: '1',
-  thumbnail: '/images/product-mock.png',
-  quantity: 2,
-  title: 'Sample Product',
-  price: 29.99,
-};
+CartItemWithData.args = CART_DATA[0];
 CartItemWithData.parameters = {
   docs: {
     description: {
@@ -68,12 +65,18 @@ CartItemWithData.parameters = {
 };
 
 export const CartItemRowWithEmptyData = Template.bind({});
-CartItemRowWithEmptyData.args = {};
+CartItemRowWithEmptyData.args = {
+  id: '',
+  title: '',
+  price: 0,
+  quantity: 0,
+  thumbnail: '',
+};
 CartItemRowWithEmptyData.parameters = {
   docs: {
     description: {
       story:
-        'An example of a `CartItemRow` for a product that is out of stock.',
+        'An example of a `CartItemRow` for a product with no data provided.',
     },
   },
 };
