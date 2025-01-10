@@ -1,55 +1,89 @@
-// Libraries
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
 import { ProductCard } from '@/components';
+
+// Mocks
+import { PRODUCTS_DATA } from '@/mocks';
 
 const meta = {
   title: 'Components/ProductCard',
   component: ProductCard,
   parameters: {
+    layout: 'centered',
     docs: {
       description: {
         component:
-          'A ProductCard component that displays product information, including image, name, price, discount, and ratings. Includes hover actions for adding to favorites or cart.',
+          'The `ProductCard` component displays product details such as image, name, price, discount, and ratings. It also includes actions for adding to the cart or favorites.',
       },
     },
   },
   tags: ['autodocs'],
   argTypes: {
     id: {
-      description: 'Unique identifier for the product.',
       control: 'text',
+      description: 'Unique identifier for the product.',
+      table: { category: 'Primary' },
     },
     name: {
-      description: 'Name of the product.',
       control: 'text',
+      description: 'Name of the product displayed on the card.',
+      table: { category: 'Primary' },
     },
     images: {
-      description: 'URL of the product image.',
-      control: 'text',
+      description:
+        'Array of image URLs representing the product. The first image is displayed.',
+      table: { category: 'Primary' },
     },
     price: {
-      description: 'Price of the product.',
       control: 'number',
+      description: 'Current price of the product.',
+      table: { category: 'Primary' },
     },
     originalPrice: {
-      description: 'Original price before discount.',
       control: 'number',
+      description: 'Original price of the product before discounts.',
+      table: { category: 'Primary' },
     },
     discount: {
-      description: 'Discount information, e.g., percentage or amount.',
       control: 'text',
-    },
-    label: {
-      description: 'Optional label to display, e.g., "Hot", "New".',
-      control: 'text',
-      defaultValue: 'Hot',
+      description: 'Discount percentage applied to the product.',
+      table: { category: 'Primary' },
     },
     rating: {
-      description: 'Star rating of the product.',
-      control: { type: 'number', min: 0, max: 5 },
-      defaultValue: 4,
+      control: 'number',
+      description: 'Average user rating for the product, out of 5.',
+      table: { category: 'Primary' },
+    },
+    label: {
+      control: 'text',
+      description: 'Special label for the product, such as "Hot" or "New".',
+      table: { category: 'Primary' },
+    },
+    shippingInformation: {
+      control: 'text',
+      description: 'Details about shipping, e.g., estimated delivery time.',
+      table: { category: 'Secondary' },
+    },
+    description: {
+      control: 'text',
+      description: 'A brief description of the product.',
+      table: { category: 'Secondary' },
+    },
+    availabilityStatus: {
+      control: 'text',
+      description:
+        'Indicates stock availability (e.g., in stock, out of stock, pre-order).',
+      table: { category: 'Secondary' },
+    },
+    reviews: {
+      description: 'Array of user reviews for the product.',
+      table: { category: 'Secondary' },
+    },
+    category: {
+      control: 'text',
+      description: 'Category to which the product belongs.',
+      table: { category: 'Secondary' },
     },
   },
 } satisfies Meta<typeof ProductCard>;
@@ -60,80 +94,30 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    id: '1',
-    name: 'Sample Product',
-    images: ['/images/product-mock.png'],
-    price: 29.99,
-    originalPrice: 39.99,
-    discount: '25% OFF',
-    label: 'Hot',
-    rating: 4.5,
+    ...PRODUCTS_DATA[0],
+    images: [],
+    name: 'Default Product',
+    rating: 0,
+    price: 0,
+    originalPrice: 0,
+    discount: '0',
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Default ProductCard with a product image, name, price, discount, and rating.',
+          'The `Default` story demonstrates the `ProductCard` with minimal required fields populated. It highlights fallback UI for missing data.',
       },
     },
   },
 };
 
-export const WithCustomLabel: Story = {
-  args: {
-    id: '2',
-    name: 'Special Edition Product',
-    images: ['/images/product-mock.png'],
-    price: 49.99,
-    originalPrice: 59.99,
-    discount: '20% OFF',
-    label: 'Special',
-    rating: 5,
-  },
+export const FullDetails: Story = {
+  args: PRODUCTS_DATA[2],
   parameters: {
     docs: {
       description: {
-        story: 'ProductCard with a custom label "Special".',
-      },
-    },
-  },
-};
-
-export const WithoutDiscount: Story = {
-  args: {
-    id: '3',
-    name: 'Special Edition Product',
-    images: ['/images/product-mock.png'],
-    price: 49.99,
-    originalPrice: 59.99,
-    discount: '20% OFF',
-    label: 'Special',
-    rating: 5,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'ProductCard without a discount or label.',
-      },
-    },
-  },
-};
-
-export const Minimal: Story = {
-  args: {
-    id: '4',
-    name: 'Special Edition Product',
-    images: ['/images/product-mock.png'],
-    price: 49.99,
-    originalPrice: 59.99,
-    discount: '20% OFF',
-    label: 'Special',
-    rating: 5,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Minimal ProductCard with just name, price, and image.',
+        story: 'A `ProductCard` showcasing a product with complete details.',
       },
     },
   },

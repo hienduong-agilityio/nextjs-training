@@ -1,53 +1,52 @@
-// Libraries
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
-// Components
+// Layouts
 import { Header } from '@/layouts';
 
-const meta: Meta<typeof Header> = {
+export default {
   title: 'Layouts/Header',
   component: Header,
   tags: ['autodocs'],
+  argTypes: {
+    itemCount: {
+      description: 'The number of items in the cart.',
+      control: { type: 'number', min: 0 },
+    },
+  },
   parameters: {
     docs: {
       description: {
         component:
-          'The `Header` component as the `<header/>` element for the e-comm. It includes a logo, a search box, profile, and cart icons. The `cartItemCount` prop displays the number of items in the cart.',
+          'The `Header` component is the navigation element for the application.',
       },
     },
   },
-  argTypes: {
-    cartItemCount: {
-      description: 'Number of items in the cart.',
-      control: { type: 'number' },
+} as Meta;
+
+const Template: StoryFn<typeof Header> = (args) => <Header {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  itemCount: 0,
+};
+Default.parameters = {
+  docs: {
+    description: {
+      story:
+        'Displays the `Header` component with default settings and no items in the cart.',
     },
   },
 };
 
-export default meta;
-
-type Story = StoryObj<typeof Header>;
-
-export const Default: Story = {
-  args: {},
-  parameters: {
-    docs: {
-      description: {
-        story: 'Default Header with no cart item count.',
-      },
-    },
-  },
+export const WithCartItems = Template.bind({});
+WithCartItems.args = {
+  itemCount: 5,
 };
-
-export const WithCartItemCount: Story = {
-  args: {
-    cartItemCount: 2,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Header with cart item count number',
-      },
+WithCartItems.parameters = {
+  docs: {
+    description: {
+      story:
+        'Shows the `Header` component with 5 items in the cart, demonstrating the cart item count functionality.',
     },
   },
 };

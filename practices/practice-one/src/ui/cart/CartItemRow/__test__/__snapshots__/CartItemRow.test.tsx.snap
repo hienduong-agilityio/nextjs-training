@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemRow should match snapshot 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="flex items-center px-4 py-8 w-max"
+        >
+          <button
+            aria-label="Remove product"
+            class="p-2 mr-4 text-danger-300 "
+            type="button"
+          >
+            ×
+          </button>
+          <img
+            alt="Eyeshadow Palette with Mirror"
+            class="rounded border w-[90px] h-[60px] object-contain bg-secondary-50"
+            data-nimg="1"
+            decoding="async"
+            height="60"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Fcdn.dummyjson.com%2Fproducts%2Fimages%2Fbeauty%2FEyeshadow%2520Palette%2520with%2520Mirror%2F1.png&w=256&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fcdn.dummyjson.com%2Fproducts%2Fimages%2Fbeauty%2FEyeshadow%2520Palette%2520with%2520Mirror%2F1.png&w=96&q=75 1x, /_next/image?url=https%3A%2F%2Fcdn.dummyjson.com%2Fproducts%2Fimages%2Fbeauty%2FEyeshadow%2520Palette%2520with%2520Mirror%2F1.png&w=256&q=75 2x"
+            style="color: transparent;"
+            width="90"
+          />
+          <a
+            class="ml-4 hover:underline "
+            href="/product/2"
+          >
+            Eyeshadow Palette with Mirror
+          </a>
+        </td>
+        <td
+          class="px-4 py-8 text-start"
+        >
+          $
+          19.99
+        </td>
+        <td
+          class="flex items-center justify-start w-1/4 px-4 py-8 space-x-2"
+        >
+          <div
+            aria-label="Quantity Control"
+            class="rounded-md gap-4 bg-secondary-50"
+          >
+            <div
+              class="flex"
+            >
+              <button
+                aria-label="decrement"
+                class="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
+                type="button"
+              >
+                -
+              </button>
+              <input
+                aria-label="Quantity input"
+                class="w-12 text-center border-0 bg-gray-50 focus:ring-0"
+                type="number"
+                value="3"
+              />
+              <button
+                aria-label="increment"
+                class="px-5 py-3 text-primary-100 hover:text-gray-800 disabled:cursor-not-allowed disabled:text-gray-800"
+                type="button"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </td>
+        <td
+          class="px-4 py-8 text-start"
+        >
+          $
+          59.97
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

@@ -41,6 +41,7 @@ async function handleCartOperation<
       revalidatePath(ROUTE.CART);
       revalidatePath(ROUTE.CHECKOUT);
       revalidatePath(ROUTE.PRODUCTS);
+      revalidatePath(ROUTE.ROOT, 'layout');
     }
 
     return success;

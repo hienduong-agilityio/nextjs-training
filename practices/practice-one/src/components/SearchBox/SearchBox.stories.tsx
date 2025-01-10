@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A SearchBox component that includes an InputField and a Button for query input and submission.',
+          'A `SearchBox` component that includes an `InputField` and a `Button` for query input and submission.',
       },
     },
   },
@@ -21,13 +21,8 @@ const meta = {
       description: 'The placeholder text displayed inside the input field.',
       control: 'text',
     },
-    buttonText: {
-      description: 'The text displayed inside the button.',
-      control: 'text',
-      defaultValue: 'Search',
-    },
     customClass: {
-      description: 'Custom classes for styling the SearchBox component.',
+      description: 'Custom classes for styling the `SearchBox` component.',
       control: 'object',
     },
   },
@@ -40,7 +35,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     placeholder: 'Enter your query...',
-    buttonText: 'Search',
     customClass: {
       inputContainer: 'border-gray-300',
       input: 'h-10 border-primary-200',
@@ -50,45 +44,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Default SearchBox with basic properties.',
-      },
-    },
-  },
-};
-
-export const WithCustomStyles: Story = {
-  args: {
-    placeholder: 'Search for products...',
-    buttonText: 'Go',
-    customClass: {
-      inputContainer: 'border-green-500',
-      input: 'text-green-700',
-      button: 'bg-green-500 text-white',
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'SearchBox with custom styles for container, input, and button.',
-      },
-    },
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    placeholder: 'Search is disabled',
-    buttonText: 'Disabled',
-    customClass: {
-      inputContainer: 'border-gray-400',
-      input: 'h-10 border-primary-300 cursor-not-allowed',
-      button: 'bg-primary-300 text-white cursor-not-allowed',
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'SearchBox in a disabled state.',
+        story: 'Default `SearchBox` with basic properties.',
       },
     },
   },

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBox Component - handleSearch function renders the component correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <form
+    aria-label="Input Group"
+    class="flex "
+  >
+    <div
+      class="w-full"
+    >
+      <div
+        class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 border-blue-300 lg:rounded-r-none"
+      >
+        <span>
+          <svg
+            aria-label="Search"
+            class="lg:hidden block"
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z"
+              stroke="#40BFFF"
+              stroke-miterlimit="10"
+              stroke-width="2"
+            />
+            <path
+              d="M14.5 14.5L19 19"
+              stroke="#40BFFF"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+        <input
+          class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer h-14 text-gray-700 appearance-none"
+          name="searchBox"
+          placeholder="Enter your query..."
+          type="search"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      aria-busy="false"
+      class="items-center justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 bg-primary-200 text-white disabled:hover:bg-primary-200 hover:bg-primary-400 px-7 rounded-l-none hidden lg:flex font-semibold shadow-none"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`SearchBox Component - handleSearch function renders with onCloseModal prop and matches snapshot 1`] = `
+<DocumentFragment>
+  <form
+    aria-label="Input Group"
+    class="flex "
+  >
+    <div
+      class="w-full"
+    >
+      <div
+        class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 border-blue-300 lg:rounded-r-none"
+      >
+        <span>
+          <svg
+            aria-label="Search"
+            class="lg:hidden block"
+            fill="none"
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.875 16.75C13.2242 16.75 16.75 13.2242 16.75 8.875C16.75 4.52576 13.2242 1 8.875 1C4.52576 1 1 4.52576 1 8.875C1 13.2242 4.52576 16.75 8.875 16.75Z"
+              stroke="#40BFFF"
+              stroke-miterlimit="10"
+              stroke-width="2"
+            />
+            <path
+              d="M14.5 14.5L19 19"
+              stroke="#40BFFF"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+        <input
+          class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer h-14 text-gray-700 appearance-none"
+          name="searchBox"
+          placeholder="Enter your query..."
+          type="search"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      aria-busy="false"
+      class="items-center justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 bg-primary-200 text-white disabled:hover:bg-primary-200 hover:bg-primary-400 px-7 rounded-l-none hidden lg:flex font-semibold shadow-none"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</DocumentFragment>
+`;

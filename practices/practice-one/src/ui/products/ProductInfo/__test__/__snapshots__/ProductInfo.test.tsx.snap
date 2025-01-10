@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductInfo Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h2
+      class="mb-4 text-2xl font-semibold text-gray-800 md:text-3xl break-words"
+    >
+      Sneakers
+    </h2>
+    <div
+      class="flex flex-wrap items-center gap-4 pb-3 border-b-2 border-secondary-1000"
+    >
+      <div
+        class="flex gap-2 space-x-2"
+      >
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+            fill="#FFC600"
+            transform="scale(0.36363636363636365)"
+          />
+        </svg>
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+            fill="#FFC600"
+            transform="scale(0.36363636363636365)"
+          />
+        </svg>
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+            fill="#FFC600"
+            transform="scale(0.36363636363636365)"
+          />
+        </svg>
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+            fill="#FFC600"
+            transform="scale(0.36363636363636365)"
+          />
+        </svg>
+        <svg
+          fill="none"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.982 17.527 29.044 27.992 32.85 45 20.28 34.725 6.9 44.453l5.169-16.817L0 16.642l15.764-.119L21.688 0l4.574 16.746 15.72.782Z"
+            fill="#FFC600"
+            transform="scale(0.36363636363636365)"
+          />
+        </svg>
+      </div>
+      <span
+        class="text-secondary-500 w-max whitespace-nowrap"
+      >
+        0 reviews
+      </span>
+      <a
+        class="text-sm text-primary-100 hover:underline whitespace-nowrap"
+        href="/products"
+      >
+        Submit a review
+      </a>
+    </div>
+    <div
+      class="flex flex-wrap items-center gap-4 py-4"
+    >
+      <span
+        class="text-2xl font-bold text-primary-200"
+      >
+        $99
+      </span>
+      <span
+        class="text-lg text-gray-500 line-through"
+      >
+        $129
+      </span>
+      <span
+        class="text-lg font-bold text-danger-50 whitespace-nowrap"
+      >
+        23% % Off
+      </span>
+    </div>
+    <div
+      class="md:w-1/2 space-y-2 text-sm text-gray-600"
+    >
+      <div
+        class="flex justify-between flex-wrap gap-2"
+      >
+        <span
+          class="font-medium whitespace-nowrap"
+        >
+          Availability:
+        </span>
+        <span
+          class="capitalize"
+        >
+          unknown
+        </span>
+      </div>
+      <div
+        class="flex justify-between flex-wrap gap-2"
+      >
+        <span
+          class="font-medium whitespace-nowrap"
+        >
+          Category:
+        </span>
+        <span
+          class="capitalize"
+        >
+          fragrances
+        </span>
+      </div>
+      <p
+        class="font-medium"
+      >
+        Shipping details not available
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

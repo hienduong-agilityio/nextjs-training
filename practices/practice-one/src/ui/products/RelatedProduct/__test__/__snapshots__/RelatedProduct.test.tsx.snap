@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelatedProducts Component matches the snapshot when no related products are found 1`] = `
+<div>
+  <div
+    class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+  >
+    <p>
+      No related products found.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`RelatedProducts Component matches the snapshot when related products are found 1`] = `
+<div>
+  <div
+    class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+  >
+    <div
+      aria-label="Mock Product 2"
+    >
+      Mock Product 2
+    </div>
+    <div
+      aria-label="Mock Product 3"
+    >
+      Mock Product 3
+    </div>
+    <div
+      aria-label="Mock Product 4"
+    >
+      Mock Product 4
+    </div>
+    <div
+      aria-label="Mock Product 5"
+    >
+      Mock Product 5
+    </div>
+  </div>
+</div>
+`;

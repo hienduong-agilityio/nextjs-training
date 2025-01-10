@@ -1,7 +1,9 @@
 // Libraries
 import { render, screen } from '@testing-library/react';
-import { Tabs } from '@/components';
 import { useRouter } from 'next/router';
+
+// Components
+import { Tabs } from '@/components';
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
@@ -37,33 +39,25 @@ describe('Tabs Component', () => {
 
   it('renders the correct number of tabs', () => {
     renderTabs('Tab 1');
+
     const tabs = screen.getAllByRole('tab');
     expect(tabs).toHaveLength(mockItems.length);
 
-    tabs.forEach((tab, index) => {
-      expect(tab).toHaveTextContent(mockItems[index].title);
-    });
-  });
-
-  it('displays the correct content for the active tab', () => {
-    renderTabs('Tab 1');
     const activeContent = screen.getByText('Content for Tab 1');
     expect(activeContent).toBeVisible();
-  });
 
-  it('applies correct classes for the active tab', () => {
-    renderTabs('Tab 1');
     const activeTab = screen.getByRole('tab', { name: /Tab 1/i });
     expect(activeTab).toHaveClass(
       'text-primary-400 border-primary-400 border-b-2',
     );
-  });
 
-  it('applies correct classes for inactive tabs', () => {
-    renderTabs('Tab 1');
     const inactiveTab = screen.getByRole('tab', { name: /Tab 2/i });
     expect(inactiveTab).toHaveClass(
       'p-3 text-sm font-medium outline-none border-b-0',
     );
+
+    tabs.forEach((tab, index) => {
+      expect(tab).toHaveTextContent(mockItems[index].title);
+    });
   });
 });

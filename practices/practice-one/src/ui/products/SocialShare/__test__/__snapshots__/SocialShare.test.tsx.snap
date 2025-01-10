@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialShare Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col gap-2 xl:gap-4 mt-8 md:flex-row"
+  >
+    <button
+      aria-label="Share on Facebook"
+      class="flex items-center rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 shadow-md flex-1 justify-center py-3 gap-1 xl:gap-3 xl:px-6 bg-lightBlue-800 text-white hover:bg-lightBlue-900 whitespace-nowrap"
+      type="button"
+    >
+      <span>
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 20 20"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.197 16v-6.77h2.273l.34-2.646H9.197V5.437c0-.765.213-1.286 1.311-1.286h1.398V1.814A18.844 18.844 0 0 0 9.896 1.6c-1.738 0-2.93 1.06-2.93 3.006v1.678H4.723v2.646h2.243V16h2.231Z"
+            fill="#fff"
+          />
+        </svg>
+      </span>
+      Share on Facebook
+    </button>
+    <button
+      aria-label="Share on Twitter"
+      class="flex items-center rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 shadow-md flex-1 justify-center py-3 gap-1 xl:gap-3 xl:px-6 bg-sky-400 text-white hover:bg-sky-500 whitespace-nowrap"
+      type="button"
+    >
+      <span>
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 16 16"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.928 2.027c-.564.24-1.16.4-1.77.474A2.997 2.997 0 0 0 15.51.843a6.236 6.236 0 0 1-1.946.726 3.09 3.09 0 0 0-1.57-.878 3.142 3.142 0 0 0-1.804.136 3.06 3.06 0 0 0-1.412 1.104 2.95 2.95 0 0 0-.531 1.689c-.003.23.021.46.071.684a8.861 8.861 0 0 1-3.509-.91 8.66 8.66 0 0 1-2.823-2.228 2.939 2.939 0 0 0-.342 2.187A3 3 0 0 0 2.93 5.175a3.09 3.09 0 0 1-1.387-.369v.033c0 .692.245 1.363.693 1.9A3.1 3.1 0 0 0 4 7.787a3.136 3.136 0 0 1-.806.1 2.78 2.78 0 0 1-.582-.051c.198.595.58 1.115 1.094 1.49a3.15 3.15 0 0 0 1.773.6 6.27 6.27 0 0 1-3.803 1.278 5.885 5.885 0 0 1-.736-.041 8.802 8.802 0 0 0 4.711 1.346 8.868 8.868 0 0 0 3.356-.634 8.702 8.702 0 0 0 2.845-1.848 8.469 8.469 0 0 0 1.894-2.778 8.304 8.304 0 0 0 .65-3.276c0-.133 0-.261-.012-.388a6.051 6.051 0 0 0 1.543-1.558Z"
+            fill="#fff"
+          />
+        </svg>
+      </span>
+      Share on Twitter
+    </button>
+  </div>
+</DocumentFragment>
+`;

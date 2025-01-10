@@ -14,7 +14,7 @@ import { STATUS_TYPES } from '@/constants';
 import type { ToastType } from '@/types';
 
 export interface IToastProps {
-  onClose: () => void;
+  onClose?: () => void;
   children: React.ReactNode;
   timeoutDuration?: number;
   type?: ToastType;
@@ -53,7 +53,7 @@ const Toast = ({
     type === STATUS_TYPES.SUCCESS ? <CheckMarkIcon /> : <WarningIcon />;
 
   return (
-    <div className={containerClass}>
+    <div aria-label={`toast ${type}`} className={containerClass}>
       <div className="text-sm font-normal inline-flex items-center gap-3">
         {toastIcon}
         {children}

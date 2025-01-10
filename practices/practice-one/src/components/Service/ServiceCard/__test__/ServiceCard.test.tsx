@@ -5,18 +5,15 @@ import { render, screen, RenderResult } from '@testing-library/react';
 // Components
 import { IServiceCardProps, ServiceCard } from '@/components';
 
-describe('ServiceCard Component', () => {
-  const defaultProps: IServiceCardProps = {
-    icon: '🔧',
-    title: 'Test Service',
-    details: 'This is a test description for the service.',
-  };
+// Constants
+import { SERVICE_CARD } from '@/mocks';
 
+describe('ServiceCard Component', () => {
   let renderResult: (props?: Partial<IServiceCardProps>) => RenderResult;
 
   beforeEach(() => {
-    renderResult = (props = defaultProps) =>
-      render(<ServiceCard {...defaultProps} {...props} />);
+    renderResult = (props = SERVICE_CARD.default) =>
+      render(<ServiceCard {...SERVICE_CARD.default} {...props} />);
   });
 
   it('matches snapshot', () => {
@@ -27,37 +24,34 @@ describe('ServiceCard Component', () => {
   it('renders the ServiceCard component with default props', () => {
     renderResult();
 
-    expect(screen.getByText('Test Service')).toBeInTheDocument();
-    expect(
-      screen.getByText('This is a test description for the service.'),
-    ).toBeInTheDocument();
+    expect(screen.getByText(SERVICE_CARD.default.title)).toBeInTheDocument();
+    expect(screen.getByText(SERVICE_CARD.default.details)).toBeInTheDocument();
 
     const icon = screen.getByLabelText('Icon');
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveTextContent('🔧');
+    expect(icon).toHaveTextContent(SERVICE_CARD.default.icon);
   });
 
   it('renders minimal props', () => {
-    renderResult({
-      title: 'Minimal Service',
-      details: 'Minimal details.',
-    });
+    renderResult(SERVICE_CARD.withoutIcon);
 
-    expect(screen.getByText('Minimal Service')).toBeInTheDocument();
-    expect(screen.getByText('Minimal details.')).toBeInTheDocument();
+    expect(
+      screen.getByText(SERVICE_CARD.withoutIcon.title),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(SERVICE_CARD.withoutIcon.details),
+    ).toBeInTheDocument();
   });
 
   it('renders custom icon properly', () => {
-    renderResult({
-      icon: '🚀',
-      title: 'Rocket Service',
-      details: 'Out-of-this-world service.',
-    });
+    renderResult(SERVICE_CARD.customIcon);
 
     const icon = screen.getByLabelText('Icon');
     expect(icon).toBeInTheDocument();
-    expect(icon).toHaveTextContent('🚀');
-    expect(screen.getByText('Rocket Service')).toBeInTheDocument();
-    expect(screen.getByText('Out-of-this-world service.')).toBeInTheDocument();
+    expect(icon).toHaveTextContent(SERVICE_CARD.customIcon.icon);
+    expect(screen.getByText(SERVICE_CARD.customIcon.title)).toBeInTheDocument();
+    expect(
+      screen.getByText(SERVICE_CARD.customIcon.details),
+    ).toBeInTheDocument();
   });
 });

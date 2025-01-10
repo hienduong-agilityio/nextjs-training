@@ -1,6 +1,6 @@
 // Types
 import type { Category } from '@/types';
-import type { ICartItem, IProductProps } from '@/interfaces';
+import type { ICartItem, IProductProps, IProductReview } from '@/interfaces';
 
 export const CATEGORIES: (Category | 'all')[] = [
   'all',
@@ -74,6 +74,37 @@ export const PRODUCTS_DATA: IProductProps[] = [
   },
 ];
 
+export const PRODUCT_REVIEW: IProductReview[] = [
+  {
+    reviewerName: 'John Doe',
+    reviewerEmail: 'johndoe@example.com',
+    date: '2024-01-01',
+    rating: 4.5,
+    comment: 'Amazing product! Highly recommend.',
+  },
+  {
+    reviewerName: 'Alice Johnson',
+    reviewerEmail: 'alicej@example.com',
+    date: '2024-01-02',
+    rating: 5,
+    comment: 'Absolutely fantastic product!',
+  },
+  {
+    reviewerName: 'Bob Smith',
+    reviewerEmail: 'bobsmith@example.com',
+    date: '2024-01-03',
+    rating: 4,
+    comment: 'Great product, but the shipping was slow.',
+  },
+  {
+    reviewerName: 'Charlie Brown',
+    reviewerEmail: 'charlieb@example.com',
+    date: '2024-01-04',
+    rating: 3.5,
+    comment: 'Good quality, but not worth the price.',
+  },
+];
+
 export const CART_DATA: ICartItem[] = [
   {
     id: '2',
@@ -109,3 +140,18 @@ export const CART_DATA: ICartItem[] = [
       'https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png',
   },
 ];
+
+export const ORDER_SUMMARY = {
+  withData: {
+    subtotal: 100,
+    shippingFee: 10,
+    couponValue: 20,
+    total: 90,
+  },
+  emptyData: {
+    subtotal: 0,
+    shippingFee: 0,
+    couponValue: 0,
+    total: 0,
+  },
+};

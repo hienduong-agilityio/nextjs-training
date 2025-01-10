@@ -13,12 +13,17 @@ const InputGroup = ({
   buttonText = 'Search',
   inputName = 'inputField',
   isDisabled = false,
+  isLoading = false,
   startIcon,
   customClass = {},
   onSubmit,
 }: IInputGroupProps) => {
   return (
-    <form onSubmit={onSubmit} className={`flex ${customClass.container ?? ''}`}>
+    <form
+      aria-label="Input Group"
+      onSubmit={onSubmit}
+      className={`flex ${customClass.container ?? ''}`}
+    >
       <InputField
         key={value === '' ? 'empty' : 'filled'}
         placeholder={placeholder}
@@ -34,8 +39,10 @@ const InputGroup = ({
       <Button
         color={BUTTON_COLORS.PRIMARY}
         type="submit"
-        customClass={`px-7 rounded-l-none hidden lg:block font-semibold shadow-none disabled:hover:bg-primary-200 hover:bg-primary-400 ${customClass.button ?? ''}`}
-        disabled={isDisabled}
+        aria-busy={isLoading}
+        isLoading={isLoading}
+        customClass="px-7 rounded-l-none hidden lg:flex font-semibold shadow-none"
+        disabled={isLoading || isDisabled}
       >
         {buttonText}
       </Button>

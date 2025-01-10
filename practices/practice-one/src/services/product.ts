@@ -1,5 +1,5 @@
 // Services
-import { apiRequest } from './api';
+import { apiRequest } from '@/services';
 
 // Constants
 import { API_URL, HTTP_METHODS } from '@/constants';

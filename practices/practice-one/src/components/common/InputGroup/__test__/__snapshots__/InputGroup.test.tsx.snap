@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroup Component matches snapshot with default props 1`] = `
+<DocumentFragment>
+  <form
+    aria-label="Input Group"
+    class="flex "
+  >
+    <div
+      class="w-full"
+    >
+      <div
+        class="flex items-center gap-1 px-3 border rounded-md focus-within:ring-2 focus-within:ring-primary-100 border-blue-300 lg:rounded-r-none"
+      >
+        <input
+          class="flex-1 outline-none px-3 py-2 bg-transparent disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:cursor-pointer h-14 text-gray-700 appearance-none"
+          name="inputField"
+          placeholder="Enter your query..."
+          type="search"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      aria-busy="false"
+      class="items-center justify-center gap-2 rounded p-2 disabled:cursor-not-allowed disabled:opacity-50 bg-opacity-100 bg-primary-200 text-white disabled:hover:bg-primary-200 hover:bg-primary-400 px-7 rounded-l-none hidden lg:flex font-semibold shadow-none"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</DocumentFragment>
+`;

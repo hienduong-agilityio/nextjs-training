@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductImages Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="grid gap-6"
+  >
+    <div
+      class="w-full h-[300px] sm:h-[350px] bg-secondary-50 flex items-center justify-center"
+    >
+      <img
+        alt="image"
+        class="object-contain h-[273px] w-[200px] sm:w-[300px] sm:h-[273px] mx-auto"
+        data-nimg="1"
+        decoding="async"
+        height="0"
+        loading="lazy"
+        src="/images/image-placeholder.svg"
+        style="color: transparent;"
+        width="0"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

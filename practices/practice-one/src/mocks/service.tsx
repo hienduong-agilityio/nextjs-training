@@ -20,3 +20,23 @@ export const serviceData = [
     icon: <SupportIcon size={100} />,
   },
 ];
+
+export const SERVICE_CARD = {
+  default: {
+    icon: '🔧',
+    title: 'Default Service',
+    details:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  customIcon: {
+    icon: '🚀',
+    title: 'Rocket Service',
+    details:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  withoutIcon: {
+    title: 'Icon-Free Service',
+    details:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+};
